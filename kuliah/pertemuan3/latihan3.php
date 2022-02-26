@@ -13,3 +13,7 @@ if ($x < 20) {
 } else {
     echo "SALAH";
 }
+
+?>
+
+<!-- selesai -->
