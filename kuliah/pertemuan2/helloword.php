@@ -1,4 +1,5 @@
 <?php
 echo "Hello Word!";
+?>
 
-// selesai
+<!-- selesai -->
