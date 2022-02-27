@@ -66,14 +66,6 @@ $pasien = [
             font-family: sans-serif;
         }
 
-        h2 {
-            font-size: 200px;
-            text-align: center;
-            width: 100%;
-            position: absolute;
-            margin-top: 320px;
-            opacity: 1;
-        }
 
         h1 {
             text-align: center;
@@ -115,7 +107,6 @@ $pasien = [
 </head>
 
 <body>
-    <h2>I LOVE YOU</h2>
     <h1>Daftar Pasien <br> Rumah Sakit Pasundan</h1>
 
     <div class="container">
