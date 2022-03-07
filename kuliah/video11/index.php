@@ -32,18 +32,18 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
         <?php $i = 1; ?>
 
         <!-- ANALOGI TEMEN BAWA LEMARI KELUAR UNTUK NUNJUKIN BAJU -->
-        <?php foreach ($mahasiswa as $mhs) : ?>
+        <?php foreach ($mahasiswa as $row) : ?>
             <tr>
                 <td><?= $i; ?></td>
                 <td>
                     <a href="">ubah</a> |
                     <a href="">hapus</a>
                 </td>
-                <td><img src="img/<?= $mhs["gambar"] ?>"></td>
-                <td><?= $mhs["nrp"]; ?></td>
-                <td><?= $mhs["nama"]; ?></td>
-                <td><?= $mhs["email"]; ?></td>
-                <td><?= $mhs["jurusan"]; ?></td>
+                <td><img src="img/<?= $row["gambar"] ?>"></td>
+                <td><?= $row["nrp"]; ?></td>
+                <td><?= $row["nama"]; ?></td>
+                <td><?= $row["email"]; ?></td>
+                <td><?= $row["jurusan"]; ?></td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>
