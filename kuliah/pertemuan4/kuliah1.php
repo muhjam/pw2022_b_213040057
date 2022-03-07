@@ -49,4 +49,5 @@ echo "<br>";
 echo floor(2.9); /* pembulatan kebawah, mau hasilnya mendekati 3 apapun jadi nya 2 */
 ?>
 
+
 <!-- selesai -->

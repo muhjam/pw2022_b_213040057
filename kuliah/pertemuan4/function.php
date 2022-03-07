@@ -16,4 +16,5 @@ function salam($waktu = "Datang", $nama = "Jamjam") {
 
 </html>
 
+
 <!-- selesai -->

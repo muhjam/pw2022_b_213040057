@@ -39,4 +39,5 @@ function luasSegiTiga($a, $t) {
 echo luasSegiTiga(2, 4);
 ?>
 
+
 <!-- selesai -->

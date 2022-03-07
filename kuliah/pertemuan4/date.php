@@ -35,4 +35,5 @@ echo date("l", strtotime("20 dec 2002"));
 // j = tanggal berapa cuma ga pake 0
 ?>
 
+
 <!-- selesai -->
