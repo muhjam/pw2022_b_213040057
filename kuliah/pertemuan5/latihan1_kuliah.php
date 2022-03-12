@@ -63,3 +63,6 @@ echo "<hr>";
 $hari[4] = "Jum'at";
 $hari[] = "Sabtu";
 var_dump($hari);
+?>
+
+<!-- selesai -->

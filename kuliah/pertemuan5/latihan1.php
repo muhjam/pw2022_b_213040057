@@ -32,3 +32,6 @@ var_dump($hari);
 $hari[] = "kamis";
 $hari[] = "jum'at";
 var_dump($hari);
+?>
+
+<!-- selesai -->
