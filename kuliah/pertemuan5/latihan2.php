@@ -1,6 +1,6 @@
 <?php
 // pengulangan pada array
-// fot / foreach
+// for / foreach
 $angka = [3, 2, 15, 20, 11, 77, 89];
 ?>
 
