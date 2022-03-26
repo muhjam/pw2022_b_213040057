@@ -56,3 +56,6 @@ echo $_SERVER["SERVER_NAME"];
 echo "<br>";
 // $_GET
 var_dump($_GET);
+?>
+
+<!-- selesai -->
