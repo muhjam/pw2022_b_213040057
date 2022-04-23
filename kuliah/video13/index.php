@@ -59,7 +59,7 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
                     <td><?= $i; ?></td>
                     <td>
                         <a href="ubah.php?id=<?= $mhs["id"] ?>">ubah</a> |
-                        <a href="hapus.php?id=<?= $mhs["id"] ?>" onclick="return confirm('Yakin?')">hapus</a>
+                        <a href="hapus.php?id=<?= $mhs["id"] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')">hapus</a>
                     </td>
                     <td><img src=" img/<?= $mhs["gambar"] ?>">
                     </td>

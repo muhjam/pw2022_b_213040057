@@ -1,6 +1,12 @@
 <?php
 require 'functions.php';
 
+// ambil data di URL
+$id= $_GET["id"];
+
+// query data mahasiswa berdasarkan id
+$mhs= query("SELECT * FROM mahasiswa WHERE id= $id")[0]; // supaya ga manggil 0 nya lagi
+
 // cek apakah tombol submit telah ditekan atau belum
 if (isset($_POST["submit"])) {
 
@@ -27,7 +33,7 @@ if (isset($_POST["submit"])) {
 <html>
 
 <head>
-    <title>Tambah data mahasiswa</title>
+    <title>Ubah data mahasiswa</title>
 
     <style>
         h1 {
@@ -54,16 +60,17 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-    <h1>Tambah data mahasiswa</h1>
+    <h1>Ubah data mahasiswa</h1>
 
     <form action="" method="post">
+        <input type="hidden" name="id" value="<?= $mhs["id"]; ?>">
         <table>
             <tr>
                 <td>
                     <label for="nrp">NRP</label>
                 </td>
                 <td>:</td>
-                <td><input type="text" name="nrp" id="nrp" required></td>
+                <td><input type="text" name="nrp" id="nrp" required value="<?= $mhs["nrp"]?>";></td>
             </tr>
 
             <tr>
@@ -71,7 +78,7 @@ if (isset($_POST["submit"])) {
                     <label for="nama">Nama</label>
                 </td>
                 <td>:</td>
-                <td><input type="text" name="nama" id="nama" required></td>
+                <td><input type="text" name="nama" id="nama" required value="<?= $mhs["nama"]?>":></td>
             </tr>
 
             <tr>
@@ -79,7 +86,7 @@ if (isset($_POST["submit"])) {
                     <label for="email">Email</label>
                 </td>
                 <td>:</td>
-                <td><input type="email" name="email" id="email" required></td>
+                <td><input type="email" name="email" id="email" required value="<?= $mhs["email"]?>";></td>
             </tr>
 
             <tr>
@@ -87,7 +94,7 @@ if (isset($_POST["submit"])) {
                     <label for="jurusan">Jurusan</label>
                 </td>
                 <td>:</td>
-                <td><input type="text" name="jurusan" id="jurusan" required></td>
+                <td><input type="text" name="jurusan" id="jurusan" required value="<?= $mhs["jurusan"]?>";></td>
             </tr>
 
             <tr>
@@ -95,11 +102,11 @@ if (isset($_POST["submit"])) {
                     <label for="gambar">Gambar</label>
                 </td>
                 <td>:</td>
-                <td><input type="text" name="gambar" id="gambar" required></td>
+                <td><input type="text" name="gambar" id="gambar" required value="<?= $mhs["gambar"]?>";></td>
             </tr>
         </table>
 
-        <button type="submit" name="submit">Tambah Data!</button>
+        <button type="submit" name="submit"><a onclick="return confirm('Anda yakin mengubahnya?')">Ubah Data!</a></button>
 
     </form>
 
