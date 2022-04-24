@@ -24,8 +24,10 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title"><?= $_GET["nama_produk"]; ?></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Kode : <?= $_GET["kode_produk"]; ?></h6>
         <p class="card-text"><?= $_GET["keterangan"]; ?></p>
-				<a href="index.php">Kembali</a>
+        <a href="index.php" style="text-decoration:none; color:#ffff;"><button type="button" class="btn btn-dark">Kembali</button></a>
+
       </div>
     </div>
   </div>
