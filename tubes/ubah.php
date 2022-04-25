@@ -2,10 +2,10 @@
 require 'functions.php';
 
 // ambil data di URL
-$kode_produk= $_GET["kode_produk"];
+$id= $_GET["id"];
 
 // query data mahasiswa berdasarkan id
-$produk= query("SELECT * FROM produk WHERE kode_produk= $kode_produk")[0]; // supaya ga manggil 0 nya lagi
+$produk= query("SELECT * FROM produk WHERE id=$id")[0]; // supaya ga manggil 0 nya lagi
 
 // cek apakah tombol submit telah ditekan atau belum
 if (isset($_POST["submit"])) {
@@ -62,14 +62,18 @@ if (isset($_POST["submit"])) {
 <body>
     <h1>Ubah data produk</h1>
 
-    <form action="" method="post">
-        <table>
-            <tr>
+
+    <form action="" method="post" enctype="multipart/form-data">
+
+        <input type="hidden" name="id" value="<?= $produk["id"];?>">
+          <input type="hidden" name="gambarLama" value="<?= $produk["gambar"];?>">
+          
+			<table cellspacing="2" cellpadding="5">
                 <td>
                     <label for="kode_produk">Kode Produk</label>
                 </td>
                 <td>:</td>
-                <td><input type="text" name="kode_produk" id="kode_produk" required value="<?= $produk["kode_produk"]?>";></td>
+                <td><input type="text" name="kode_produk" id="kode_produk" required value="<?= $produk["kode_produk"]?>"></td>
             </tr>
 
             <tr>
@@ -80,33 +84,23 @@ if (isset($_POST["submit"])) {
                 <td><input type="text" name="nama_produk" id="nama_produk" required value="<?= $produk["nama_produk"]?>"></td>
             </tr>
 
-	 <tr>
-
-
+			<tr>
                 <td>
                     <label for="jenis_produk">Jenis Produk</label>
                 </td>
                 <td>:</td>
             <td>
-         <select id="jenis_produk" name="jenis_produk">
-                  <option required value="<?= $produk["jenis_produk"]?>"><?= $produk["jenis_produk"]?></option>
+    <select id="jenis_produk" name="jenis_produk">
+         <option required value="<?= $produk["jenis_produk"]?>"><?= $produk["jenis_produk"]?></option>
          <option value="T-Shirt">T-Shirt</option>
         <option value="Celana">Celana</option>
         <option value="Outware">Outware</option>
         <option value="Sepatu">Sepatu</option>
         <option value="Topi">Topi</option>
          </select>
-            </td>
-            </tr>
-
-
- <tr>
-                <td>
-                    <label for="ukuran">Ukuran</label>
-                </td>
-                <td>:</td>
-                <td>
-                <select id="ukuran" name="ukuran">
+         <label for="ukuran" style="margin-left:5px">Ukuran</label>
+         :
+     <select id="ukuran" name="ukuran">
 <option required value="<?= $produk["ukuran"]?>"><?= $produk["ukuran"]?></option>
 <option value="S">S</option>
 <option value="M">M</option>
@@ -122,8 +116,10 @@ if (isset($_POST["submit"])) {
 <option value="EU43">EU43</option>
 <option value="EU44">EU44</option>
                 </select>
-            </td>
-            </tr>
+        </td>         
+        </tr>
+
+
 
 
             <tr>
@@ -131,27 +127,28 @@ if (isset($_POST["submit"])) {
                     <label for="harga">Harga</label>
                 </td>
                 <td>:</td>
-                <td><input type="harga" name="harga" id="harga" required value="<?= $produk["harga"]?>";></td>
+                <td><input type="harga" name="harga" id="harga" required value="<?= $produk["harga"]?>"></td>
             </tr>
 
-            <tr>
+  		   
+            <td>
+                    <label for="keterangan">Keterangan</label>
+                </td>
+                <td>:</td>
+                <td><input type="text" name="keterangan" id="keterangan" required value="<?= $produk["keterangan"]?>"></td>
+            </tr>
+
+             <tr>
                 <td>
                     <label for="gambar">Gambar</label>
                 </td>
                 <td>:</td>
-                <td><input type="text" name="gambar" id="gambar" required value="<?= $produk["gambar"]?>";></td>
-            </tr>
-
-            <tr>
-                <td>
-                    <label for="keterangan">Keterangan</label>
-                </td>
-                <td>:</td>
-                <td><input type="text" name="keterangan" id="keterangan" required value="<?= $produk["keterangan"]?>";></td>
+              
+                <td>  <img src="img/<?= $produk["gambar"]?> " width="40px"><br> <input type="file" name="gambar" id="gambar"></td>
             </tr>
         </table>
 
-        <button type="submit" name="submit"><a onclick="return confirm('Anda yakin mengubahnya?')">Ubah Data!</a></button>
+        <button type="submit" name="submit">Tambah Data!</button>
 
     </form>
 

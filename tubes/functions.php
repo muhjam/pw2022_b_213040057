@@ -20,7 +20,6 @@ function query($query) {
 // TAMBAH
 function tambah($data) {
     global $conn;
-
     $jenis_produk =($data["jenis_produk"]);
     $kode_produk= htmlspecialchars($data["kode_produk"]);
     $nama_produk = htmlspecialchars($data["nama_produk"]);
@@ -29,6 +28,11 @@ function tambah($data) {
     $keterangan = htmlspecialchars($data["keterangan"]);
 
 
+    $kodeProduk= str_replace("'","",$kode_produk);
+    $namaProduk= str_replace("'","",$nama_produk);
+    $hargaBaru=preg_replace("/[^0-9]/", "", $harga);
+    $keteranganBaru= str_replace("'","",$keterangan);
+
     $gambar=upload();
 
     if(!$gambar){
@@ -36,9 +40,7 @@ function tambah($data) {
     }
 
     // query insert data
-    $query ="INSERT INTO produk
-            VALUES
-            ( '$jenis_produk' , '$kode_produk', '$nama_produk', '$ukuran', '$harga', '$gambar', '$keterangan')";
+    $query ="INSERT INTO `produk`(`jenis_produk`, `kode_produk`, `nama_produk`, `ukuran`, `harga`, `keterangan`, `gambar`) VALUES ('$jenis_produk','$kodeProduk','$namaProduk','$ukuran','$hargaBaru','$keteranganBaru','$gambar');";
 
     mysqli_query($conn, $query);
 
@@ -65,7 +67,6 @@ if($error===4){
 $ekstensiGambarValid=['jpg', 'jpeg', 'png'];
 $ekstensiGambar = explode('.', $namaFile);
 $ekstensiGambar= strtolower(end($ekstensiGambar));
-
 if(!in_array($ekstensiGambar,$ekstensiGambarValid)){
         echo"<script>
 alert('Yang anda upload bukan gambar!');    
@@ -101,9 +102,9 @@ return $namaFileBaru;
 
 
 // Function delete
-function delete($kode_produk) {
+function delete($id) {
     global $conn;
-    mysqli_query($conn, "DELETE FROM produk WHERE `produk`.`kode_produk` = '$kode_produk'");
+    mysqli_query($conn, "DELETE FROM produk WHERE `produk`.`id` = '$id'");
     return mysqli_affected_rows($conn);
 }
 
@@ -111,24 +112,31 @@ function delete($kode_produk) {
 // Ubah data
 function ubah($data) {
     global $conn;
-
+    $id=htmlspecialchars($data["id"]);
     $jenis_produk =($data["jenis_produk"]);
     $kode_produk= htmlspecialchars($data["kode_produk"]);
     $nama_produk = htmlspecialchars($data["nama_produk"]);
     $ukuran = ($data["ukuran"]);
     $harga = htmlspecialchars($data["harga"]);
-    $gambar = htmlspecialchars($data["gambar"]);
     $keterangan = htmlspecialchars($data["keterangan"]);
+    $gambarLama=htmlspecialchars($data["gambarLama"]);
 
-    $query = "UPDATE produk SET
-                jenis_produk='$jenis_produk',
-                kode_produk='$kode_produk',
-                nama_produk='$nama_produk',
-                ukuran='$ukuran',
-                harga='$harga',
-                gambar='$gambar',
-                keterangan='$keterangan'
-                WHERE kode_produk='$kode_produk';
+
+    $kodeProduk= str_replace("'","",$kode_produk);
+    $namaProduk= str_replace("'","",$nama_produk);
+    $hargaBaru=preg_replace("/[^0-9]/", "", $harga);
+    $keteranganBaru= str_replace("'","",$keterangan);
+
+    // cek apakah user pilih gambar baru atau tidak
+if($_FILES['gambar']['error']===4){
+    $gambar=$gambarLama;
+}else{
+    $gambar=upload();
+}
+
+
+
+    $query = "UPDATE `produk` SET `id`='$id',`jenis_produk`='$jenis_produk',`kode_produk`='$kodeProduk',`nama_produk`='$namaProduk',`ukuran`='$ukuran',`harga`='$hargaBaru',`keterangan`='$keteranganBaru',`gambar`='$gambar' WHERE `id`='$id';
                 ";
     mysqli_query($conn, $query);
 
@@ -141,20 +149,17 @@ function ubah($data) {
 
 
 
-
-
-
 //  Function cari
 function cari($keyword){
     $query = "SELECT * FROM produk
               WHERE
-              nama_produk LIKE '%$keyword%' OR
-              jenis_produk LIKE '%$keyword%' OR
-               ukuran LIKE '%$keyword%' OR
-                harga LIKE '%$keyword%' OR
-                kode_produk LIKE '%$keyword%' OR
-                keterangan LIKE '%$keyword%'
-              ";
+            nama_produk LIKE '%$keyword%' OR
+            jenis_produk LIKE '%$keyword%' OR
+            ukuran LIKE '%$keyword%' OR
+            harga LIKE '%$keyword%' OR
+            kode_produk LIKE '%$keyword%' OR
+            keterangan LIKE '%$keyword%'
+            ";
 
               return query($query);
 }

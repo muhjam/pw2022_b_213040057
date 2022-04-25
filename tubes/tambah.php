@@ -15,8 +15,9 @@ if (isset($_POST["submit"])) {
         echo
         "        <script>
         alert('data gagal ditambahkan')
-        document.location.href='index.php'
+        document.location.href='tambah.php'
         </script>";
+
     }
 }
 
@@ -130,7 +131,7 @@ if (isset($_POST["submit"])) {
                     <label for="gambar">Gambar</label>
                 </td>
                 <td>:</td>
-                <td><input type="file" name="gambar" id="gambar"></td>
+                <td><input type="file" name="gambar" id="gambar" required></td>
             </tr>
         </table>
 

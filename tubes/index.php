@@ -32,8 +32,6 @@ $goturthings = cari($_POST["keyword"]);
     <!-- Font-Awessome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
-<!-- Style CSS -->
-<link rel="stylesheet" href="css/style.css">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,6 +40,76 @@ $goturthings = cari($_POST["keyword"]);
     <title>Goturthings</title>
 
 <style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+
+/* Judul */
+
+
+.container .logo {
+	margin: 30px 0 40px 0;
+}
+
+
+
+.container .logo h1 {
+	margin-bottom: -5px;
+	text-align: center;
+	font-weight: 400;
+	font-family: 'Libre Bodoni',
+		sans-serif;
+	text-transform: uppercase;
+}
+
+.container .logo h1 span{
+	color: red;
+}
+
+.container .logo .subtitle{
+	color:rgba(0, 0, 0, 0.692);
+	text-align: center;
+	font-weight: 500;
+font-family: 'Montserrat',
+sans-serif;
+	text-transform: uppercase;
+}
+
+
+.container .navbar .container .fas.fa-cart-plus {
+		color: #2d3655;
+}
+
+.container .navbar .container .fas.fa-cart-plus:hover {
+	color: #151e3d;
+}
+
+@media (max-width:550px) {
+	.container .logo {
+		margin: 10px 0;
+	}
+
+	.container .logo h1 {
+
+		margin-left: 10px;
+		margin-bottom: 5px;
+		text-align: left;
+	}
+
+	.container .logo h6{
+		display: none;
+
+	}
+
+
+}
 
 </style>
 
@@ -55,8 +123,8 @@ $goturthings = cari($_POST["keyword"]);
     
     <div class="container">
       <div class="logo">
-      <h1>Goturthings<span>.</span></h1>
-      <h6 class="subtitle">tempat trifthing serba ada</h6>
+        <h1>Goturthings<span>.</span></h1>
+        <h6 class="subtitle">tempat trifthing serba ada</h6>
       </div>
       <nav class="navbar navbar-light">
         <div class="container">
@@ -98,11 +166,11 @@ $goturthings = cari($_POST["keyword"]);
 
 
 			<td> 
-				<a href="ubah.php?kode_produk=<?= $goturthing["kode_produk"] ?>" class="btn badge bg-warning">ubah</a>
+				<a href="ubah.php?id=<?= $goturthing["id"] ?>" class="btn badge bg-warning">ubah</a>
 
-				<a href="hapus.php?kode_produk=<?= $goturthing["kode_produk"] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn badge bg-danger">hapus</a>
+				<a href="hapus.php?id=<?= $goturthing["id"] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn badge bg-danger">hapus</a>
 				
-        <a href="detail.php?kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>" class="btn badge bg-info">detail</a>
+        <a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>" class="btn badge bg-info">detail</a>
 	</td>
                        
 		</tr>

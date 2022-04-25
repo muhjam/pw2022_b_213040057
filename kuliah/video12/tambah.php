@@ -79,7 +79,7 @@ if (isset($_POST["submit"])) {
                     <label for="email">Email</label>
                 </td>
                 <td>:</td>
-                <td><input type="email" name="email" id="email" required></td>
+                <td><input type="email" name="email" id="email"></td>
             </tr>
 
             <tr>
