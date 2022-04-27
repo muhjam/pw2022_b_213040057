@@ -1,4 +1,13 @@
 <?php
+// memeriksa sudah login atau belum
+session_start();
+
+if(!isset($_SESSION["login"])){
+header("location:login.php");
+exit;
+}
+
+// koneksi database
 require 'functions.php';
 
 $id = $_GET["id"];
