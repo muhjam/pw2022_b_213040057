@@ -38,7 +38,16 @@ if (isset($_POST["submit"])) {
 <html>
 
 <head>
+	<!-- Font-Awessome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
+		rel="stylesheet">
 	<!-- icon -->
 	<link rel="icon" href="icon/icon.png">
 	<title>GoturAdd.</title>
@@ -46,6 +55,31 @@ if (isset($_POST["submit"])) {
 	<style>
 	h1 {
 		text-align: center;
+		margin-bottom: -34px;
+		text-align: center;
+		font-weight: 400;
+		font-family: 'Libre Bodoni',
+			sans-serif;
+		color: #151e3d;
+		text-transform: uppercase;
+
+	}
+
+	.subtitle {
+		margin-bottom: 7px;
+		color: rgba(0, 0, 0, 0.692);
+		text-align: center;
+		font-weight: 500;
+		font-family: 'Montserrat',
+			sans-serif;
+		text-transform: uppercase;
+
+		font-size: 13px;
+	}
+
+
+	span {
+		color: red;
 	}
 
 	form {
@@ -53,6 +87,10 @@ if (isset($_POST["submit"])) {
 		padding: 10px;
 		margin: auto;
 		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.20);
+		border-radius: 15px;
+		font-weight: 500;
+		font-family: 'Montserrat',
+			sans-serif;
 	}
 
 	table {
@@ -63,13 +101,25 @@ if (isset($_POST["submit"])) {
 		cursor: pointer;
 		margin-left: 30%;
 	}
+
+	.far.fa-arrow-alt-circle-left {
+		color: #c51f1a;
+		margin: 10px 10px 0 10px;
+		font-size: 20px;
+		transition: 0.5s;
+	}
+
+	.far.fa-arrow-alt-circle-left:hover {
+		color: red;
+		transition: 0.6s;
+	}
 	</style>
 
 </head>
 
 <body>
-	<h1>Tambah data produk</h1>
-
+	<h1>GoturAdd<span>.</span></h1>
+	<h6 class="subtitle">Tambah barang keren</h6>
 	<form action="" method="post" enctype="multipart/form-data">
 		<table cellspacing="2" cellpadding="5">
 			<td>
@@ -155,8 +205,7 @@ if (isset($_POST["submit"])) {
 		<button type="submit" name="submit">Tambah Data!</button>
 		<table>
 			<tr>
-				<td><a href="index.php">
-						<-back </a>
+				<td><a href="index.php"><i class="far fa-arrow-alt-circle-left"></i></a>
 				</td>
 			</tr>
 		</table>

@@ -2,6 +2,29 @@
 // cek udah login apa belum
 session_start();
 
+// cek cookie
+if(isset($_COOKIE['id'])&&isset($_COOKIE['key'])){
+	$id=$_COOKIE['id'];
+	$key=$_COOKIE['key'];
+
+	// ambil username berdasarkan id
+	$result= mysqli_query($conn, "SELECT username FROM users WHERE id=$id");
+	$row=mysqli_fetch_assoc($result);
+
+	// cek cookie dan username
+	if($key===hash('sha256', $row['username'])){
+		$_SESSION['login']=true;
+	}
+}
+
+
+if(isset($_COOKIE['login'])){
+	if($_COOKIE['login']=='true'){
+		$_SESSION['login']=true;
+	}
+}
+
+
 if(isset($_SESSION["login"])){
 header("location:index.php");
 exit;
@@ -30,6 +53,14 @@ if(password_verify($password, $row["password"])){
 	// set session
 $_SESSION["login"]=true;
 
+// cek remember me
+if(isset($_POST['remember'])){
+	// buat cookie
+
+
+	setcookie('id', $row['id'], time() + 60);
+	setcookie('key', hash('sha256', $row['username']), time() + 60);
+}
 
     header("Location:index.php");
     exit;
@@ -51,6 +82,9 @@ $error=true;
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- Font-Awessome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
 	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -139,14 +173,18 @@ p {
 				</div>
 				<div class="mb-3">
 					<div class="form-check">
-						<input type="checkbox" class="form-check-input" id="dropdownCheck">
+						<input type="checkbox" class="form-check-input" id="dropdownCheck" name="remember">
 						<label class="form-check-label" for="dropdownCheck">
 							Remember me
 						</label>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-outline-danger	" name="login">Sign in</button>
+				<button type="submit" class="btn btn-outline-danger" name="login">Sign in</button>
 			</form>
+			<div class="ig" style="text-align:right;">
+				<a href="https://www.instagram.com/goturthings/" target="_blank"><i class="fab fa-instagram"
+						style="margin-right:10px;color: #151e3d;font-weight:bold;"> goturthing</i></a>
+			</div>
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="signup.php">New around here? Sign up</a>
 			<a class="dropdown-item" href="#">Forgot password?</a>

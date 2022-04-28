@@ -128,14 +128,6 @@ p {
 					<input type="password" name="password2" class="form-control" id="exampleDropdownFormPassword1"
 						placeholder="Konfirmasi Password" required>
 				</div>
-				<div class="mb-3">
-					<div class="form-check">
-						<input type="checkbox" class="form-check-input" id="dropdownCheck">
-						<label class="form-check-label" for="dropdownCheck">
-							Remember me
-						</label>
-					</div>
-				</div>
 				<button type="submit" class="btn btn-outline-danger	" name="signup">Sign Up</button>
 			</form>
 			<div class="dropdown-divider"></div>
