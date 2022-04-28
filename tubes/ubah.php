@@ -30,7 +30,7 @@ if (isset($_POST["submit"])) {
         echo"
         <script>
         alert('data gagal diubah')
-        document.location.href='ubah.php'
+        document.location.href='index.php'
         </script>";
     }
 }
@@ -42,49 +42,42 @@ if (isset($_POST["submit"])) {
 <html>
 
 <head>
+	<!-- Font-Awessome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
+		rel="stylesheet">
 	<!-- icon -->
 	<link rel="icon" href="icon/icon.png">
 	<title>GoturCahnge.</title>
 
-	<style>
-	h1 {
-		text-align: center;
-	}
-
-	form {
-		width: fit-content;
-		padding: 10px;
-		margin: auto;
-		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.20);
-	}
-
-	table {
-		margin-bottom: 10px;
-	}
-
-	button {
-		cursor: pointer;
-		margin-left: 30%;
-	}
-	</style>
+	<!-- link my css -->
+	<link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-	<h1>Ubah data produk</h1>
+	<h1 class="h1">GoturChange<span>.</span></h1>
+	<h6 class="subtitle2">Ubah barang keren</h6>
 
 
-	<form action="" method="post" enctype="multipart/form-data">
+	<form action="" method="post" enctype="multipart/form-data" class="form">
 
 		<input type="hidden" name="id" value="<?= $produk["id"];?>">
 		<input type="hidden" name="gambarLama" value="<?= $produk["gambar"];?>">
 
-		<table cellspacing="2" cellpadding="5">
-			<td>
-				<label for="kode_produk">Kode Produk</label>
-			</td>
-			<td>:</td>
-			<td><input type="text" name="kode_produk" id="kode_produk" required value="<?= $produk["kode_produk"]?>"></td>
+		<table cellspacing="10" cellpadding="5" class="tabel">
+			<tr>
+				<td>
+					<label for="kode_produk">Kode Produk</label>
+				</td>
+				<td>:</td>
+				<td><input type="text" name="kode_produk" id="kode_produk" required value="<?= $produk["kode_produk"]?>"></td>
 			</tr>
 
 			<tr>
@@ -135,8 +128,6 @@ if (isset($_POST["submit"])) {
 			</tr>
 
 
-
-
 			<tr>
 				<td>
 					<label for="harga">Harga</label>
@@ -164,7 +155,13 @@ if (isset($_POST["submit"])) {
 			</tr>
 		</table>
 
-		<button type="submit" name="submit">Tambah Data!</button>
+		<button type="submit" name="submit" class="btn2">Ubah Data!</button>
+		<table>
+			<tr>
+				<td>
+				<td><a href="index.php"><i class="far fa-arrow-alt-circle-left"></i></a></td>
+			</tr>
+		</table>
 
 	</form>
 

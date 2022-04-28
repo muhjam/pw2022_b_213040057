@@ -11,14 +11,22 @@ exit;
 require 'functions.php';
 
 
-$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.id DESC");
+// pagination
+// konfigurasi
+$jumlahDataPerHalaman=5;
+$jumlahData= count(query("SELECT * FROM produk"));
+$jumlahHalaman= ceil($jumlahData / $jumlahDataPerHalaman);
+$halamanAktif=(isset($_GET["page"])) ? $_GET["page"] : 1;
+$awalData=($jumlahDataPerHalaman * $halamanAktif)-$jumlahDataPerHalaman;
+
+$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.id DESC LIMIT $awalData,$jumlahDataPerHalaman");
 
 
 // tombol cari
-if(isset($_POST["cari"])){
-	$goturthings = cari($_POST["keyword"]);
-
-}
+// if(isset($_POST["cari"])){
+// 	$goturthings = cari($_POST["keyword"]);
+	
+// }
 
 
 
@@ -53,104 +61,8 @@ if(isset($_POST["cari"])){
 		rel="stylesheet">
 	<title>GoturthinQs.</title>
 
-	<style>
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	html {
-		scroll-behavior: smooth;
-	}
-
-
-	/* Judul */
-	.container .logout {
-		text-align: right;
-		margin: 10px;
-	}
-
-	.container .logout a {
-		color: silver;
-		transition: 0.5s;
-	}
-
-	.container .logout a:hover {
-		color: red;
-		transition: 0.8s;
-	}
-
-	.container .logo {
-		margin: 20px 0 40px 0;
-	}
-
-
-
-	.container .logo h1 {
-		margin-bottom: -2px;
-		text-align: center;
-		font-weight: 400;
-		font-family: 'Libre Bodoni',
-			sans-serif;
-		text-transform: uppercase;
-		color: #151e3d;
-	}
-
-	.container .logo h1 span {
-		color: red;
-	}
-
-	.container .logo .subtitle {
-		color: rgba(0, 0, 0, 0.692);
-		text-align: center;
-		font-weight: 500;
-		font-family: 'Montserrat',
-			sans-serif;
-		text-transform: uppercase;
-	}
-
-
-	.container .navbar .container .fas.fa-cart-plus {
-		color: #2d3655;
-	}
-
-	.container .navbar .container .fas.fa-cart-plus:hover {
-		color: #151e3d;
-	}
-
-
-
-
-	@media (max-width:550px) {
-
-		.container {
-			width: fit-content;
-		}
-
-		.container .logo {
-			margin: 10px 0;
-		}
-
-		.container .logo h1 {
-
-			margin-left: 10px;
-			margin-bottom: 5px;
-			text-align: left;
-		}
-
-		.container .logo h6 {
-			display: none;
-
-		}
-
-		.container .navbar.navbar-light .container {
-			width: 100%;
-		}
-
-
-	}
-	</style>
+	<!-- link my css -->
+	<link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -174,84 +86,116 @@ if(isset($_POST["cari"])){
 			<div class="container">
 				<form action="" method="post" class="d-flex">
 					<input class="form-control me-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
-						name="keyword" autofocus autocomplete="off">
-					<button type="submit" class="btn btn-outline-dark	" name="cari">Search</button>
+						name="keyword" autofocus autocomplete="off" id="keyword">
 				</form>
 
 				<a href="tambah.php"><i class="fas fa-cart-plus" style="text-align:center;"> Tambah</i></a>
 			</div>
 		</nav>
-		<table class="table">
 
-			<thead class="table-dark">
-				<tr>
-					<td>No</td>
-					<td>Gambar</td>
-					<td>Nama Produk</td>
-					<td>Jenis Produk</td>
-					<td>Ukuran</td>
-					<td>Harga</td>
-					<td>Aksi</td>
+		<div id="container">
+			<table class="table">
 
-				</tr>
-			</thead>
+				<thead class="table-dark">
+					<tr>
+						<td>No</td>
+						<td>Gambar</td>
+						<td>Nama Produk</td>
+						<td>Jenis Produk</td>
+						<td>Ukuran</td>
+						<td>Harga</td>
+						<td>Aksi</td>
 
+					</tr>
+				</thead>
 
+				<!-- isi tabel -->
 
-			<thead id="tidakAda">
-				<tr>
-					<td colspan="7">
-						<h1 style="color: #a9a9a9;font-family:;font-family: 'Open Sans', sans-serif;">Tidak Ada Data</h1>
-					</td>
-				</tr>
-			</thead>
+				<?php $i=1; ?>
+				<?php foreach ($goturthings as $goturthing ) :?>
+				<tbody id="ada">
+					<tr>
+						<td><?= $i; ?></td>
+						<td><img src=" img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover"></td>
+						<td><?= $goturthing["nama_produk"]; ?></td>
+						<td><?= $goturthing["jenis_produk"]; ?></td>
+						<td><?= $goturthing["ukuran"]; ?></td>
+						<td>Rp.<?= $goturthing["harga"]; ?></td>
+						<td>
+							<a href="ubah.php?id=<?= $goturthing["id"] ?>" class="btn badge bg-warning">ubah</a>
 
+							<a href="hapus.php?id=<?= $goturthing["id"] ?>"
+								onclick="return confirm('Anda yakin akan menghapus data ini?')"
+								class="btn badge bg-danger mt-2">hapus</a>
 
+							<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
+								class="btn badge bg-info mt-2">detail</a>
+						</td>
 
+					</tr>
 
-			<?php $i=1; ?>
-			<?php foreach ($goturthings as $goturthing ) :?>
-			<tbody id="ada">
-				<tr>
-					<td><?= $i; ?></td>
-					<td><img src=" img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover"></td>
-					<td><?= $goturthing["nama_produk"]; ?></td>
-					<td><?= $goturthing["jenis_produk"]; ?></td>
-					<td><?= $goturthing["ukuran"]; ?></td>
-					<td><?= $goturthing["harga"]; ?></td>
-					<td>
-						<a href="ubah.php?id=<?= $goturthing["id"] ?>" class="btn badge bg-warning">ubah</a>
+				</tbody>
+				<?php $i++; ?>
+				<?php endforeach; ?>
 
-						<a href="hapus.php?id=<?= $goturthing["id"] ?>"
-							onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn badge bg-danger">hapus</a>
+			</table>
+		</div>
 
-						<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
-							class="btn badge bg-info">detail</a>
-					</td>
+		<!-- Pagination -->
+		<div id="page">
+			<?php if($halamanAktif>1): ?>
+			<a style="margin-right:5px;" href="?page=<?= $halamanAktif - 1; ?>">&lt</a>
+			<?php endif; ?>
 
-				</tr>
+			<?php for($i=1;$i<=$jumlahHalaman;$i++) : ?>
 
-			</tbody>
-			<?php $i++; ?>
-			<?php endforeach; ?>
+			<?php if($i == $halamanAktif): ?>
+			<a href="?page=<?= $i; ?>" style="font-weight:bold;color:red;margin:0 5px;"><?= $i; ?></a>
 
-		</table>
+			<?php else: ?>
+			<a style="margin:0 5px;" href="?page=<?= $i; ?>"><?= $i; ?></a>
+			<?php endif; ?>
 
+			<?php endfor; ?>
+
+			<?php if($halamanAktif<$jumlahHalaman): ?>
+			<a href="?page=<?= $halamanAktif + 1; ?>">&gt</a>
+			<?php endif; ?>
+		</div>
 
 
 	</div>
 
-	<script>
-	var tidakAda = document.getElementById("tidakAda");
+	<!-- footer -->
 
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p><i class="far fa-copyright"></i> 2022 Muhamad Jamaludin. Created With Love. <br> All Picture From: <a
+							href="https://www.instagram.com/goturthings/" target="_blank"
+							style="text-decoration:none;	color: #151e3d;">GoturthiQs</a><span style="color:red;">.</span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="js/script.js"></script>
+
+
+
+
+	<!-- <script>
+	var tidakAda = document.getElementById("tidakAda");
 
 	var ada = document.getElementById("ada");
 	if (!ada) {
-		tidakAda.setAttribute("style", "display: ;text-align:center;");
+		tidakAda.setAttribute("style", "display: ;text-align:center;height:300px;");
 	} else {
 		tidakAda.setAttribute("style", "display: none;");
 	}
-	</script>
+	</script> -->
 
 
 	<!-- Optional JavaScript; choose one of the two! -->

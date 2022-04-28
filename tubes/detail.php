@@ -19,147 +19,34 @@ exit;
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- Font-Awessome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
 	<!-- icon -->
 	<link rel="icon" href="icon/icon.png">
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
+		rel="stylesheet">
 
 	<title>GoturDetail.</title>
 
-	<style>
-	#myImg {
-		border-radius: 5px;
-		cursor: pointer;
-		transition: 0.3s;
-		display: block;
-		margin-left: auto;
-		margin-right: auto
-	}
+	<!-- link my css -->
+	<link rel="stylesheet" href="css/style.css">
 
-	#myImg:hover {
-		opacity: 0.7;
-	}
-
-	/* The Modal (background) */
-	.modal {
-		display: none;
-		/* Hidden by default */
-		position: fixed;
-		/* Stay in place */
-		z-index: 1;
-		/* Sit on top */
-		padding-top: 100px;
-		/* Location of the box */
-		left: 0;
-		top: 0;
-		width: 100%;
-		/* Full width */
-		height: 100%;
-		/* Full height */
-		overflow: auto;
-		/* Enable scroll if needed */
-		background-color: rgb(0, 0, 0);
-		/* Fallback color */
-		background-color: rgba(0, 0, 0, 0.9);
-		/* Black w/ opacity */
-	}
-
-	/* Modal Content (image) */
-	.modal-content {
-		margin: auto;
-		display: block;
-		width: 75%;
-		//max-width: 75%;
-	}
-
-	/* Caption of Modal Image */
-	#caption {
-		margin: auto;
-		display: block;
-		width: 80%;
-		max-width: 700px;
-		text-align: center;
-		color: #ccc;
-		padding: 10px 0;
-		height: 150px;
-	}
-
-	/* Add Animation */
-	.modal-content,
-	#caption {
-		-webkit-animation-name: zoom;
-		-webkit-animation-duration: 0.6s;
-		animation-name: zoom;
-		animation-duration: 0.6s;
-	}
-
-	.out {
-		animation-name: zoom-out;
-		animation-duration: 0.6s;
-	}
-
-	@-webkit-keyframes zoom {
-		from {
-			-webkit-transform: scale(1)
-		}
-
-		to {
-			-webkit-transform: scale(2)
-		}
-	}
-
-	@keyframes zoom {
-		from {
-			transform: scale(0.4)
-		}
-
-		to {
-			transform: scale(1)
-		}
-	}
-
-	@keyframes zoom-out {
-		from {
-			transform: scale(1)
-		}
-
-		to {
-			transform: scale(0)
-		}
-	}
-
-	/* The Close Button */
-	.close {
-		position: absolute;
-		top: 15px;
-		right: 35px;
-		color: #f1f1f1;
-		font-size: 40px;
-		font-weight: bold;
-		transition: 0.3s;
-	}
-
-	.close:hover,
-	.close:focus {
-		color: #bbb;
-		text-decoration: none;
-		cursor: pointer;
-	}
-
-	/* 100% Image Width on Smaller Screens */
-	@media only screen and (max-width: 700px) {
-		.modal-content {
-			width: 100%;
-		}
-	}
-	</style>
 
 </head>
 
 <body>
+	<h1 class="h1">GoturDetail<span>.</span></h1>
+	<h6 class="subtitle2">Detail dari barang keren</h6>
 	<div class="container">
-		<h1>Detail Produk</h1>
-		<div class="card mb-3" style="max-width: 540px;">
+		<div class="card" style="max-width: 3000px;">
 			<div class="row g-0">
 				<div class="col-md-4">
 					<img id="myImg" src="img/<?= $_GET["gambar"] ?>" class="img-fluid rounded-start" style="object-fit:cover;">
@@ -168,14 +55,14 @@ exit;
 						<img class="modal-content" id="img01">
 					</div>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-8 ">
 					<div class="card-body">
 						<h5 class="card-title"><?= $_GET["nama_produk"]; ?></h5>
 						<h6 class="card-subtitle mb-2 text-muted">Kode : <?= $_GET["kode_produk"]; ?></h6>
 						<p class="card-text"><?= $_GET["keterangan"]; ?></p>
-						<a href="index.php" style="text-decoration:none; color:#ffff;"><button type="button"
-								class="btn btn-dark">Kembali</button></a>
 
+						<a href="index.php" style="text-decoration:none; color:#ffff;" class="ms-auto"><button type="button"
+								class="btn btn-outline-dark">Kembali</button></a>
 					</div>
 				</div>
 			</div>
@@ -183,6 +70,11 @@ exit;
 
 	</div>
 
+	<div id="map" class="fh5co-map">
+		<iframe
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2601141.170198934!2d106.61469224054412!3d-7.046159555026572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e43e8ebf7617%3A0x501e8f1fc2974e0!2sCimahi%2C%20Kec.%20Cimahi%20Tengah%2C%20Kota%20Cimahi%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1643875888332!5m2!1sid!2sid"
+			width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+	</div>
 	<!-- My Script -->
 	<script>
 	// Get the modal

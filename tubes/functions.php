@@ -150,19 +150,47 @@ if($_FILES['gambar']['error']===4){
 
 
 //  Function cari
-function cari($keyword){
-    $query = "SELECT * FROM produk
-              WHERE
-            nama_produk LIKE '%$keyword%' OR
-            jenis_produk LIKE '%$keyword%' OR
-            ukuran LIKE '%$keyword%' OR
-            harga LIKE '%$keyword%' OR
-            kode_produk LIKE '%$keyword%' OR
-            keterangan LIKE '%$keyword%'
-            ";
+// function cari($keyword){
 
-              return query($query);
-}
+// $jumlahDataPerHalaman=2;
+// $jumlahData= count(query("SELECT * FROM produk"));
+// $jumlahHalaman= ceil($jumlahData / $jumlahDataPerHalaman);
+// $halamanAktif=(isset($_GET["page"])) ? $_GET["page"] : 1;
+// $awalData=($jumlahDataPerHalaman * $halamanAktif)-$jumlahDataPerHalaman;
+
+// if($keyword==""){
+// $query = "SELECT * FROM produk
+//              WHERE
+//             nama_produk LIKE '%$keyword%' OR
+//             jenis_produk LIKE '%$keyword%' OR
+//             ukuran LIKE '%$keyword%' OR
+//             harga LIKE '%$keyword%' OR
+//             kode_produk LIKE '%$keyword%' OR
+//             keterangan LIKE '%$keyword%'
+//             ORDER BY id DESC
+//             LIMIT $awalData,$jumlahDataPerHalaman  
+//             ";
+
+//               return query ($query);
+
+
+// }else{
+//    $query = "SELECT * FROM produk
+//              WHERE
+//             nama_produk LIKE '%$keyword%' OR
+//             jenis_produk LIKE '%$keyword%' OR
+//             ukuran LIKE '%$keyword%' OR
+//             harga LIKE '%$keyword%' OR
+//             kode_produk LIKE '%$keyword%' OR
+//             keterangan LIKE '%$keyword%'
+//             ORDER BY id DESC
+//             ";
+
+//               return query($query);
+// }
+
+    
+// }
 
 
 // Signup

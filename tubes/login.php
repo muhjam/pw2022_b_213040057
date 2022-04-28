@@ -1,6 +1,8 @@
 <?php
 // cek udah login apa belum
 session_start();
+// koneksi database
+require 'functions.php';
 
 // cek cookie
 if(isset($_COOKIE['id'])&&isset($_COOKIE['key'])){
@@ -31,8 +33,7 @@ exit;
 }
 
 
-// koneksi database
-require 'functions.php';
+
 
 
 
@@ -94,57 +95,8 @@ $error=true;
 		rel="stylesheet">
 	<title>GoturLogin.</title>
 </head>
-
-<style>
-.container {
-	margin: auto;
-}
-
-.content {
-	margin: 30px auto;
-	padding: 10px;
-	width: 50%;
-	height: 50%;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.20);
-}
-
-.container .logo {
-	margin: 30px auto 0 auto;
-	width: 50%;
-	height: 50%;
-}
-
-.container .logo h1 {
-	margin-bottom: -2px;
-	text-align: center;
-	font-weight: 400;
-	font-family: 'Libre Bodoni',
-		sans-serif;
-	text-transform: uppercase;
-	color: #151e3d;
-	;
-}
-
-.container .logo h1 span {
-	color: red;
-}
-
-.container .logo .subtitle {
-	color: rgba(0, 0, 0, 0.692);
-	text-align: center;
-	font-weight: 500;
-	font-family: 'Montserrat',
-		sans-serif;
-	text-transform: uppercase;
-}
-
-
-p {
-	color: red;
-	font-style: italic;
-	font-size: 15px;
-}
-</style>
+<!-- link my css -->
+<link rel="stylesheet" href="css/login.css">
 
 <body>
 
@@ -182,8 +134,6 @@ p {
 				<button type="submit" class="btn btn-outline-danger" name="login">Sign in</button>
 			</form>
 			<div class="ig" style="text-align:right;">
-				<a href="https://www.instagram.com/goturthings/" target="_blank"><i class="fab fa-instagram"
-						style="margin-right:10px;color: #151e3d;font-weight:bold;"> goturthing</i></a>
 			</div>
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="signup.php">New around here? Sign up</a>

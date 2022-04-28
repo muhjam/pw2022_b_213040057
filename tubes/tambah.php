@@ -25,7 +25,7 @@ if (isset($_POST["submit"])) {
         echo
         "        <script>
         alert('data gagal ditambahkan')
-        document.location.href='tambah.php'
+        document.location.href='index.php'
         </script>";
 
     }
@@ -52,76 +52,17 @@ if (isset($_POST["submit"])) {
 	<link rel="icon" href="icon/icon.png">
 	<title>GoturAdd.</title>
 
-	<style>
-	h1 {
-		text-align: center;
-		margin-bottom: -34px;
-		text-align: center;
-		font-weight: 400;
-		font-family: 'Libre Bodoni',
-			sans-serif;
-		color: #151e3d;
-		text-transform: uppercase;
-
-	}
-
-	.subtitle {
-		margin-bottom: 7px;
-		color: rgba(0, 0, 0, 0.692);
-		text-align: center;
-		font-weight: 500;
-		font-family: 'Montserrat',
-			sans-serif;
-		text-transform: uppercase;
-
-		font-size: 13px;
-	}
-
-
-	span {
-		color: red;
-	}
-
-	form {
-		width: fit-content;
-		padding: 10px;
-		margin: auto;
-		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.20);
-		border-radius: 15px;
-		font-weight: 500;
-		font-family: 'Montserrat',
-			sans-serif;
-	}
-
-	table {
-		margin-bottom: 10px;
-	}
-
-	button {
-		cursor: pointer;
-		margin-left: 30%;
-	}
-
-	.far.fa-arrow-alt-circle-left {
-		color: #c51f1a;
-		margin: 10px 10px 0 10px;
-		font-size: 20px;
-		transition: 0.5s;
-	}
-
-	.far.fa-arrow-alt-circle-left:hover {
-		color: red;
-		transition: 0.6s;
-	}
-	</style>
+<!-- link my css -->
+	<link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-	<h1>GoturAdd<span>.</span></h1>
-	<h6 class="subtitle">Tambah barang keren</h6>
-	<form action="" method="post" enctype="multipart/form-data">
-		<table cellspacing="2" cellpadding="5">
+	<h1 class="h1">GoturAdd<span>.</span></h1>
+	<h6 class="subtitle2">Tambah barang keren</h6>
+
+	<form action="" method="post" enctype="multipart/form-data" class="form">
+		<table cellspacing="5" cellpadding="5" class="tabel">
 			<td>
 				<label for="kode_produk">Kode Produk</label>
 			</td>
@@ -202,7 +143,7 @@ if (isset($_POST["submit"])) {
 			</tr>
 		</table>
 
-		<button type="submit" name="submit">Tambah Data!</button>
+		<button type="submit" name="submit" class="btn2">Tambah Data!</button>
 		<table>
 			<tr>
 				<td><a href="index.php"><i class="far fa-arrow-alt-circle-left"></i></a>
