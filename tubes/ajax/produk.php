@@ -16,7 +16,14 @@ $query="SELECT * FROM produk
 $goturthings= query($query);
 
 
- ?>
+// mengaharhkan ke normal page
+// if($keyword===''){
+// header('location:index.php');
+// exit;
+// }
+
+
+?>
 
 <table class="table">
 

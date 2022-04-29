@@ -123,6 +123,14 @@ if (isset($_POST["submit"])) {
 						<option value="EU42">EU42</option>
 						<option value="EU43">EU43</option>
 						<option value="EU44">EU44</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+						<option value="32">32</option>
+						<option value="33">33</option>
+						<option value="34">34</option>
 					</select>
 				</td>
 			</tr>

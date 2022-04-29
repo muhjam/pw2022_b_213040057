@@ -54,11 +54,19 @@ html {
     text-transform: uppercase;
 }
 
-.container .navbar .container .fas.fa-cart-plus {
+.container .navbar .container section .fas.fa-print {
+    color: #303958;
+}
+
+.container .navbar .container section .fas.fa-print:hover {
+    color: #151e3d;
+}
+
+.container .navbar .container section .fas.fa-cart-plus {
     color: #2d3655;
 }
 
-.container .navbar .container .fas.fa-cart-plus:hover {
+.container .navbar .container section .fas.fa-cart-plus:hover {
     color: #151e3d;
 }
 
@@ -81,8 +89,9 @@ html {
     }
     .container .logo h1 {
         margin-left: 10px;
-        margin-bottom: 5px;
+        margin-bottom: 50px;
         text-align: left;
+        font-size: 50px;
     }
     .container .logo h6 {
         display: none;

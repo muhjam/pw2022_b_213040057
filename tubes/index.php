@@ -89,7 +89,13 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 						name="keyword" autofocus autocomplete="off" id="keyword">
 				</form>
 
-				<a href="tambah.php"><i class="fas fa-cart-plus" style="text-align:center;"> Tambah</i></a>
+
+				<section>
+					<a href="cetak.php"><i class="fas fa-print"> Print</i></a> <a style="margin:0 5px;">|</a> <a
+						href="tambah.php"><i class="fas fa-cart-plus">
+							Tambah</i></a>
+				</section>
+
 			</div>
 		</nav>
 
@@ -161,14 +167,16 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 			<?php if($halamanAktif<$jumlahHalaman): ?>
 			<a href="?page=<?= $halamanAktif + 1; ?>">&gt</a>
 			<?php endif; ?>
+
 		</div>
+
 
 
 	</div>
 
 	<!-- footer -->
 
-	<div id="footer">
+	<div id="footer" style="margin-top:50px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">

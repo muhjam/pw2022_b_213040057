@@ -52,7 +52,7 @@ if (isset($_POST["submit"])) {
 	<link rel="icon" href="icon/icon.png">
 	<title>GoturAdd.</title>
 
-<!-- link my css -->
+	<!-- link my css -->
 	<link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -62,7 +62,7 @@ if (isset($_POST["submit"])) {
 	<h6 class="subtitle2">Tambah barang keren</h6>
 
 	<form action="" method="post" enctype="multipart/form-data" class="form">
-		<table cellspacing="5" cellpadding="5" class="tabel">
+		<table cellspacing="10" cellpadding="5" class="tabel">
 			<td>
 				<label for="kode_produk">Kode Produk</label>
 			</td>
@@ -111,6 +111,14 @@ if (isset($_POST["submit"])) {
 						<option value="EU42">EU42</option>
 						<option value="EU43">EU43</option>
 						<option value="EU44">EU44</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+						<option value="32">32</option>
+						<option value="33">33</option>
+						<option value="34">34</option>
 					</select>
 				</td>
 			</tr>

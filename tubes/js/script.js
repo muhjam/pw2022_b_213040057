@@ -24,9 +24,10 @@ keyword.addEventListener('keyup', function() {
     // eksekusi ajax
     xhr.open('GET', 'ajax/produk.php?keyword=' + keyword.value, true);
     xhr.send();
+
+    // memunculkan page atau refresh halaman
     if (keyword.value === '') {
-        page.setAttribute("style", "display:;");
-        document.location.href = 'index.php';
+        location.reload();
     }
 
 
