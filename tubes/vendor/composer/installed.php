@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '207309ac6eb665810610442bcfe314c6829a5c9e',
+        'reference' => 'de50e16be924a654f756bafbc129550656e065f8',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '207309ac6eb665810610442bcfe314c6829a5c9e',
+            'reference' => 'de50e16be924a654f756bafbc129550656e065f8',
             'dev_requirement' => false,
         ),
         'mpdf/mpdf' => array(

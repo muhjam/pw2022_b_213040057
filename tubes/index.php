@@ -91,8 +91,8 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 
 
 				<section>
-					<a href="cetak.php"><i class="fas fa-print"> Print</i></a> <a style="margin:0 5px;">|</a> <a
-						href="tambah.php"><i class="fas fa-cart-plus">
+					<a href="Goturprint.php" target="_blank"><i class="fas fa-print"> Print</i></a> <a style="margin:0 5px;">|</a>
+					<a href="tambah.php"><i class="fas fa-cart-plus">
 							Tambah</i></a>
 				</section>
 
@@ -100,17 +100,17 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 		</nav>
 
 		<div id="container">
-			<table class="table">
+			<table class="table" cellpadding="10" cellspacing="0">
 
 				<thead class="table-dark">
 					<tr>
-						<td>No</td>
-						<td>Gambar</td>
-						<td>Nama Produk</td>
-						<td>Jenis Produk</td>
-						<td>Ukuran</td>
-						<td>Harga</td>
-						<td>Aksi</td>
+						<th>No</th>
+						<th>Gambar</th>
+						<th>Nama Produk</th>
+						<th>Jenis Produk</th>
+						<th>Ukuran</th>
+						<th>Harga</th>
+						<th>Aksi</th>
 
 					</tr>
 				</thead>
