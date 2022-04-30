@@ -107,6 +107,7 @@ $error=true;
 		</div>
 
 		<div class="content">
+
 			<form action="" method="post" class="px-4 py-3">
 				<div class="mb-3">
 
@@ -137,7 +138,7 @@ $error=true;
 			</div>
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="signup.php">New around here? Sign up</a>
-			<a class="dropdown-item" href="#">Forgot password?</a>
+			<a class="dropdown-item" href="forgot.php">Forgot password?</a>
 		</div>
 	</div>
 

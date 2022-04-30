@@ -221,7 +221,8 @@ return false;
     if($password !== $password2){
         echo "
         <script>
-        alert('konfirmasi password tidak sesuai');
+        alert('konfirmasi password tidak sesuai!');
+        document.location.href='signup.php'
         </script>
         ";
         
@@ -241,6 +242,96 @@ mysqli_query($conn, "INSERT INTO `users`(`username`, `password`) VALUES ('$usern
 return mysqli_affected_rows($conn);
 
 }
+
+
+
+
+
+// Change Password
+// mencari username
+function confrim($data){
+    global $conn;
+
+    $username= strtolower(stripslashes($data["username"]));
+
+
+// Cek username sudah ada atau belum
+    $result=mysqli_query($conn,"SELECT username FROM users WHERE username='$username'");
+
+$user='location:forgot.php?username='.$username.'';
+
+if(mysqli_num_rows($result)==0){
+echo"
+<script>
+alert('Username tidak ditemukan!')
+document.location.href='forgot.php'
+</script>
+";
+return false;
+}else if(mysqli_num_rows($result)>0){  
+echo'
+<script>
+alert("Username ditemukan!")
+</script>
+';
+
+header("$user");
+
+}
+
+
+
+}
+
+
+
+
+// Change
+function changepw($data){
+    global $conn, $username;
+
+    $username= strtolower(stripslashes($data["username"]));
+    $password= mysqli_real_escape_string($conn, $data["password"]);
+    $password2= mysqli_real_escape_string($conn,$data["password2"]);
+
+
+    $user="        <script>
+        alert('konfirmasi password tidak sesuai!');
+        document.location.href='forgot.php?username=".$username."'
+        </script>";
+    // cek konsfirmasi password
+    if($password !== $password2){
+        echo $user;
+        
+        return false;
+    }
+
+
+    // enkriosi password
+$password=password_hash($password, PASSWORD_DEFAULT);   
+
+$result=mysqli_query($conn,"SELECT username FROM users WHERE username='$username'");
+if(mysqli_num_rows($result)==0){
+echo"
+<script>
+alert('Username tidak diketahui!')
+document.location.href='forgot.php'
+</script>
+";
+return false;
+}else if(mysqli_num_rows($result)>0){
+
+    // tambahkan user baru ke database
+mysqli_query($conn, "UPDATE users SET password='$password' WHERE username='$username'");
+
+return mysqli_affected_rows($conn);
+
+}
+
+
+}
+
+
 
 
 ?>

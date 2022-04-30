@@ -26,7 +26,7 @@ $html='<!DOCTYPE html>
 	<link
 		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
 		rel="stylesheet">
-    <title>GoturthinQs.</title>
+    <title>Goturprint.</title>
 
 
 </head>

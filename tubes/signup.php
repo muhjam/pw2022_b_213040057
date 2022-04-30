@@ -55,15 +55,16 @@ if(isset($_POST["signup"])){
 	<div class="container">
 		<div class="logo">
 			<h1>GoturSiQnUp<span>.</span></h1>
-			<h6 class="subtitle">tempat trifthingnya bandung</h6>
+			<h6 class="subtitle">Buat account keren kalian disini</h6>
 		</div>
 
 		<div class="content">
 			<form action="" method="post" class="px-4 py-3">
 				<div class="mb-3">
 
+
 					<?php if (isset($error)) : ?>
-					<p>username / password salah!</p>
+					<p>Konfirmasi password tidak sesuai</p>
 					<?php endif; ?>
 
 					<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
@@ -81,6 +82,7 @@ if(isset($_POST["signup"])){
 						placeholder="Konfirmasi Password" required>
 				</div>
 				<button type="submit" class="btn btn-outline-danger	" name="signup">Sign Up</button>
+
 			</form>
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="login.php">Are you got account? Lets Login</a>
