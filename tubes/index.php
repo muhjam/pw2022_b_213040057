@@ -68,12 +68,10 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/style.css">
 
-	<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script> -->
 </head>
 
 <body>
 
-	<!-- <div id="preloader"></div> -->
 
 
 
@@ -88,7 +86,7 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 			<h6 class="subtitle">tempat trifthingnya bandung</h6>
 		</div>
 		<nav class="navbar navbar-light">
-			
+
 			<div class="container">
 				<form action="" method="post" class="d-flex">
 					<input class="form-control me-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
@@ -199,6 +197,44 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 		</div>
 	</div>
 
+
+
+	<script>
+	// ambil elemen2 yang dibutuhkan
+	var keyword = document.getElementById('keyword');
+	var container = document.getElementById('container');
+	var page = document.getElementById('page');
+
+
+
+	// tambahkan event ketika keyboard ditulis
+	keyword.addEventListener('keyup', function() {
+
+		var page = document.getElementById('page');
+		page.setAttribute("style", "display:none;");
+
+		// buat object ajax
+		var xhr = new XMLHttpRequest();
+
+		// cek kesiapan ajax
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				container.innerHTML = xhr.responseText;
+			}
+		}
+
+		// eksekusi ajax
+		xhr.open('GET', 'ajax/produk.php?keyword=' + keyword.value, true);
+		xhr.send();
+
+		// memunculkan page atau refresh halaman
+		if (keyword.value === '') {
+			location.reload();
+		}
+
+
+	});
+	</script>
 
 	<script src="js/script.js"></script>
 

@@ -77,6 +77,14 @@ $error=true;
 <html>
 
 <head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords"
+		content="trifthing, bandung, baju bekas, online shope, fashion, baju keren, baju bekas keren, barang bekas, barang keren, goturthinqs, goturthings, tempat trifthing" />
+	<meta name="author" content="Jam-Jam" />
+
+
 	<!--icon  -->
 	<link rel="icon" href="icon/icon.png">
 
@@ -97,57 +105,61 @@ $error=true;
 		rel="stylesheet">
 	<title>GoturLogin.</title>
 
+	<!-- link my css -->
+	<link rel="stylesheet" href="css/login.css">
+
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
 
 </head>
-<!-- link my css -->
-<link rel="stylesheet" href="css/login.css">
+
 
 <body>
 
 	<div id="preloader"></div>
 
 
-	<div class="logo">
-		<h1>Goturloqin<span>.</span></h1>
-		<h6 class="subtitle">tempat trifthingnya bandung</h6>
-	</div>
+	<div class="container-fluid">
 
-	<div class="content">
-
-		<form action="" method="post" class="px-4 py-3">
-			<div class="mb-3">
-
-				<?php if (isset($error)) : ?>
-				<p>username / password salah!</p>
-				<?php endif; ?>
-
-				<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
-				<input type="text" name="username" class="form-control" id="exampleDropdownFormEm"
-					placeholder="Masukan Username" required>
-			</div>
-			<div class="mb-3">
-				<label for="exampleDropdownFormPassword1" class="form-label">Password</label>
-				<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
-					placeholder="Masukan Password" required>
-			</div>
-			<div class="mb-3">
-				<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="dropdownCheck" name="remember">
-					<label class="form-check-label" for="dropdownCheck">
-						Remember me
-					</label>
-				</div>
-			</div>
-			<button type="submit" class="btn btn-outline-danger" name="login">Sign in</button>
-		</form>
-		<div class="ig" style="text-align:right;">
+		<div class="logo">
+			<h1>Goturloqin<span>.</span></h1>
+			<h6 class="subtitle">tempat trifthingnya bandung</h6>
 		</div>
-		<div class="dropdown-divider"></div>
-		<a class="dropdown-item" href="signup.php">New around here? Sign up</a>
-		<a class="dropdown-item" href="forgot.php">Forgot password?</a>
-	</div>
 
+		<div class="content">
+
+			<form action="" method="post" class="px-4 py-3">
+				<div class="mb-3">
+
+					<?php if (isset($error)) : ?>
+					<p>username / password salah!</p>
+					<?php endif; ?>
+
+					<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
+					<input type="text" name="username" class="form-control" id="exampleDropdownFormEm"
+						placeholder="Masukan Username" required>
+				</div>
+				<div class="mb-3">
+					<label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+					<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
+						placeholder="Masukan Password" required>
+				</div>
+				<div class="mb-3">
+					<div class="form-check">
+						<input type="checkbox" class="form-check-input" id="dropdownCheck" name="remember">
+						<label class="form-check-label" for="dropdownCheck">
+							Remember me
+						</label>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-outline-danger" name="login">Sign in</button>
+			</form>
+			<div class="ig" style="text-align:right;">
+			</div>
+			<div class="dropdown-divider"></div>
+			<a class="dropdown-item" href="signup.php">New around here? Sign up</a>
+			<a class="dropdown-item" href="forgot.php">Forgot password?</a>
+		</div>
+	</div>
 
 	<script type="text/javascript">
 	$(window).load(function() {
