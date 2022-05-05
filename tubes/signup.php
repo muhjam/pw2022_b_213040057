@@ -52,42 +52,42 @@ if(isset($_POST["signup"])){
 
 <body>
 
-	<div class="container">
-		<div class="logo">
-			<h1>GoturSiQnUp<span>.</span></h1>
-			<h6 class="subtitle">Buat account keren kalian disini</h6>
-		</div>
 
-		<div class="content">
-			<form action="" method="post" class="px-4 py-3">
-				<div class="mb-3">
-
-
-					<?php if (isset($error)) : ?>
-					<p>Konfirmasi password tidak sesuai</p>
-					<?php endif; ?>
-
-					<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
-					<input type="text" name="username" class="form-control" id="exampleDropdownFormEm"
-						placeholder="Masukan Username" required>
-				</div>
-				<div class="mb-3">
-					<label for="exampleDropdownFormPassword1" class="form-label">Password</label>
-					<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Masukan Password" required>
-				</div>
-				<div class="mb-3">
-					<label for="exampleDropdownFormPassword1" class="form-label">Konfirmasi Password</label>
-					<input type="password" name="password2" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Konfirmasi Password" required>
-				</div>
-				<button type="submit" class="btn btn-outline-danger	" name="signup">Sign Up</button>
-
-			</form>
-			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="login.php">Are you got account? Lets Login</a>
-		</div>
+	<div class="logo">
+		<h1>GoturSiQnUp<span>.</span></h1>
+		<h6 class="subtitle">Buat account keren kalian disini</h6>
 	</div>
+
+	<div class="content">
+		<form action="" method="post" class="px-4 py-3">
+			<div class="mb-3">
+
+
+				<?php if (isset($error)) : ?>
+				<p>Konfirmasi password tidak sesuai</p>
+				<?php endif; ?>
+
+				<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
+				<input type="text" name="username" class="form-control" id="exampleDropdownFormEm"
+					placeholder="Masukan Username" required>
+			</div>
+			<div class="mb-3">
+				<label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+				<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
+					placeholder="Masukan Password" required>
+			</div>
+			<div class="mb-3">
+				<label for="exampleDropdownFormPassword1" class="form-label">Konfirmasi Password</label>
+				<input type="password" name="password2" class="form-control" id="exampleDropdownFormPassword1"
+					placeholder="Konfirmasi Password" required>
+			</div>
+			<button type="submit" class="btn btn-outline-danger	" name="signup">Sign Up</button>
+
+		</form>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="login.php">Are you got account? Lets Login</a>
+	</div>
+
 </body>
 
 </html>

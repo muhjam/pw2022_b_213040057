@@ -67,7 +67,7 @@ if (isset($_POST["submit"])) {
 				<label for="kode_produk">Kode Produk</label>
 			</td>
 			<td>:</td>
-			<td><input type="kode_produk" name="kode_produk" id="kode_produk" required></td>
+			<td><input type="kode_produk" name="kode_produk" id="kode_produk" maxlength="8" required></td>
 			</tr>
 
 			<tr>
@@ -75,7 +75,7 @@ if (isset($_POST["submit"])) {
 					<label for="nama_produk">Nama Produk</label>
 				</td>
 				<td>:</td>
-				<td><input type="text" name="nama_produk" id="nama_produk" required></td>
+				<td><input type="text" name="nama_produk" id="nama_produk" maxlength="200" required></td>
 			</tr>
 
 			<tr>
@@ -131,7 +131,7 @@ if (isset($_POST["submit"])) {
 					<label for="harga">Harga</label>
 				</td>
 				<td>:</td>
-				<td><input type="text" name="harga" id="harga" required></td>
+				<td><input type="text" name="harga" id="harga" maxlength="11" required></td>
 			</tr>
 
 
@@ -139,7 +139,7 @@ if (isset($_POST["submit"])) {
 				<label for="keterangan">Keterangan</label>
 			</td>
 			<td>:</td>
-			<td><input type="text" name="keterangan" id="keterangan" required></td>
+			<td><input type="text" name="keterangan" id="keterangan" maxlength="200" required></td>
 			</tr>
 
 			<tr>

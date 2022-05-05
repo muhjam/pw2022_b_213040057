@@ -80,6 +80,8 @@ $error=true;
 	<!--icon  -->
 	<link rel="icon" href="icon/icon.png">
 
+
+
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -94,53 +96,69 @@ $error=true;
 		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
 		rel="stylesheet">
 	<title>GoturLogin.</title>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+
 </head>
 <!-- link my css -->
 <link rel="stylesheet" href="css/login.css">
 
 <body>
 
-	<div class="container">
-		<div class="logo">
-			<h1>Goturloqin<span>.</span></h1>
-			<h6 class="subtitle">tempat trifthingnya bandung</h6>
-		</div>
+	<div id="preloader"></div>
 
-		<div class="content">
 
-			<form action="" method="post" class="px-4 py-3">
-				<div class="mb-3">
-
-					<?php if (isset($error)) : ?>
-					<p>username / password salah!</p>
-					<?php endif; ?>
-
-					<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
-					<input type="text" name="username" class="form-control" id="exampleDropdownFormEm"
-						placeholder="Masukan Username" required>
-				</div>
-				<div class="mb-3">
-					<label for="exampleDropdownFormPassword1" class="form-label">Password</label>
-					<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Masukan Password" required>
-				</div>
-				<div class="mb-3">
-					<div class="form-check">
-						<input type="checkbox" class="form-check-input" id="dropdownCheck" name="remember">
-						<label class="form-check-label" for="dropdownCheck">
-							Remember me
-						</label>
-					</div>
-				</div>
-				<button type="submit" class="btn btn-outline-danger" name="login">Sign in</button>
-			</form>
-			<div class="ig" style="text-align:right;">
-			</div>
-			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="signup.php">New around here? Sign up</a>
-			<a class="dropdown-item" href="forgot.php">Forgot password?</a>
-		</div>
+	<div class="logo">
+		<h1>Goturloqin<span>.</span></h1>
+		<h6 class="subtitle">tempat trifthingnya bandung</h6>
 	</div>
+
+	<div class="content">
+
+		<form action="" method="post" class="px-4 py-3">
+			<div class="mb-3">
+
+				<?php if (isset($error)) : ?>
+				<p>username / password salah!</p>
+				<?php endif; ?>
+
+				<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
+				<input type="text" name="username" class="form-control" id="exampleDropdownFormEm"
+					placeholder="Masukan Username" required>
+			</div>
+			<div class="mb-3">
+				<label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+				<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
+					placeholder="Masukan Password" required>
+			</div>
+			<div class="mb-3">
+				<div class="form-check">
+					<input type="checkbox" class="form-check-input" id="dropdownCheck" name="remember">
+					<label class="form-check-label" for="dropdownCheck">
+						Remember me
+					</label>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-outline-danger" name="login">Sign in</button>
+		</form>
+		<div class="ig" style="text-align:right;">
+		</div>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="signup.php">New around here? Sign up</a>
+		<a class="dropdown-item" href="forgot.php">Forgot password?</a>
+	</div>
+
+
+	<script type="text/javascript">
+	$(window).load(function() {
+		$("#preloader").delay(300).fadeOut("slow");
+	})
+	</script>
+
+
+	<!-- my javascript -->
+	<script src="js/script.js"></script>
+
 
 	<!-- Optional JavaScript; choose one of the two! -->
 

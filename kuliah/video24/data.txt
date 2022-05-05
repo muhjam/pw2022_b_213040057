@@ -1,0 +1,10 @@
+goturthinqs.epizy.com
+
+username: epiz_31630722
+pw: XuAQBdWdbfLKyB
+
+Data base
+DBname: epiz_31630722_goturthings
+username: epiz_31630722
+HostName: sql309.epizy.com
+PW: XuAQBdWdbfLKyB

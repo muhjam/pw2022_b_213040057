@@ -324,6 +324,7 @@ return false;
     // tambahkan user baru ke database
 mysqli_query($conn, "UPDATE users SET password='$password' WHERE username='$username'");
 
+
 return mysqli_affected_rows($conn);
 
 }

@@ -44,6 +44,9 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords"
+		content="trifthing, bandung, baju bekas, online shope, fashion, baju keren, baju bekas keren, barang bekas, barang keren, goturthinqs, goturthings, tempat trifthing" />
+	<meta name="author" content="Jam-Jam" />
 
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -65,11 +68,12 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/style.css">
 
+	<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script> -->
 </head>
 
 <body>
 
-
+	<!-- <div id="preloader"></div> -->
 
 
 
@@ -84,6 +88,7 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 			<h6 class="subtitle">tempat trifthingnya bandung</h6>
 		</div>
 		<nav class="navbar navbar-light">
+			
 			<div class="container">
 				<form action="" method="post" class="d-flex">
 					<input class="form-control me-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
@@ -120,7 +125,7 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 
 				<?php $i=1; ?>
 				<?php foreach ($goturthings as $goturthing ) :?>
-				<tbody id="ada">
+				<tbody>
 					<tr>
 						<td><?= $i; ?></td>
 						<td><img src=" img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover"></td>
@@ -169,6 +174,11 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 			<a href="?page=<?= $halamanAktif + 1; ?>">&gt</a>
 			<?php endif; ?>
 
+
+
+
+
+
 		</div>
 
 
@@ -192,19 +202,6 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 
 	<script src="js/script.js"></script>
 
-
-
-
-	<!-- <script>
-	var tidakAda = document.getElementById("tidakAda");
-
-	var ada = document.getElementById("ada");
-	if (!ada) {
-		tidakAda.setAttribute("style", "display: ;text-align:center;height:300px;");
-	} else {
-		tidakAda.setAttribute("style", "display: none;");
-	}
-	</script> -->
 
 
 	<!-- Optional JavaScript; choose one of the two! -->

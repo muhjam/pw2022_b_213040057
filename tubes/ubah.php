@@ -77,7 +77,8 @@ if (isset($_POST["submit"])) {
 					<label for="kode_produk">Kode Produk</label>
 				</td>
 				<td>:</td>
-				<td><input type="text" name="kode_produk" id="kode_produk" required value="<?= $produk["kode_produk"]?>"></td>
+				<td><input type="text" name="kode_produk" id="kode_produk" maxlength="8" required
+						value="<?= $produk["kode_produk"]?>"></td>
 			</tr>
 
 			<tr>
@@ -85,7 +86,8 @@ if (isset($_POST["submit"])) {
 					<label for="nama_produk">Nama Produk</label>
 				</td>
 				<td>:</td>
-				<td><input type="text" name="nama_produk" id="nama_produk" required value="<?= $produk["nama_produk"]?>"></td>
+				<td><input type="text" name="nama_produk" id="nama_produk" maxlength="200" required
+						value="<?= $produk["nama_produk"]?>"></td>
 			</tr>
 
 			<tr>
@@ -141,7 +143,7 @@ if (isset($_POST["submit"])) {
 					<label for="harga">Harga</label>
 				</td>
 				<td>:</td>
-				<td><input type="harga" name="harga" id="harga" required value="<?= $produk["harga"]?>"></td>
+				<td><input type="harga" name="harga" id="harga" maxlength="11" required value="<?= $produk["harga"]?>"></td>
 			</tr>
 
 
@@ -149,7 +151,8 @@ if (isset($_POST["submit"])) {
 				<label for="keterangan">Keterangan</label>
 			</td>
 			<td>:</td>
-			<td><input type="text" name="keterangan" id="keterangan" required value="<?= $produk["keterangan"]?>"></td>
+			<td><input type="text" name="keterangan" id="keterangan" maxlength="200" required
+					value="<?= $produk["keterangan"]?>"></td>
 			</tr>
 
 			<tr>

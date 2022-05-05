@@ -18,7 +18,7 @@ $goturthings= query($query);
 
 // mengaharhkan ke normal page
 // if($keyword===''){
-// header('location:index.php');
+// header("Refresh:0; url=index.php");
 // exit;
 // }
 
@@ -29,13 +29,13 @@ $goturthings= query($query);
 
 	<thead class="table-dark">
 		<tr>
-			<td>No</td>
-			<td>Gambar</td>
-			<td>Nama Produk</td>
-			<td>Jenis Produk</td>
-			<td>Ukuran</td>
-			<td>Harga</td>
-			<td>Aksi</td>
+			<th>No</th>
+			<th>Gambar</th>
+			<th>Nama Produk</th>
+			<th>Jenis Produk</th>
+			<th>Ukuran</th>
+			<th>Harga</th>
+			<th>Aksi</th>
 
 		</tr>
 	</thead>
@@ -56,7 +56,7 @@ $goturthings= query($query);
 
 	<?php $i=1; ?>
 	<?php foreach ($goturthings as $goturthing ) :?>
-	<tbody id="ada">
+	<tbody>
 		<tr>
 			<td><?= $i; ?></td>
 			<td><img src="img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover"></td>
