@@ -36,6 +36,114 @@ exit;
 
 	<title>GoturDetail.</title>
 
+	<style>
+	@media(max-width:499px) {
+
+		.logo {
+			margin: 30px auto 0 auto;
+			width: 100%;
+			height: 100%;
+		}
+
+
+		.logo h1 {
+			margin-bottom: -2px;
+			text-align: center;
+			font-weight: 400;
+			font-family: 'Libre Bodoni', sans-serif;
+			text-transform: uppercase;
+			color: #151e3d;
+			;
+		}
+
+		.logo h1 span {
+			color: red;
+		}
+
+		.logo .subtitle {
+			color: rgba(0, 0, 0, 0.692);
+			text-align: center;
+			font-weight: 500;
+			font-family: 'Montserrat', sans-serif;
+			text-transform: uppercase;
+			font-size: 10px;
+		}
+
+		.btn2 {
+			cursor: pointer;
+			margin-left: 30%;
+		}
+
+		.far.fa-arrow-alt-circle-left {
+			color: #c51f1a;
+			margin: 10px 10px 0 10px;
+			font-size: 20px;
+			transition: 0.5s;
+		}
+
+		.far.fa-arrow-alt-circle-left:hover {
+			color: red;
+			transition: 0.6s;
+		}
+	}
+
+	@media(min-width:500px) {
+		.container-fluid .content {
+			margin: 30px auto;
+			padding: 10px;
+			width: 50%;
+			height: 100%;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.20);
+			border-radius: 10px;
+		}
+
+		.logo {
+			margin: 30px auto 0 auto;
+			width: 50%;
+			height: 50%;
+		}
+
+		.logo h1 {
+			margin-bottom: -2px;
+			text-align: center;
+			font-weight: 400;
+			font-family: 'Libre Bodoni', sans-serif;
+			text-transform: uppercase;
+			color: #151e3d;
+			;
+		}
+
+		.logo h1 span {
+			color: red;
+		}
+
+		.logo .subtitle {
+			color: rgba(0, 0, 0, 0.692);
+			text-align: center;
+			font-weight: 500;
+			font-family: 'Montserrat', sans-serif;
+			text-transform: uppercase;
+			font-size: 15px;
+		}
+
+		.btn2 {
+			cursor: pointer;
+			margin-left: 30%;
+		}
+
+		.far.fa-arrow-alt-circle-left {
+			color: #c51f1a;
+			margin: 10px 10px 0 10px;
+			font-size: 20px;
+			transition: 0.5s;
+		}
+
+		.far.fa-arrow-alt-circle-left:hover {
+			color: red;
+			transition: 0.6s;
+		}
+	}
+	</style>
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/style.css">
 
@@ -43,10 +151,13 @@ exit;
 </head>
 
 <body>
-	<h1 class="h1">GoturDetail<span>.</span></h1>
-	<h6 class="subtitle2">Detail dari barang keren</h6>
-	<div class="container">
-		<div class="card" style="max-width: 3000px;">
+	<div class="logo">
+		<h1 class="h1">GoturDetail<span>.</span></h1>
+		<h6 class="subtitle">Detail dari barang keren</h6>
+	</div>
+
+	<div class="container-fluid">
+		<div class="card mt-3" style="max-width: 3000px;">
 			<div class="row g-0">
 				<div class="col-md-4">
 					<img id="myImg" src="img/<?= $_GET["gambar"] ?>" class="img-fluid rounded-start" style="object-fit:cover;">

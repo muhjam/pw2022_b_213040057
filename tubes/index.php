@@ -65,6 +65,8 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 		rel="stylesheet">
 	<title>GoturthinQs.</title>
 
+
+
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/style.css">
 

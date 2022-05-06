@@ -42,6 +42,14 @@ function tambah($data) {
     // query insert data
     $query ="INSERT INTO `produk`(`jenis_produk`, `kode_produk`, `nama_produk`, `ukuran`, `harga`, `keterangan`, `gambar`) VALUES ('$jenis_produk','$kodeProduk','$namaProduk','$ukuran','$hargaBaru','$keteranganBaru','$gambar');";
 
+if($ukuran==''||$jenis_produk==''){
+            echo
+        "        <script>
+        alert('pilih ukuran terlebih dahulu!')
+        document.location.href='tambah.php'
+        </script>";
+}
+
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
