@@ -28,7 +28,7 @@ $goturthings= query($query);
 <table class="table">
 
 	<thead class="table-dark">
-		<tr>
+		<tr style="text-align:center;">
 			<th>No</th>
 			<th>Gambar</th>
 			<th>Nama Produk</th>
@@ -41,7 +41,7 @@ $goturthings= query($query);
 	</thead>
 
 	<!-- menampilkan tidak ada data -->
-	<?php if(!$goturthings): ?>
+	<?php if(empty($goturthings)): ?>
 	<thead>
 		<tr>
 			<td colspan="7">
@@ -57,7 +57,7 @@ $goturthings= query($query);
 	<?php $i=1; ?>
 	<?php foreach ($goturthings as $goturthing ) :?>
 	<tbody>
-		<tr>
+		<tr style="text-align:center;">
 			<td><?= $i; ?></td>
 			<td><img src="img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover"></td>
 			<td><?= $goturthing["nama_produk"]; ?></td>

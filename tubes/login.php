@@ -1,35 +1,47 @@
 <?php
 // cek udah login apa belum
 session_start();
-// koneksi database
+
+// menghubungkan php dengan koneksi database
 require 'functions.php';
 
 // cek cookie
 if(isset($_COOKIE['id'])&&isset($_COOKIE['key'])){
-	$id=$_COOKIE['id'];
-	$key=$_COOKIE['key'];
+  $id=$_COOKIE['id'];
+  $key=$_COOKIE['key'];
 
-	// ambil username berdasarkan id
-	$result= mysqli_query($conn, "SELECT username FROM users WHERE id=$id");
-	$row=mysqli_fetch_assoc($result);
+  // ambil username berdasarkan id
+  $result= mysqli_query($conn, "SELECT * FROM users WHERE id=$id");
+  $row=mysqli_fetch_assoc($result);
 
-	// cek cookie dan username
-	if($key===hash('sha256', $row['username'])){
-		$_SESSION['login']=true;
-	}
+  // cek cookie dan username
+  if($key===hash('sha256', $row['username'])){
+	$_SESSION['level']=$row['level'];
+	$_SESSION['username']=$row['username'];
+
+  }
 }
 
 
-if(isset($_COOKIE['login'])){
-	if($_COOKIE['login']=='true'){
-		$_SESSION['login']=true;
-	}
+if(isset($_COOKIE['level'])){
+  if($_COOKIE['level']=='true'){
+    $_SESSION['level']=$row['level'];
+		$_SESSION['username']=$row['username'];
+  }
 }
 
+// cek apakah sudah login
+if(isset($_SESSION["level"])){
 
-if(isset($_SESSION["login"])){
-header("location:index.php");
+if($_SESSION['level']=="admin"){
+	header("location:admin/index.php");
 exit;
+}else if($_SESSION['level']=="user"){
+	header("location:index.php");
+exit;
+}
+
+
 }
 
 
@@ -43,6 +55,7 @@ if (isset($_POST["login"])) {
 $username=$_POST["username"];
 $password=$_POST["password"];
 
+
 // Cek user name
 $result=mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
 
@@ -50,27 +63,71 @@ if(mysqli_num_rows($result)){
 
     // Cek password
 $row=mysqli_fetch_assoc($result);
-if(password_verify($password, $row["password"])){
-	// set session
-$_SESSION["login"]=true;
+
+
+	// cek jika user login sebagai admin
+	if($row['level']=="admin"){
+
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "admin";
+
+
+		// alihkan ke halaman dashboard admin
+		header("location:admin/index.php");
+
+	// cek jika user login sebagai pegawai
+	}else if($row['level']=="user"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "user";
+
+		// alihkan ke halaman dashboard pegawai
+		header("location:index.php");
+
+	}else{
+	$error=true;
+	}	
 
 // cek remember me
 if(isset($_POST['remember'])){
-	// buat cookie
+  // buat cookie
+  setcookie('id', $row['id'], time() + 60);
+  setcookie('key', hash('sha256', $row['username']), time() + 60);
 
+		// cek jika user login sebagai admin
+	if($row['level']=="admin"){
 
-	setcookie('id', $row['id'], time() + 60);
-	setcookie('key', hash('sha256', $row['username']), time() + 60);
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "admin";
+		
+		// alihkan ke halaman dashboard admin
+		header("location:admin/index.php");
+
+	// cek jika user login sebagai pegawai
+	}else if($row['level']=="user"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "user";
+
+		// alihkan ke halaman dashboard pegawai
+		header("location:index.php");
+
+	}else{
+	$error=true;
+	}	
 }
 
-    header("Location:index.php");
-    exit;
-    }
+
 }
 
 $error=true;
 
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -115,7 +172,15 @@ $error=true;
 
 <body>
 
-	<div id="preloader"></div>
+	<?php if (isset($error)){
+echo"";
+
+					}else{
+						echo"	<div id='preloader'></div>";
+					} ?>
+
+
+
 
 
 	<div class="container-fluid">
@@ -129,19 +194,18 @@ $error=true;
 
 			<form action="" method="post" class="px-4 py-3">
 				<div class="mb-3">
-
 					<?php if (isset($error)) : ?>
 					<p>username / password salah!</p>
 					<?php endif; ?>
 
 					<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
 					<input type="text" name="username" class="form-control" id="exampleDropdownFormEm"
-						placeholder="Masukan Username" required>
+						placeholder="Masukan Username" required autofocus>
 				</div>
 				<div class="mb-3">
 					<label for="exampleDropdownFormPassword1" class="form-label">Password</label>
 					<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Masukan Password" required>
+						placeholder="Masukan Password" required autofocus>
 				</div>
 				<div class="mb-3">
 					<div class="form-check">

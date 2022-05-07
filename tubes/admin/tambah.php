@@ -1,37 +1,38 @@
 <?php
 // memeriksa sudah login atau belum
 session_start();
+$level=$_SESSION['level'];
 
-if(!isset($_SESSION["login"])){
-header("location:login.php");
+if(!isset($_SESSION["level"])){
+header("location:../login.php");
 exit;
 }
 
+if($_SESSION["level"]!='admin'){
+	header("location:../$level.php");
+exit;
+}
 // koneksi database
-require 'functions.php';
-
-// ambil data di URL
-$id= $_GET["id"];
-
-// query data mahasiswa berdasarkan id
-$produk= query("SELECT * FROM produk WHERE id=$id")[0]; // supaya ga manggil 0 nya lagi
+require '../functions.php';
 
 // cek apakah tombol submit telah ditekan atau belum
+
 if (isset($_POST["submit"])) {
 
-    // cek apakag data berhasil diubah atau tidak
-    if (ubah($_POST) > 0) {
+    // cek apakag data berhasil di tambahkan atau tidak
+    if (tambah($_POST) > 0) {
         echo "
         <script>
-        alert('data berhasil diubah')
+        alert('data berhasil ditambahkan')
         document.location.href='index.php'
         </script>";
     } else {
-        echo"
-        <script>
-        alert('data gagal diubah')
+        echo
+        "        <script>
+        alert('data gagal ditambahkan')
         document.location.href='index.php'
         </script>";
+
     }
 }
 
@@ -49,7 +50,7 @@ if (isset($_POST["submit"])) {
 
 
 	<!--icon  -->
-	<link rel="icon" href="icon/icon.png">
+	<link rel="icon" href="../icon/icon.png">
 
 
 
@@ -178,7 +179,7 @@ if (isset($_POST["submit"])) {
 	</style>
 
 	<!-- link my css -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../css/style.css">
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
 
@@ -189,32 +190,28 @@ if (isset($_POST["submit"])) {
 
 
 	<div class="logo">
-		<h1 class="h1">GoturChange<span>.</span></h1>
-		<h6 class="subtitle">Ubah barang keren</h6>
+		<h1 class="h1">GoturAdd<span>.</span></h1>
+		<h6 class="subtitle">Tambah barang keren</h6>
 	</div>
 
 	<div class="container-fluid">
-
 
 		<div class="content">
 
 			<form action="" method="post" enctype="multipart/form-data" id="us">
 
-				<input type="hidden" name="id" value="<?= $produk["id"];?>">
-				<input type="hidden" name="gambarLama" value="<?= $produk["gambar"];?>">
-
 				<div class="form-group row mb-3">
 					<label for="kode_produk" class="col-sm-2 col-form-label">Kode</label>
 					<div class="col-sm-6 ms-auto">
-						<input type="text" placeholder="Kode Produk" class="form-control" id="kode_produk" name="kode_produk"
-							maxlength="8" required value="<?= $produk["kode_produk"]?>">
+						<input type="text" class="form-control" id="kode_produk" placeholder="Kode Produk" name="kode_produk"
+							maxlength="8" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="nama_produk" class="col-sm-2 col-form-label">Nama</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="nama_produk" placeholder="Nama Produk" name="nama_produk"
-							maxlength="200" required value="<?= $produk["nama_produk"]?>">
+							maxlength="200" required>
 					</div>
 				</div>
 
@@ -224,7 +221,7 @@ if (isset($_POST["submit"])) {
 					<div class="form-group col-md-6 mb-3">
 						<label for="jenis_produk">Jenis :</label>
 						<select id="jenis_produk" class="form-control" name="jenis_produk" required>
-							<option required value="<?= $produk["jenis_produk"]?>"><?= $produk["jenis_produk"]?></option>
+							<option value="">Pilih Jenis Produk</option>
 							<option value="T-Shirt">T-Shirt</option>
 							<option value="Celana">Celana</option>
 							<option value="Flanel">Flanel</option>
@@ -240,7 +237,7 @@ if (isset($_POST["submit"])) {
 					<div class="form-group col-md-6">
 						<label for="inputState">Ukuran :</label>
 						<select id="inputState" class="form-control" name="ukuran" required>
-							<option required value="<?= $produk["ukuran"]?>"><?= $produk["ukuran"]?></option>
+							<option value="">Pilih Ukuran</option>
 							<option value="S">S</option>
 							<option value="M">M</option>
 							<option value="L">L</option>
@@ -271,7 +268,7 @@ if (isset($_POST["submit"])) {
 					<label for="harga" class="col-sm-2 col-form-label">Harga</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="harga" placeholder="Rp.xxxxxx" name="harga" maxlength="11"
-							required value="<?= $produk["harga"]?>">
+							required>
 					</div>
 				</div>
 
@@ -280,29 +277,19 @@ if (isset($_POST["submit"])) {
 					<label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
 					<div class="col-sm-9 ms-auto">
 						<input type="text" class="form-control" id="keterangan" placeholder="Ketik Keterangan" name="keterangan"
-							maxlength="200" required value="<?= $produk["keterangan"]?>">
+							maxlength="200" required>
 					</div>
 				</div>
 
-
-				<label for="gambar" class="form-label">Pilih Gambar:</label>
-				<div class="row mb-3">
-					<div class="form-grup col-md-2 mb-3 ms-3">
-						<img src="img/<?= $produk["gambar"]?> " width="40px">
-					</div>
-					<div class="form-grup col-md-6">
-
-						<input class="form-control form-control-sm " id="gambar" type="file" name="gambar"
-							value="<?= $produk["keterangan"]?>">
-					</div>
-
+				<div class="mb-3">
+					<label for="gambar" class="form-label">Pilih Gambar:</label>
+					<input class="form-control form-control-sm" id="gambar" type="file" name="gambar" required>
 				</div>
-
 
 				<div class="row mt-4">
-					<div class="col-2"> <a href="index.php"><i class="far fa-arrow-alt-circle-left"></i></a></div>
+					<div class="col-2"> <a href="javascript:history.back()"><i class="far fa-arrow-alt-circle-left"></i></a></div>
 					<div class="col-4 ms-auto">
-						<button type="submit" name="submit" class="btn btn-dark mb-3 ps-3 pe-3">Ubah</button>
+						<button type="submit" name="submit" class="btn btn-dark mb-3">Tambah</button>
 					</div>
 
 				</div>
@@ -317,7 +304,7 @@ if (isset($_POST["submit"])) {
 
 
 	<!-- my javascript -->
-	<script src="js/script.js"></script>
+	<script src="../js/script.js"></script>
 
 
 	<!-- Optional JavaScript; choose one of the two! -->

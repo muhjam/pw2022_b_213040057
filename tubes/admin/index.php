@@ -5,17 +5,19 @@ session_start();
 $level=$_SESSION['level'];
 
 if(!isset($_SESSION["level"])){
-header("location:login.php");
+header("location:../login.php");
 exit;
 }
 
-if($_SESSION["level"]!='user'){
-	header("location:$level/index.php");
+if($_SESSION["level"]!='admin'){
+	header("location:../index.php");
 exit;
 }
+
+
 
 // koneksi database
-require 'functions.php';
+require '../functions.php';
 
 
 // pagination
@@ -63,7 +65,7 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
 	<!-- icon -->
-	<link rel="icon" href="icon/icon.png">
+	<link rel="icon" href="../icon/icon.png">
 	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,25 +104,24 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 	</style>
 
 	<!-- link my css -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
 <body>
 
 
-	<div class="container-fluid">
 
+	<div class="container-fluid">
 		<div class="row">
 			<div class="info col-4">
 				<p> <?=  $_SESSION['level']; ?> : </p>
 				<p style="color:red;"><?= $_SESSION['username'];?></p>
 			</div>
 			<div class="logout col-6 ms-auto">
-				<a href="logout.php"><i class="fas fa-sign-out-alt">Logout</i></a>
+				<a href="../logout.php"><i class="fas fa-sign-out-alt">Logout</i></a>
 			</div>
 		</div>
-
 		<div class="logo">
 			<h1>Goturthinqs<span>.</span></h1>
 			<h6 class="subtitle">tempat trifthingnya bandung</h6>
@@ -135,8 +136,9 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 
 
 				<section>
-					<a href="Goturprint.php" target="_blank"><i class="fas fa-print"> Print</i></a>
-
+					<a href="Goturprint.php" target="_blank"><i class="fas fa-print"> Print</i></a> <a style="margin:0 5px;">|</a>
+					<a href="tambah.php"><i class="fas fa-cart-plus">
+							Tambah</i></a>
 				</section>
 
 			</div>
@@ -180,7 +182,8 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 					<tbody>
 						<tr style="text-align:center;">
 							<td><?= $i; ?></td>
-							<td><img src=" img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover"></td>
+							<td><img src=" ../img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover">
+							</td>
 							<td><?= $goturthing["nama_produk"]; ?></td>
 							<td><?= $goturthing["jenis_produk"]; ?></td>
 							<td><?= $goturthing["ukuran"]; ?></td>
@@ -188,8 +191,15 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 							<td>
 
 
+								<a href="ubah.php?id=<?= $goturthing["id"] ?>" class="btn badge bg-warning">ubah</a>
 
-								<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
+								<a href="hapus.php?id=<?= $goturthing["id"] ?>"
+									onclick="return confirm('Anda yakin akan menghapus data ini?')"
+									class="btn badge bg-danger mt-2">hapus</a>
+
+
+
+								<a href="../detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
 									class="btn badge bg-info mt-2">detail</a>
 							</td>
 
@@ -276,7 +286,7 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 		}
 
 		// eksekusi ajax
-		xhr.open('GET', 'ajax/produk.php?keyword=' + keyword.value, true);
+		xhr.open('GET', '../ajax/produk.php?keyword=' + keyword.value, true);
 		xhr.send();
 
 		// memunculkan page atau refresh halaman
@@ -288,7 +298,7 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 	});
 	</script>
 
-	<script src="js/script.js"></script>
+	<script src="../js/script.js"></script>
 
 
 

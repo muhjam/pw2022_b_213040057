@@ -17,59 +17,46 @@ html {
 
 /* Judul */
 
-.container .logout {
+.container-fluid .row .info {
+    margin: 10px;
+}
+
+.container-fluid .row .info p {
+    display: inline-block;
+}
+
+.container-fluid .row .logout {
     text-align: right;
     margin: 10px;
 }
 
-.container .logout a {
+.container-fluid .row .logout a {
     color: silver;
     transition: 0.5s;
 }
 
-.container .logout a:hover {
+.container-fluid .row .logout a:hover {
     color: red;
     transition: 0.5s;
 }
 
-.container .logo {
-    margin: 20px 0 40px 0;
+.container-fluid .row .logo {
+    margin: 20px auto 40px auto;
 }
 
-.container .logo h1 {
-    margin-bottom: -2px;
-    text-align: center;
-    font-weight: 400;
-    font-family: 'Libre Bodoni', sans-serif;
-    text-transform: uppercase;
-    color: #151e3d;
-}
-
-.container .logo h1 span {
-    color: red;
-}
-
-.container .logo .subtitle {
-    color: rgba(0, 0, 0, 0.692);
-    text-align: center;
-    font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-}
-
-.container .navbar .container section .fas.fa-print {
+.container-fluid .navbar .container-fluid section .fas.fa-print {
     color: #303958;
 }
 
-.container .navbar .container section .fas.fa-print:hover {
+.container-fluid .navbar .container-fluid section .fas.fa-print:hover {
     color: #151e3d;
 }
 
-.container .navbar .container section .fas.fa-cart-plus {
+.container-fluid .navbar .container-fluid section .fas.fa-cart-plus {
     color: #2d3655;
 }
 
-.container .navbar .container section .fas.fa-cart-plus:hover {
+.container-fluid .navbar .container-fluid section .fas.fa-cart-plus:hover {
     color: #151e3d;
 }
 
@@ -83,23 +70,23 @@ html {
     text-decoration: none;
 }
 
-@media (max-width:576px) {
-    .container {
+@media (max-width:770px) {
+    .container-fluid {
         width: fit-content;
     }
-    .container .logo {
+    .container-fluid .logo {
         margin: 10px 0;
     }
-    .container .logo h1 {
+    .container-fluid .logo h1 {
         margin-left: 10px;
         margin-bottom: 50px;
         text-align: left;
         font-size: 50px;
     }
-    .container .logo h6 {
+    .container-fluid .logo h6 {
         display: none;
     }
-    .container .navbar.navbar-light .container {
+    .container-fluid .navbar.navbar-light .container-fluid {
         width: 100%;
     }
 }

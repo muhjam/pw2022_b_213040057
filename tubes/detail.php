@@ -2,7 +2,7 @@
 // memeriksa sudah login atau belum
 session_start();
 
-if(!isset($_SESSION["login"])){
+if(!isset($_SESSION["level"])){
 header("location:login.php");
 exit;
 }
@@ -151,6 +151,9 @@ exit;
 </head>
 
 <body>
+
+
+
 	<div class="logo">
 		<h1 class="h1">GoturDetail<span>.</span></h1>
 		<h6 class="subtitle">Detail dari barang keren</h6>
@@ -172,8 +175,8 @@ exit;
 						<h6 class="card-subtitle mb-2 text-muted">Kode : <?= $_GET["kode_produk"]; ?></h6>
 						<p class="card-text"><?= $_GET["keterangan"]; ?></p>
 
-						<a href="index.php" style="text-decoration:none; color:#ffff;" class="ms-auto"><button type="button"
-								class="btn btn-outline-dark">Kembali</button></a>
+						<a href="javascript:history.back()" style="text-decoration:none; color:#ffff;" class="ms-auto"><button
+								type="button" class="btn btn-outline-dark">Kembali</button></a>
 					</div>
 				</div>
 			</div>

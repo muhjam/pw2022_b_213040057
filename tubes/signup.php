@@ -2,9 +2,18 @@
 // memeriksa sudah login atau belum
 session_start();
 
-if(isset($_SESSION["login"])){
-header("location:index.php");
+// cek apakah sudah login
+if(isset($_SESSION["level"])){
+
+if($_SESSION['level']=="admin"){
+	header("location:admin/index.php");
 exit;
+}else if($_SESSION['level']=="user"){
+	header("location:index.php");
+exit;
+}
+
+
 }
 
 // koneksi database

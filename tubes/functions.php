@@ -98,7 +98,7 @@ $namaFileBaru.=$ekstensiGambar;
 
 
 
-move_uploaded_file($tmpName, 'img/'.$namaFileBaru); 
+move_uploaded_file($tmpName, '../img/'.$namaFileBaru); 
 return $namaFileBaru;
 }
 
@@ -245,7 +245,7 @@ $password=password_hash($password, PASSWORD_DEFAULT);
 
 
     // tambahkan user baru ke database
-mysqli_query($conn, "INSERT INTO `users`(`username`, `password`) VALUES ('$username','$password')");
+mysqli_query($conn, "INSERT INTO `users`(`username`, `password`, `level`) VALUES ('$username','$password', 'user')");
 
 return mysqli_affected_rows($conn);
 
