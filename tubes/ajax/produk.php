@@ -59,7 +59,7 @@ $goturthings= query($query);
 	<tbody>
 		<tr style="text-align:center;">
 			<td><?= $i; ?></td>
-			<td><img src="img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover"></td>
+			<td><img src="../img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover"></td>
 			<td><?= $goturthing["nama_produk"]; ?></td>
 			<td><?= $goturthing["jenis_produk"]; ?></td>
 			<td><?= $goturthing["ukuran"]; ?></td>

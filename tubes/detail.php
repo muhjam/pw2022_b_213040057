@@ -184,11 +184,7 @@ exit;
 
 	</div>
 
-	<div id="map" class="fh5co-map">
-		<iframe
-			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2601141.170198934!2d106.61469224054412!3d-7.046159555026572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e43e8ebf7617%3A0x501e8f1fc2974e0!2sCimahi%2C%20Kec.%20Cimahi%20Tengah%2C%20Kota%20Cimahi%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1643875888332!5m2!1sid!2sid"
-			width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-	</div>
+
 	<!-- My Script -->
 	<script>
 	// Get the modal

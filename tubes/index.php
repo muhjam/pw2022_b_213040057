@@ -62,208 +62,641 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 	<!-- Font-Awessome -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
+	<!-- AOS -->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
 	<!-- icon -->
 	<link rel="icon" href="icon/icon.png">
 	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
-		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
+		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono&display=swap"
 		rel="stylesheet">
 	<title>GoturthinQs.</title>
 
 	<style>
-	.container-fluid .row .info {
-		margin: 10px;
+	body {
+		background-color: #EAEAEA;
+		font-family: 'poppins', sans-serif;
+		color: #2d2d2d;
+		font-size: 14px;
 	}
 
-	.container-fluid .row .info p {
-		display: inline-block;
+
+
+	.navbar-brand {
+		font-weight: 400;
+		font-family: 'Libre Bodoni', sans-serif;
+		text-transform: uppercase;
 	}
 
-	.container-fluid .row .logout {
-		text-align: right;
-		margin: 10px;
-	}
-
-	.container-fluid .row .logout a {
-		color: silver;
-		transition: 0.5s;
-	}
-
-	.container-fluid .row .logout a:hover {
+	.navbar-brand span {
 		color: red;
-		transition: 0.5s;
 	}
 
-	.container-fluid .row .logo {
-		margin: 20px auto 40px auto;
+	.form-control {
+		height: 30px;
 	}
+
+
+	.fas.fa-search {
+		color: #EAEAEA;
+	}
+
+	.fas.fa-search:hover {
+		color: white;
+	}
+
+
+	.far.fa-window-close {
+		color: #EAEAEA;
+	}
+
+	.far.fa-window-close:hover {
+		color: white;
+	}
+
+	.navbar-brand {
+		font-size: 25px;
+		text-align: center;
+
+	}
+
+	.card-title {
+		text-align: center;
+		font-family: 'poppins', sans-serif;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 12px;
+
+	}
+
+	.card-text {
+		text-align: center;
+		font-family: 'poppins', sans-serif;
+		font-weight: 400;
+		text-transform: uppercase;
+		font-size: 11px;
+	}
+
+	#exit {
+		position: absolute;
+		left: 89%;
+		top: 10px;
+		font-size: 20px;
+		cursor: pointer;
+	}
+
+	#logout {
+		color: #b22222;
+
+	}
+
+	#logout:hover {
+		color: #ff0000;
+	}
+
+
+	#container-produk {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	@media (min-width:1400px) {
+
+		/* cari1 */
+		.form-control {
+			position: relative;
+			width: 350px;
+			height: 30px;
+			left: 70%;
+		}
+
+		#search {
+			position: relative;
+			left: 30%;
+		}
+
+	}
+
+
+
+
+	@media (max-width:1400px) {
+
+		/* cari1 */
+		.form-control {
+			position: relative;
+			width: 350px;
+			height: 30px;
+			left: 40%;
+		}
+
+		#search {
+			position: relative;
+			left: 25%;
+		}
+	}
+
+
+	@media (max-width:1200px) {
+
+		/* cari1 */
+		.form-control {
+			position: relative;
+			width: 350px;
+			height: 30px;
+			left: 10%;
+		}
+
+		#search {
+			position: relative;
+			left: 10%;
+		}
+	}
+
+
+
+	@media (max-width:994px) {
+		.navbar-nav {
+			text-align: center;
+		}
+
+		#card-mobile img {
+			height: 300px;
+			object-fit: cover;
+		}
+
+		/* cari1 */
+
+
+		.form-control {
+			position: absolute;
+			width: 90%;
+			height: 30px;
+			left: 10px;
+			top: 15px;
+		}
+
+
+
+
+
+	}
+
+
+
+
+
+
+	@media(max-width:425px) {
+
+		#exit {
+			position: absolute;
+			left: 85%;
+			top: 10px;
+			font-size: 20px;
+			cursor: pointer;
+		}
+
+
+		.navbar-brand {
+			margin-left: auto;
+		}
+	}
+
+
+
+
+	@media(max-width:340px) {
+
+
+		#exit {
+			position: absolute;
+			left: 85%;
+			top: 10px;
+			font-size: 20px;
+			cursor: pointer;
+		}
+
+
+
+		.navbar-nav {
+			text-align: center;
+		}
+
+		.navbar-brand {
+			font-size: 18px;
+			text-align: center;
+			margin-left: auto;
+		}
+
+		#card-mobile img {
+			height: 200px;
+			object-fit: cover;
+		}
+
+
+
+
+	}
+
+
+	#card {
+		border-radius: 5px;
+		cursor: pointer;
+		transition: opacity 0.3s;
+		display: block;
+
+	}
+
+	#myImg {
+		transition: transform 1.5s ease;
+
+	}
+
+	#card:hover {
+		opacity: 0.7;
+
+	}
+
+	#card:hover #myImg {
+		transform: scale(1.4);
+	}
+
+	#card-mobile {
+		border-radius: 5px;
+		cursor: pointer;
+		transition: opacity 0.3s;
+		display: block;
+		transition: transform 1.5s ease;
+	}
+
+
+
+	#card-mobile:hover {
+		opacity: 0.7;
+	}
+
+	#card-mobile:hover #myImg {
+		transform: scale(1.4);
+
+	}
+
+	#inner {
+		overflow: hidden;
+	}
+
+
+	/* footer */
+
+
+
+
+	.footer-sosmed {
+
+		padding-right: 20px;
+		text-align: end;
+
+
+
+	}
+
+	.footer-sosmed li {
+		list-style: none;
+		display: inline-block;
+		padding: 2px 5px;
+
+
+	}
+
+	.footer-sosmed a {
+		color: #303958;
+		font-size: 15px;
+		display: inline-block;
+
+	}
+
+	.footer-sosmed a:hover {
+		color: #151e3d;
+	}
+
+
+	#footer {
+		display: flex;
+		justify-content: space-between;
+
+	}
+
+
+
+	.bar-sosmed li {
+		list-style: none;
+		display: inline-block;
+		padding: 2px 5px;
+
+
+	}
+
+	.bar-sosmed a {
+		color: #303958;
+		font-size: 15px;
+		display: inline-block;
+
+	}
+
+	.bar-sosmed a:hover {
+		color: #EAEAEA;
+	}
+
+	.bar-sosmed {
+
+		padding-right: 20px;
+		text-align: center;
+
+
+
+	}
+
+
+	/* search */
 	</style>
 
 	<!-- link my css -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/main.css">
 
 </head>
 
 <body>
 
 
-	<div class="container-fluid">
 
-		<div class="row">
-			<div class="info col-4">
-				<p> <?=  $_SESSION['level']; ?> : </p>
-				<p style="color:red;"><?= $_SESSION['username'];?></p>
-			</div>
-			<div class="logout col-6 ms-auto">
-				<a href="logout.php"><i class="fas fa-sign-out-alt">Logout</i></a>
+
+	<!-- awal navbar -->
+
+
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+
+
+
+
+		<div class="container">
+
+
+
+			<button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<a class="navbar-brand" id="logo" href="#">GoturthinQs<span>.</span></a>
+
+			<a href="#container" id="cari" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+					class="fas fa-search"></i></a>
+
+			<!-- cari1 -->
+			<form action="" method="post" class="d-lg-block" id="bar" style="display:none;">
+
+				<input class="form-control me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
+					name="keyword" autofocus autocomplete="off" id="keyword">
+
+				<a id="exit" class="btn btn-dark ms-auto d-lg-none" style=""><i class="far fa-window-close"></i></a>
+			</form>
+
+			<div class="collapse navbar-collapse" id="navbarScroll">
+
+				<!-- cari1 -->
+
+
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
+							class="fas fa-search"></i></a> </label>
+
+
+
+
+
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;" aria-expanded="false">
+							Shope
+						</a>
+					</li>
+				</ul>
+
+				<ul class="navbar-nav ms-auto navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+
+					<li class=" nav-item dropdown">
+						<a class="nav-link dropdown-toggle d-lg-block d-none active" href="#" id="navbarDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Shope
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li><a class="dropdown-item" href="#">T-Shirt</a></li>
+							<li><a class="dropdown-item" href="#">Hoodie</a></li>
+							<li><a class="dropdown-item" href="#">Celana</a></li>
+
+						</ul>
+					</li>
+
+
+
+					<div class="shope d-lg-none">
+						<li class="nav-item">
+							<a class="nav-link" href="#">T-Shirt</a>
+						</li>
+
+
+					</div>
+
+					<li class="nav-item d-lg-block d-none">
+						<a class="nav-link" href="#">Contact</a>
+					</li>
+
+
+					<li class="nav-item d-lg-block d-none me-auto ms-5">
+						<a class="nav-link" id="logout" href="logout.php">Logout</a>
+					</li>
+
+
+
+					<!-- bagian dropdown -->
+					<li class="nav-item fs-4 d-lg-none"><a class="nav-link" href="#">Contact</a>
+					</li>
+
+
+					<li class="nav-item fs-4  d-lg-none">
+						<a class="nav-link" id="logout" href="logout.php">Logout</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav">
+					<ul class="bar-sosmed d-lg-none mt-2">
+						<li><a href=""> <i class="fab fa-instagram"></i></a>
+						</li>
+						<li><a href=""><i class="fab fa-facebook"></i></a></li>
+						<li><a href=""><i class="fab fa-twitter"></i></a></li>
+						<li><a href=""><i class="fab fa-whatsapp"></i></a></li>
+					</ul>
+
+				</ul>
 			</div>
 		</div>
-
-		<div class="logo">
-			<h1>Goturthinqs<span>.</span></h1>
-			<h6 class="subtitle">tempat trifthingnya bandung</h6>
-		</div>
-		<nav class="navbar navbar-light">
-
-			<div class="container-fluid">
-				<form action="" method="post" class="d-flex">
-					<input class="form-control me-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
-						name="keyword" autofocus autocomplete="off" id="keyword">
-				</form>
+	</nav>
+	<!-- akhir navbar -->
 
 
-				<section>
-					<a href="Goturprint.php" target="_blank"><i class="fas fa-print"> Print</i></a>
 
-				</section>
 
+	<!-- awal slide gambar -->
+
+	<div id="carouselExampleIndicators" class="carousel slide mt-5" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="img/slide.png" class="d-block w-100" alt="slide1">
 			</div>
-		</nav>
-
-		<div id="container">
-			<table class="table" cellpadding="10" cellspacing="0">
-
-				<thead class="table-dark">
-					<tr style="text-align:center;">
-						<th>No</th>
-						<th>Gambar</th>
-						<th>Nama Produk</th>
-						<th>Jenis Produk</th>
-						<th>Ukuran</th>
-						<th>Harga</th>
-						<th>Aksi</th>
-
-					</tr>
-				</thead>
-
-
-				<!-- tidak ada -->
-				<?php if(empty($goturthings)):?>
-
-				<tr>
-					<td colspan="7">
-						<h1
-							style="color:#a9a9a9;font-family: 'Open Sans', sans-serif;margin-top:120px;text-align:center;height:200px;display:;">
-							Tidak Ada
-							Data</h1>
-					</td>
-
-					<?php endif; ?>
-
-
-					<!-- isi tabel -->
-
-					<?php $i=1; ?>
-					<?php foreach ($goturthings as $goturthing ) :?>
-					<tbody>
-						<tr style="text-align:center;">
-							<td><?= $i; ?></td>
-							<td><img src=" img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover"></td>
-							<td><?= $goturthing["nama_produk"]; ?></td>
-							<td><?= $goturthing["jenis_produk"]; ?></td>
-							<td><?= $goturthing["ukuran"]; ?></td>
-							<td>Rp.<?= $goturthing["harga"]; ?></td>
-							<td>
-
-
-
-								<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
-									class="btn badge bg-info mt-2">detail</a>
-							</td>
-
-						</tr>
-
-					</tbody>
-					<?php $i++; ?>
-					<?php endforeach; ?>
-
-			</table>
-		</div>
-
-		<!-- Pagination -->
-		<div id="page">
-			<?php if($halamanAktif>1): ?>
-			<a style="margin-right:5px;" href="?page=<?= $halamanAktif - 1; ?>">&lt</a>
-			<?php endif; ?>
-
-			<?php for($i=1;$i<=$jumlahHalaman;$i++) : ?>
-
-			<?php if($i == $halamanAktif): ?>
-			<a href="?page=<?= $i; ?>" style="font-weight:bold;color:red;margin:0 5px;"><?= $i; ?></a>
-
-			<?php else: ?>
-			<a style="margin:0 5px;" href="?page=<?= $i; ?>"><?= $i; ?></a>
-			<?php endif; ?>
-
-			<?php endfor; ?>
-
-			<?php if($halamanAktif<$jumlahHalaman): ?>
-			<a href="?page=<?= $halamanAktif + 1; ?>">&gt</a>
-			<?php endif; ?>
-
-
-
-
-
-
-		</div>
-
-
-
-	</div>
-
-	<!-- footer -->
-
-	<div id="footer" style="margin-top:50px;">
-
-		<div class="row ms-3">
-			<div class="col-md-12">
-				<p><i class="far fa-copyright"></i> 2022 Muhamad Jamaludin. Created With Love. <br> All Picture From: <a
-						href="https://www.instagram.com/goturthings/" target="_blank"
-						style="text-decoration:none;	color: #151e3d;">GoturthiQs</a><span style="color:red;">.</span></p>
+			<div class="carousel-item">
+				<img src="img/slidee.png" class="d-block w-100" alt="slide2">
 			</div>
-
+			<div class="carousel-item">
+				<img src="img/slideee.png" class="d-block w-100" alt="slide3">
+			</div>
 		</div>
 	</div>
+	<!-- akhir slide gambar -->
+
+	<div id="container" data-aos="fade-up">
+		<!-- awal new arrivals -->
+
+		<div class="arrival text-center my-5">
+			<span
+				style="border-top: 1px solid #555;border-bottom: 1px solid #555;padding: 3px 0px;letter-spacing: 5px;font-size: 18px;color: #555;">NEW
+				ARRIVALS</span>
+
+		</div>
+
+
+
+		<!-- akhir new arrivals -->
+
+
+
+		<?php if(empty($goturthings)): ?>
+
+
+		<div class="col text-center" style="padding:50px 0 200px 0;">
+			<h1 style="color:#a9a9a9;font-family: 'Open Sans', sans-serif;margin-top:120px;text-align:center;">
+				Tidak
+				Ada Produk</h1>
+
+		</div>
+
+
+		<?php endif; ?>
+
+
+		<!-- awal isi produk -->
+		<div class="container-fluid" id="container-produk">
+			<div class="row g-2 " data-aos="flip-left">
+				<?php foreach($goturthings as $goturthing) :?>
+
+
+
+				<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
+					id="card" class="mb-5 w-25 d-none d-lg-block" style="text-decoration:none;color:black;">
+					<div id="inner">
+						<img id="myImg" src=" img/<?= $goturthing["gambar"] ?>" class="card-img-top"
+							alt="<?= $goturthing["kode_produk"] ?>" style="height:300px;object-fit:cover;">
+					</div>
+					<p class="card-title mt-2"><?= $goturthing["nama_produk"] ?></p>
+					<p class="card-text">IDR. <?= $goturthing["harga"] ?></p>
+
+				</a>
+
+				<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
+					id="card-mobile" class="mb-5 w-50 d-lg-none" style="text-decoration:none;color:black;">
+
+					<div id="inner">
+						<img id="myImg" src="img/<?= $goturthing["gambar"] ?>" class="card-img-top"
+							alt="<?= $goturthing["kode_produk"] ?>">
+					</div>
+
+					<p class="card-title"><?= $goturthing["nama_produk"] ?></p>
+					<p class="card-text">IDR. <?= $goturthing["harga"] ?></p>
+
+				</a>
+
+
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</div>
+	<!-- akhir isi produuk -->
+
+
+	<!-- awal footer -->
+
+
+
+	<!-- map -->
+	<div id="map" class="fh5co-map" data-aos="fade-up" data-aos-offset="300">
+		<iframe
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2601141.170198934!2d106.61469224054412!3d-7.046159555026572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e43e8ebf7617%3A0x501e8f1fc2974e0!2sCimahi%2C%20Kec.%20Cimahi%20Tengah%2C%20Kota%20Cimahi%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1643875888332!5m2!1sid!2sid"
+			width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+	</div>
+
+
+	<!-- awal footer -->
+
+	<div class="border my-2" style="border-top:black 1px solid;width:90%;margin:auto;"></div>
+
+	<div class="footer container-fluid" id="footer">
+		<p class=""><i class="far fa-copyright"></i> 2022 Muhamad Jamaludin. Created With Love. <br> All
+			Picture
+			From: <a href="https://www.instagram.com/goturthings/" target="_blank"
+				style="text-decoration:none;	color: #151e3d;">GoturthiQs</a><span style="color:red;">.</span></p>
+
+		<ul class="footer-sosmed d-sm-block d-none">
+			<li><a href=""> <i class="fab fa-instagram"></i></a>
+			</li>
+			<li><a href=""><i class="fab fa-facebook"></i></a></li>
+			<li><a href=""><i class="fab fa-twitter"></i></a></li>
+			<li><a href=""><i class="fab fa-whatsapp"></i></a></li>
+		</ul>
+	</div>
 
 
 
 
+	<!-- akhir footer -->
+
+
+
+
+	<!-- JQuery -->
+
+	<!-- AOS -->
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+	AOS.init();
+	</script>
+
+
+
+
+	<!-- myscript -->
 	<script>
 	// ambil elemen2 yang dibutuhkan
 	var keyword = document.getElementById('keyword');
 	var container = document.getElementById('container');
-	var page = document.getElementById('page');
 
 
 
 	// tambahkan event ketika keyboard ditulis
 	keyword.addEventListener('keyup', function() {
 
-		var page = document.getElementById('page');
-		page.setAttribute("style", "display:none;");
+
 
 		// buat object ajax
 		var xhr = new XMLHttpRequest();
@@ -276,19 +709,37 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 		}
 
 		// eksekusi ajax
-		xhr.open('GET', 'ajax/produk.php?keyword=' + keyword.value, true);
+		xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
 		xhr.send();
 
-		// memunculkan page atau refresh halaman
-		if (keyword.value === '') {
-			location.reload();
-		}
 
+
+	});
+
+
+
+
+	var cari = document.getElementById('cari');
+	var bar = document.getElementById('bar');
+	var exit = document.getElementById('exit');
+
+
+	cari.addEventListener('click', function() {
+
+		var bar = document.getElementById('bar');
+		bar.setAttribute("style", "display:;");
+
+	});
+
+	exit.addEventListener('click', function() {
+
+		var bar = document.getElementById('bar');
+		bar.setAttribute("style", "display:none;");
 
 	});
 	</script>
 
-	<script src="js/script.js"></script>
+	<script src="js/main.js"></script>
 
 
 

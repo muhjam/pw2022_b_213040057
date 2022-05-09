@@ -1,15 +1,13 @@
 	// ambil elemen2 yang dibutuhkan
 	var keyword = document.getElementById('keyword');
 	var container = document.getElementById('container');
-	var page = document.getElementById('page');
 
 
 
 	// tambahkan event ketika keyboard ditulis
 	keyword.addEventListener('keyup', function() {
 
-	    var page = document.getElementById('page');
-	    page.setAttribute("style", "display:none;");
+
 
 	    // buat object ajax
 	    var xhr = new XMLHttpRequest();
@@ -22,13 +20,31 @@
 	    }
 
 	    // eksekusi ajax
-	    xhr.open('GET', '../ajax/produk.php?keyword=' + keyword.value, true);
+	    xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
 	    xhr.send();
 
-	    // memunculkan page atau refresh halaman
-	    if (keyword.value === '') {
-	        location.reload();
-	    }
 
+
+	});
+
+
+
+
+	var cari = document.getElementById('cari');
+	var bar = document.getElementById('bar');
+	var exit = document.getElementById('exit');
+
+
+	cari.addEventListener('click', function() {
+
+	    var bar = document.getElementById('bar');
+	    bar.setAttribute("style", "display:;");
+
+	});
+
+	exit.addEventListener('click', function() {
+
+	    var bar = document.getElementById('bar');
+	    bar.setAttribute("style", "display:none;");
 
 	});
