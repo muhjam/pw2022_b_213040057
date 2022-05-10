@@ -23,9 +23,20 @@
 	    xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
 	    xhr.send();
 
-
+	    // memunculkan page atau refresh halaman
+	    if (keyword.value === '') {
+	        location.reload();
+	    }
 
 	});
+
+
+
+
+
+
+
+
 
 
 
@@ -33,7 +44,6 @@
 	var cari = document.getElementById('cari');
 	var bar = document.getElementById('bar');
 	var exit = document.getElementById('exit');
-
 
 	cari.addEventListener('click', function() {
 

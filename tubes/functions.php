@@ -201,6 +201,24 @@ if($_FILES['gambar']['error']===4){
 // }
 
 
+
+//  Function cari
+function cari($keyword){
+
+$keyword=$_GET['cari'];
+
+   $query = "SELECT * FROM produk
+             WHERE jenis_produk = '$keyword';
+            ";
+
+              return query($query);
+
+    
+}
+
+
+
+
 // Signup
 function signup($data){
     global $conn;
@@ -223,6 +241,10 @@ document.location.href='signup.php'
 
 return false;
 }
+
+
+
+
 
 
     // cek konsfirmasi password

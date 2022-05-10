@@ -159,7 +159,7 @@ exit;
 		<h6 class="subtitle">Detail dari barang keren</h6>
 	</div>
 
-	<div class="container-fluid">
+	<div class="container-fluid mb-5">
 		<div class="card mt-3" style="max-width: 3000px;">
 			<div class="row g-0">
 				<div class="col-md-4">
