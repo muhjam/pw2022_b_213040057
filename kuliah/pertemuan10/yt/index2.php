@@ -102,3 +102,6 @@ $result = mysqli_query($conn, "SELECT * FROM mahasiswa");
 </body>
 
 </html>
+
+
+<!-- selesai -->
