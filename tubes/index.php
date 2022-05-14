@@ -31,7 +31,7 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
   
 
 
-// belom
+
 if(isset($_GET['cari'])){
 
 $goturthings=cari($_GET["keyword"]);
@@ -89,363 +89,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 		rel="stylesheet">
 	<title>GoturthinQs.</title>
 
-	<style>
-	body {
-		background-color: #EAEAEA;
-		font-family: 'poppins', sans-serif;
-		color: #2d2d2d;
-		font-size: 14px;
-	}
-
-
-
-	.navbar-brand {
-		font-weight: 400;
-		font-family: 'Libre Bodoni', sans-serif;
-		text-transform: uppercase;
-	}
-
-	.navbar-brand span {
-		color: red;
-	}
-
-	.form-control {
-		height: 30px;
-	}
-
-
-	.fas.fa-search {
-		color: #EAEAEA;
-	}
-
-	.fas.fa-search:hover {
-		color: white;
-	}
-
-
-	.far.fa-window-close {
-		color: #EAEAEA;
-	}
-
-	.far.fa-window-close:hover {
-		color: white;
-	}
-
-	.navbar-brand {
-		font-size: 25px;
-		text-align: center;
-
-	}
-
-	.card-title {
-		text-align: center;
-		font-family: 'poppins', sans-serif;
-		text-transform: uppercase;
-		font-weight: 500;
-		font-size: 12px;
-
-	}
-
-	.card-text {
-		text-align: center;
-		font-family: 'poppins', sans-serif;
-		font-weight: 400;
-		text-transform: uppercase;
-		font-size: 11px;
-	}
-
-	#exit {
-		position: absolute;
-		left: 89%;
-		top: 10px;
-		font-size: 20px;
-		cursor: pointer;
-	}
-
-	#logout {
-		color: #b22222;
-
-	}
-
-	#logout:hover {
-		color: #ff0000;
-	}
-
-
-
-	@media (min-width:1400px) {
-		#card {
-			width: 25%;
-		}
-
-		/* cari1 */
-		.form-control {
-			position: relative;
-			width: 350px;
-			height: 30px;
-			left: 70%;
-		}
-
-		#search {
-			position: relative;
-			left: 30%;
-		}
-
-	}
-
-
-
-
-	@media (max-width:1400px) {
-		#card {
-			width: 25%;
-		}
-
-		/* cari1 */
-		.form-control {
-			position: relative;
-			width: 350px;
-			height: 30px;
-			left: 40%;
-		}
-
-		#search {
-			position: relative;
-			left: 25%;
-		}
-	}
-
-
-	@media (max-width:1200px) {
-
-
-		/* cari1 */
-		.form-control {
-			position: relative;
-			width: 350px;
-			height: 30px;
-			left: 10%;
-		}
-
-		#search {
-			position: relative;
-			left: 10%;
-		}
-	}
-
-
-
-	@media (max-width:994px) {
-		#card {
-			width: 50%;
-
-		}
-
-		.navbar-nav {
-			text-align: center;
-		}
-
-		#card img {
-			height: 300px;
-			object-fit: cover;
-		}
-
-		/* cari1 */
-
-
-		.form-control {
-			position: absolute;
-			width: 90%;
-			height: 30px;
-			left: 10px;
-			top: 15px;
-		}
-
-
-
-
-
-	}
-
-
-
-
-
-
-	@media(max-width:425px) {
-		#card {
-			width: 50%;
-		}
-
-
-		#exit {
-			position: absolute;
-			left: 85%;
-			top: 10px;
-			font-size: 20px;
-			cursor: pointer;
-		}
-
-
-		.navbar-brand {
-			margin-left: auto;
-		}
-	}
-
-
-
-
-	@media(max-width:340px) {
-
-		#card {
-			width: 50%;
-		}
-
-		#exit {
-			position: absolute;
-			left: 85%;
-			top: 10px;
-			font-size: 20px;
-			cursor: pointer;
-		}
-
-
-
-		.navbar-nav {
-			text-align: center;
-		}
-
-		.navbar-brand {
-			font-size: 18px;
-			text-align: center;
-			margin-left: auto;
-		}
-
-		#card img {
-			height: 200px;
-			object-fit: cover;
-		}
-
-
-	}
-
-
-	#card {
-		border-radius: 5px;
-		cursor: pointer;
-		transition: opacity 0.3s;
-		display: block;
-	}
-
-	#myImg {
-		transition: transform 1.5s ease;
-
-	}
-
-	#card:hover {
-		opacity: 0.7;
-
-	}
-
-	#card:hover #myImg {
-		transform: scale(1.4);
-	}
-
-	#card-mobile {
-		border-radius: 5px;
-		cursor: pointer;
-		transition: opacity 0.3s;
-		display: block;
-		transition: transform 1.5s ease;
-	}
-
-
-
-	#card-mobile:hover {
-		opacity: 0.7;
-	}
-
-	#card-mobile:hover #myImg {
-		transform: scale(1.4);
-
-	}
-
-	#inner {
-		overflow: hidden;
-	}
-
-
-	/* footer */
-
-
-
-
-	.footer-sosmed {
-
-		padding-right: 20px;
-		text-align: end;
-
-
-
-	}
-
-	.footer-sosmed li {
-		list-style: none;
-		display: inline-block;
-		padding: 2px 5px;
-
-
-	}
-
-	.footer-sosmed a {
-		color: #303958;
-		font-size: 15px;
-		display: inline-block;
-
-	}
-
-	.footer-sosmed a:hover {
-		color: #151e3d;
-	}
-
-
-	#footer {
-		display: flex;
-		justify-content: space-between;
-
-	}
-
-
-
-	.bar-sosmed li {
-		list-style: none;
-		display: inline-block;
-		padding: 2px 5px;
-
-
-	}
-
-	.bar-sosmed a {
-		color: #303958;
-		font-size: 15px;
-		display: inline-block;
-
-	}
-
-	.bar-sosmed a:hover {
-		color: #EAEAEA;
-	}
-
-	.bar-sosmed {
-
-		padding-right: 20px;
-		text-align: center;
-
-
-	}
-	</style>
-
 	<!-- link my css -->
+	<!-- <link rel="stylesheet" href="css/main.css"> -->
 	<link rel="stylesheet" href="css/main.css">
 
 </head>
@@ -475,16 +120,15 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 			<a class="navbar-brand" id="logo" href="index.php#container">GoturthinQs<span>.</span></a>
 
-			<a href="#container" id="cari" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
 			<!-- cari1 -->
-			<form action="" method="post" class="d-lg-block" id="bar" style="display:none;">
-
+			<form id="bar" action="" method="post" class="d-lg-block" style="display:none;">
 				<input class="form-control me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
 					name="keyword" autofocus autocomplete="off" id="keyword">
 
-				<a id="exit" class="btn btn-dark ms-auto d-lg-none" style=""><i class="far fa-window-close"></i></a>
+				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
 			<div class="collapse navbar-collapse" id="navbarScroll">
@@ -550,7 +194,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 					</div>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link" href="#">Contact</a>
+						<a class="nav-link" href="contact/index.php">Contact</a>
 					</li>
 
 
@@ -562,7 +206,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 					<!-- bagian dropdown -->
-					<li class="nav-item fs-4 d-lg-none"><a class="nav-link" href="#">Contact</a>
+					<li class="nav-item fs-4 d-lg-none">
+						<a class="nav-link" id="contact" href="contact/index.php">Contact</a>
 					</li>
 
 
@@ -608,6 +253,9 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	<div id="container" data-aos="fade-up">
 		<!-- awal new arrivals -->
 
+
+		<?php if(!isset($_GET['cari'])): ?>
+
 		<div class="arrival text-center my-5">
 			<span
 				style="border-top: 1px solid #555;border-bottom: 1px solid #555;padding: 3px 0px;letter-spacing: 5px;font-size: 18px;color: #555;">NEW
@@ -615,6 +263,18 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 		</div>
 
+		<?php endif; ?>
+
+
+		<?php if(isset($_GET['cari'])): ?>
+
+		<div class="arrival text-center my-5">
+			<span
+				style="border-top: 1px solid #555;border-bottom: 1px solid #555;padding: 3px 0px;letter-spacing: 5px;font-size: 18px;color: #555;text-transform:uppercase;"><?= $_GET['cari']; ?></span>
+
+		</div>
+
+		<?php endif; ?>
 
 
 		<!-- akhir new arrivals -->
@@ -649,8 +309,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 						<img id="myImg" src=" img/<?= $goturthing["gambar"] ?>" class="card-img-top"
 							alt="<?= $goturthing["kode_produk"] ?>" style="height:300px;object-fit:cover;">
 					</div>
-					<p class="card-title mt-2"><?= $goturthing["nama_produk"] ?></p>
-					<p class="card-text">IDR. <?= $goturthing["harga"] ?></p>
+					<p class="card-title mt-2"><?= $goturthing["nama_produk"]; ?></p>
+					<p class="card-text">IDR. <?=$goturthing["harga"];  ?></p>
 
 				</a>
 
@@ -658,22 +318,26 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 				<?php endforeach; ?>
 			</div>
 		</div>
+		<!-- awal loadmore -->
+		<div class="loadMore text-center mb-5 mt-2" id="loadMore" data-aos="flip-left">
+			<button class="load-more">load more</button>
+		</div>
+		<!-- akhir loadmore -->
+
 	</div>
 	<!-- akhir isi produuk -->
 
 
-	<!-- awal loadmore -->
-	<div class="loadMore text-center mb-5 mt-2">
-		<button class="load-more">loadmore</button>
-	</div>
-	<!-- akhir loadmore -->
+
+
+
 
 	<!-- awal footer -->
 
 
 
 	<!-- map -->
-	<div id="map" class="fh5co-map mt-5" data-aos="fade-up" data-aos-offset="500">
+	<div id="map" class="fh5co-map mt-5" data-aos="fade-up" data-aos-offset="300">
 		<iframe
 			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2601141.170198934!2d106.61469224054412!3d-7.046159555026572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e43e8ebf7617%3A0x501e8f1fc2974e0!2sCimahi%2C%20Kec.%20Cimahi%20Tengah%2C%20Kota%20Cimahi%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1643875888332!5m2!1sid!2sid"
 			width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -691,7 +355,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 				style="text-decoration:none;	color: #151e3d;">GoturthiQs</a><span style="color:red;">.</span></p>
 
 		<ul class="footer-sosmed d-sm-block d-none">
-			<li><a href=""> <i class="fab fa-instagram"></i></a>
+			<li><a href="https://www.instagram.com/goturthings/"> <i class="fab fa-instagram"></i></a>
 			</li>
 			<li><a href=""><i class="fab fa-facebook"></i></a></li>
 			<li><a href=""><i class="fab fa-twitter"></i></a></li>
@@ -717,74 +381,13 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 	<!-- loadmore -->
-	<script src="jquery/jquery.js"></script>
-	<script src="jquery/costum.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	<!-- myscript -->
-	<script>
-	// ambil elemen2 yang dibutuhkan
-	var keyword = document.getElementById('keyword');
-	var container = document.getElementById('container');
+	<script src="jquery/costum.js">
 
 
-
-	// tambahkan event ketika keyboard ditulis
-	keyword.addEventListener('keyup', function() {
-
-
-
-		// buat object ajax
-		var xhr = new XMLHttpRequest();
-
-		// cek kesiapan ajax
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState == 4 && xhr.status == 200) {
-				container.innerHTML = xhr.responseText;
-			}
-		}
-
-		// eksekusi ajax
-		xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
-		xhr.send();
-
-		// memunculkan page atau refresh halaman
-		if (keyword.value === '') {
-			location.reload();
-		}
-
-	});
-
-
-
-
-
-
-
-
-
-
-
-
-	var cari = document.getElementById('cari');
-	var bar = document.getElementById('bar');
-	var exit = document.getElementById('exit');
-
-	cari.addEventListener('click', function() {
-
-		var bar = document.getElementById('bar');
-		bar.setAttribute("style", "display:;");
-
-	});
-
-	exit.addEventListener('click', function() {
-
-		var bar = document.getElementById('bar');
-		bar.setAttribute("style", "display:none;");
-
-	});
 	</script>
-
-
 
 
 	<script>
@@ -793,10 +396,10 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 		"buttonT": "translate(-1148 -172) translate(832 140) translate(32 32) translate(284)",
 		"shadowSize": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
 		"roundnessSize": "12px",
-		"buttonDToBottom": "32px",
-		"buttonDToRight": "32px",
-		"selectedBackgroundColor": "#e5dfd1",
-		"selectedIconColor": "#626a7e",
+		"buttonDToBottom": "24px",
+		"buttonDToRight": "24px",
+		"selectedBackgroundColor": "#f7f7f7",
+		"selectedIconColor": "#091b2a",
 		"buttonWidth": "40px",
 		"buttonHeight": "40px",
 		"svgWidth": "32px",
@@ -860,8 +463,62 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 
+	<script src="js/main.js">
+	// ambil elemen2 yang dibutuhkan
+	var keyword = document.getElementById('keyword');
+	var container = document.getElementById('container');
+	var loadMore = document.getElementById('loadMore');
 
-	<script src="js/main.js"></script>
+
+	// tambahkan event ketika keyboard ditulis
+	keyword.addEventListener('keyup', function() {
+		// buat object ajax
+		var xhr = new XMLHttpRequest();
+
+		// cek kesiapan ajax
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				container.innerHTML = xhr.responseText;
+			}
+		}
+
+		// eksekusi ajax
+		xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
+		xhr.send();
+
+
+
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+	var search = document.getElementById('cariin');
+	var bar = document.getElementById('bar');
+	var exit = document.getElementById('exit');
+
+	search.addEventListener('click', function() {
+
+		var bar = document.getElementById('bar');
+		bar.setAttribute("style", "display:;");
+
+	});
+
+	exit.addEventListener('click', function() {
+
+		var bar = document.getElementById('bar');
+		bar.setAttribute("style", "display:none;");
+
+	});
+	</script>
 
 
 

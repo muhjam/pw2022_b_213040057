@@ -23,10 +23,7 @@
 	    xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
 	    xhr.send();
 
-	    // memunculkan page atau refresh halaman
-	    if (keyword.value === '') {
-	        location.reload();
-	    }
+
 
 	});
 
@@ -41,11 +38,11 @@
 
 
 
-	var cari = document.getElementById('cari');
+	var search = document.getElementById('cariin');
 	var bar = document.getElementById('bar');
 	var exit = document.getElementById('exit');
 
-	cari.addEventListener('click', function() {
+	search.addEventListener('click', function() {
 
 	    var bar = document.getElementById('bar');
 	    bar.setAttribute("style", "display:;");

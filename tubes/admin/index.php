@@ -136,7 +136,8 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 
 
 				<section>
-					<a href="Goturprint.php" target="_blank"><i class="fas fa-print"> Print</i></a> <a style="margin:0 5px;">|</a>
+					<a href="../Goturprint.php" target="_blank"><i class="fas fa-print"> Print</i></a> <a
+						style="margin:0 5px;">|</a>
 					<a href="tambah.php"><i class="fas fa-cart-plus">
 							Tambah</i></a>
 				</section>
@@ -187,7 +188,7 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 							<td><?= $goturthing["nama_produk"]; ?></td>
 							<td><?= $goturthing["jenis_produk"]; ?></td>
 							<td><?= $goturthing["ukuran"]; ?></td>
-							<td>Rp.<?= $goturthing["harga"]; ?></td>
+							<td><?= rupiah($goturthing["harga"]); ?></td>
 							<td>
 
 

@@ -6,7 +6,10 @@ require_once __DIR__ . '/vendor/autoload.php';
 require 'functions.php';
 $goturthings=query("SELECT * FROM produk");
 
-$mpdf = new \Mpdf\Mpdf();
+ob_clean();
+
+
+	$mpdf = new \Mpdf\Mpdf();
 
 
 $html='<!DOCTYPE html>

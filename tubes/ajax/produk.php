@@ -63,7 +63,7 @@ $goturthings= query($query);
 			<td><?= $goturthing["nama_produk"]; ?></td>
 			<td><?= $goturthing["jenis_produk"]; ?></td>
 			<td><?= $goturthing["ukuran"]; ?></td>
-			<td>Rp.<?= $goturthing["harga"]; ?></td>
+			<td><?= rupiah($goturthing["harga"]); ?></td>
 			<td>
 				<a href="ubah.php?id=<?= $goturthing["id"] ?>" class="btn badge bg-warning">ubah</a>
 

@@ -35,13 +35,23 @@ $goturthings= query($query);
 <div id="container" data-aos="fade-up">
 	<!-- awal new arrivals -->
 
+	<?php if($_GET['keyword']==''): ?>
 	<div class="arrival text-center my-5">
 		<span
 			style="border-top: 1px solid #555;border-bottom: 1px solid #555;padding: 3px 0px;letter-spacing: 5px;font-size: 18px;color: #555;">NEW
 			ARRIVALS</span>
 
 	</div>
+	<?php endif; ?>
 
+	<?php if($_GET['keyword']!=''): ?>
+	<div class="arrival text-center my-5">
+		<span
+			style="border-top: 1px solid #555;border-bottom: 1px solid #555;padding: 3px 0px;letter-spacing: 5px;font-size: 18px;color: #555;">LOOKING
+			FOR</span>
+
+	</div>
+	<?php endif; ?>
 
 
 	<!-- akhir new arrivals -->
@@ -69,7 +79,7 @@ $goturthings= query($query);
 
 
 			<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
-				id="card" class="mb-5 w-25 d-none d-lg-block" style="text-decoration:none;color:black;">
+				id="card" class="mb-5 news-item" style="text-decoration:none;color:black;">
 				<div id="inner">
 					<img id="myImg" src=" img/<?= $goturthing["gambar"] ?>" class="card-img-top"
 						alt="<?= $goturthing["kode_produk"] ?>" style="height:300px;object-fit:cover;">
@@ -79,18 +89,7 @@ $goturthings= query($query);
 
 			</a>
 
-			<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
-				id="card-mobile" class="mb-5 w-50 d-lg-none" style="text-decoration:none;color:black;">
 
-				<div id="inner">
-					<img id="myImg" src="img/<?= $goturthing["gambar"] ?>" class="card-img-top"
-						alt="<?= $goturthing["kode_produk"] ?>">
-				</div>
-
-				<p class="card-title"><?= $goturthing["nama_produk"] ?></p>
-				<p class="card-text">IDR. <?= $goturthing["harga"] ?></p>
-
-			</a>
 
 
 			<?php endforeach; ?>
@@ -99,4 +98,5 @@ $goturthings= query($query);
 		</div>
 	</div>
 </div>
+
 <!-- akhir isi produuk -->
