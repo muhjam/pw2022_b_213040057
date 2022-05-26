@@ -85,7 +85,7 @@ alert('Yang anda upload bukan gambar!');
 //  Cek jika ukuran nya terlalu besar
 if($ukuranFile > 1000000){
           echo"<script>
-alert('Ukuran gambar terlalu besar!');    
+alert('Ukuran gambar terlalu besar!')
     </script>";
     return false;
 }
@@ -105,6 +105,52 @@ return $namaFileBaru;
 
 
 
+// Function Upload profile
+function uploadProfile(){
+    $namaFile= $_FILES['gambar']['name'];
+    $ukuranFile=$_FILES['gambar']['size'];
+    $error=$_FILES['gambar']['error'];
+    $tmpName=$_FILES['gambar']['tmp_name'];
+
+// cek apakah tidak ada gambar yang diupload
+if($error===4){
+    echo"<script>
+    alert('pilih gambar terlebih dahulu!');    
+    </script>";
+    return false;
+}
+
+//  cek apakah yang diupload adalah gambar
+$ekstensiGambarValid=['jpg', 'jpeg', 'png'];
+$ekstensiGambar = explode('.', $namaFile);
+$ekstensiGambar= strtolower(end($ekstensiGambar));
+if(!in_array($ekstensiGambar,$ekstensiGambarValid)){
+        echo"<script>
+alert('Yang anda upload bukan gambar!');    
+    </script>";
+    return false;
+}
+
+//  Cek jika ukuran nya terlalu besar
+if($ukuranFile > 10000000){
+          echo"<script>
+alert('Ukuran gambar terlalu besar!')
+document.location.href='profile-edit.php'  
+    </script>";
+    return false;
+}
+
+// lolos pengecekan, gambar siap upload
+// generate nama gambar baru
+$namaFileBaru=uniqid();
+$namaFileBaru.='.';
+$namaFileBaru.=$ekstensiGambar;
+
+
+
+move_uploaded_file($tmpName, 'profile/'.$namaFileBaru); 
+return $namaFileBaru;
+}
 
 
 
@@ -208,7 +254,7 @@ function cari($keyword){
 $keyword=$_GET['cari'];
 
    $query = "SELECT * FROM produk
-             WHERE jenis_produk = '$keyword';
+              WHERE jenis_produk = '$keyword'
             ";
 
               return query($query);
@@ -368,7 +414,7 @@ return mysqli_affected_rows($conn);
 function rupiah($harga){
 	global $conn;
 
-	$hasil_rupiah = "Rp " . number_format($harga,2,',','.');
+	$hasil_rupiah = "Rp. " . number_format($harga,2,',','.');
 	return $hasil_rupiah;
  
 
@@ -376,5 +422,110 @@ function rupiah($harga){
 
 
 }
+
+
+//rupiah
+function idr($harga){
+	global $conn;
+
+	$hasil_rupiah = "IDR " . number_format($harga,0,',','.');
+	return $hasil_rupiah;
+ 
+}
+
+
+// profile
+function edit($data){
+
+ global $conn;
+
+    $id=htmlspecialchars($data["id"]);
+    $username =htmlspecialchars(strtolower(stripslashes($data["username"])));
+    $email= htmlspecialchars($data["email"]);
+    $noTelp = ($data["no_telp"]);
+    $alamat = htmlspecialchars($data["alamat"]);
+    $lahir=htmlspecialchars($data["lahir"]);
+    $gambarLama=htmlspecialchars($data["gambarLama"]);
+    $gender=htmlspecialchars($data["gender"]);
+
+
+
+    $user=$_SESSION['username'];
+
+
+
+
+if($username==$user){
+
+  // cek apakah user pilih gambar baru atau tidak
+if($_FILES['gambar']['error']===4){
+    $gambar=$gambarLama;
+}else{
+    $gambar=uploadProfile();
+}
+
+
+
+$query = "UPDATE users SET `email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`foto`='$gambar',`lahir`='$lahir' WHERE `id`='$id'; ";
+
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+}
+
+
+
+// Cek username sudah ada atau belum
+    $result=mysqli_query($conn,"SELECT username FROM users WHERE username='$username'");
+
+if(mysqli_fetch_assoc($result)){
+echo"
+<script>
+alert('Username sudah terdaftar!')
+document.location.href='profile-edit.php'
+</script>
+";
+
+return false;
+}
+
+// username nya tidak ada yang sama
+
+
+  // cek apakah user pilih gambar baru atau tidak
+
+if($username!=$user){
+
+if($_FILES['gambar']['error']===4){
+    $gambar=$gambarLama;
+}else{
+    $gambar=uploadProfile();
+}
+
+
+
+$query = "UPDATE users SET `username`='$username',`email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`foto`='$gambar',`lahir`='$lahir' WHERE `id`='$id'; ";
+
+    mysqli_query($conn, $query);
+
+
+echo"
+<script>
+alert('Username telah diubah!')
+document.location.href='logout.php'
+</script>
+";
+
+
+    return mysqli_affected_rows($conn);
+
+}
+
+
+}
+
+
+
+
+
 
 ?>

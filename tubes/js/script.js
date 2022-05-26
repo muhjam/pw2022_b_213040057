@@ -1,34 +1,44 @@
-	// ambil elemen2 yang dibutuhkan
-	var keyword = document.getElementById('keyword');
-	var container = document.getElementById('container');
-	var page = document.getElementById('page');
+// ambil elemen2 yang dibutuhkan
+var keyword = document.getElementById("keyword");
+var container = document.getElementById("container");
+var page = document.getElementById("page");
 
+// tambahkan event ketika keyboard ditulis
+keyword.addEventListener("keyup", function() {
+    var page = document.getElementById("page");
+    page.setAttribute("style", "display:none;");
 
+    // buat object ajax
+    var xhr = new XMLHttpRequest();
 
-	// tambahkan event ketika keyboard ditulis
-	keyword.addEventListener('keyup', function() {
+    // cek kesiapan ajax
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            container.innerHTML = xhr.responseText;
+        }
+    };
 
-	    var page = document.getElementById('page');
-	    page.setAttribute("style", "display:none;");
+    // eksekusi ajax
+    xhr.open("GET", "../ajax/produk.php?keyword=" + keyword.value, true);
+    xhr.send();
 
-	    // buat object ajax
-	    var xhr = new XMLHttpRequest();
+    // memunculkan page atau refresh halaman
+    if (keyword.value === "") {
+        location.reload();
+    }
+});
 
-	    // cek kesiapan ajax
-	    xhr.onreadystatechange = function() {
-	        if (xhr.readyState == 4 && xhr.status == 200) {
-	            container.innerHTML = xhr.responseText;
-	        }
-	    }
+// button search
+var search = document.getElementById("cariin");
+var bar = document.getElementById("bar");
+var exit = document.getElementById("exit");
 
-	    // eksekusi ajax
-	    xhr.open('GET', '../ajax/produk.php?keyword=' + keyword.value, true);
-	    xhr.send();
+search.addEventListener("click", function() {
+    var bar = document.getElementById("bar");
+    bar.setAttribute("style", "display:;");
+});
 
-	    // memunculkan page atau refresh halaman
-	    if (keyword.value === '') {
-	        location.reload();
-	    }
-
-
-	});
+exit.addEventListener("click", function() {
+    var bar = document.getElementById("bar");
+    bar.setAttribute("style", "display:none;");
+});

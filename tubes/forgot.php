@@ -75,7 +75,102 @@ if(isset($_POST["confrim"])){
 	<link
 		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
 		rel="stylesheet">
-	<title>GoturPassword.</title>
+	<title>GoturthinQs.</title>
+
+
+<style>
+#preloader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../loader/loader.gif) center no-repeat #fff;
+}
+
+@media(max-width:499px) {
+
+    .logo {
+        margin: 30px auto 0 auto;
+    }
+    .logo h1 {
+        margin-bottom: -2px;
+        text-align: center;
+        font-weight: 400;
+        font-family: 'Libre Bodoni', sans-serif;
+        text-transform: uppercase;
+        color: #151e3d;
+        ;
+    }
+    .logo h1 span {
+        color: red;
+    }
+    .logo .subtitle {
+        color: rgba(0, 0, 0, 0.692);
+        text-align: center;
+        font-weight: 500;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    p {
+        color: red;
+        font-style: italic;
+        font-size: 15px;
+    }
+    .logo .subtitle {
+        color: rgba(0, 0, 0, 0.692);
+        text-align: center;
+        font-weight: 500;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+}
+
+@media(min-width:500px) {
+    .konten {
+        margin: 30px auto;
+        padding: 10px;
+        width: 50%;
+        height: 100%;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.20);
+    }
+    .logo {
+        margin: 30px auto 0 auto;
+        width: 50%;
+        height: 50%;
+    }
+    .logo h1 {
+        margin-bottom: -2px;
+        text-align: center;
+        font-weight: 400;
+        font-family: 'Libre Bodoni', sans-serif;
+        text-transform: uppercase;
+        color: #151e3d;
+        ;
+    }
+    .logo h1 span {
+        color: red;
+    }
+    .logo .subtitle {
+        color: rgba(0, 0, 0, 0.692);
+        text-align: center;
+        font-weight: 500;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        font-size: 20px;
+    }
+    p {
+        color: red;
+        font-style: italic;
+        font-size: 15px;
+    }
+}
+</style>
+
+
 
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/login.css">
@@ -97,7 +192,7 @@ if(isset($_POST["confrim"])){
 			<h6 class="subtitle" id="subtitle2" style="display:none;">Buat password baru disini</h6>
 		</div>
 
-		<div class="content">
+		<div class="konten">
 			<form action="" method="post" class="px-4 py-3" id="us" style="display:;">
 				<!-- mencari user -->
 
@@ -138,13 +233,19 @@ if(isset($_POST["confrim"])){
 			<a class="dropdown-item" href="login.php">Are you got account? Lets Login</a>
 		</div>
 	</div>
-
 	<!-- FORM -->
-	<?php $username=$_GET['username'];
+	<?php 
+if(isset($_GET['username'])){
+
+	$username=$_GET['username'];
 
 // Cek username sudah ada atau belum
     $result=mysqli_query($conn,"SELECT username FROM users WHERE username='$username'");
-    if(mysqli_num_rows($result)>0){
+
+
+if(mysqli_num_rows($result)>0){
+
+    if(isset($_GET['username'])){
 echo"<script>
     var us = document.getElementById('us');
     var pw = document.getElementById('pw');
@@ -155,8 +256,10 @@ echo"<script>
     subtitle1.setAttribute('style', 'display:none;');
     
   </script>";
-      
-    } ?>
+    }
+     }
+}
+ ?>
 
 
 	<!-- my javascript -->
@@ -178,5 +281,7 @@ echo"<script>
 </body>
 
 </html>
+
+
 
 <!-- selesai -->

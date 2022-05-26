@@ -18,6 +18,7 @@ if(isset($_COOKIE['id'])&&isset($_COOKIE['key'])){
   if($key===hash('sha256', $row['username'])){
 	$_SESSION['level']=$row['level'];
 	$_SESSION['username']=$row['username'];
+    $_SESSION['status']=$row['status'];
 
   }
 }
@@ -27,6 +28,7 @@ if(isset($_COOKIE['level'])){
   if($_COOKIE['level']=='true'){
     $_SESSION['level']=$row['level'];
 		$_SESSION['username']=$row['username'];
+		$_SESSION['status']=$row['status'];
   }
 }
 
@@ -59,10 +61,13 @@ $password=$_POST["password"];
 // Cek user name
 $result=mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
 
-if(mysqli_num_rows($result)){
+if(mysqli_num_rows($result)===1){
 
     // Cek password
 $row=mysqli_fetch_assoc($result);
+
+if(password_verify($password, $row['password'])){
+
 
 
 	// cek jika user login sebagai admin
@@ -71,6 +76,7 @@ $row=mysqli_fetch_assoc($result);
 		// buat session login dan username
 		$_SESSION['username'] = $username;
 		$_SESSION['level'] = "admin";
+		$_SESSION['status']=$row['status'];
 
 
 		// alihkan ke halaman dashboard admin
@@ -81,6 +87,7 @@ $row=mysqli_fetch_assoc($result);
 		// buat session login dan username
 		$_SESSION['username'] = $username;
 		$_SESSION['level'] = "user";
+		$_SESSION['status']=$row['status'];
 
 		// alihkan ke halaman dashboard pegawai
 		header("location:index.php");
@@ -88,6 +95,14 @@ $row=mysqli_fetch_assoc($result);
 	}else{
 	$error=true;
 	}	
+
+
+
+
+}
+
+
+
 
 // cek remember me
 if(isset($_POST['remember'])){
@@ -160,7 +175,100 @@ $error=true;
 	<link
 		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
 		rel="stylesheet">
-	<title>GoturLogin.</title>
+	<title>GoturthinQs.</title>
+
+<style>
+#preloader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../loader/loader.gif) center no-repeat #fff;
+}
+
+@media(max-width:499px) {
+
+    .logo {
+        margin: 30px auto 0 auto;
+    }
+    .logo h1 {
+        margin-bottom: -2px;
+        text-align: center;
+        font-weight: 400;
+        font-family: 'Libre Bodoni', sans-serif;
+        text-transform: uppercase;
+        color: #151e3d;
+        ;
+    }
+    .logo h1 span {
+        color: red;
+    }
+    .logo .subtitle {
+        color: rgba(0, 0, 0, 0.692);
+        text-align: center;
+        font-weight: 500;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    p {
+        color: red;
+        font-style: italic;
+        font-size: 15px;
+    }
+    .logo .subtitle {
+        color: rgba(0, 0, 0, 0.692);
+        text-align: center;
+        font-weight: 500;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+}
+
+@media(min-width:500px) {
+    .konten {
+        margin: 30px auto;
+        padding: 10px;
+        width: 50%;
+        height: 100%;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.20);
+    }
+    .logo {
+        margin: 30px auto 0 auto;
+        width: 50%;
+        height: 50%;
+    }
+    .logo h1 {
+        margin-bottom: -2px;
+        text-align: center;
+        font-weight: 400;
+        font-family: 'Libre Bodoni', sans-serif;
+        text-transform: uppercase;
+        color: #151e3d;
+        ;
+    }
+    .logo h1 span {
+        color: red;
+    }
+    .logo .subtitle {
+        color: rgba(0, 0, 0, 0.692);
+        text-align: center;
+        font-weight: 500;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        font-size: 20px;
+    }
+    p {
+        color: red;
+        font-style: italic;
+        font-size: 15px;
+    }
+}
+</style>
+
 
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/login.css">
@@ -181,8 +289,6 @@ echo"";
 
 
 
-
-
 	<div class="container-fluid">
 
 		<div class="logo">
@@ -190,22 +296,23 @@ echo"";
 			<h6 class="subtitle">tempat trifthingnya bandung</h6>
 		</div>
 
-		<div class="content">
+		<div class="konten">
 
 			<form action="" method="post" class="px-4 py-3">
 				<div class="mb-3">
+
 					<?php if (isset($error)) : ?>
 					<p>username / password salah!</p>
 					<?php endif; ?>
 
 					<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
 					<input type="text" name="username" class="form-control" id="exampleDropdownFormEm"
-						placeholder="Masukan Username" required autofocus>
+						placeholder="Masukan Username" required>
 				</div>
 				<div class="mb-3">
 					<label for="exampleDropdownFormPassword1" class="form-label">Password</label>
 					<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Masukan Password" required autofocus>
+						placeholder="Masukan Password" required>
 				</div>
 				<div class="mb-3">
 					<div class="form-check">
@@ -230,7 +337,6 @@ echo"";
 		$("#preloader").delay(300).fadeOut("slow");
 	})
 	</script>
-
 
 	<!-- my javascript -->
 	<script src="js/script.js"></script>

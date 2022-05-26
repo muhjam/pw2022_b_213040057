@@ -8,6 +8,13 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: #eaeaea;
+    font-family: "poppins", sans-serif;
+    color: #2d2d2d;
+    font-size: 14px;
+}
+
 
 /* LOADER */
 
@@ -66,11 +73,10 @@ html {
 
 #page a {
     color: #151e3d;
-    ;
     text-decoration: none;
 }
 
-@media (max-width:770px) {
+@media (max-width: 770px) {
     .container-fluid {
         width: fit-content;
     }
@@ -94,7 +100,7 @@ html {
 
 /* TAMBAH & UBAH */
 
-@media(max-width:499px) {
+@media (max-width: 499px) {
     .logo {
         margin: 30px auto 0 auto;
         width: 100%;
@@ -104,10 +110,9 @@ html {
         margin-bottom: -2px;
         text-align: center;
         font-weight: 400;
-        font-family: 'Libre Bodoni', sans-serif;
+        font-family: "Libre Bodoni", sans-serif;
         text-transform: uppercase;
         color: #151e3d;
-        ;
     }
     .logo h1 span {
         color: red;
@@ -116,7 +121,7 @@ html {
         color: rgba(0, 0, 0, 0.692);
         text-align: center;
         font-weight: 500;
-        font-family: 'Montserrat', sans-serif;
+        font-family: "Montserrat", sans-serif;
         text-transform: uppercase;
         font-size: 10px;
     }
@@ -136,14 +141,15 @@ html {
     }
 }
 
-@media(min-width:500px) {
+@media (min-width: 500px) {
     .container-fluid .content {
         margin: 30px auto;
         padding: 10px;
         width: 50%;
         height: 100%;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.20);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.2);
         border-radius: 10px;
+        background-color: #ffffff;
     }
     .logo {
         margin: 30px auto 0 auto;
@@ -154,10 +160,9 @@ html {
         margin-bottom: -2px;
         text-align: center;
         font-weight: 400;
-        font-family: 'Libre Bodoni', sans-serif;
+        font-family: "Libre Bodoni", sans-serif;
         text-transform: uppercase;
         color: #151e3d;
-        ;
     }
     .logo h1 span {
         color: red;
@@ -166,7 +171,7 @@ html {
         color: rgba(0, 0, 0, 0.692);
         text-align: center;
         font-weight: 500;
-        font-family: 'Montserrat', sans-serif;
+        font-family: "Montserrat", sans-serif;
         text-transform: uppercase;
         font-size: 15px;
     }
@@ -195,7 +200,7 @@ html {
     transition: 0.3s;
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
 }
 
 #myImg:hover {
@@ -270,28 +275,28 @@ html {
 
 @-webkit-keyframes zoom {
     from {
-        -webkit-transform: scale(1)
+        -webkit-transform: scale(1);
     }
     to {
-        -webkit-transform: scale(2)
+        -webkit-transform: scale(2);
     }
 }
 
 @keyframes zoom {
     from {
-        transform: scale(0.4)
+        transform: scale(0.4);
     }
     to {
-        transform: scale(1)
+        transform: scale(1);
     }
 }
 
 @keyframes zoom-out {
     from {
-        transform: scale(1)
+        transform: scale(1);
     }
     to {
-        transform: scale(0)
+        transform: scale(0);
     }
 }
 

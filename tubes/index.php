@@ -3,6 +3,7 @@
 session_start();
 
 $level=$_SESSION['level'];
+$username=$_SESSION['username'];
 
 if(!isset($_SESSION["level"])){
 header("location:login.php");
@@ -11,6 +12,16 @@ exit;
 
 if($_SESSION["level"]!='user'){
 	header("location:$level/index.php");
+exit;
+}
+
+
+if($_SESSION["status"]=='ban'){
+	    echo "
+        <script>
+        alert('maaf, akun anda telah diban!')
+        document.location.href='logout.php'
+        </script>";
 exit;
 }
 
@@ -31,15 +42,21 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
   
 
 
-
 if(isset($_GET['cari'])){
 
-$goturthings=cari($_GET["keyword"]);
+$goturthings=cari($_GET["cari"]);
 
 }
 
 
+
+
 $jenisProduk=query("SELECT * FROM jenis_produk");
+
+
+// profile
+$profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto'];
+
 
 
 // tombol cari
@@ -61,7 +78,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 <html lang="en">
 
 <head>
-	<!-- Required meta tags -->
+<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords"
@@ -75,27 +92,410 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	<!-- Font-Awessome -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
-	<!-- AOS -->
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-
 	<!-- icon -->
 	<link rel="icon" href="icon/icon.png">
 	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
-		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono&display=swap"
+		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
 		rel="stylesheet">
+
+
+	<!-- AOS -->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<title>GoturthinQs.</title>
+
+
+	<style>
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background-color: #eaeaea;
+		font-family: "poppins", sans-serif;
+		color: #2d2d2d;
+		font-size: 14px;
+	}
+
+	.navbar-brand {
+		font-weight: 400;
+		font-family: "Libre Bodoni", sans-serif;
+		text-transform: uppercase;
+	}
+
+	.navbar-brand span {
+		color: red;
+	}
+
+	.form-control {
+		height: 30px;
+	}
+
+	.fas.fa-search {
+		color: #eaeaea;
+	}
+
+	.fas.fa-search:hover {
+		color: white;
+	}
+
+	.far.fa-window-close {
+		color: #eaeaea;
+	}
+
+	.far.fa-window-close:hover {
+		color: white;
+	}
+
+	.navbar-brand {
+		font-size: 25px;
+		text-align: center;
+	}
+
+	.card-title {
+		text-align: center;
+		font-family: "poppins", sans-serif;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 12px;
+	}
+
+	.card-text {
+		text-align: center;
+		font-family: "poppins", sans-serif;
+		font-weight: 400;
+		text-transform: uppercase;
+		font-size: 11px;
+	}
+
+	#exit {
+		position: absolute;
+		left: 89%;
+		top: 10px;
+		font-size: 20px;
+		cursor: pointer;
+	}
+
+	#logout {
+		color: #b22222;
+	}
+
+	#logout:hover {
+		color: #ff0000;
+	}
+
+	@media (min-width: 1400px) {
+		#card {
+			width: 25%;
+		}
+
+		/* cari1 */
+		.form-control {
+			position: relative;
+			width: 350px;
+			height: 30px;
+			left: 70%;
+		}
+
+		#search {
+			position: relative;
+			left: 30%;
+		}
+	}
+
+	@media (max-width: 1400px) {
+		#card {
+			width: 25%;
+		}
+
+		/* cari1 */
+		.form-control {
+			position: relative;
+			width: 350px;
+			height: 30px;
+			left: 40%;
+		}
+
+		#search {
+			position: relative;
+			left: 25%;
+		}
+	}
+
+	@media (max-width: 1200px) {
+
+		/* cari1 */
+		.form-control {
+			position: relative;
+			width: 350px;
+			height: 30px;
+			left: 10%;
+		}
+
+		#search {
+			position: relative;
+			left: 2%;
+		}
+	}
+
+	@media (max-width: 994px) {
+		#card {
+			width: 50%;
+		}
+
+		.navbar-nav {
+			text-align: center;
+		}
+
+		#card img {
+			height: 300px;
+			object-fit: cover;
+		}
+
+		/* cari1 */
+		.form-control {
+			position: absolute;
+			width: 90%;
+			height: 30px;
+			left: 10px;
+			top: 15px;
+		}
+	}
+
+	@media (max-width: 425px) {
+		#card {
+			width: 50%;
+		}
+
+		#exit {
+			position: absolute;
+			left: 85%;
+			top: 10px;
+			font-size: 20px;
+			cursor: pointer;
+		}
+
+		.navbar-brand {
+			font-size: 20px;
+			text-align: center;
+			margin-left: 20px;
+		}
+	}
+
+	@media (max-width: 340px) {
+		#card {
+			width: 50%;
+		}
+
+		#exit {
+			position: absolute;
+			left: 85%;
+			top: 10px;
+			font-size: 20px;
+			cursor: pointer;
+		}
+
+		.navbar-nav {
+			text-align: center;
+		}
+
+		.navbar-brand {
+			font-size: 20px;
+			text-align: center;
+			margin-left: 20px;
+		}
+
+		#card img {
+			height: 200px;
+			object-fit: cover;
+		}
+	}
+
+
+
+	@media (max-width: 320px) {
+		#card {
+			width: 50%;
+		}
+
+		#exit {
+			position: absolute;
+			left: 85%;
+			top: 10px;
+			font-size: 20px;
+			cursor: pointer;
+		}
+
+		.navbar-nav {
+			text-align: center;
+		}
+
+		.navbar-brand {
+			font-size: 18px;
+			text-align: center;
+			margin-left: 20px;
+		}
+
+		#card img {
+			height: 200px;
+			object-fit: cover;
+		}
+	}
+
+
+
+
+	@media (max-width: 305px) {
+		#card {
+			width: 50%;
+		}
+
+		#exit {
+			position: absolute;
+			left: 85%;
+			top: 10px;
+			font-size: 20px;
+			cursor: pointer;
+		}
+
+		.navbar-nav {
+			text-align: center;
+		}
+
+		.navbar-brand {
+			font-size: 15px;
+			text-align: center;
+			margin-left: 20px;
+		}
+
+		#card img {
+			height: 200px;
+			object-fit: cover;
+		}
+	}
+
+
+
+	
+	#card {
+		border-radius: 5px;
+		cursor: pointer;
+		transition: opacity 0.3s;
+		display: block;
+	}
+
+	#myImg {
+		transition: transform 1.5s ease;
+	}
+
+	#card:hover {
+		opacity: 0.7;
+	}
+
+	#card:hover #myImg {
+		transform: scale(1.4);
+	}
+
+	#card-mobile {
+		border-radius: 5px;
+		cursor: pointer;
+		transition: opacity 0.3s;
+		display: block;
+		transition: transform 1.5s ease;
+	}
+
+	#card-mobile:hover {
+		opacity: 0.7;
+	}
+
+	#card-mobile:hover #myImg {
+		transform: scale(1.4);
+	}
+
+	#inner {
+		overflow: hidden;
+	}
+
+
+	/* footer */
+
+	.footer-sosmed {
+		padding-right: 20px;
+		text-align: end;
+	}
+
+	.footer-sosmed li {
+		list-style: none;
+		display: inline-block;
+		padding: 2px 5px;
+	}
+
+	.footer-sosmed a {
+		color: #303958;
+		font-size: 15px;
+		display: inline-block;
+	}
+
+	.footer-sosmed a:hover {
+		color: #151e3d;
+	}
+
+	#footer {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.bar-sosmed li {
+		list-style: none;
+		display: inline-block;
+		padding: 2px 5px;
+	}
+
+	.bar-sosmed a {
+		color: #303958;
+		font-size: 15px;
+		display: inline-block;
+	}
+
+	.bar-sosmed a:hover {
+		color: #eaeaea;
+	}
+
+	.bar-sosmed {
+		padding-right: 20px;
+		text-align: center;
+	}
+
+	#contact {
+		color: #375ca6;
+	}
+
+	#contact:hover {
+		color: #16498c;
+	}
+
+
+
+/* profile */
+#profile{
+	transition:0.3s;
+}
+
+#profile:hover{
+	opacity:0.7;
+}
+
+	</style>
+
 
 	<!-- link my css -->
 	<!-- <link rel="stylesheet" href="css/main.css"> -->
-	<link rel="stylesheet" href="css/main.css">
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 
 
@@ -103,28 +503,23 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 	<!-- awal navbar -->
 
-
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 
-
-
-
 		<div class="container">
-
-
 
 			<button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
 				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<a class="navbar-brand" id="logo" href="index.php#container">GoturthinQs<span>.</span></a>
+
+			<a class="navbar-brand" id="logo" href="#">GoturthinQs<span>.</span></a>
 
 			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
-			<!-- cari1 -->
-			<form id="bar" action="" method="post" class="d-lg-block" style="display:none;">
+
+			<form id="bar" action="#container" method="post" class="d-lg-block" style="display:none;">
 				<input class="form-control me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
 					name="keyword" autofocus autocomplete="off" id="keyword">
 
@@ -133,37 +528,37 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 			<div class="collapse navbar-collapse" id="navbarScroll">
 
-				<!-- cari1 -->
-
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
 							class="fas fa-search"></i></a> </label>
 
 
 
-
+			
 
 				<ul class="navbar-nav">
+
+					<!-- profile mobile -->
+						<a class="mt-1 d-lg-none" href="profile.php" ><img id="profile" src="profile/<?=$profile;?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+
+
+
 					<li class="nav-item">
 						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
 							aria-expanded="false">
-							Shope
+							Shop
 						</a>
 					</li>
 				</ul>
 
 				<ul class="navbar-nav ms-auto navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
-
-
-
 					<li class=" nav-item dropdown">
 						<a class="nav-link dropdown-toggle d-lg-block d-none active" href="#" id="navbarDropdownMenuLink"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Shope
+							role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+							Shop
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
 							<?php foreach($jenisProduk as $jenis): ?>
 							<li><a name="cari" class="dropdown-item"
 									href="?cari=<?= $jenis['jenis_produk']; ?>#container"><?= $jenis['jenis_produk']; ?></a></li>
@@ -176,7 +571,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 
-					<div class="shope d-lg-none">
+					<div class="shop d-lg-none">
 
 						<?php foreach($jenisProduk as $jenis): ?>
 
@@ -194,34 +589,29 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 					</div>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link" href="contact/index.php">Contact</a>
+						<a class="nav-link" href="contact.php" >Contact</a>
 					</li>
 
 
-
-					<li class="nav-item d-lg-block d-none me-auto ms-5">
-						<a class="nav-link" id="logout" href="logout.php">Logout</a>
-					</li>
-
+					<!-- profile all -->
+						<a class="ms-5 d-none d-lg-block" href="profile.php" ><img id="profile" src="profile/<?=$profile;?>" alt="<?=$username?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 
 					<!-- bagian dropdown -->
 					<li class="nav-item fs-4 d-lg-none">
-						<a class="nav-link" id="contact" href="contact/index.php">Contact</a>
+						<a class="nav-link" id="contact" href="contact.php">Contact</a>
 					</li>
 
 
-					<li class="nav-item fs-4  d-lg-none">
-						<a class="nav-link" id="logout" href="logout.php">Logout</a>
-					</li>
 				</ul>
+
 				<ul class="navbar-nav">
 					<ul class="bar-sosmed d-lg-none mt-2">
-						<li><a href=""> <i class="fab fa-instagram"></i></a>
-						</li>
-						<li><a href=""><i class="fab fa-facebook"></i></a></li>
-						<li><a href=""><i class="fab fa-twitter"></i></a></li>
-						<li><a href=""><i class="fab fa-whatsapp"></i></a></li>
+						<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
+			</li>
+			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
+			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
+			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 					</ul>
 
 				</ul>
@@ -303,15 +693,14 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 				<?php foreach($goturthings as $goturthing) :?>
 
 
-				<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
+				<a href="beli.php?id=<?= $goturthing["id"]?>"
 					id="card" class="mb-5 news-item" style="text-decoration:none;color:black;display:none;">
 					<div id="inner">
 						<img id="myImg" src=" img/<?= $goturthing["gambar"] ?>" class="card-img-top"
 							alt="<?= $goturthing["kode_produk"] ?>" style="height:300px;object-fit:cover;">
 					</div>
 					<p class="card-title mt-2"><?= $goturthing["nama_produk"]; ?></p>
-					<p class="card-text">IDR. <?=$goturthing["harga"];  ?></p>
-
+					<p class="card-text"><?= idr($goturthing["harga"]); ?></p>
 				</a>
 
 
@@ -320,7 +709,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 		</div>
 		<!-- awal loadmore -->
 		<div class="loadMore text-center mb-5 mt-2" id="loadMore" data-aos="flip-left">
-			<button class="load-more">load more</button>
+			<button class="load-more">Load More</button>
 		</div>
 		<!-- akhir loadmore -->
 
@@ -342,36 +731,28 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2601141.170198934!2d106.61469224054412!3d-7.046159555026572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e43e8ebf7617%3A0x501e8f1fc2974e0!2sCimahi%2C%20Kec.%20Cimahi%20Tengah%2C%20Kota%20Cimahi%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1643875888332!5m2!1sid!2sid"
 			width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 	</div>
-
+	<!-- akhir map -->
 
 	<!-- awal footer -->
+	<div class="border mb-3 mt-auto" style="border-top:black 1px solid;width:90%;margin:auto;"></div>
 
-	<div class="border my-2" style="border-top:black 1px solid;width:90%;margin:auto;"></div>
-
-	<div class="footer container-fluid" id="footer">
-		<p class=""><i class="far fa-copyright"></i> 2022 Muhamad Jamaludin. Created With Love. <br> All
+	<div class="footer container" id="footer">
+		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/" target="_blank"
+				style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
 			Picture
 			From: <a href="https://www.instagram.com/goturthings/" target="_blank"
-				style="text-decoration:none;	color: #151e3d;">GoturthiQs</a><span style="color:red;">.</span></p>
+				style="text-decoration:none;	color: #151e3d;">GoturthinQs</a><span style="color:red;">.</span></p>
 
 		<ul class="footer-sosmed d-sm-block d-none">
-			<li><a href="https://www.instagram.com/goturthings/"> <i class="fab fa-instagram"></i></a>
+			<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
 			</li>
-			<li><a href=""><i class="fab fa-facebook"></i></a></li>
-			<li><a href=""><i class="fab fa-twitter"></i></a></li>
-			<li><a href=""><i class="fab fa-whatsapp"></i></a></li>
+			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
+			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
+			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 		</ul>
 	</div>
-
-
-
-
 	<!-- akhir footer -->
 
-
-
-
-	<!-- JQuery -->
 
 	<!-- AOS -->
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -383,11 +764,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	<!-- loadmore -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-	<!-- myscript -->
-	<script src="jquery/costum.js">
-
-
-	</script>
+	<!-- jquery -->
+	<script src="jquery/costum.js"></script>
 
 
 	<script>
@@ -462,7 +840,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	</script>
 
 
-
+	<!-- main js -->
 	<script src="js/main.js">
 	// ambil elemen2 yang dibutuhkan
 	var keyword = document.getElementById('keyword');
@@ -491,16 +869,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	});
 
 
-
-
-
-
-
-
-
-
-
-
+	// button search
 	var search = document.getElementById('cariin');
 	var bar = document.getElementById('bar');
 	var exit = document.getElementById('exit');

@@ -38,8 +38,7 @@ $goturthings= query($query);
 	<?php if($_GET['keyword']==''): ?>
 	<div class="arrival text-center my-5">
 		<span
-			style="border-top: 1px solid #555;border-bottom: 1px solid #555;padding: 3px 0px;letter-spacing: 5px;font-size: 18px;color: #555;">NEW
-			ARRIVALS</span>
+			style="border-top: 1px solid #555;border-bottom: 1px solid #555;padding: 3px 0px;letter-spacing: 5px;font-size: 18px;color: #555;">ALL ITEMS</span>
 
 	</div>
 	<?php endif; ?>
@@ -85,7 +84,7 @@ $goturthings= query($query);
 						alt="<?= $goturthing["kode_produk"] ?>" style="height:300px;object-fit:cover;">
 				</div>
 				<p class="card-title mt-2"><?= $goturthing["nama_produk"] ?></p>
-				<p class="card-text">IDR. <?= $goturthing["harga"] ?></p>
+				<p class="card-text"><?= idr($goturthing["harga"]); ?></p>
 
 			</a>
 
