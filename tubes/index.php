@@ -78,7 +78,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 <html lang="en">
 
 <head>
-<!-- Required meta tags -->
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords"
@@ -378,7 +378,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 
 
-	
+
 	#card {
 		border-radius: 5px;
 		cursor: pointer;
@@ -468,25 +468,17 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 		text-align: center;
 	}
 
-	#contact {
-		color: #375ca6;
+
+
+
+	/* profile */
+	#profile {
+		transition: 0.3s;
 	}
 
-	#contact:hover {
-		color: #16498c;
+	#profile:hover {
+		opacity: 0.7;
 	}
-
-
-
-/* profile */
-#profile{
-	transition:0.3s;
-}
-
-#profile:hover{
-	opacity:0.7;
-}
-
 	</style>
 
 
@@ -534,12 +526,13 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 
 
-			
+
 
 				<ul class="navbar-nav">
 
 					<!-- profile mobile -->
-						<a class="mt-1 d-lg-none" href="profile.php" ><img id="profile" src="profile/<?=$profile;?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 
 
@@ -555,7 +548,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 					<li class=" nav-item dropdown">
 						<a class="nav-link dropdown-toggle d-lg-block d-none active" href="#" id="navbarDropdownMenuLink"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Shop
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -589,12 +582,14 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 					</div>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link" href="contact.php" >Contact</a>
+						<a class="nav-link" href="contact.php">Contact</a>
 					</li>
 
 
 					<!-- profile all -->
-						<a class="ms-5 d-none d-lg-block" href="profile.php" ><img id="profile" src="profile/<?=$profile;?>" alt="<?=$username?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
+							alt="<?=$username?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 
 					<!-- bagian dropdown -->
@@ -608,10 +603,13 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 				<ul class="navbar-nav">
 					<ul class="bar-sosmed d-lg-none mt-2">
 						<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
-			</li>
-			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
-			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+						</li>
+						<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+									class="fab fa-facebook"></i></a></li>
+						<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
+						<li><a
+								href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+								target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 					</ul>
 
 				</ul>
@@ -693,8 +691,8 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 				<?php foreach($goturthings as $goturthing) :?>
 
 
-				<a href="beli.php?id=<?= $goturthing["id"]?>"
-					id="card" class="mb-5 news-item" style="text-decoration:none;color:black;display:none;">
+				<a href="beli.php?id=<?= $goturthing["id"]?>" id="card" class="mb-5 news-item"
+					style="text-decoration:none;color:black;display:none;">
 					<div id="inner">
 						<img id="myImg" src=" img/<?= $goturthing["gambar"] ?>" class="card-img-top"
 							alt="<?= $goturthing["kode_produk"] ?>" style="height:300px;object-fit:cover;">
@@ -737,8 +735,8 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 	<div class="border mb-3 mt-auto" style="border-top:black 1px solid;width:90%;margin:auto;"></div>
 
 	<div class="footer container" id="footer">
-		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/" target="_blank"
-				style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
+		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/"
+				target="_blank" style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
 			Picture
 			From: <a href="https://www.instagram.com/goturthings/" target="_blank"
 				style="text-decoration:none;	color: #151e3d;">GoturthinQs</a><span style="color:red;">.</span></p>
@@ -746,9 +744,12 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 		<ul class="footer-sosmed d-sm-block d-none">
 			<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
 			</li>
-			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
+			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+						class="fab fa-facebook"></i></a></li>
 			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+			<li><a
+					href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+					target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 		</ul>
 	</div>
 	<!-- akhir footer -->

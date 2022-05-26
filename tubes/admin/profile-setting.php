@@ -43,7 +43,7 @@ require 'functions.php';
 // pagination
 // konfigurasi
 $jumlahDataPerHalaman=5;
-$jumlahData= count(query("SELECT * FROM produk"));
+$jumlahData= count(query("SELECT * FROM users"));
 $jumlahHalaman= ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif=(isset($_GET["page"])) ? $_GET["page"] : 1;
 $awalData=($jumlahDataPerHalaman * $halamanAktif)-$jumlahDataPerHalaman;
@@ -52,17 +52,7 @@ $users = query("SELECT * FROM users LIMIT $awalData,$jumlahDataPerHalaman");
 
 
 
-if(isset($_GET['cari'])){
-
-$goturthings=cari($_GET["cari"]);
-
-}
-
-
-
-
 $jenisProduk=query("SELECT * FROM jenis_produk");
-
 
 
 // profile

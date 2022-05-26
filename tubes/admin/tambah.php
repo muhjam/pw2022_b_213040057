@@ -52,7 +52,8 @@ if (isset($_POST["submit"])) {
 }
 
 
-
+// jenis produk
+$jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 
@@ -168,7 +169,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	@media (min-width: 1400px) {
 
 		/* cari1 */
-		.formm{
+		.formm {
 			position: relative;
 			width: 350px;
 			height: 30px;
@@ -182,6 +183,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	}
 
 	@media (max-width: 1400px) {
+
 		/* cari1 */
 		.formm {
 			position: relative;
@@ -391,71 +393,53 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		text-align: center;
 	}
 
-	#contact {
-		color: #375ca6;
-	}
-
-	#contact:hover {
-		color: #16498c;
-	}
-
-	#dashboard {
-		color: #006a4e;
-	}
-
-	#dashboard:hover {
-		color: #2e856e;
-	}
-
 
 
 	/* judul */
-#judul{
-        color: rgba(0, 0, 0, 0.692);
-        text-align: left;
-        font-weight: 600;
-        font-family: "Montserrat", sans-serif;
-        text-transform: uppercase;
-        font-size: 32px;
-}
+	#judul {
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 600;
+		font-family: "Montserrat", sans-serif;
+		text-transform: uppercase;
+		font-size: 32px;
+	}
 
 
-#point{
-	font-family: "Montserrat", sans-serif;
-	font-weight:600;
+	#point {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
 
-}
+	}
 
-#point:hover{
-	color:red;
-}
+	#point:hover {
+		color: red;
+	}
 
-.container .col a{
-	text-decoration:none;
-	color: rgba(0, 0, 0, 0.692);
-  text-align: left;
-  font-weight: 500;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  font-size: 12px;
-}
+	.container .col a {
+		text-decoration: none;
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 500;
+		font-family: "Montserrat", sans-serif;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
 
-.container .col a:hover{
-	text-decoration:underline;
-}
-
-
-
-/* profile */
-#profile{
-	transition:0.3s;
-}
-
-#profile:hover{
-	opacity:0.7;
-}
+	.container .col a:hover {
+		text-decoration: underline;
+	}
 
 
+
+	/* profile */
+	#profile {
+		transition: 0.3s;
+	}
+
+	#profile:hover {
+		opacity: 0.7;
+	}
 	</style>
 
 
@@ -503,11 +487,12 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 					<!-- profile mobile -->
-						<a class="mt-1 d-lg-none" href="profile.php" ><img id="profile" src="../profile/<?=$profile['foto'];?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
+						<a href="index.php#container" class="nav-link  d-lg-none fs-4 " style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -556,15 +541,17 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					</li>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link active"  href="dashboard.php">Dashboard</a>
+						<a class="nav-link active" href="dashboard.php">Dashboard</a>
 					</li>
 
 
 
 
-	
+
 					<!-- profile all -->
-						<a class="ms-5 d-none d-lg-block" href="profile.php" ><img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
+							alt="<?=$username?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 
 
@@ -574,21 +561,24 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					</li>
 
 					<li class="nav-item d-lg-none">
-						<a class="nav-link active"  id="dashboard" href="dashboard.php">Dashboard</a>
+						<a class="nav-link active" id="dashboard" href="dashboard.php">Dashboard</a>
 					</li>
 
 
 
 				</ul>
 				<ul class="navbar-nav">
-				
-<ul class="bar-sosmed d-lg-none mt-2">
-            <li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
-      </li>
-      <li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
-      <li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-          </ul>
+
+					<ul class="bar-sosmed d-lg-none mt-2">
+						<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
+						</li>
+						<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+									class="fab fa-facebook"></i></a></li>
+						<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
+						<li><a
+								href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+								target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+					</ul>
 
 				</ul>
 			</div>
@@ -599,14 +589,17 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 
-<!-- awal judul -->
-<div class="container" style="margin-top:100px;">
-	<div class="col"><h3 id="judul">Dashboard</h3></div>
-	<div class="col mb-3">
-	<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="dashboard.php" >Dashboard</a> / <a href="#" class="fw-bold" id="point">Add</a>
+	<!-- awal judul -->
+	<div class="container" style="margin-top:100px;">
+		<div class="col">
+			<h3 id="judul">Dashboard</h3>
+		</div>
+		<div class="col mb-3">
+			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="dashboard.php">Dashboard</a> / <a
+				href="#" class="fw-bold" id="point">Add</a>
+		</div>
 	</div>
-</div>
-<!-- akhir judul -->
+	<!-- akhir judul -->
 
 
 
@@ -697,7 +690,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					</div>
 				</div>
 
-					<div class="form-group row mb-3">
+				<div class="form-group row mb-3">
 					<label for="warna" class="col-sm-2 col-form-label">Warna</label>
 					<div class="col-sm-10">
 						<input type="color" class="form-control" id="warna" name="warna" required>
@@ -728,8 +721,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	<div class="border mb-3 mt-auto" style="border-top:black 1px solid;width:90%;margin:auto;"></div>
 
 	<div class="footer container" id="footer">
-		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/" target="_blank"
-				style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
+		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/"
+				target="_blank" style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
 			Picture
 			From: <a href="https://www.instagram.com/goturthings/" target="_blank"
 				style="text-decoration:none;	color: #151e3d;">GoturthinQs</a><span style="color:red;">.</span></p>
@@ -737,9 +730,12 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		<ul class="footer-sosmed d-sm-block d-none">
 			<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
 			</li>
-			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
+			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+						class="fab fa-facebook"></i></a></li>
 			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+			<li><a
+					href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+					target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 		</ul>
 	</div>
 	<!-- akhir footer -->

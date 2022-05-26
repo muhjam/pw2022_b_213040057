@@ -81,7 +81,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 <html lang="en">
 
 <head>
-<!-- Required meta tags -->
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords"
@@ -109,7 +109,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<title>GoturthinQs.</title>
 	<style>
-		html {
+	html {
 		scroll-behavior: smooth;
 	}
 
@@ -408,83 +408,66 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		text-align: center;
 	}
 
-	#contact {
-		color: #375ca6;
-	}
-
-	#contact:hover {
-		color: #16498c;
-	}
-
-
-	#dashboard {
-		color: #006a4e;
-	}
-
-	#dashboard:hover {
-		color: #2e856e;
-	}
 
 
 	/* judul */
-#judul{
-        color: rgba(0, 0, 0, 0.692);
-        text-align: left;
-        font-weight: 600;
-        font-family: "Montserrat", sans-serif;
-        text-transform: uppercase;
-        font-size: 32px;
-}
-
-
-#point{
-	font-family: "Montserrat", sans-serif;
-	font-weight:600;
-
-}
-
-#point:hover{
-	color:red;
-}
-
-.container .col a{
-	text-decoration:none;
-	color: rgba(0, 0, 0, 0.692);
-  text-align: left;
-  font-weight: 500;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-
-.container .col a:hover{
-	text-decoration:underline;
-}
-
-
-/* profile */
-#profile{
-	transition:0.3s;
-}
-
-#profile:hover{
-	opacity:0.7;
-}
-
-#profile-text{
+	#judul {
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 600;
 		font-family: "Montserrat", sans-serif;
-	font-weight:600;
-	font: size 20px;
-}
+		text-transform: uppercase;
+		font-size: 32px;
+	}
 
 
-#profile-text span{
+	#point {
 		font-family: "Montserrat", sans-serif;
-	font-weight:500;
-	font: size 20px;
+		font-weight: 600;
 
-}
+	}
 
+	#point:hover {
+		color: red;
+	}
+
+	.container .col a {
+		text-decoration: none;
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 500;
+		font-family: "Montserrat", sans-serif;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+
+	.container .col a:hover {
+		text-decoration: underline;
+	}
+
+
+	/* profile */
+	#profile {
+		transition: 0.3s;
+	}
+
+	#profile:hover {
+		opacity: 0.7;
+	}
+
+	#profile-text {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		font: size 20px;
+	}
+
+
+	#profile-text span {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font: size 20px;
+
+	}
 	</style>
 
 
@@ -534,12 +517,13 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 					<!-- profile mobile -->
-						<a class="mt-1 d-lg-none" href="profile.php" ><img id="profile" src="../profile/<?=$profile['foto'];?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
+						<a href="index.php#container" class="nav-link  d-lg-none fs-4 " style="cursor:pointer;"
 							aria-expanded="false">
-							Shop 
+							Shop
 						</a>
 					</li>
 				</ul>
@@ -586,15 +570,17 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					</li>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link"  href="dashboard.php">Dashboard</a>
+						<a class="nav-link" href="dashboard.php">Dashboard</a>
 					</li>
 
 
 
 
-	
+
 					<!-- profile all -->
-						<a class="ms-5 d-none d-lg-block" href="profile.php" ><img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
+							alt="<?=$username?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 
 
@@ -605,21 +591,24 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					</li>
 
 					<li class="nav-item d-lg-none">
-						<a class="nav-link"  id="dashboard" href="dashboard.php">Dashboard</a>
+						<a class="nav-link" id="dashboard" href="dashboard.php">Dashboard</a>
 					</li>
 
 
 
 				</ul>
 				<ul class="navbar-nav">
-			
-<ul class="bar-sosmed d-lg-none mt-2">
-            <li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
-      </li>
-      <li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
-      <li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-          </ul>
+
+					<ul class="bar-sosmed d-lg-none mt-2">
+						<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
+						</li>
+						<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+									class="fab fa-facebook"></i></a></li>
+						<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
+						<li><a
+								href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+								target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+					</ul>
 
 
 				</ul>
@@ -635,13 +624,16 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 
-<!-- awal judul -->
-	<div class="col"><h3 id="judul">Contact</h3></div>
-	<div class="col mb-3">
-	<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="#" class="fw-bold" id="point">Contact</a>
-	</div>
+		<!-- awal judul -->
+		<div class="col">
+			<h3 id="judul">Contact</h3>
+		</div>
+		<div class="col mb-3">
+			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="#" class="fw-bold"
+				id="point">Contact</a>
+		</div>
 
-<!-- akhir judul -->
+		<!-- akhir judul -->
 
 
 		<div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
@@ -803,7 +795,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 	<!-- main js -->
 	<script>
-		// ambil elemen2 yang dibutuhkan
+	// ambil elemen2 yang dibutuhkan
 	var keyword = document.getElementById('keyword');
 	var container = document.getElementById('container');
 
@@ -814,19 +806,19 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 
-	    // buat object ajax
-	    var xhr = new XMLHttpRequest();
+		// buat object ajax
+		var xhr = new XMLHttpRequest();
 
-	    // cek kesiapan ajax
-	    xhr.onreadystatechange = function() {
-	        if (xhr.readyState == 4 && xhr.status == 200) {
-	            container.innerHTML = xhr.responseText;
-	        }
-	    }
+		// cek kesiapan ajax
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				container.innerHTML = xhr.responseText;
+			}
+		}
 
-	    // eksekusi ajax
-	    xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
-	    xhr.send();
+		// eksekusi ajax
+		xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
+		xhr.send();
 
 
 

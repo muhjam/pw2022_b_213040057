@@ -82,7 +82,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 <html lang="en">
 
 <head>
-<!-- Required meta tags -->
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords"
@@ -401,59 +401,50 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 		text-align: center;
 	}
 
-	#contact {
-		color: #375ca6;
-	}
-
-	#contact:hover {
-		color: #16498c;
-	}
-
 	/* judul */
-#judul{
-        color: rgba(0, 0, 0, 0.692);
-        text-align: left;
-        font-weight: 600;
-        font-family: "Montserrat", sans-serif;
-        text-transform: uppercase;
-        font-size: 32px;
-}
+	#judul {
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 600;
+		font-family: "Montserrat", sans-serif;
+		text-transform: uppercase;
+		font-size: 32px;
+	}
 
 
-#point{
-	font-family: "Montserrat", sans-serif;
-	font-weight:600;
+	#point {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
 
-}
+	}
 
-#point:hover{
-	color:red;
-}
+	#point:hover {
+		color: red;
+	}
 
-.container .col a{
-	text-decoration:none;
-	color: rgba(0, 0, 0, 0.692);
-  text-align: left;
-  font-weight: 500;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  font-size: 12px;
-}
+	.container .col a {
+		text-decoration: none;
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 500;
+		font-family: "Montserrat", sans-serif;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
 
-.container .col a:hover{
-	text-decoration:underline;
-}
+	.container .col a:hover {
+		text-decoration: underline;
+	}
 
 
-/* profile */
-#profile{
-	transition:0.3s;
-}
+	/* profile */
+	#profile {
+		transition: 0.3s;
+	}
 
-#profile:hover{
-	opacity:0.7;
-}
-
+	#profile:hover {
+		opacity: 0.7;
+	}
 	</style>
 
 
@@ -501,17 +492,18 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 
 
-			
+
 
 				<ul class="navbar-nav">
 
 					<!-- profile mobile -->
-						<a class="mt-1 d-lg-none" href="profile.php" ><img id="profile" src="profile/<?=$profile;?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
+						<a href="index.php#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -521,8 +513,8 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 				<ul class="navbar-nav ms-auto navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
 					<li class=" nav-item dropdown">
-						<a class="nav-link dropdown-toggle d-lg-block d-none" href="#" id="navbarDropdownMenuLink"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+						<a class="nav-link dropdown-toggle d-lg-block d-none" href="#" id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
 							Shop
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -556,17 +548,19 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 					</div>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link active" href="contact.php" >Contact</a>
+						<a class="nav-link active" href="contact.php">Contact</a>
 					</li>
 
 
 					<!-- profile all -->
-						<a class="ms-5 d-none d-lg-block" href="profile.php" ><img id="profile" src="profile/<?=$profile;?>" alt="<?=$username?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
+							alt="<?=$username?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 
 					<!-- bagian dropdown -->
 					<li class="nav-item fs-4 d-lg-none">
-						<a class="nav-link" id="contact" href="contact.php">Contact</a>
+						<a class="nav-link active" id="contact" href="contact.php">Contact</a>
 					</li>
 
 
@@ -575,10 +569,13 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 				<ul class="navbar-nav">
 					<ul class="bar-sosmed d-lg-none mt-2">
 						<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
-			</li>
-			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
-			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+						</li>
+						<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+									class="fab fa-facebook"></i></a></li>
+						<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
+						<li><a
+								href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+								target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 					</ul>
 
 				</ul>
@@ -590,12 +587,15 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 
 	<div class="container mb-5" style="margin-top:100px;">
-<!-- awal judul -->
-	<div class="col"><h3 id="judul">Contact</h3></div>
-	<div class="col mb-3">
-	<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="#" class="fw-bold" id="point">Contact</a>
-	</div>
-<!-- akhir judul -->
+		<!-- awal judul -->
+		<div class="col">
+			<h3 id="judul">Contact</h3>
+		</div>
+		<div class="col mb-3">
+			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="#" class="fw-bold"
+				id="point">Contact</a>
+		</div>
+		<!-- akhir judul -->
 
 		<div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
 			<strong>Terima kasih!</strong> Pesan anda telah diterima.
@@ -652,8 +652,8 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 	<div class="border mb-3 mt-auto" style="border-top:black 1px solid;width:90%;margin:auto;"></div>
 
 	<div class="footer container" id="footer">
-		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/" target="_blank"
-				style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
+		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/"
+				target="_blank" style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
 			Picture
 			From: <a href="https://www.instagram.com/goturthings/" target="_blank"
 				style="text-decoration:none;	color: #151e3d;">GoturthinQs</a><span style="color:red;">.</span></p>
@@ -661,9 +661,12 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 		<ul class="footer-sosmed d-sm-block d-none">
 			<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
 			</li>
-			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
+			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+						class="fab fa-facebook"></i></a></li>
 			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+			<li><a
+					href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+					target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 		</ul>
 	</div>
 	<!-- akhir footer -->
@@ -757,7 +760,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 	<!-- main js -->
 	<script>
-		// ambil elemen2 yang dibutuhkan
+	// ambil elemen2 yang dibutuhkan
 	var keyword = document.getElementById('keyword');
 	var container = document.getElementById('container');
 
@@ -768,19 +771,19 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 
 
-	    // buat object ajax
-	    var xhr = new XMLHttpRequest();
+		// buat object ajax
+		var xhr = new XMLHttpRequest();
 
-	    // cek kesiapan ajax
-	    xhr.onreadystatechange = function() {
-	        if (xhr.readyState == 4 && xhr.status == 200) {
-	            container.innerHTML = xhr.responseText;
-	        }
-	    }
+		// cek kesiapan ajax
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				container.innerHTML = xhr.responseText;
+			}
+		}
 
-	    // eksekusi ajax
-	    xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
-	    xhr.send();
+		// eksekusi ajax
+		xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
+		xhr.send();
 
 
 

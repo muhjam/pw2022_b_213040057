@@ -79,7 +79,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 <html lang="en">
 
 <head>
-<!-- Required meta tags -->
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords"
@@ -429,224 +429,210 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 		text-align: center;
 	}
 
-	#contact {
-		color: #375ca6;
-	}
-
-	#contact:hover {
-		color: #16498c;
-	}
-
-
-	#dashboard {
-		color: #006a4e;
-	}
-
-	#dashboard:hover {
-		color: #2e856e;
-	}
 
 
 
 	/* judul */
-#judul{
-        color: rgba(0, 0, 0, 0.692);
-        text-align: left;
-        font-weight: 600;
-        font-family: "Montserrat", sans-serif;
-        text-transform: uppercase;
-        font-size: 32px;
-}
-
-
-#point{
-	font-family: "Montserrat", sans-serif;
-	font-weight:600;
-
-}
-
-#point:hover{
-	color:red;
-}
-
-.container .col a{
-	text-decoration:none;
-	color: rgba(0, 0, 0, 0.692);
-  text-align: left;
-  font-weight: 500;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-
-.container .col a:hover{
-	text-decoration:underline;
-}
-
-
-/* profile */
-#profile{
-	transition:0.3s;
-}
-
-#profile:hover{
-	opacity:0.7;
-}
-
-#profile-text{
+	#judul {
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 600;
 		font-family: "Montserrat", sans-serif;
-	font-weight:600;
-	font: size 20px;
-}
+		text-transform: uppercase;
+		font-size: 32px;
+	}
 
 
-#profile-text span{
+	#point {
 		font-family: "Montserrat", sans-serif;
-	font-weight:500;
-	font: size 20px;
+		font-weight: 600;
 
-}
+	}
 
+	#point:hover {
+		color: red;
+	}
 
+	.container .col a {
+		text-decoration: none;
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 500;
+		font-family: "Montserrat", sans-serif;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
 
-/* DETAIL */
-
-#myImg {
-    cursor: pointer;
-    transition: 0.3s;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#myImg:hover {
-    opacity: 0.7;
-}
-
-
-/* The Modal (background) */
-
-.modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 100px;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.9);
-    /* Black w/ opacity */
-}
+	.container .col a:hover {
+		text-decoration: underline;
+	}
 
 
-/* Modal Content (image) */
+	/* profile */
+	#profile {
+		transition: 0.3s;
+	}
 
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 75%;
-    max-width: 75%;
-}
+	#profile:hover {
+		opacity: 0.7;
+	}
+
+	#profile-text {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		font: size 20px;
+	}
 
 
-/* Caption of Modal Image */
+	#profile-text span {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font: size 20px;
+
+	}
 
 
 
+	/* DETAIL */
 
-/* Add Animation */
+	#myImg {
+		cursor: pointer;
+		transition: 0.3s;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
 
-.modal-content {
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-.out {
-    animation-name: zoom-out;
-    animation-duration: 0.6s;
-}
-
-@-webkit-keyframes zoom {
-    from {
-        -webkit-transform: scale(1);
-    }
-    to {
-        -webkit-transform: scale(2);
-    }
-}
-
-@keyframes zoom {
-    from {
-        transform: scale(0.4);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
-@keyframes zoom-out {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(0);
-    }
-}
+	#myImg:hover {
+		opacity: 0.7;
+	}
 
 
-/* The Close Button */
+	/* The Modal (background) */
 
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
+	.modal {
+		display: none;
+		/* Hidden by default */
+		position: fixed;
+		/* Stay in place */
+		z-index: 1;
+		/* Sit on top */
+		padding-top: 100px;
+		/* Location of the box */
+		left: 0;
+		top: 0;
+		width: 100%;
+		/* Full width */
+		height: 100%;
+		/* Full height */
+		overflow: auto;
+		/* Enable scroll if needed */
+		background-color: rgb(0, 0, 0);
+		/* Fallback color */
+		background-color: rgba(0, 0, 0, 0.9);
+		/* Black w/ opacity */
+	}
 
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
+
+	/* Modal Content (image) */
+
+	.modal-content {
+		margin: auto;
+		display: block;
+		width: 75%;
+		max-width: 75%;
+	}
+
+
+	/* Caption of Modal Image */
 
 
 
-/* 100% Image Width on Smaller Screens */
 
-@media only screen and (max-width: 700px) {
-    .modal-content {
-        width: 100%;
-    }
-}
+	/* Add Animation */
+
+	.modal-content {
+		-webkit-animation-name: zoom;
+		-webkit-animation-duration: 0.6s;
+		animation-name: zoom;
+		animation-duration: 0.6s;
+	}
+
+	.out {
+		animation-name: zoom-out;
+		animation-duration: 0.6s;
+	}
+
+	@-webkit-keyframes zoom {
+		from {
+			-webkit-transform: scale(1);
+		}
+
+		to {
+			-webkit-transform: scale(2);
+		}
+	}
+
+	@keyframes zoom {
+		from {
+			transform: scale(0.4);
+		}
+
+		to {
+			transform: scale(1);
+		}
+	}
+
+	@keyframes zoom-out {
+		from {
+			transform: scale(1);
+		}
+
+		to {
+			transform: scale(0);
+		}
+	}
+
+
+	/* The Close Button */
+
+	.close {
+		position: absolute;
+		top: 15px;
+		right: 35px;
+		color: #f1f1f1;
+		font-size: 40px;
+		font-weight: bold;
+		transition: 0.3s;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #bbb;
+		text-decoration: none;
+		cursor: pointer;
+	}
 
 
 
-#edit{
-	color:#03254c;
-	font-weight:bold;
-}
+	/* 100% Image Width on Smaller Screens */
 
-#edit:hover{
-	color:#1167b1;
-}
+	@media only screen and (max-width: 700px) {
+		.modal-content {
+			width: 100%;
+		}
+	}
 
+
+
+	#edit {
+		color: #03254c;
+		font-weight: bold;
+	}
+
+	#edit:hover {
+		color: #1167b1;
+	}
 	</style>
 
 
@@ -694,17 +680,18 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 
 
 
-			
+
 
 				<ul class="navbar-nav">
 
 					<!-- profile mobile -->
-						<a class="mt-1 d-lg-none" href="profile.php" ><img id="profile" src="profile/<?=$profile['foto'];?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="profile/<?=$profile['foto'];?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
 
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
+						<a href="index.php#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -714,14 +701,15 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 				<ul class="navbar-nav ms-auto navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
 					<li class=" nav-item dropdown">
-						<a class="nav-link dropdown-toggle d-lg-block d-none " href="#" id="navbarDropdownMenuLink"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+						<a class="nav-link dropdown-toggle d-lg-block d-none " href="#" id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
 							Shop
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<?php foreach($jenisProduk as $jenis): ?>
 							<li><a name="cari" class="dropdown-item"
-									href="index.php?cari=<?= $jenis['jenis_produk']; ?>index.php#container"><?= $jenis['jenis_produk']; ?></a></li>
+									href="index.php?cari=<?= $jenis['jenis_produk']; ?>index.php#container"><?= $jenis['jenis_produk']; ?></a>
+							</li>
 
 
 							<?php endforeach; ?>
@@ -749,30 +737,23 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 					</div>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link" href="contact.php" >Contact</a>
+						<a class="nav-link" href="contact.php">Contact</a>
 					</li>
 
 
 					<!-- profile all -->
-						<a class="ms-5 d-none d-lg-block" href="profile.php" ><img id="profile" src="profile/<?=$profile['foto'];?>" alt="<?=$username?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="profile/<?=$profile['foto'];?>"
+							alt="<?=$username?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
 
 
 					<!-- bagian dropdown -->
 					<li class="nav-item fs-4 d-lg-none">
-						<a class="nav-link" id="contact" href="contact.php"></a>
+						<a class="nav-link" id="contact" href="contact.php">Contact</a>
 					</li>
 				</ul>
 
-				<ul class="navbar-nav">
-					<ul class="bar-sosmed d-lg-none mt-2">
-						<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
-			</li>
-			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
-			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-					</ul>
 
-				</ul>
 			</div>
 		</div>
 	</nav>
@@ -780,62 +761,67 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 
 
 
-<!-- awal isi -->
+	<!-- awal isi -->
 	<div class="container mb-3" style="margin-top:100px;">
 
-<!-- awal judul -->
-	<div class="col"><h3 id="judul">Profile</h3></div>
-	<div class="col mb-3">
-	<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="#" class="fw-bold" id="point"><?= $level; ?></a>
-	</div>
-<!-- akhir judul -->
-					<img id="myImg" src="profile/<?= $profile["foto"] ?>" class="img-fluid mb-3" style="width:100px; height:100px; object-fit:cover;border-radius:50%;border:2px solid white;">
-					<!-- The Modal -->
-					<div id="myModal" class="modal">
-						<img class="modal-content" id="img01">
-					</div>
+		<!-- awal judul -->
+		<div class="col">
+			<h3 id="judul">Profile</h3>
+		</div>
+		<div class="col mb-3">
+			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="#" class="fw-bold"
+				id="point"><?= $level; ?></a>
+		</div>
+		<!-- akhir judul -->
+		<img id="myImg" src="profile/<?= $profile["foto"] ?>" class="img-fluid mb-3"
+			style="width:100px; height:100px; object-fit:cover;border-radius:50%;border:2px solid white;">
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+			<img class="modal-content" id="img01">
+		</div>
 
 
 
 
 
-						<p class="text-center" id="profile-text">User Name : <span><?= $username ?></span></p>
+		<p class="text-center" id="profile-text">User Name : <span><?= $username ?></span></p>
 
-						<p class="text-center" id="profile-text">Email : <span><?php
+		<p class="text-center" id="profile-text">Email : <span><?php
 						if($profile['email']==''){echo" -";}?> <?= $profile['email']; ?></span> </p>
 
-						<p class="text-center" id="profile-text">No Telp : <span><?php
+		<p class="text-center" id="profile-text">No Telp : <span><?php
 						if($profile['no_telp']==''){echo" -";}?> <?= $profile['no_telp']; ?></span></p>
 
-						<p class="text-center" id="profile-text">Gender : <span><?php
+		<p class="text-center" id="profile-text">Gender : <span><?php
 						if($profile['gender']==''){echo" -";}?> <?= $profile['gender']; ?></span></p>
 
 
 
-<!-- lahir -->
-<?php $lahir=date_create($profile['lahir']); ?>
+		<!-- lahir -->
+		<?php $lahir=date_create($profile['lahir']); ?>
 
-			<p class="text-center" id="profile-text">Birthday : <span><?= date_format($lahir,"d-m-Y"); ?></span></p>
+		<p class="text-center" id="profile-text">Birthday : <span><?= date_format($lahir,"d-m-Y"); ?></span></p>
 
-						<p class="text-center mb-5" id="profile-text">Address : <span><?php
+		<p class="text-center mb-5" id="profile-text">Address : <span><?php
 						if($profile['alamat']==''){echo" -";}?> <?= $profile['alamat']; ?></span></p>
 
-<div class="row text-center mb-5">
-<div class="col" >
-<a href="profile-edit.php" class="btn btn-dark" style="color:white;text-decoration:none;">Edit</a> <a  href="logout.php" class="btn btn-danger" style="color:white;text-decoration:none;">Logout</a>
-</div>
-</div>
+		<div class="row text-center mb-5">
+			<div class="col">
+				<a href="profile-edit.php" class="btn btn-dark" style="color:white;text-decoration:none;">Edit</a> <a
+					href="logout.php" class="btn btn-danger" style="color:white;text-decoration:none;">Logout</a>
+			</div>
+		</div>
 
-</div>
-<!-- akhir isi -->
+	</div>
+	<!-- akhir isi -->
 
 
 	<!-- awal footer -->
 	<div class="border mb-3 mt-auto" style="border-top:black 1px solid;width:90%;margin:auto;"></div>
 
 	<div class="footer container" id="footer">
-		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/" target="_blank"
-				style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
+		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/"
+				target="_blank" style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
 			Picture
 			From: <a href="https://www.instagram.com/goturthings/" target="_blank"
 				style="text-decoration:none;	color: #151e3d;">GoturthinQs</a><span style="color:red;">.</span></p>
@@ -843,9 +829,12 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 		<ul class="footer-sosmed d-sm-block d-none">
 			<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
 			</li>
-			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
+			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+						class="fab fa-facebook"></i></a></li>
 			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+			<li><a
+					href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+					target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 		</ul>
 	</div>
 	<!-- akhir footer -->
@@ -996,8 +985,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 	</script>
 
 
-<!-- profile -->
-<script>
+	<!-- profile -->
+	<script>
 	// Get the modal
 	var modal = document.getElementById('myModal');
 
