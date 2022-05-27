@@ -441,6 +441,30 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	#profile:hover {
 		opacity: 0.7;
 	}
+
+    .container-fluid .navbar .container-fluid section .fas.fa-print {
+    color: #303958;
+}
+
+.container-fluid .navbar .container-fluid section .fas.fa-print:hover {
+    color: #151e3d;
+}
+
+
+.container-fluid .navbar .container-fluid section .fas.fa-cart-plus {
+    color: #2d3655;
+}
+
+.container-fluid .navbar .container-fluid section .fas.fa-cart-plus:hover {
+    color: #151e3d;
+}
+
+
+	/* hover dropdown */
+	.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
 	</style>
 
 
@@ -685,7 +709,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 
-								<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
+								<a href="detail.php?id=<?= $goturthing["id"]?>"
 									class="btn badge bg-info mt-2">Detail</a>
 							</td>
 

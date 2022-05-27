@@ -91,6 +91,23 @@ if(isset($_POST['submit'])){
 
 
 
+if(isset($_POST["berhasil"])){
+	   // cek apakag profile berhasil diedit atau tidak
+    if (editFoto($_POST) > 0) {
+        echo "
+        <script>
+        alert('profile berhasil diubah')
+        document.location.href='profile.php'
+        </script>";
+    } else {
+        echo"
+        <script>
+        alert('profile belum diubah')
+        document.location.href='profile.php'
+        </script>";
+    }
+	}
+
 
  ?>
 
@@ -652,6 +669,61 @@ if(isset($_POST['submit'])){
 	#edit:hover {
 		color: #1167b1;
 	}
+
+
+
+	#kamera {
+		font-size: 20px;
+		color: #f9f9f9;
+		margin: 35px -10px;
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+	}
+
+
+	.meImg:hover #kamera {
+		opacity: 1;
+		transition: 0.2s;
+	}
+
+	.meImg-bg {
+		width: 1000px;
+		height: 100px;
+		margin-left: -12px;
+		background-color: grey;
+		object-fit: cover;
+		opacity: 0;
+		transition: 0.2s;
+	}
+
+	.meImg:hover .meImg-bg {
+		opacity: 0.6;
+		transition: 0.2s;
+	}
+
+	.meImg {
+		border-radius: 50%;
+		border: 2px solid white;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100px;
+		height: 100px;
+		background-image: url("profile/<?= $profile["foto"] ?>");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		cursor: pointer;
+		display: block;
+		overflow: hidden;
+		text-align: center;
+	}
+
+	/* hover dropdown */
+	.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
 	</style>
 
 
@@ -678,9 +750,9 @@ if(isset($_POST['submit'])){
 			</button>
 
 
-			<a class="navbar-brand" id="logo" href="#">GoturthinQs<span>.</span></a>
+			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="index.php#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
 
@@ -720,7 +792,7 @@ if(isset($_POST['submit'])){
 				<ul class="navbar-nav ms-auto navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
 					<li class=" nav-item dropdown">
-						<a class="nav-link dropdown-toggle d-lg-block d-none active" href="#" id="navbarDropdownMenuLink"
+						<a class="nav-link dropdown-toggle d-lg-block d-none" href="#" id="navbarDropdownMenuLink"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Shop
 						</a>
@@ -803,28 +875,43 @@ if(isset($_POST['submit'])){
 			<a href="#" id="point">Edit</a>
 		</div>
 		<!-- akhir judul -->
-		<img id="myImg" src="profile/<?= $profile["foto"] ?>" class="img-fluid mb-3"
-			style="width:100px; height:100px; object-fit:cover;border-radius:50%;border:2px solid white;">
-		<!-- The Modal -->
-		<div id="myModal" class="modal">
-			<img class="modal-content" id="img01">
+
+
+		<div class="row mb-3">
+			<label id="profile-text" for="foto" class="meImg">
+				<i class="fas fa-camera" id="kamera"></i>
+				<div class="meImg-bg"></div>
+			</label>
 		</div>
+
+
+
+
+
+<!-- foto profile -->
+		<form action="" method="post" enctype="multipart/form-data">
+
+			<input hidden class="form-control form-control-sm" id="foto" type="file" name="gambar"
+				onchange="this.form.submit()">
+
+				<input type="hidden" name="gambarLama" value="<?= $profile["foto"];?>">
+
+					<input name="id" type="text" class="form-control" placeholder="-" hidden value="<?= $profile['id']; ?>">
+
+			<input hidden type="text" name="berhasil">
+
+		</form>
+
+
 
 
 		<form action="" method="post" enctype="multipart/form-data">
 
+
 			<input name="id" type="text" class="form-control" placeholder="-" hidden value="<?= $profile['id']; ?>">
-			<input type="hidden" name="gambarLama" value="<?= $profile["foto"];?>">
+
 
 			<table style="margin:0 auto;">
-
-				<tr>
-					<th><label id="profile-text" class="text-center" for="foto">Picture</label></th>
-					<td>:</td>
-					<td> <input class="form-control form-control-sm" id="foto" type="file" name="gambar"></td>
-				</tr>
-
-
 				<tr>
 					<th>
 						<label id="profile-text" for="username" class="text-center">User Name </label>
@@ -941,7 +1028,8 @@ if(isset($_POST['submit'])){
 
 	<div class="footer container" id="footer">
 		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/"
-				target="_blank" style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
+				target="_blank" style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br>
+			All
 			Picture
 			From: <a href="https://www.instagram.com/goturthings/" target="_blank"
 				style="text-decoration:none;	color: #151e3d;">GoturthinQs</a><span style="color:red;">.</span></p>

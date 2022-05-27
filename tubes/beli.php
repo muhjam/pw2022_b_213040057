@@ -74,7 +74,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
 		rel="stylesheet">
 
-	<title>GoturDetail.</title>
+	<title>GoturthinQs.</title>
 
 
 	<style>
@@ -552,6 +552,13 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 			width: 100%;
 		}
 	}
+
+
+		/* hover dropdown */
+	.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
 	</style>
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/style.css">
@@ -717,23 +724,17 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 						<h6 class="card-text">Code : <?= $produk["kode_produk"]; ?></h6>
 						<h6 class="card-text">Size : <?= $produk["ukuran"]; ?></h6>
 
-						<table>
-							<tr>
-								<td>Warna :</td>
-								<td>
-									<div class="kotak ms-2"
-										style="background-color:<?= $produk['warna']?>;border:1px solid black;width:20px;height:10px;">
-									</div>
-								</td>
-							</tr>
-						</table>
+						<h6 class="card-text" style=" display:inline-block;">Warna :</h6>
 
-						<br>
-						<h6 class="card-text"><?= $produk["keterangan"]; ?></h6>
-						<br>
+						<div class="kotak ms-2"
+							style="background-color:<?= $produk['warna']?>;border:1px solid black;width:20px;height:10px;display:inline-block;">
+						</div>
+
+
+						<h6 class="card-text mt-2 mb-3"><?= $produk["keterangan"]; ?></h6>
 
 						<a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Saya%20mau%20memesan%20<?= $produk['jenis_produk']?>%20<?= $produk['nama_produk']?>%20ukuran%20<?= $produk['ukuran']?>,%20dengan%20kode%20barang:%20<?= $produk['kode_produk']?>."
-							type="button" class="btn btn-outline-success" target="_blank">Lets Buy</a>
+							type="button" class="btn btn-success my-2" target="_blank">Lets Buy</a>
 
 
 					</div>

@@ -443,6 +443,12 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	#profile:hover {
 		opacity: 0.7;
 	}
+
+		/* hover dropdown */
+	.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
 	</style>
 
 

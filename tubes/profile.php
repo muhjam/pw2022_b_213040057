@@ -633,6 +633,13 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 	#edit:hover {
 		color: #1167b1;
 	}
+	
+	/* hover dropdown */
+	.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
+
 	</style>
 
 
@@ -708,7 +715,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<?php foreach($jenisProduk as $jenis): ?>
 							<li><a name="cari" class="dropdown-item"
-									href="index.php?cari=<?= $jenis['jenis_produk']; ?>index.php#container"><?= $jenis['jenis_produk']; ?></a>
+									href="index.php?cari=<?= $jenis['jenis_produk']; ?>#container"><?= $jenis['jenis_produk']; ?></a>
 							</li>
 
 
@@ -724,7 +731,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 						<?php foreach($jenisProduk as $jenis): ?>
 
 						<li class="nav-item">
-							<a name="cari" href="index.php?cari=<?= $jenis['jenis_produk'];?>index.php#container" class="nav-link"
+							<a name="cari" href="index.php?cari=<?= $jenis['jenis_produk'];?>#container" class="nav-link"
 								id="jenis"><?= $jenis['jenis_produk']; ?></a>
 						</li>
 

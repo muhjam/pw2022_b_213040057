@@ -435,6 +435,30 @@ function idr($harga){
 
 
 // profile
+function editFoto($data){
+ global $conn;
+
+    $id=htmlspecialchars($data["id"]);
+    $gambarLama=htmlspecialchars($data["gambarLama"]);
+
+ // cek apakah user pilih gambar baru atau tidak
+if($_FILES['gambar']['error']===4){
+    $gambar=$gambarLama;
+}else{
+    $gambar=uploadProfile();
+}
+
+
+$query = "UPDATE `users` SET `foto`='$gambar' WHERE `id`='$id'; ";
+
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+
+}
+
+
+
+
 function edit($data){
 
  global $conn;
@@ -444,11 +468,8 @@ function edit($data){
     $email= htmlspecialchars($data["email"]);
     $noTelp = ($data["no_telp"]);
     $alamat = htmlspecialchars($data["alamat"]);
+    $gender = htmlspecialchars($data["gender"]);
     $lahir=htmlspecialchars($data["lahir"]);
-    $gambarLama=htmlspecialchars($data["gambarLama"]);
-    $gender=htmlspecialchars($data["gender"]);
-
-
 
     $user=$_SESSION['username'];
 
@@ -457,16 +478,8 @@ function edit($data){
 
 if($username==$user){
 
-  // cek apakah user pilih gambar baru atau tidak
-if($_FILES['gambar']['error']===4){
-    $gambar=$gambarLama;
-}else{
-    $gambar=uploadProfile();
-}
 
-
-
-$query = "UPDATE users SET `email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`foto`='$gambar',`lahir`='$lahir' WHERE `id`='$id'; ";
+$query = "UPDATE `users` SET `email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`lahir`='$lahir' WHERE `id`='$id'; ";
 
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
@@ -495,15 +508,7 @@ return false;
 
 if($username!=$user){
 
-if($_FILES['gambar']['error']===4){
-    $gambar=$gambarLama;
-}else{
-    $gambar=uploadProfile();
-}
-
-
-
-$query = "UPDATE users SET `username`='$username',`email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`foto`='$gambar',`lahir`='$lahir' WHERE `id`='$id'; ";
+$query = "UPDATE `users` SET `username`='$username',`email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`lahir`='$lahir' WHERE `id`='$id'; ";
 
     mysqli_query($conn, $query);
 
@@ -511,7 +516,7 @@ $query = "UPDATE users SET `username`='$username',`email`='$email',`no_telp`='$n
 echo"
 <script>
 alert('Username telah diubah!')
-document.location.href='logout.php'
+document.location.href='../logout.php'
 </script>
 ";
 
@@ -519,6 +524,8 @@ document.location.href='logout.php'
     return mysqli_affected_rows($conn);
 
 }
+
+
 
 
 }

@@ -102,7 +102,7 @@ if(isset($_POST['submit'])){
 <html lang="en">
 
 <head>
-<!-- Required meta tags -->
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords"
@@ -131,7 +131,7 @@ if(isset($_POST['submit'])){
 	<title>GoturthinQs.</title>
 
 
-	
+
 	<style>
 	html {
 		scroll-behavior: smooth;
@@ -207,7 +207,7 @@ if(isset($_POST['submit'])){
 	@media (min-width: 1400px) {
 
 		/* cari1 */
-		.formm{
+		.formm {
 			position: relative;
 			width: 350px;
 			height: 30px;
@@ -221,6 +221,7 @@ if(isset($_POST['submit'])){
 	}
 
 	@media (max-width: 1400px) {
+
 		/* cari1 */
 		.formm {
 			position: relative;
@@ -428,71 +429,59 @@ if(isset($_POST['submit'])){
 		text-align: center;
 	}
 
-	#contact {
-		color: #375ca6;
-	}
-
-	#contact:hover {
-		color: #16498c;
-	}
-
-	#dashboard {
-		color: #006a4e;
-	}
-
-	#dashboard:hover {
-		color: #2e856e;
-	}
-
 
 
 	/* judul */
-#judul{
-        color: rgba(0, 0, 0, 0.692);
-        text-align: left;
-        font-weight: 600;
-        font-family: "Montserrat", sans-serif;
-        text-transform: uppercase;
-        font-size: 32px;
-}
+	#judul {
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 600;
+		font-family: "Montserrat", sans-serif;
+		text-transform: uppercase;
+		font-size: 32px;
+	}
 
 
-#point{
-	font-family: "Montserrat", sans-serif;
-	font-weight:600;
+	#point {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
 
-}
+	}
 
-#point:hover{
-	color:red;
-}
+	#point:hover {
+		color: red;
+	}
 
-.container .col a{
-	text-decoration:none;
-	color: rgba(0, 0, 0, 0.692);
-  text-align: left;
-  font-weight: 500;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  font-size: 12px;
-}
+	.container .col a {
+		text-decoration: none;
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 500;
+		font-family: "Montserrat", sans-serif;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
 
-.container .col a:hover{
-	text-decoration:underline;
-}
-
-
-
-/* profile */
-#profile{
-	transition:0.3s;
-}
-
-#profile:hover{
-	opacity:0.7;
-}
+	.container .col a:hover {
+		text-decoration: underline;
+	}
 
 
+
+	/* profile */
+	#profile {
+		transition: 0.3s;
+	}
+
+	#profile:hover {
+		opacity: 0.7;
+	}
+
+		/* hover dropdown */
+	.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
 	</style>
 
 
@@ -540,11 +529,12 @@ if(isset($_POST['submit'])){
 
 
 					<!-- profile mobile -->
-						<a class="mt-1 d-lg-none" href="profile.php" ><img id="profile" src="../profile/<?=$profile['foto'];?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
+						<a href="index.php#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -593,15 +583,17 @@ if(isset($_POST['submit'])){
 					</li>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link"  href="dashboard.php">Dashboard</a>
+						<a class="nav-link" href="dashboard.php">Dashboard</a>
 					</li>
 
 
 
 
-	
+
 					<!-- profile all -->
-						<a class="ms-5 d-none d-lg-block" href="profile.php" ><img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
+							alt="<?=$username?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
 
 
 
@@ -611,21 +603,24 @@ if(isset($_POST['submit'])){
 					</li>
 
 					<li class="nav-item d-lg-none">
-						<a class="nav-link active"  id="dashboard" href="dashboard.php">Dashboard</a>
+						<a class="nav-link " id="dashboard" href="dashboard.php">Dashboard</a>
 					</li>
 
 
 
 				</ul>
 				<ul class="navbar-nav">
-		
-<ul class="bar-sosmed d-lg-none mt-2">
-            <li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
-      </li>
-      <li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
-      <li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-          </ul>
+
+					<ul class="bar-sosmed d-lg-none mt-2">
+						<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
+						</li>
+						<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+									class="fab fa-facebook"></i></a></li>
+						<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
+						<li><a
+								href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+								target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+					</ul>
 
 
 				</ul>
@@ -636,42 +631,23 @@ if(isset($_POST['submit'])){
 
 
 
-<div class="container" style="margin-top:100px;">
-	<!-- awal judul -->
-	<div class="col"><h3 id="judul">Profile</h3></div>
-	<div class="col mb-3">
-	<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="profile.php" ><?= $level; ?></a> / <a href="#" class="fw-bold" id="point">Setting</a>
+	<div class="container" style="margin-top:100px;">
+		<!-- awal judul -->
+		<div class="col">
+			<h3 id="judul">Profile</h3>
+		</div>
+		<div class="col mb-3">
+			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="profile.php"><?= $level; ?></a> /
+			<a href="#" class="fw-bold" id="point">Setting</a>
+		</div>
+		<!-- akhir judul -->
 	</div>
-<!-- akhir judul -->	
-</div>
 
-	
+
 
 
 	<div class="container-fluid">
 
-
-
-
-
-		<nav class="navbar navbar-light">
-
-			<div class="container-fluid">
-				<!-- <form action="" method="post" class="d-flex">
-					<input class="form-control me-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
-						name="keyword" autofocus autocomplete="off" id="keyword">
-				</form> -->
-
-
-				<section>
-					<a href="../Goturprint.php" target="_blank"><i class="fas fa-print"> Print</i></a> <a
-						style="margin:0 5px;">|</a>
-					<a href="tambah.php"><i class="fas fa-cart-plus">
-							Tambah</i></a>
-				</section>
-
-			</div>
-		</nav>
 
 		<div id="container">
 			<table class="table" cellpadding="10" cellspacing="0">
@@ -713,37 +689,36 @@ if(isset($_POST['submit'])){
 							<td><?= $user["username"]; ?></td>
 							<td><?= $user["level"]; ?></td>
 							<td>
-	
-
-
-						<?php if($user['level']=='admin'): ?>
-						<?php echo"-"; ?>
-						<?php endif; ?>
 
 
 
-						<?php if($user['level']!='admin'): ?>
+								<?php if($user['level']=='admin'): ?>
+								<?php echo"-"; ?>
+								<?php endif; ?>
+
+
+
+								<?php if($user['level']!='admin'): ?>
 								<a href="level-ubah.php?id=<?= $user["id"] ?>"
 									onclick="return confirm('Anda yakin akan menjadikan admin akun ini?')"
 									class="btn badge bg-primary mt-2">admin</a>
 
 
-							<?php if($user['status']=='no'): ?>
+								<?php if($user['status']=='no'): ?>
 
-									<a href="level-ban.php?id=<?= $user["id"] ?>&status=ban ?>"
-									onclick="return confirm('Anda yakin akan ban akun ini?')"
-									class="btn badge bg-danger mt-2">ban</a>
-							<?php endif; ?>
+								<a href="level-ban.php?id=<?= $user["id"] ?>&status=ban ?>"
+									onclick="return confirm('Anda yakin akan ban akun ini?')" class="btn badge bg-danger mt-2">ban</a>
+								<?php endif; ?>
 
 								<?php if($user['status']=='ban'): ?>
 
 								<a href="level-heal.php?id=<?= $user["id"] ?>&status=no ?>"
 									onclick="return confirm('Anda yakin akan memulihkan akun ini?')"
 									class="btn badge bg-success mt-2">heal</a>
-							<?php endif; ?>
-								
+								<?php endif; ?>
 
-						<?php endif; ?>
+
+								<?php endif; ?>
 
 							</td>
 
@@ -793,8 +768,8 @@ if(isset($_POST['submit'])){
 	<div class="border mb-3 mt-auto" style="border-top:black 1px solid;width:90%;margin:auto;"></div>
 
 	<div class="footer container" id="footer">
-		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/" target="_blank"
-				style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
+		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/"
+				target="_blank" style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
 			Picture
 			From: <a href="https://www.instagram.com/goturthings/" target="_blank"
 				style="text-decoration:none;	color: #151e3d;">GoturthinQs</a><span style="color:red;">.</span></p>
@@ -802,9 +777,12 @@ if(isset($_POST['submit'])){
 		<ul class="footer-sosmed d-sm-block d-none">
 			<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
 			</li>
-			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
+			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+						class="fab fa-facebook"></i></a></li>
 			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+			<li><a
+					href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+					target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 		</ul>
 	</div>
 	<!-- akhir footer -->

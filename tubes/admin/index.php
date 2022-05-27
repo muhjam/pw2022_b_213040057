@@ -478,6 +478,12 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	#profile:hover {
 		opacity: 0.7;
 	}
+
+		/* hover dropdown */
+	.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
 	</style>
 
 
@@ -504,7 +510,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 			<a class="navbar-brand" id="logo" href="#">GoturthinQs<span>.</span></a>
 
-			<a href="#" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
 
@@ -518,7 +524,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 			<div class="collapse navbar-collapse" id="navbarScroll">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
 							class="fas fa-search"></i></a> </label>
 
 

@@ -90,6 +90,22 @@ if(isset($_POST['submit'])){
 }
 
 
+if(isset($_POST["berhasil"])){
+	   // cek apakag profile berhasil diedit atau tidak
+    if (editFoto($_POST) > 0) {
+        echo "
+        <script>
+        alert('profile berhasil diubah')
+        document.location.href='profile.php'
+        </script>";
+    } else {
+        echo"
+        <script>
+        alert('profile belum diubah')
+        document.location.href='profile.php'
+        </script>";
+    }
+	}
 
 
 
@@ -103,7 +119,7 @@ if(isset($_POST['submit'])){
 <html lang="en">
 
 <head>
-<!-- Required meta tags -->
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords"
@@ -433,224 +449,165 @@ if(isset($_POST['submit'])){
 		text-align: center;
 	}
 
-	#contact {
-		color: #375ca6;
-	}
-
-	#contact:hover {
-		color: #16498c;
-	}
-
-
-	#dashboard {
-		color: #006a4e;
-	}
-
-	#dashboard:hover {
-		color: #2e856e;
-	}
-
 
 
 	/* judul */
-#judul{
-        color: rgba(0, 0, 0, 0.692);
-        text-align: left;
-        font-weight: 600;
-        font-family: "Montserrat", sans-serif;
-        text-transform: uppercase;
-        font-size: 32px;
-}
-
-
-#point{
-	font-family: "Montserrat", sans-serif;
-	font-weight:600;
-
-}
-
-#point:hover{
-	color:red;
-}
-
-.container .col a{
-	text-decoration:none;
-	color: rgba(0, 0, 0, 0.692);
-  text-align: left;
-  font-weight: 500;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-
-.container .col a:hover{
-	text-decoration:underline;
-}
-
-
-/* profile */
-#profile{
-	transition:0.3s;
-}
-
-#profile:hover{
-	opacity:0.7;
-}
-
-#profile-text{
+	#judul {
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 600;
 		font-family: "Montserrat", sans-serif;
-	font-weight:600;
-	font: size 20px;
-}
+		text-transform: uppercase;
+		font-size: 32px;
+	}
 
 
-#profile-text span{
+	#point {
 		font-family: "Montserrat", sans-serif;
-	font-weight:500;
-	font: size 20px;
+		font-weight: 600;
 
-}
+	}
+
+	#point:hover {
+		color: red;
+	}
+
+	.container .col a {
+		text-decoration: none;
+		color: rgba(0, 0, 0, 0.692);
+		text-align: left;
+		font-weight: 500;
+		font-family: "Montserrat", sans-serif;
+		text-transform: uppercase;
+		font-size: 12px;
+	}
+
+	.container .col a:hover {
+		text-decoration: underline;
+	}
+
+
+	/* profile */
+	#profile {
+		transition: 0.3s;
+	}
+
+	#profile:hover {
+		opacity: 0.7;
+	}
+
+	#profile-text {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		font: size 20px;
+	}
+
+
+	#profile-text span {
+		font-family: "Montserrat", sans-serif;
+		font-weight: 500;
+		font: size 20px;
+
+	}
 
 
 
-/* DETAIL */
+	/* DETAIL */
 
-#myImg {
-    cursor: pointer;
-    transition: 0.3s;
+	/* The Close Button */
+
+	.close {
+		position: absolute;
+		top: 15px;
+		right: 35px;
+		color: #f1f1f1;
+		font-size: 40px;
+		font-weight: bold;
+		transition: 0.3s;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #bbb;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+
+
+	/* 100% Image Width on Smaller Screens */
+
+	@media only screen and (max-width: 700px) {
+		.modal-content {
+			width: 100%;
+		}
+	}
+
+
+
+	#edit {
+		color: #03254c;
+		font-weight: bold;
+	}
+
+	#edit:hover {
+		color: #1167b1;
+	}
+
+
+
+	#kamera {
+		font-size: 20px;
+		color: #f9f9f9;
+		margin: 35px -10px;
+		position: absolute;
+		z-index: 1;
+		opacity: 0;
+	}
+
+
+	.meImg:hover #kamera {
+		opacity: 1;
+		transition: 0.2s;
+	}
+
+	.meImg-bg {
+		width: 1000px;
+		height: 100px;
+		margin-left: -12px;
+		background-color: grey;
+		object-fit: cover;
+		opacity: 0;
+		transition: 0.2s;
+	}
+
+	.meImg:hover .meImg-bg {
+		opacity: 0.6;
+		transition: 0.2s;
+	}
+
+	.meImg {
+		border-radius: 50%;
+		border: 2px solid white;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100px;
+		height: 100px;
+		background-image: url("../profile/<?= $profile["foto"] ?>");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		cursor: pointer;
+		display: block;
+		overflow: hidden;
+		text-align: center;
+	}
+
+		/* hover dropdown */
+	.dropdown:hover .dropdown-menu {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#myImg:hover {
-    opacity: 0.7;
-}
-
-
-/* The Modal (background) */
-
-.modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 100px;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.9);
-    /* Black w/ opacity */
-}
-
-
-/* Modal Content (image) */
-
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 75%;
-    max-width: 75%;
-}
-
-
-/* Caption of Modal Image */
-
-
-
-
-/* Add Animation */
-
-.modal-content {
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-.out {
-    animation-name: zoom-out;
-    animation-duration: 0.6s;
-}
-
-@-webkit-keyframes zoom {
-    from {
-        -webkit-transform: scale(1);
-    }
-    to {
-        -webkit-transform: scale(2);
-    }
-}
-
-@keyframes zoom {
-    from {
-        transform: scale(0.4);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
-@keyframes zoom-out {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(0);
-    }
-}
-
-
-/* The Close Button */
-
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-
-/* 100% Image Width on Smaller Screens */
-
-@media only screen and (max-width: 700px) {
-    .modal-content {
-        width: 100%;
-    }
-}
-
-
-
-#edit{
-	color:#03254c;
-	font-weight:bold;
-}
-
-#edit:hover{
-	color:#1167b1;
-}
-
+    margin-top: 0; // remove the gap so it doesn't close
+ }
 	</style>
 
 
@@ -678,7 +635,7 @@ if(isset($_POST['submit'])){
 
 			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="#" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="index.php#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
 
@@ -702,11 +659,12 @@ if(isset($_POST['submit'])){
 				<ul class="navbar-nav">
 
 					<!-- profile mobile -->
-						<a class="mt-1 d-lg-none" href="profile.php" ><img id="profile" src="../profile/<?=$profile['foto'];?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
+						<a href="index.php#container" class="nav-link  d-lg-none fs-4 " style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -755,14 +713,16 @@ if(isset($_POST['submit'])){
 					</li>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link "  href="dashboard.php">Dashboard</a>
+						<a class="nav-link " href="dashboard.php">Dashboard</a>
 					</li>
 
 
 
-	
+
 					<!-- profile all -->
-						<a class="ms-5 d-none d-lg-block" href="profile.php" ><img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
+							alt="<?=$username?>"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
 
 
 					<!-- bagian dropdown -->
@@ -771,21 +731,24 @@ if(isset($_POST['submit'])){
 					</li>
 
 					<li class="nav-item d-lg-none">
-						<a class="nav-link active"  id="dashboard" href="dashboard.php">Dashboard</a>
+						<a class="nav-link" id="dashboard" href="dashboard.php">Dashboard</a>
 					</li>
 
 
 
 				</ul>
 				<ul class="navbar-nav">
-			
-<ul class="bar-sosmed d-lg-none mt-2">
-            <li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
-      </li>
-      <li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
-      <li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-          </ul>
+
+					<ul class="bar-sosmed d-lg-none mt-2">
+						<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
+						</li>
+						<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+									class="fab fa-facebook"></i></a></li>
+						<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
+						<li><a
+								href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+								target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+					</ul>
 
 				</ul>
 			</div>
@@ -796,151 +759,164 @@ if(isset($_POST['submit'])){
 
 
 
-<!-- awal isi -->
+	<!-- awal isi -->
 	<div class="container mb-3" style="margin-top:100px;">
 
-<!-- awal judul -->
-	<div class="col"><h3 id="judul">Profile</h3></div>
-	<div class="col mb-3">
-	<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="profile.php" ><?= $level; ?></a> / <a href="#" id="point">Edit</a>
-	</div>
-<!-- akhir judul -->
-					<img id="myImg" src="../profile/<?= $profile["foto"] ?>" class="img-fluid mb-3" style="width:100px; height:100px; object-fit:cover;border-radius:50%;border:2px solid white;">
-					<!-- The Modal -->
-					<div id="myModal" class="modal">
-						<img class="modal-content" id="img01">
-					</div>
+		<!-- awal judul -->
+		<div class="col">
+			<h3 id="judul">Profile</h3>
+		</div>
+		<div class="col mb-3">
+			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="profile.php"><?= $level; ?></a> /
+			<a href="#" id="point">Edit</a>
+		</div>
+		<!-- akhir judul -->
 
 
-<form action="" method="post" enctype="multipart/form-data">
-
-					<input name="id" type="text" class="form-control" placeholder="-" 
-						 hidden value="<?= $profile['id']; ?>">
-					<input type="hidden" name="gambarLama" value="<?= $profile["foto"];?>">
-
-<table style="margin:0 auto;">
-
-<tr>
-	<th><label id="profile-text" class="text-center" for="foto">Picture</label></th>
-	<td>:</td>
-	<td>	<input class="form-control form-control-sm" id="foto" type="file" name="gambar"></td>
-</tr>
+		<div class="row mb-3">
+			<label id="profile-text" for="foto" class="meImg">
+				<i class="fas fa-camera" id="kamera"></i>
+				<div class="meImg-bg"></div>
+			</label>
+		</div>
 
 
-<tr>
-	<th>
-		<label id="profile-text" for="username" class="text-center">User Name </label> 
-		</th>
-			<td>:</td>
-				<td>
-					<input name="username" type="text" class="form-control" id="username" placeholder="-" name="username"
+		<!-- foto profile -->
+		<form action="" method="post" enctype="multipart/form-data">
+
+			<input hidden class="form-control form-control-sm" id="foto" type="file" name="gambar"
+				onchange="this.form.submit()">
+
+			<input type="hidden" name="gambarLama" value="<?= $profile["foto"];?>">
+
+			<input name="id" type="text" class="form-control" placeholder="-" hidden value="<?= $profile['id']; ?>">
+
+			<input hidden type="text" name="berhasil">
+
+		</form>
+
+
+		<form action="" method="post" enctype="multipart/form-data">
+
+
+			<input name="id" type="text" class="form-control" placeholder="-" hidden value="<?= $profile['id']; ?>">
+
+
+			<table style="margin:0 auto;">
+				<tr>
+					<th>
+						<label id="profile-text" for="username" class="text-center">User Name </label>
+					</th>
+					<td>:</td>
+					<td>
+						<input name="username" type="text" class="form-control" id="username" placeholder="-" name="username"
 							maxlength="200" required value="<?= $username?>">
-			</td>
-		</tr>
+					</td>
+				</tr>
 
-<tr>
-	<th>
-		<label id="profile-text" for="email" class="text-center">Email </label> 
-				</th>
-			<td>:</td>
-				<td>
-					<input name="email" type="email" class="form-control" id="email" placeholder="-" name="email"
+				<tr>
+					<th>
+						<label id="profile-text" for="email" class="text-center">Email </label>
+					</th>
+					<td>:</td>
+					<td>
+						<input name="email" type="email" class="form-control" id="email" placeholder="-" name="email"
 							maxlength="200" value=" <?= $profile['email']; ?>">
-</td>
-</tr>
+					</td>
+				</tr>
 
-<tr>
-	<th>
-		<label id="profile-text" for="notelp" class="text-center">No Telp </label> 
-				</th>
-				<td>:</td>
-				<td>
-					<input name="no_telp" type="text" class="form-control" id="notelp" placeholder="-" name="notelp"
+				<tr>
+					<th>
+						<label id="profile-text" for="notelp" class="text-center">No Telp </label>
+					</th>
+					<td>:</td>
+					<td>
+						<input name="no_telp" type="text" class="form-control" id="notelp" placeholder="-" name="notelp"
 							maxlength="13" value="<?= $profile['no_telp']; ?>">
-</td>
-</tr>
+					</td>
+				</tr>
 
 
 
-<tr>
-	<th>
-		<label id="profile-text" for="gender" class="text-center">Gender </label> 
-				</th>
-				<td>:</td>
-<td>
+				<tr>
+					<th>
+						<label id="profile-text" for="gender" class="text-center">Gender </label>
+					</th>
+					<td>:</td>
+					<td>
 
 
 
-<div class="form-check">
-  <input name="gender" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="male" <?php if($profile['gender']=='male'){echo"checked";}; ?>>
-  <label class="form-check-label" for="flexRadioDefault1">
-Male
-  </label>
-</div>
+						<div class="form-check">
+							<input name="gender" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+								value="male" <?php if($profile['gender']=='male'){echo"checked";}; ?>>
+							<label class="form-check-label" for="flexRadioDefault1">
+								Male
+							</label>
+						</div>
 
-<div class="form-check">
-  <input name="gender" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="female" 
-<?php if($profile['gender']=='female'){echo"checked";}; ?>
-	>
-  <label class="form-check-label" for="flexRadioDefault2">
-Female
-  </label>
-</div>
+						<div class="form-check">
+							<input name="gender" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+								value="female" <?php if($profile['gender']=='female'){echo"checked";}; ?>>
+							<label class="form-check-label" for="flexRadioDefault2">
+								Female
+							</label>
+						</div>
 
-  <input hidden name="gender" class="form-check-input" type="radio" id="flexRadioDefault2" value="-" 
-<?php if($profile['gender']=='-'){echo"checked";}; ?>
-	>
+						<input hidden name="gender" class="form-check-input" type="radio" id="flexRadioDefault2" value="-"
+							<?php if($profile['gender']=='-'){echo"checked";}; ?>>
 
-</td>
-</tr>
-
-
-<tr>
-	<th>
-		<label id="profile-text" for="lahir" class="text-center">Birthday </label> 
-				</th>
-				<td>:</td>
-				<td>
-			<input type="date" class="form-control" placeholder="Date of Birth" name="lahir" data-provide="datepicker" value="<?= $profile['lahir'];?>">
-</td>
-</tr>
+					</td>
+				</tr>
 
 
-<tr>
-	<th>
-		<label name="alamat" id="profile-text" for="alamat" class="text-center">Addess </label> 
-				</th>
-				<td>:</td>
-				<td>
-					<input type="text" class="form-control" id="alamat" placeholder="-" name="alamat"
-							maxlength="200" value="<?= $profile['alamat']; ?>">
-</td>
-</tr>
+				<tr>
+					<th>
+						<label id="profile-text" for="lahir" class="text-center">Birthday </label>
+					</th>
+					<td>:</td>
+					<td>
+						<input type="date" class="form-control" placeholder="Date of Birth" name="lahir" data-provide="datepicker"
+							value="<?= $profile['lahir'];?>">
+					</td>
+				</tr>
+
+
+				<tr>
+					<th>
+						<label name="alamat" id="profile-text" for="alamat" class="text-center">Addess </label>
+					</th>
+					<td>:</td>
+					<td>
+						<input type="text" class="form-control" id="alamat" placeholder="-" name="alamat" maxlength="200"
+							value="<?= $profile['alamat']; ?>">
+					</td>
+				</tr>
 
 
 
 
-</table>
+			</table>
 
-				
-<div class="row text-center mb-5 mt-3">
-	<div class="col">
-		<button type="submit" class="btn btn-dark" name="submit">Confrim</button> 
+
+			<div class="row text-center mb-5 mt-3">
+				<div class="col">
+					<button type="submit" class="btn btn-dark" name="submit" id="submit">Confrim</button>
+				</div>
+			</div>
+
+
+		</form>
+
 	</div>
-</div>
-
-
-</form>
-
-</div>
-<!-- akhir isi -->
+	<!-- akhir isi -->
 
 	<!-- awal footer -->
 	<div class="border mb-3 mt-auto" style="border-top:black 1px solid;width:90%;margin:auto;"></div>
 
 	<div class="footer container" id="footer">
-		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/" target="_blank"
-				style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
+		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/"
+				target="_blank" style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
 			Picture
 			From: <a href="https://www.instagram.com/goturthings/" target="_blank"
 				style="text-decoration:none;	color: #151e3d;">GoturthinQs</a><span style="color:red;">.</span></p>
@@ -948,9 +924,12 @@ Female
 		<ul class="footer-sosmed d-sm-block d-none">
 			<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
 			</li>
-			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i class="fab fa-facebook"></i></a></li>
+			<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+						class="fab fa-facebook"></i></a></li>
 			<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
-			<li><a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs." target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+			<li><a
+					href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+					target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 		</ul>
 	</div>
 	<!-- akhir footer -->
@@ -1101,8 +1080,8 @@ Female
 	</script>
 
 
-<!-- profile -->
-<script>
+	<!-- profile -->
+	<script>
 	// Get the modal
 	var modal = document.getElementById('myModal');
 

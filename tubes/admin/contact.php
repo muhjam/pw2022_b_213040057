@@ -359,6 +359,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 
+
+
 	/* footer */
 
 	.footer-sosmed {
@@ -468,6 +470,13 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		font: size 20px;
 
 	}
+
+
+		/* hover dropdown */
+	.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
 	</style>
 
 
