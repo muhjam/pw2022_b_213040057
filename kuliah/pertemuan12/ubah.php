@@ -16,9 +16,6 @@ if (isset($_POST["ubah"])) {
 }
 
 
-
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -45,6 +42,8 @@ if (isset($_POST["ubah"])) {
 		<div class="row mt-3">
 			<div class="col-8">
 				<form action="" method="POST" autocomplete="off">
+					<input type="hidden" class="form-control" id="id" name="id" required value="<?= $mhs['id']?>">
+
 					<div class="mb-3">
 						<label for="npm" class="form-label">NPM</label>
 						<input type="text" class="form-control" id="npm" name="npm" required maxlength="9" minlength="9"
@@ -64,7 +63,7 @@ if (isset($_POST["ubah"])) {
 					</div>
 					<div class="mb-3">
 						<label for="gambar" class="form-label">Gambar</label>
-						<input type="file" class="form-control" id="gambar" name="gambar" value="<?= $mhs['gambar']?>">
+						<input type="text" class="form-control" id="gambar" name="gambar" value="<?= $mhs['gambar']?>">
 					</div>
 					<button type="submit" name="ubah" class="btn btn-primary">Ubah Data Mahasiswa</button>
 				</form>

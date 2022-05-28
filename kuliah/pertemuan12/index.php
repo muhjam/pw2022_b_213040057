@@ -1,6 +1,18 @@
 <?php
 require 'functions.php';
 $mahasiswa = query("SELECT * FROM mahasiswa");
+
+// jika tombol cari diklik
+if(isset($_GET['cari'])){
+    $keyword=$_GET['keyword'];
+    $query = "SELECT * FROM mahasiswa WHERE
+            nama LIKE '%$keyword%' OR
+            npm LIKE '%$keyword%'
+            ";
+
+      $mahasiswa=query($query);
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,6 +35,19 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
 		<h1>Daftar Mahasiswa</h1>
 
 		<a href="tambah.php" class="btn btn-primary">Tambah Data Mahasiswa</a>
+
+		<div class="row mt-4">
+			<div class="col-8">
+				<form action="" method="get">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="keyword" placeholder="masukan keyword pencarian"
+							autocomplete="off">
+
+						<button class="btn btn-primary" type="submit" name="cari">Cari!</button>
+					</div>
+				</form>
+			</div>
+		</div>
 
 		<table class="table">
 			<thead>
