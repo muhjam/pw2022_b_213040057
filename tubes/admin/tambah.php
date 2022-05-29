@@ -739,7 +739,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<div class="form-group row mb-3">
 					<label for="harga" class="col-sm-2 col-form-label">Harga</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="harga" placeholder="Rp. xxxxxx" name="harga" maxlength="13"
+						<input type="text" class="form-control" id="harga" placeholder="Rp. xxxxxx" name="harga" maxlength="15"
 							required value="Rp. ">
 					</div>
 				</div>
