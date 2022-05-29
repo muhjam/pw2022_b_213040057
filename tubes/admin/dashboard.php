@@ -216,7 +216,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		}
 	}
 
-	@media (max-width: 994px) {
+	@media (max-width: 990px) {
 		.navbar-nav {
 			text-align: center;
 		}
@@ -442,29 +442,29 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		opacity: 0.7;
 	}
 
-    .container-fluid .navbar .container-fluid section .fas.fa-print {
-    color: #303958;
-}
+	.container-fluid .navbar .container-fluid section .fas.fa-print {
+		color: #303958;
+	}
 
-.container-fluid .navbar .container-fluid section .fas.fa-print:hover {
-    color: #151e3d;
-}
+	.container-fluid .navbar .container-fluid section .fas.fa-print:hover {
+		color: #151e3d;
+	}
 
 
-.container-fluid .navbar .container-fluid section .fas.fa-cart-plus {
-    color: #2d3655;
-}
+	.container-fluid .navbar .container-fluid section .fas.fa-cart-plus {
+		color: #2d3655;
+	}
 
-.container-fluid .navbar .container-fluid section .fas.fa-cart-plus:hover {
-    color: #151e3d;
-}
+	.container-fluid .navbar .container-fluid section .fas.fa-cart-plus:hover {
+		color: #151e3d;
+	}
 
 
 	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
- }
+		display: block;
+		margin-top: 0; // remove the gap so it doesn't close
+	}
 	</style>
 
 
@@ -660,13 +660,12 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<thead class="table-dark">
 					<tr style="text-align:center;">
 						<th>No</th>
-						<th>Gambar</th>
-						<th>Nama Produk</th>
-						<th>Jenis Produk</th>
-						<th>Ukuran</th>
-						<th>Harga</th>
-						<th>Aksi</th>
-
+						<th>Image</th>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Size</th>
+						<th>Price</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 
@@ -709,8 +708,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 
-								<a href="detail.php?id=<?= $goturthing["id"]?>"
-									class="btn badge bg-info mt-2">Detail</a>
+								<a href="detail.php?id=<?= $goturthing["id"]?>" class="btn badge bg-info mt-2">Detail</a>
 							</td>
 
 						</tr>

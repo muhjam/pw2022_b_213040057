@@ -52,6 +52,12 @@ if (isset($_POST["submit"])) {
 }
 
 
+// menghitung jumlah barang
+$goturthings = conn("SELECT * FROM produk");
+$jumlah_barang = mysqli_num_rows($goturthings);
+// menentukan kode barang
+$kode_barang=$jumlah_barang+1;
+
 // jenis produk
 $jenisProduk=query("SELECT * FROM jenis_produk");
 
@@ -214,7 +220,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		}
 	}
 
-	@media (max-width: 994px) {
+	@media (max-width: 990px) {
 		.navbar-nav {
 			text-align: center;
 		}
@@ -279,7 +285,6 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	}
 
 
-
 	@media (max-width: 320px) {
 		#card {
 			width: 50%;
@@ -340,8 +345,6 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 			object-fit: cover;
 		}
 	}
-
-
 
 
 	/* footer */
@@ -431,7 +434,6 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	}
 
 
-
 	/* profile */
 	#profile {
 		transition: 0.3s;
@@ -441,16 +443,70 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		opacity: 0.7;
 	}
 
-		/* hover dropdown */
+	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
- }
+		display: block;
+		margin-top: 0; // remove the gap so it doesn't close
+	}
+
+
+	/* awal body tambah ubah */
+	@media (max-width: 767px) {
+
+		.btn2 {
+			cursor: pointer;
+			margin-left: 30%;
+		}
+
+		.far.fa-arrow-alt-circle-left {
+			color: #c51f1a;
+			margin: 10px 10px 0 10px;
+			font-size: 20px;
+			transition: 0.5s;
+		}
+
+		.far.fa-arrow-alt-circle-left:hover {
+			color: red;
+			transition: 0.6s;
+		}
+	}
+
+	@media (min-width: 768px) {
+
+		.container-fluid .content {
+			margin: 30px auto;
+			padding: 10px;
+			width: 50%;
+			height: 100%;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.2);
+			border-radius: 10px;
+			background-color: #ffffff;
+		}
+
+		.btn2 {
+			cursor: pointer;
+			margin-left: 30%;
+		}
+
+		.far.fa-arrow-alt-circle-left {
+			color: #c51f1a;
+			margin: 10px 10px 0 10px;
+			font-size: 20px;
+			transition: 0.5s;
+		}
+
+		.far.fa-arrow-alt-circle-left:hover {
+			color: red;
+			transition: 0.6s;
+		}
+	}
+
+	/* akhir body tambah ubah */
 	</style>
 
 
 	<!-- link my css -->
-	<link rel="stylesheet" href="../css/style.css">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
 
 </head>
 
@@ -619,17 +675,18 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					<label for="kode_produk" class="col-sm-2 col-form-label">Kode</label>
 					<div class="col-sm-6 ms-auto">
 						<input type="text" class="form-control" id="kode_produk" placeholder="Kode Produk" name="kode_produk"
-							maxlength="8" required>
+							value="KBG<?= $kode_barang; ?>" readonly autocomplete="off">
 					</div>
+
+
 				</div>
 				<div class="form-group row">
 					<label for="nama_produk" class="col-sm-2 col-form-label">Nama</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="nama_produk" placeholder="Nama Produk" name="nama_produk"
-							maxlength="200" required>
+							maxlength="200" required autocomplete="off">
 					</div>
 				</div>
-
 
 
 				<div class="row mt-3 mb-3 ">
@@ -682,8 +739,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<div class="form-group row mb-3">
 					<label for="harga" class="col-sm-2 col-form-label">Harga</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="harga" placeholder="Rp.xxxxxx" name="harga" maxlength="10"
-							required>
+						<input type="text" class="form-control" id="harga" placeholder="Rp.xxxxxx" name="harga" maxlength="13"
+							required value="Rp. " autocomplete="off">
 					</div>
 				</div>
 
@@ -692,14 +749,14 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					<label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
 					<div class="col-sm-9 ms-auto">
 						<input type="text" class="form-control" id="keterangan" placeholder="Ketik Keterangan" name="keterangan"
-							maxlength="200" required>
+							maxlength="200" required autocomplete="off">
 					</div>
 				</div>
 
 				<div class="form-group row mb-3">
 					<label for="warna" class="col-sm-2 col-form-label">Warna</label>
 					<div class="col-sm-10">
-						<input type="color" class="form-control" id="warna" name="warna" required>
+						<input type="color" class="form-control" id="warna" name="warna" required style="width:100px;">
 					</div>
 				</div>
 

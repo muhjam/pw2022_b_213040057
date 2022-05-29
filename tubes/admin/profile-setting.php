@@ -252,7 +252,7 @@ if(isset($_POST['submit'])){
 		}
 	}
 
-	@media (max-width: 994px) {
+	@media (max-width: 990px) {
 		.navbar-nav {
 			text-align: center;
 		}
@@ -477,11 +477,11 @@ if(isset($_POST['submit'])){
 		opacity: 0.7;
 	}
 
-		/* hover dropdown */
+	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
- }
+		display: block;
+		margin-top: 0; // remove the gap so it doesn't close
+	}
 	</style>
 
 

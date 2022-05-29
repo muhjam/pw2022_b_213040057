@@ -281,7 +281,7 @@ if(isset($_POST["berhasil"])){
 		}
 	}
 
-	@media (max-width: 994px) {
+	@media (max-width: 990px) {
 		#card {
 			width: 50%;
 		}
@@ -721,9 +721,9 @@ if(isset($_POST["berhasil"])){
 
 	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
- }
+		display: block;
+		margin-top: 0; // remove the gap so it doesn't close
+	}
 	</style>
 
 
@@ -792,8 +792,8 @@ if(isset($_POST["berhasil"])){
 				<ul class="navbar-nav ms-auto navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
 					<li class=" nav-item dropdown">
-						<a class="nav-link dropdown-toggle d-lg-block d-none" href="#" id="navbarDropdownMenuLink"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<a class="nav-link dropdown-toggle d-lg-block d-none" href="#" id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
 							Shop
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -888,15 +888,15 @@ if(isset($_POST["berhasil"])){
 
 
 
-<!-- foto profile -->
+		<!-- foto profile -->
 		<form action="" method="post" enctype="multipart/form-data">
 
 			<input hidden class="form-control form-control-sm" id="foto" type="file" name="gambar"
 				onchange="this.form.submit()">
 
-				<input type="hidden" name="gambarLama" value="<?= $profile["foto"];?>">
+			<input type="hidden" name="gambarLama" value="<?= $profile["foto"];?>">
 
-					<input name="id" type="text" class="form-control" placeholder="-" hidden value="<?= $profile['id']; ?>">
+			<input name="id" type="text" class="form-control" placeholder="-" hidden value="<?= $profile['id']; ?>">
 
 			<input hidden type="text" name="berhasil">
 

@@ -14,8 +14,8 @@ body {
     font-size: 14px;
 }
 
-@media (max-width: 499px) {
-    .content {
+@media (max-width: 767px) {
+    .konten {
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.2);
     }
     .logo {
@@ -55,8 +55,8 @@ body {
     }
 }
 
-@media (min-width: 500px) {
-    .content {
+@media (min-width: 768px) {
+    .konten {
         margin: 30px auto;
         padding: 10px;
         width: 50%;

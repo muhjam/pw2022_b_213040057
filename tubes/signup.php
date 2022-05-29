@@ -64,97 +64,107 @@ if(isset($_POST["signup"])){
 		rel="stylesheet">
 	<title>GoturthinQs.</title>
 
-<style>
-#preloader {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url(../loader/loader.gif) center no-repeat #fff;
-}
+	<style>
+	#preloader {
+		position: fixed;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+		background: url(../loader/loader.gif) center no-repeat #fff;
+	}
 
-@media(max-width:499px) {
+	@media(max-width:767px) {
 
-    .logo {
-        margin: 30px auto 0 auto;
-    }
-    .logo h1 {
-        margin-bottom: -2px;
-        text-align: center;
-        font-weight: 400;
-        font-family: 'Libre Bodoni', sans-serif;
-        text-transform: uppercase;
-        color: #151e3d;
-        ;
-    }
-    .logo h1 span {
-        color: red;
-    }
-    .logo .subtitle {
-        color: rgba(0, 0, 0, 0.692);
-        text-align: center;
-        font-weight: 500;
-        font-family: 'Montserrat', sans-serif;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-    }
-    p {
-        color: red;
-        font-style: italic;
-        font-size: 15px;
-    }
-    .logo .subtitle {
-        color: rgba(0, 0, 0, 0.692);
-        text-align: center;
-        font-weight: 500;
-        font-family: 'Montserrat', sans-serif;
-        text-transform: uppercase;
-        font-size: 10px;
-    }
-}
+		.logo {
+			margin: 30px auto 0 auto;
+		}
 
-@media(min-width:500px) {
-    .konten {
-        margin: 30px auto;
-        padding: 10px;
-        width: 50%;
-        height: 100%;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.20);
-    }
-    .logo {
-        margin: 30px auto 0 auto;
-        width: 50%;
-        height: 50%;
-    }
-    .logo h1 {
-        margin-bottom: -2px;
-        text-align: center;
-        font-weight: 400;
-        font-family: 'Libre Bodoni', sans-serif;
-        text-transform: uppercase;
-        color: #151e3d;
-        ;
-    }
-    .logo h1 span {
-        color: red;
-    }
-    .logo .subtitle {
-        color: rgba(0, 0, 0, 0.692);
-        text-align: center;
-        font-weight: 500;
-        font-family: 'Montserrat', sans-serif;
-        text-transform: uppercase;
-        font-size: 20px;
-    }
-    p {
-        color: red;
-        font-style: italic;
-        font-size: 15px;
-    }
-}
-</style>
+		.logo h1 {
+			margin-bottom: -2px;
+			text-align: center;
+			font-weight: 400;
+			font-family: 'Libre Bodoni', sans-serif;
+			text-transform: uppercase;
+			color: #151e3d;
+			;
+		}
+
+		.logo h1 span {
+			color: red;
+		}
+
+		.logo .subtitle {
+			color: rgba(0, 0, 0, 0.692);
+			text-align: center;
+			font-weight: 500;
+			font-family: 'Montserrat', sans-serif;
+			text-transform: uppercase;
+			margin-bottom: 20px;
+		}
+
+		p {
+			color: red;
+			font-style: italic;
+			font-size: 15px;
+		}
+
+		.logo .subtitle {
+			color: rgba(0, 0, 0, 0.692);
+			text-align: center;
+			font-weight: 500;
+			font-family: 'Montserrat', sans-serif;
+			text-transform: uppercase;
+			font-size: 10px;
+		}
+	}
+
+	@media(min-width:768px) {
+		.konten {
+			margin: 30px auto;
+			padding: 10px;
+			width: 50%;
+			height: 100%;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.20);
+		}
+
+		.logo {
+			margin: 30px auto 0 auto;
+			width: 50%;
+			height: 50%;
+		}
+
+		.logo h1 {
+			margin-bottom: -2px;
+			text-align: center;
+			font-weight: 400;
+			font-family: 'Libre Bodoni', sans-serif;
+			text-transform: uppercase;
+			color: #151e3d;
+			;
+		}
+
+		.logo h1 span {
+			color: red;
+		}
+
+		.logo .subtitle {
+			color: rgba(0, 0, 0, 0.692);
+			text-align: center;
+			font-weight: 500;
+			font-family: 'Montserrat', sans-serif;
+			text-transform: uppercase;
+			font-size: 20px;
+		}
+
+		p {
+			color: red;
+			font-style: italic;
+			font-size: 15px;
+		}
+	}
+	</style>
 
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/login.css">

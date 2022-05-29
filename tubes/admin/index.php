@@ -31,15 +31,6 @@ exit;
 require 'functions.php';
 
 
-// pagination
-// konfigurasi
-
-
-
-
-
-
-
 $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.id DESC");
   
 
@@ -241,7 +232,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		}
 	}
 
-	@media (max-width: 994px) {
+	@media (max-width: 990px) {
 		#card {
 			width: 50%;
 		}
@@ -479,11 +470,11 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		opacity: 0.7;
 	}
 
-		/* hover dropdown */
+	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
- }
+		display: block;
+		margin-top: 0; // remove the gap so it doesn't close
+	}
 	</style>
 
 

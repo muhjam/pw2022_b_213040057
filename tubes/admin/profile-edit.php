@@ -261,7 +261,7 @@ if(isset($_POST["berhasil"])){
 		}
 	}
 
-	@media (max-width: 994px) {
+	@media (max-width: 990px) {
 		#card {
 			width: 50%;
 		}
@@ -603,11 +603,11 @@ if(isset($_POST["berhasil"])){
 		text-align: center;
 	}
 
-		/* hover dropdown */
+	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
- }
+		display: block;
+		margin-top: 0; // remove the gap so it doesn't close
+	}
 	</style>
 
 

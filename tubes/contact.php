@@ -222,7 +222,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 		}
 	}
 
-	@media (max-width: 994px) {
+	@media (max-width: 990px) {
 		.navbar-nav {
 			text-align: center;
 		}
@@ -446,11 +446,11 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 		opacity: 0.7;
 	}
 
-		/* hover dropdown */
+	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
- }
+		display: block;
+		margin-top: 0; // remove the gap so it doesn't close
+	}
 	</style>
 
 

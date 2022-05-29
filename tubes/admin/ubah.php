@@ -218,7 +218,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		}
 	}
 
-	@media (max-width: 994px) {
+	@media (max-width: 990px) {
 		.navbar-nav {
 			text-align: center;
 		}
@@ -232,6 +232,61 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 			top: 15px;
 		}
 	}
+
+
+
+	/* awal body tambah ubah */
+	@media (max-width: 767px) {
+
+		.btn2 {
+			cursor: pointer;
+			margin-left: 30%;
+		}
+
+		.far.fa-arrow-alt-circle-left {
+			color: #c51f1a;
+			margin: 10px 10px 0 10px;
+			font-size: 20px;
+			transition: 0.5s;
+		}
+
+		.far.fa-arrow-alt-circle-left:hover {
+			color: red;
+			transition: 0.6s;
+		}
+	}
+
+	@media (min-width: 768px) {
+
+		.container-fluid .content {
+			margin: 30px auto;
+			padding: 10px;
+			width: 50%;
+			height: 100%;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.2);
+			border-radius: 10px;
+			background-color: #ffffff;
+		}
+
+		.btn2 {
+			cursor: pointer;
+			margin-left: 30%;
+		}
+
+		.far.fa-arrow-alt-circle-left {
+			color: #c51f1a;
+			margin: 10px 10px 0 10px;
+			font-size: 20px;
+			transition: 0.5s;
+		}
+
+		.far.fa-arrow-alt-circle-left:hover {
+			color: red;
+			transition: 0.6s;
+		}
+	}
+
+	/* akhir body tambah ubah */
 
 	@media (max-width: 425px) {
 		#card {
@@ -444,16 +499,16 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		opacity: 0.7;
 	}
 
-		/* hover dropdown */
+	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
- }
+		display: block;
+		margin-top: 0; // remove the gap so it doesn't close
+	}
 	</style>
 
 
 	<!-- link my css -->
-	<link rel="stylesheet" href="../css/style.css">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
 
 </head>
 
@@ -629,14 +684,14 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					<label for="kode_produk" class="col-sm-2 col-form-label">Kode</label>
 					<div class="col-sm-6 ms-auto">
 						<input type="text" placeholder="Kode Produk" class="form-control" id="kode_produk" name="kode_produk"
-							maxlength="8" required value="<?= $produk["kode_produk"]?>">
+							maxlength="8" required value="<?= $produk["kode_produk"]?>" readonly autocomplete="off">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="nama_produk" class="col-sm-2 col-form-label">Nama</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="nama_produk" placeholder="Nama Produk" name="nama_produk"
-							maxlength="200" required value="<?= $produk["nama_produk"]?>">
+							maxlength="200" required value="<?= $produk["nama_produk"]?>" autocomplete="off">
 					</div>
 				</div>
 
@@ -692,8 +747,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<div class="form-group row mb-3">
 					<label for="harga" class="col-sm-2 col-form-label">Harga</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="harga" placeholder="Rp.xxxxxx" name="harga" maxlength="11"
-							required value="<?= $produk["harga"]?>">
+						<input type="text" class="form-control" id="harga" placeholder="Rp.xxxxxx" name="harga" maxlength="13"
+							required value="Rp. <?= $produk["harga"]?>" autocomplete="off">
 					</div>
 				</div>
 
@@ -702,7 +757,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					<label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
 					<div class="col-sm-9 ms-auto">
 						<input type="text" class="form-control" id="keterangan" placeholder="Ketik Keterangan" name="keterangan"
-							maxlength="200" required value="<?= $produk["keterangan"]?>">
+							maxlength="200" required value="<?= $produk["keterangan"]?>" autocomplete="off">
 					</div>
 				</div>
 
@@ -710,7 +765,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<div class="form-group row mb-3">
 					<label for="warna" class="col-sm-2 col-form-label">Warna</label>
 					<div class="col-sm-10">
-						<input type="color" class="form-control" id="warna" name="warna" required value="<?= $produk["warna"]?>">
+						<input type="color" class="form-control" id="warna" name="warna" required value="<?= $produk["warna"]?>"
+							style="width:100px;">
 					</div>
 				</div>
 

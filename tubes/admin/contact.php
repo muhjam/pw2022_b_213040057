@@ -155,6 +155,21 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		text-align: center;
 	}
 
+	.card-title {
+		text-align: center;
+		font-family: "poppins", sans-serif;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 12px;
+	}
+
+	.card-text {
+		text-align: center;
+		font-family: "poppins", sans-serif;
+		font-weight: 400;
+		text-transform: uppercase;
+		font-size: 11px;
+	}
 
 	#exit {
 		position: absolute;
@@ -164,16 +179,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		cursor: pointer;
 	}
 
-	#logout {
-		color: #b22222;
-	}
-
-	#logout:hover {
-		color: #ff0000;
-	}
 
 	@media (min-width: 1400px) {
-
 
 		/* cari1 */
 		.formm {
@@ -221,18 +228,9 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		}
 	}
 
-	@media (max-width: 994px) {
-		#card {
-			width: 50%;
-		}
-
+	@media (max-width: 990px) {
 		.navbar-nav {
 			text-align: center;
-		}
-
-		#card img {
-			height: 300px;
-			object-fit: cover;
 		}
 
 		/* cari1 */
@@ -360,7 +358,6 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 
-
 	/* footer */
 
 	.footer-sosmed {
@@ -448,6 +445,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	}
 
 
+
 	/* profile */
 	#profile {
 		transition: 0.3s;
@@ -457,26 +455,11 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		opacity: 0.7;
 	}
 
-	#profile-text {
-		font-family: "Montserrat", sans-serif;
-		font-weight: 600;
-		font: size 20px;
-	}
-
-
-	#profile-text span {
-		font-family: "Montserrat", sans-serif;
-		font-weight: 500;
-		font: size 20px;
-
-	}
-
-
-		/* hover dropdown */
+	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
- }
+		display: block;
+		margin-top: 0; // remove the gap so it doesn't close
+	}
 	</style>
 
 
