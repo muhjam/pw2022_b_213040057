@@ -747,8 +747,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<div class="form-group row mb-3">
 					<label for="harga" class="col-sm-2 col-form-label">Harga</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="harga" placeholder="Rp.xxxxxx" name="harga" maxlength="13"
-							required value="Rp. <?= $produk["harga"]?>" autocomplete="off">
+						<input type="text" class="form-control" id="harga" placeholder="Rp. xxxxxx" name="harga" maxlength="13"
+							required value="Rp. <?= $produk["harga"]?>">
 					</div>
 				</div>
 
@@ -757,7 +757,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					<label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
 					<div class="col-sm-9 ms-auto">
 						<input type="text" class="form-control" id="keterangan" placeholder="Ketik Keterangan" name="keterangan"
-							maxlength="200" required value="<?= $produk["keterangan"]?>" autocomplete="off">
+							maxlength="200" required value="<?= $produk["keterangan"]?>">
 					</div>
 				</div>
 
