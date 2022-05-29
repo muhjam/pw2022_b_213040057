@@ -530,7 +530,7 @@ if(isset($_POST['submit'])){
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
 							title="<?=$username?>"></a>
 
 
@@ -584,7 +584,7 @@ if(isset($_POST['submit'])){
 					</li>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link" href="dashboard.php">Dashboard</a>
+						<a class="nav-link active" href="dashboard.php">Dashboard</a>
 					</li>
 
 
@@ -594,7 +594,7 @@ if(isset($_POST['submit'])){
 					<!-- profile all -->
 					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
 							alt="<?=$username?>" title="<?=$username?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 
 
@@ -604,7 +604,7 @@ if(isset($_POST['submit'])){
 					</li>
 
 					<li class="nav-item d-lg-none">
-						<a class="nav-link " id="dashboard" href="dashboard.php">Dashboard</a>
+						<a class="nav-link active" id="dashboard" href="dashboard.php">Dashboard</a>
 					</li>
 
 
