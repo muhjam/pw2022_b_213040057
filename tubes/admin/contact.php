@@ -510,7 +510,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
+							title="<?=$username?>"></a>
 
 					<li class="nav-item">
 						<a href="index.php#container" class="nav-link  d-lg-none fs-4 " style="cursor:pointer;"
@@ -571,7 +572,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 					<!-- profile all -->
 					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							alt="<?=$username?>"
+							alt="<?=$username?>" title="<?=$username?>"
 							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
 
 

@@ -671,7 +671,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"
+							title="<?=$username?>"></a>
 
 
 					<li class="nav-item">
@@ -732,7 +733,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 					<!-- profile all -->
 					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							alt="<?=$username?>"
+							alt="<?=$username?>" title="<?=$username?>"
 							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
 
 
@@ -784,7 +785,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		</div>
 		<!-- akhir judul -->
 		<img id="myImg" src="../profile/<?= $profile["foto"] ?>" class="img-fluid mb-3"
-			style="width:100px; height:100px; object-fit:cover;border-radius:50%;border:2px solid white;">
+			style="width:100px; height:100px; object-fit:cover;border-radius:50%;border:2px solid white;"
+			title="<?=$username?>">
 		<!-- The Modal -->
 		<div id="myModal" class="modal">
 			<img class="modal-content" id="img01">

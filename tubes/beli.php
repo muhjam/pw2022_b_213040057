@@ -608,7 +608,8 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
+							title="<?=$username?>"></a>
 
 
 

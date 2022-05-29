@@ -778,7 +778,8 @@ if(isset($_POST["berhasil"])){
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"
+							title="<?=$username?>"></a>
 
 
 
@@ -834,7 +835,7 @@ if(isset($_POST["berhasil"])){
 
 					<!-- profile all -->
 					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="profile/<?=$profile['foto'];?>"
-							alt="<?=$username?>"
+							alt="<?=$username?>" title="<?=$username?>"
 							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
 
 

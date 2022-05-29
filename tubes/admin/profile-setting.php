@@ -530,7 +530,8 @@ if(isset($_POST['submit'])){
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"
+							title="<?=$username?>"></a>
 
 
 					<li class="nav-item">
@@ -592,7 +593,7 @@ if(isset($_POST['submit'])){
 
 					<!-- profile all -->
 					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							alt="<?=$username?>"
+							alt="<?=$username?>" title="<?=$username?>"
 							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
 
 
@@ -684,7 +685,8 @@ if(isset($_POST['submit'])){
 						<tr style="text-align:center;">
 							<td><?= $i; ?></td>
 
-							<td><img src=" ../profile/<?= $user["foto"] ?>" style="width:100px; height:100px; object-fit:cover">
+							<td><img src=" ../profile/<?= $user["foto"] ?>" style="width:100px; height:100px; object-fit:cover"
+									alt="<?=$username?>" title="<?=$username?>">
 							</td>
 							<td style="text-transform:capitalize;"><?= $user["username"]; ?></td>
 							<td style="text-transform:capitalize;"><?= $user["level"]; ?></td>
