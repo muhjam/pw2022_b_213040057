@@ -223,16 +223,16 @@ if(isset($_POST["confrim"])){
 				<p>Konfirmasi password tidak sesuai</p>
 				<?php endif; ?>
 				<input type="hidden" name="username" class="form-control" id="exampleDropdownFormPassword1"
-					placeholder="Masukan Password Baru" value="<?=$_GET['username']; ?>">
+					placeholder="Masukan Password Baru" value="<?=$_GET['username']; ?>" maxlength="20">
 				<div class="mb-3">
 					<label for="exampleDropdownFormPassword1" class="form-label">New Password</label>
 					<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Masukan Password Baru" required>
+						placeholder="Masukan Password Baru" required required minlength="8">
 				</div>
 				<div class="mb-3">
 					<label for="exampleDropdownFormPassword1" class="form-label">Konfirmasi Password</label>
 					<input type="password" name="password2" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Konfirmasi Password" required>
+						placeholder="Konfirmasi Password" required required minlength="8">
 				</div>
 				<button type="submit" class="btn btn-outline-danger " name="change">Change</button>
 

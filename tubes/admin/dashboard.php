@@ -450,9 +450,18 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		color: #151e3d;
 	}
 
+	.container-fluid .navbar .container-fluid section .fas.fa-search {
+		color: #2d3655;
+	}
+
+
+	.container-fluid .navbar .container-fluid section .fas.fa-search:hover {
+		color: #2d3655;
+	}
+
 
 	.container-fluid .navbar .container-fluid section .fas.fa-cart-plus {
-		color: #2d3655;
+		color: #151e3d;
 	}
 
 	.container-fluid .navbar .container-fluid section .fas.fa-cart-plus:hover {
@@ -643,13 +652,14 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				</form> -->
 
 				<!-- ganjelan -->
-				<div></div>
+				<section>
+					<a href="users.php"><i class="fas fa-search"> Users</i></a>
+				</section>
 				<section>
 					<a href="../Goturprint.php" target="_blank"><i class="fas fa-print"> Print</i></a> <a
 						style="margin:0 5px;">|</a>
 					<a href="tambah.php"><i class="fas fa-cart-plus">
 							Add</i></a>
-
 				</section>
 
 			</div>

@@ -196,17 +196,17 @@ if(isset($_POST["signup"])){
 
 					<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
 					<input type="text" name="username" class="form-control" id="exampleDropdownFormEm"
-						placeholder="Masukan Username" required>
+						placeholder="Masukan Username" required maxlength="20">
 				</div>
 				<div class="mb-3">
 					<label for="exampleDropdownFormPassword1" class="form-label">Password</label>
 					<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Masukan Password" required>
+						placeholder="Masukan Password" required minlength="8">
 				</div>
 				<div class="mb-3">
 					<label for="exampleDropdownFormPassword1" class="form-label">Konfirmasi Password</label>
 					<input type="password" name="password2" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Konfirmasi Password" required>
+						placeholder="Konfirmasi Password" required minlength="8">
 				</div>
 				<button type="submit" class="btn btn-outline-danger " name="signup">Sign Up</button>
 

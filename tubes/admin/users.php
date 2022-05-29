@@ -5,6 +5,7 @@ session_start();
 $level=$_SESSION['level'];
 $username=$_SESSION['username'];
 
+
 if(!isset($_SESSION["level"])){
 header("location:login.php");
 exit;
@@ -14,8 +15,6 @@ if($_SESSION["level"]!='admin'){
 	header("location:$level/index.php");
 exit;
 }
-
-
 
 
 if($_SESSION["status"]=='ban'){
@@ -40,16 +39,16 @@ require 'functions.php';
 
 
 
-$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.id DESC");
-  
 
+// pagination
+// konfigurasi
+$jumlahDataPerHalaman=5;
+$jumlahData= count(query("SELECT * FROM users"));
+$jumlahHalaman= ceil($jumlahData / $jumlahDataPerHalaman);
+$halamanAktif=(isset($_GET["page"])) ? $_GET["page"] : 1;
+$awalData=($jumlahDataPerHalaman * $halamanAktif)-$jumlahDataPerHalaman;
 
-if(isset($_GET['cari'])){
-
-$goturthings=cari($_GET["cari"]);
-
-}
-
+$users = query("SELECT * FROM users LIMIT $awalData,$jumlahDataPerHalaman");
 
 
 
@@ -90,22 +89,6 @@ if(isset($_POST['submit'])){
 }
 
 
-if(isset($_POST["berhasil"])){
-	   // cek apakag profile berhasil diedit atau tidak
-    if (editFoto($_POST) > 0) {
-        echo "
-        <script>
-        alert('profile berhasil diubah')
-        document.location.href='profile.php'
-        </script>";
-    } else {
-        echo"
-        <script>
-        alert('profile belum diubah')
-        document.location.href='profile.php'
-        </script>";
-    }
-	}
 
 
 
@@ -146,6 +129,7 @@ if(isset($_POST["berhasil"])){
 	<!-- AOS -->
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<title>GoturthinQs.</title>
+
 
 
 	<style>
@@ -195,6 +179,21 @@ if(isset($_POST["berhasil"])){
 		text-align: center;
 	}
 
+	.card-title {
+		text-align: center;
+		font-family: "poppins", sans-serif;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 12px;
+	}
+
+	.card-text {
+		text-align: center;
+		font-family: "poppins", sans-serif;
+		font-weight: 400;
+		text-transform: uppercase;
+		font-size: 11px;
+	}
 
 	#exit {
 		position: absolute;
@@ -204,16 +203,8 @@ if(isset($_POST["berhasil"])){
 		cursor: pointer;
 	}
 
-	#logout {
-		color: #b22222;
-	}
-
-	#logout:hover {
-		color: #ff0000;
-	}
 
 	@media (min-width: 1400px) {
-
 
 		/* cari1 */
 		.formm {
@@ -262,17 +253,8 @@ if(isset($_POST["berhasil"])){
 	}
 
 	@media (max-width: 990px) {
-		#card {
-			width: 50%;
-		}
-
 		.navbar-nav {
 			text-align: center;
-		}
-
-		#card img {
-			height: 300px;
-			object-fit: cover;
 		}
 
 		/* cari1 */
@@ -398,8 +380,6 @@ if(isset($_POST["berhasil"])){
 	}
 
 
-
-
 	/* footer */
 
 	.footer-sosmed {
@@ -487,6 +467,7 @@ if(isset($_POST["berhasil"])){
 	}
 
 
+
 	/* profile */
 	#profile {
 		transition: 0.3s;
@@ -494,113 +475,6 @@ if(isset($_POST["berhasil"])){
 
 	#profile:hover {
 		opacity: 0.7;
-	}
-
-	#profile-text {
-		font-family: "Montserrat", sans-serif;
-		font-weight: 600;
-		font: size 20px;
-	}
-
-
-	#profile-text span {
-		font-family: "Montserrat", sans-serif;
-		font-weight: 500;
-		font: size 20px;
-
-	}
-
-
-
-	/* DETAIL */
-
-	/* The Close Button */
-
-	.close {
-		position: absolute;
-		top: 15px;
-		right: 35px;
-		color: #f1f1f1;
-		font-size: 40px;
-		font-weight: bold;
-		transition: 0.3s;
-	}
-
-	.close:hover,
-	.close:focus {
-		color: #bbb;
-		text-decoration: none;
-		cursor: pointer;
-	}
-
-
-
-	/* 100% Image Width on Smaller Screens */
-
-	@media only screen and (max-width: 700px) {
-		.modal-content {
-			width: 100%;
-		}
-	}
-
-
-
-	#edit {
-		color: #03254c;
-		font-weight: bold;
-	}
-
-	#edit:hover {
-		color: #1167b1;
-	}
-
-
-
-	#kamera {
-		font-size: 20px;
-		color: #f9f9f9;
-		margin: 35px -10px;
-		position: absolute;
-		z-index: 1;
-		opacity: 0;
-	}
-
-
-	.meImg:hover #kamera {
-		opacity: 1;
-		transition: 0.2s;
-	}
-
-	.meImg-bg {
-		width: 1000px;
-		height: 100px;
-		margin-left: -12px;
-		background-color: grey;
-		object-fit: cover;
-		opacity: 0;
-		transition: 0.2s;
-	}
-
-	.meImg:hover .meImg-bg {
-		opacity: 0.6;
-		transition: 0.2s;
-	}
-
-	.meImg {
-		border-radius: 50%;
-		border: 2px solid white;
-		margin-left: auto;
-		margin-right: auto;
-		width: 100px;
-		height: 100px;
-		background-image: url("../profile/<?= $profile["foto"] ?>");
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		cursor: pointer;
-		display: block;
-		overflow: hidden;
-		text-align: center;
 	}
 
 	/* hover dropdown */
@@ -612,13 +486,11 @@ if(isset($_POST["berhasil"])){
 
 
 	<!-- link my css -->
-	<!-- <link rel="stylesheet" href="css/main.css"> -->
+	<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
-
 
 
 
@@ -635,13 +507,13 @@ if(isset($_POST["berhasil"])){
 
 			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="index.php#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="#" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
 
 			<form id="bar" action="" method="post" class="d-lg-block" style="display:none;">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
-					name="keyword" autocomplete="off" id="keyword">
+					name="keyword" autofocus autocomplete="off" id="keyword">
 
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
@@ -649,14 +521,12 @@ if(isset($_POST["berhasil"])){
 			<div class="collapse navbar-collapse" id="navbarScroll">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#"><i
 							class="fas fa-search"></i></a> </label>
 
 
-
-
-
 				<ul class="navbar-nav">
+
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
@@ -665,7 +535,7 @@ if(isset($_POST["berhasil"])){
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 " style="cursor:pointer;"
+						<a href="index.php#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -714,8 +584,9 @@ if(isset($_POST["berhasil"])){
 					</li>
 
 					<li class="nav-item d-lg-block d-none">
-						<a class="nav-link " href="dashboard.php">Dashboard</a>
+						<a class="nav-link" href="dashboard.php">Dashboard</a>
 					</li>
+
 
 
 
@@ -726,13 +597,14 @@ if(isset($_POST["berhasil"])){
 							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
 
 
+
 					<!-- bagian dropdown -->
 					<li class="nav-item fs-4 d-lg-none">
 						<a class="nav-link" id="contact" href="contact.php">Contact</a>
 					</li>
 
 					<li class="nav-item d-lg-none">
-						<a class="nav-link" id="dashboard" href="dashboard.php">Dashboard</a>
+						<a class="nav-link " id="dashboard" href="dashboard.php">Dashboard</a>
 					</li>
 
 
@@ -751,6 +623,7 @@ if(isset($_POST["berhasil"])){
 								target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 					</ul>
 
+
 				</ul>
 			</div>
 		</div>
@@ -759,158 +632,130 @@ if(isset($_POST["berhasil"])){
 
 
 
-
-	<!-- awal isi -->
-	<div class="container mb-3" style="margin-top:100px;">
-
+	<div class="container" style="margin-top:100px;">
 		<!-- awal judul -->
 		<div class="col">
-			<h3 id="judul">Profile</h3>
+			<h3 id="judul">Dashboard</h3>
 		</div>
 		<div class="col mb-3">
-			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="profile.php"><?= $level; ?></a> /
-			<a href="#" id="point">Edit</a>
+			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="dashboard.php">Dashboard</a> /
+			<a href="#" class="fw-bold" id="point">Users</a>
 		</div>
 		<!-- akhir judul -->
+	</div>
 
 
-		<div class="row mb-3">
-			<label id="profile-text" for="foto" class="meImg">
-				<i class="fas fa-camera" id="kamera"></i>
-				<div class="meImg-bg"></div>
-			</label>
+
+
+	<div class="container-fluid">
+
+
+		<div id="container">
+			<table class="table" cellpadding="10" cellspacing="0">
+
+				<thead class="table-dark">
+					<tr style="text-align:center;">
+						<th>No</th>
+						<th>Picture</th>
+						<th>User Name</th>
+						<th>Email</th>
+						<th>No Telp</th>
+						<th>Address</th>
+					</tr>
+				</thead>
+
+
+				<!-- tidak ada -->
+				<?php if(empty($users)):?>
+				<tr>
+					<td colspan="7">
+						<h1
+							style="color:#a9a9a9;font-family: 'Open Sans', sans-serif;margin-top:120px;text-align:center;height:200px;display:;">
+							Tidak Ada
+							Data</h1>
+					</td>
+
+					<?php endif; ?>
+
+
+					<!-- isi tabel -->
+
+					<?php $i=1; ?>
+					<?php foreach ($users as $user ) :?>
+					<tbody>
+						<tr style="text-align:center;">
+							<td><?= $i; ?></td>
+
+							<td><img src=" ../profile/<?= $user["foto"] ?>" style="width:100px; height:100px; object-fit:cover"
+									alt="<?=$username?>" title="<?=$username?>">
+							</td>
+							<td style="text-transform:capitalize;"><?= $user["username"]; ?></td>
+							<td style="text-transform:capitalize;">
+								<?php if($user['email']==''): ?>
+								<?= "-"; ?>
+								<?php endif; ?>
+								<?php if($user['email']!=''): ?>
+								<?= $user['email']; ?>
+								<?php endif; ?></td>
+
+							<td>
+								<?php if($user['no_telp']==''): ?>
+								<?= "-"; ?>
+								<?php endif; ?>
+								<?php if($user['no_telp']!=''): ?>
+								<?= $user['no_telp']; ?>
+								<?php endif; ?></td>
+
+							<td style="text-transform:capitalize;">
+								<?php if($user['alamat']==''): ?>
+								<?= "-"; ?>
+								<?php endif; ?>
+								<?php if($user['alamat']!=''): ?>
+								<?= $user['alamat']; ?>
+								<?php endif; ?></td>
+							<td>
+
+						</tr>
+
+					</tbody>
+					<?php $i++; ?>
+					<?php endforeach; ?>
+
+			</table>
+		</div>
+
+		<!-- Pagination -->
+		<div id="page" class="mb-5">
+			<?php if($halamanAktif>1): ?>
+			<a style="margin-right:5px;" href="?page=<?= $halamanAktif - 1; ?>">&lt</a>
+			<?php endif; ?>
+
+			<?php for($i=1;$i<=$jumlahHalaman;$i++) : ?>
+
+			<?php if($i == $halamanAktif): ?>
+			<a href="?page=<?= $i; ?>" style="font-weight:bold;color:red;margin:0 5px;"><?= $i; ?></a>
+
+			<?php else: ?>
+			<a style="margin:0 5px;" href="?page=<?= $i; ?>"><?= $i; ?></a>
+			<?php endif; ?>
+
+			<?php endfor; ?>
+
+			<?php if($halamanAktif<$jumlahHalaman): ?>
+			<a href="?page=<?= $halamanAktif + 1; ?>">&gt</a>
+			<?php endif; ?>
+
+
+
+
+
+
 		</div>
 
 
-		<!-- foto profile -->
-		<form action="" method="post" enctype="multipart/form-data">
-
-			<input hidden class="form-control form-control-sm" id="foto" type="file" name="gambar"
-				onchange="this.form.submit()">
-
-			<input type="hidden" name="gambarLama" value="<?= $profile["foto"];?>">
-
-			<input name="id" type="text" class="form-control" placeholder="-" hidden value="<?= $profile['id']; ?>">
-
-			<input hidden type="text" name="berhasil">
-
-		</form>
-
-
-		<form action="" method="post" enctype="multipart/form-data">
-
-
-			<input name="id" type="text" class="form-control" placeholder="-" hidden value="<?= $profile['id']; ?>">
-
-
-			<table style="margin:0 auto;">
-				<tr>
-					<th>
-						<label id="profile-text" for="username" class="text-center">User Name </label>
-					</th>
-					<td>:</td>
-					<td>
-						<input name="username" type="text" class="form-control" id="username" placeholder="-" name="username"
-							maxlength="20" required value="<?= $username?>">
-					</td>
-				</tr>
-
-				<tr>
-					<th>
-						<label id="profile-text" for="email" class="text-center">Email </label>
-					</th>
-					<td>:</td>
-					<td>
-						<input name="email" type="email" class="form-control" id="email" placeholder="-" name="email"
-							maxlength="200" value=" <?= $profile['email']; ?>">
-					</td>
-				</tr>
-
-				<tr>
-					<th>
-						<label id="profile-text" for="notelp" class="text-center">No Telp </label>
-					</th>
-					<td>:</td>
-					<td>
-						<input name="no_telp" type="text" class="form-control" id="notelp" placeholder="-" name="notelp"
-							maxlength="13" value="<?= $profile['no_telp']; ?>">
-					</td>
-				</tr>
-
-
-
-				<tr>
-					<th>
-						<label id="profile-text" for="gender" class="text-center">Gender </label>
-					</th>
-					<td>:</td>
-					<td>
-
-
-
-						<div class="form-check">
-							<input name="gender" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-								value="male" <?php if($profile['gender']=='male'){echo"checked";}; ?>>
-							<label class="form-check-label" for="flexRadioDefault1">
-								Male
-							</label>
-						</div>
-
-						<div class="form-check">
-							<input name="gender" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-								value="female" <?php if($profile['gender']=='female'){echo"checked";}; ?>>
-							<label class="form-check-label" for="flexRadioDefault2">
-								Female
-							</label>
-						</div>
-
-						<input hidden name="gender" class="form-check-input" type="radio" id="flexRadioDefault2" value="-"
-							<?php if($profile['gender']=='-'){echo"checked";}; ?>>
-
-					</td>
-				</tr>
-
-
-				<tr>
-					<th>
-						<label id="profile-text" for="lahir" class="text-center">Birthday </label>
-					</th>
-					<td>:</td>
-					<td>
-						<input type="date" class="form-control" placeholder="Date of Birth" name="lahir" data-provide="datepicker"
-							value="<?= $profile['lahir'];?>">
-					</td>
-				</tr>
-
-
-				<tr>
-					<th>
-						<label name="alamat" id="profile-text" for="alamat" class="text-center">Addess </label>
-					</th>
-					<td>:</td>
-					<td>
-						<input type="text" class="form-control" id="alamat" placeholder="-" name="alamat" maxlength="200"
-							value="<?= $profile['alamat']; ?>">
-					</td>
-				</tr>
-
-
-
-
-			</table>
-
-
-			<div class="row text-center mb-5 mt-3">
-				<div class="col">
-					<button type="submit" class="btn btn-dark" name="submit" id="submit">Confrim</button>
-				</div>
-			</div>
-
-
-		</form>
 
 	</div>
-	<!-- akhir isi -->
+
 
 	<!-- awal footer -->
 	<div class="border mb-3 mt-auto" style="border-top:black 1px solid;width:90%;margin:auto;"></div>
@@ -936,102 +781,19 @@ if(isset($_POST["berhasil"])){
 	<!-- akhir footer -->
 
 
-	<!-- AOS -->
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-	<script>
-	AOS.init();
-	</script>
-
-
-	<!-- loadmore -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-	<!-- jquery -->
-	<script src="jquery/costum.js"></script>
 
 
 	<script>
-	configObj = {
-		"buttonD": "M8 18.568L10.8 21.333 16 16.198 21.2 21.333 24 18.568 16 10.667z",
-		"buttonT": "translate(-1148 -172) translate(832 140) translate(32 32) translate(284)",
-		"shadowSize": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
-		"roundnessSize": "12px",
-		"buttonDToBottom": "24px",
-		"buttonDToRight": "24px",
-		"selectedBackgroundColor": "#f7f7f7",
-		"selectedIconColor": "#091b2a",
-		"buttonWidth": "40px",
-		"buttonHeight": "40px",
-		"svgWidth": "32px",
-		"svgHeight": "32px"
-	};
-
-	function createButton(obj, pageSimulator) {
-		const body = document.querySelector("body");
-		backToTopButton = document.createElement("span");
-		backToTopButton.classList.add("softr-back-to-top-button");
-		backToTopButton.id = "softr-back-to-top-button";
-		pageSimulator ? pageSimulator.appendChild(backToTopButton) : body.appendChild(backToTopButton);
-		backToTopButton.style.width = obj.buttonWidth;
-		backToTopButton.style.height = obj.buttonHeight;
-		backToTopButton.style.marginRight = obj.buttonDToRight;
-		backToTopButton.style.marginBottom = obj.buttonDToBottom;
-		backToTopButton.style.borderRadius = obj.roundnessSize;
-		backToTopButton.style.boxShadow = obj.shadowSize;
-		backToTopButton.style.color = obj.selectedBackgroundColor;
-		backToTopButton.style.backgroundColor = obj.selectedBackgroundColor;
-		pageSimulator ? backToTopButton.style.position = "absolute" : backToTopButton.style.position = "fixed";
-		backToTopButton.style.outline = "none";
-		backToTopButton.style.bottom = "0px";
-		backToTopButton.style.right = "0px";
-		backToTopButton.style.cursor = "pointer";
-		backToTopButton.style.textAlign = "center";
-		backToTopButton.style.border = "solid 2px currentColor";
-		backToTopButton.innerHTML =
-			'<svg class="back-to-top-button-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" > <g fill="none" fill-rule="evenodd"> <path d="M0 0H32V32H0z" transform="translate(-1028 -172) translate(832 140) translate(32 32) translate(164) matrix(1 0 0 -1 0 32)" /> <path class="back-to-top-button-img" fill-rule="nonzero" d="M11.384 13.333h9.232c.638 0 .958.68.505 1.079l-4.613 4.07c-.28.246-.736.246-1.016 0l-4.613-4.07c-.453-.399-.133-1.079.505-1.079z" transform="translate(-1028 -172) translate(832 140) translate(32 32) translate(164) matrix(1 0 0 -1 0 32)" /> </g> </svg>';
-		backToTopButtonSvg = document.querySelector(".back-to-top-button-svg");
-		backToTopButtonSvg.style.verticalAlign = "middle";
-		backToTopButtonSvg.style.margin = "auto";
-		backToTopButtonSvg.style.justifyContent = "center";
-		backToTopButtonSvg.style.width = obj.svgWidth;
-		backToTopButtonSvg.style.height = obj.svgHeight;
-		backToTopButton.appendChild(backToTopButtonSvg);
-		backToTopButtonImg = document.querySelector(".back-to-top-button-img");
-		backToTopButtonImg.style.fill = obj.selectedIconColor;
-		backToTopButtonSvg.appendChild(backToTopButtonImg);
-		backToTopButtonImg.setAttribute("d", obj.buttonD);
-		backToTopButtonImg.setAttribute("transform", obj.buttonT);
-		if (!pageSimulator) {
-			backToTopButton.style.display = "none";
-			window.onscroll = function() {
-				if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-					backToTopButton.style.display = "block";
-				} else {
-					backToTopButton.style.display = "none";
-				}
-			};
-			backToTopButton.onclick = function() {
-				document.body.scrollTop = 0;
-				document.documentElement.scrollTop = 0;
-			};
-		}
-	};
-	document.addEventListener("DOMContentLoaded", function() {
-		createButton(configObj, null);
-	});
-	</script>
-
-
-	<!-- main js -->
-	<script src="js/main.js">
 	// ambil elemen2 yang dibutuhkan
-	var keyword = document.getElementById('keyword');
-	var container = document.getElementById('container');
-	var loadMore = document.getElementById('loadMore');
-
+	var keyword = document.getElementById("keyword");
+	var container = document.getElementById("container");
+	var page = document.getElementById("page");
 
 	// tambahkan event ketika keyboard ditulis
-	keyword.addEventListener('keyup', function() {
+	keyword.addEventListener("keyup", function() {
+		var page = document.getElementById("page");
+		page.setAttribute("style", "display:none;");
+
 		// buat object ajax
 		var xhr = new XMLHttpRequest();
 
@@ -1040,34 +802,31 @@ if(isset($_POST["berhasil"])){
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				container.innerHTML = xhr.responseText;
 			}
-		}
+		};
 
 		// eksekusi ajax
-		xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
+		xhr.open("GET", "ajax/users.php?keyword=" + keyword.value, true);
 		xhr.send();
 
-
-
+		// memunculkan page atau refresh halaman
+		if (keyword.value === "") {
+			location.reload();
+		}
 	});
-
 
 	// button search
-	var search = document.getElementById('cariin');
-	var bar = document.getElementById('bar');
-	var exit = document.getElementById('exit');
+	var search = document.getElementById("cariin");
+	var bar = document.getElementById("bar");
+	var exit = document.getElementById("exit");
 
-	search.addEventListener('click', function() {
-
-		var bar = document.getElementById('bar');
+	search.addEventListener("click", function() {
+		var bar = document.getElementById("bar");
 		bar.setAttribute("style", "display:;");
-
 	});
 
-	exit.addEventListener('click', function() {
-
-		var bar = document.getElementById('bar');
+	exit.addEventListener("click", function() {
+		var bar = document.getElementById("bar");
 		bar.setAttribute("style", "display:none;");
-
 	});
 	</script>
 
@@ -1078,35 +837,6 @@ if(isset($_POST["berhasil"])){
 	<!-- Option 1: Bootstrap Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-	</script>
-
-
-	<!-- profile -->
-	<script>
-	// Get the modal
-	var modal = document.getElementById('myModal');
-
-	// Get the image and insert it inside the modal - use its "alt" text as a caption
-	var img = document.getElementById('myImg');
-	var modalImg = document.getElementById("img01");
-	var captionText = document.getElementById("caption");
-	img.onclick = function() {
-		modal.style.display = "block";
-		modalImg.src = this.src;
-		modalImg.alt = this.alt;
-		captionText.innerHTML = this.alt;
-	}
-
-
-	// When the user clicks on <span> (x), close the modal
-	modal.onclick = function() {
-		img01.className += " out";
-		setTimeout(function() {
-			modal.style.display = "none";
-			img01.className = "modal-content";
-		}, 400);
-
-	}
 	</script>
 
 	<!-- Option 2: Separate Popper and Bootstrap JS -->

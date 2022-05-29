@@ -921,7 +921,7 @@ if(isset($_POST["berhasil"])){
 					<td>:</td>
 					<td>
 						<input name="username" type="text" class="form-control" id="username" placeholder="-" name="username"
-							maxlength="200" required value="<?= $username?>">
+							maxlength="20" required value="<?= $username?>">
 					</td>
 				</tr>
 
