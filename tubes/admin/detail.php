@@ -6,7 +6,12 @@ $level=$_SESSION['level'];
 $username=$_SESSION['username'];
 
 if(!isset($_SESSION["level"])){
-header("location:login.php");
+header("location:../logout.php");
+exit;
+}
+
+if($_SESSION["level"]!='admin'){
+	header("location:../$level.php");
 exit;
 }
 

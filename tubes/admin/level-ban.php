@@ -3,15 +3,15 @@
 session_start();
 
 if(!isset($_SESSION["level"])){
-header("location:login.php");
+header("location:../logout.php");
 exit;
 }
-
 
 if($_SESSION["level"]!='admin'){
-	header("location:user.php");
+	header("location:../$level.php");
 exit;
 }
+
 
 // koneksi database
 require 'functions.php';
