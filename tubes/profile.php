@@ -798,7 +798,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 		<p class="text-center" id="profile-text">No Telp : <span><?php
 						if($profile['no_telp']==''){echo" -";}?> <?= $profile['no_telp']; ?></span></p>
 
-		<p class="text-center" id="profile-text">Gender : <span><?php
+		<p class="text-center" id="profile-text">Gender : <span style="text-transform:capitalize;"><?php
 						if($profile['gender']==''){echo" -";}?> <?= $profile['gender']; ?></span></p>
 
 

@@ -686,8 +686,8 @@ if(isset($_POST['submit'])){
 
 							<td><img src=" ../profile/<?= $user["foto"] ?>" style="width:100px; height:100px; object-fit:cover">
 							</td>
-							<td><?= $user["username"]; ?></td>
-							<td><?= $user["level"]; ?></td>
+							<td style="text-transform:capitalize;"><?= $user["username"]; ?></td>
+							<td style="text-transform:capitalize;"><?= $user["level"]; ?></td>
 							<td>
 
 
@@ -698,26 +698,23 @@ if(isset($_POST['submit'])){
 
 
 
-								<?php if($user['level']!='admin'): ?>
+								<?php if($user['level']!='admin'&&$user['status']!='ban'): ?>
 								<a href="level-ubah.php?id=<?= $user["id"] ?>"
 									onclick="return confirm('Anda yakin akan menjadikan admin akun ini?')"
-									class="btn badge bg-primary mt-2">admin</a>
+									class="btn badge bg-primary mt-2">Admin</a>
 
 
 								<?php if($user['status']=='no'): ?>
-
 								<a href="level-ban.php?id=<?= $user["id"] ?>&status=ban ?>"
-									onclick="return confirm('Anda yakin akan ban akun ini?')" class="btn badge bg-danger mt-2">ban</a>
+									onclick="return confirm('Anda yakin akan ban akun ini?')" class="btn badge bg-danger mt-2">Ban</a>
+								<?php endif; ?>
+
 								<?php endif; ?>
 
 								<?php if($user['status']=='ban'): ?>
-
 								<a href="level-heal.php?id=<?= $user["id"] ?>&status=no ?>"
 									onclick="return confirm('Anda yakin akan memulihkan akun ini?')"
-									class="btn badge bg-success mt-2">heal</a>
-								<?php endif; ?>
-
-
+									class="btn badge bg-success mt-2">Heal</a>
 								<?php endif; ?>
 
 							</td>

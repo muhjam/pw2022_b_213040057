@@ -30,13 +30,12 @@ $goturthings= query($query);
 	<thead class="table-dark">
 		<tr style="text-align:center;">
 			<th>No</th>
-			<th>Gambar</th>
-			<th>Nama Produk</th>
-			<th>Jenis Produk</th>
-			<th>Ukuran</th>
-			<th>Harga</th>
-			<th>Aksi</th>
-
+			<th>Image</th>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Size</th>
+			<th>Price</th>
+			<th>Action</th>
 		</tr>
 	</thead>
 

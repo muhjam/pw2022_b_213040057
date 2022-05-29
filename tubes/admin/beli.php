@@ -734,7 +734,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 						<h6 class="card-text" style=" display:inline-block;">Color :</h6>
 
 						<div class="kotak ms-2"
-							style="background-color:<?= $produk['warna']?>;border:1px solid black;width:20px;height:10px;display:inline-block;">
+							style="background-color:<?= $produk['warna']?>;border:1px solid black;width:20px;height:10px;display:inline-block;border-radius:10px;">
 						</div>
 
 
