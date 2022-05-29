@@ -1016,6 +1016,7 @@ if(isset($_POST["berhasil"])){
 			<div class="row text-center mb-5 mt-3">
 				<div class="col">
 					<button type="submit" class="btn btn-dark" name="submit">Save</button>
+					<button type="button" class="btn btn-danger" value="back" onclick="history.back();">Close</button>
 				</div>
 			</div>
 
