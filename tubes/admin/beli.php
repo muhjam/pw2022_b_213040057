@@ -580,13 +580,13 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="index.php#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
 
-			<form id="bar" action="#container" method="post" class="d-lg-block" style="display:none;">
+			<form id="bar" action="index.php#container" method="post" class="d-lg-block" style="display:none;">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
-					name="keyword" autofocus autocomplete="off" id="keyword">
+					name="keyword" autocomplete="off" id="keyword">
 
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
@@ -594,7 +594,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 			<div class="collapse navbar-collapse" id="navbarScroll">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
 							class="fas fa-search"></i></a> </label>
 
 
@@ -730,7 +730,6 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 						<br>
 						<h6 class="card-text">Code : <?= $produk["kode_produk"]; ?></h6>
 						<h6 class="card-text">Size : <?= $produk["ukuran"]; ?></h6>
-
 						<h6 class="card-text" style=" display:inline-block;">Color :</h6>
 
 						<div class="kotak ms-2"

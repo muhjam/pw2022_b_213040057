@@ -688,6 +688,7 @@ if(isset($_POST["berhasil"])){
 	}
 
 	.meImg-bg {
+		border-radius: 50%;
 		width: 1000px;
 		height: 100px;
 		margin-left: -12px;
@@ -758,7 +759,7 @@ if(isset($_POST["berhasil"])){
 
 			<form id="bar" action="" method="post" class="d-lg-block" style="display:none;">
 				<input id="formm" class="form-control me-lg-2" type="text" placeholder="Cari Produk Goturthings"
-					aria-label="Search" name="keyword" autofocus autocomplete="off" id="keyword">
+					aria-label="Search" name="keyword" autocomplete="off" id="keyword">
 
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
