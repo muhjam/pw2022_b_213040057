@@ -690,7 +690,7 @@ if(isset($_POST['submit'])){
 									alt="<?=$username?>" title="<?=$username?>">
 							</td>
 							<td style="text-transform:capitalize;"><?= $user["username"]; ?></td>
-							<td style="text-transform:capitalize;">
+							<td>
 								<?php if($user['email']==''): ?>
 								<?= "-"; ?>
 								<?php endif; ?>
