@@ -735,7 +735,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 						<h6 class="card-text mt-2 mb-3"><?= $produk["keterangan"]; ?></h6>
 
 						<a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Saya%20mau%20memesan%20<?= $produk['jenis_produk']?>%20<?= $produk['nama_produk']?>%20ukuran%20<?= $produk['ukuran']?>,%20dengan%20kode%20barang:%20<?= $produk['kode_produk']?>."
-							type="button" class="btn btn-success my-2" target="_blank">Lets Buy</a>
+							type="button" class="btn btn-success my-2" target="_blank"><i class="fab fa-whatsapp"></i> Lets Buy</a>
 
 
 					</div>
