@@ -3,7 +3,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 // koneksi database
-require 'functions.php';
+require 'admin/functions.php';
 $goturthings=query("SELECT * FROM produk");
 
 ob_clean();
@@ -69,7 +69,7 @@ foreach($goturthings as $goturthing){
 	<td>'.$goturthing["nama_produk"].'</td>
 	<td>'.$goturthing["jenis_produk"].'</td>
 	<td>'.$goturthing["ukuran"].'</td>
-	<td>Rp.'.$goturthing["harga"].'</td>
+	<td>'.rupiah($goturthing["harga"]).'</td>
 	<td>'.$goturthing["keterangan"].'</td>
 	</tr>
 
