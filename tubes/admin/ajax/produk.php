@@ -69,8 +69,7 @@ $goturthings= query($query);
 				<a href="hapus.php?id=<?= $goturthing["id"] ?>" onclick="return confirm('Anda yakin akan menghapus data ini?')"
 					class="btn badge bg-danger mt-2">hapus</a>
 
-				<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
-					class="btn badge bg-info mt-2">detail</a>
+				<a href="detail.php?id=<?= $goturthing["id"]?>" class="btn badge bg-info mt-2">detail</a>
 			</td>
 
 		</tr>
