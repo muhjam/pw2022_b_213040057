@@ -704,7 +704,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 	<div class="container judul" style="margin-top:100px;">
 		<div class="col">
-			<h3 id="judul">Product</h3>
+			<h3 id="judul">Dashboard</h3>
 		</div>
 		<div class="col">
 			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="dashboard.php">Dashboard</a> / <a
