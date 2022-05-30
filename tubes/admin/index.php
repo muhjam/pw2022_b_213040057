@@ -704,13 +704,11 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					</div>
 					<p class="card-title mt-2"><?= $goturthing["nama_produk"]; ?></p>
 					<p class="card-text"><?= idr($goturthing["harga"]); ?></p>
-
 				</a>
-
-
 				<?php endforeach; ?>
 			</div>
 		</div>
+
 		<!-- awal loadmore -->
 		<div class="loadMore text-center mb-5 mt-2" id="loadMore" data-aos="flip-left">
 			<button class="load-more">Load More</button>

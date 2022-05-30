@@ -38,7 +38,8 @@ $goturthings= query($query);
 	<?php if($_GET['keyword']==''): ?>
 	<div class="arrival text-center my-5">
 		<span
-			style="border-top: 1px solid #555;border-bottom: 1px solid #555;padding: 3px 0px;letter-spacing: 5px;font-size: 18px;color: #555;">ALL ITEMS</span>
+			style="border-top: 1px solid #555;border-bottom: 1px solid #555;padding: 3px 0px;letter-spacing: 5px;font-size: 18px;color: #555;">ALL
+			ITEMS</span>
 
 	</div>
 	<?php endif; ?>
@@ -77,8 +78,8 @@ $goturthings= query($query);
 
 
 
-			<a href="detail.php?id=<?= $goturthing["id"]?>&kode_produk=<?= $goturthing["kode_produk"]?>&gambar=<?= $goturthing["gambar"]?>&nama_produk=<?= $goturthing["nama_produk"] ?>&keterangan=<?= $goturthing["keterangan"]?>"
-				id="card" class="mb-5 news-item" style="text-decoration:none;color:black;">
+			<a href="beli.php?id=<?= $goturthing["id"]?>" id="card" class="mb-5 news-item"
+				style="text-decoration:none;color:black;">
 				<div id="inner">
 					<img id="myImg" src=" ../img/<?= $goturthing["gambar"] ?>" class="card-img-top"
 						alt="<?= $goturthing["kode_produk"] ?>" style="height:300px;object-fit:cover;">
