@@ -4,6 +4,7 @@ session_start();
 
 $level=$_SESSION['level'];
 $username=$_SESSION['username'];
+$status=$_SESSION['status'];
 
 if(!isset($_SESSION["level"])){
 header("location:../logout.php");
@@ -47,6 +48,47 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 // 	$goturthings = cari($_POST["keyword"]);
 	
 // }
+
+if(isset($_GET['urut-terbaru'])){
+
+$urut=$_GET['urut-terbaru'];
+
+	$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.id $urut LIMIT $awalData,$jumlahDataPerHalaman");
+}
+
+if(isset($_GET['urut-nama'])){
+
+$urut=$_GET['urut-nama'];
+
+	$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.nama_produk $urut LIMIT $awalData,$jumlahDataPerHalaman");
+}
+
+
+if(isset($_GET['urut-jenis'])){
+
+$urut=$_GET['urut-jenis'];
+
+	$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.jenis_produk $urut LIMIT $awalData,$jumlahDataPerHalaman");
+}
+
+if(isset($_GET['urut-ukuran'])){
+
+$urut=$_GET['urut-ukuran'];
+
+	$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.ukuran $urut LIMIT $awalData,$jumlahDataPerHalaman");
+}
+
+
+if(isset($_GET['urut-harga'])){
+
+$urut=$_GET['urut-harga'];
+
+	$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.harga $urut LIMIT $awalData,$jumlahDataPerHalaman");
+}
+
+
+
+
 
 
 $jenisProduk=query("SELECT * FROM jenis_produk");
@@ -121,6 +163,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	.formm {
 		height: 30px;
 	}
+
 
 	.fas.fa-search {
 		color: #eaeaea;
@@ -451,22 +494,25 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 	}
 
 	.container-fluid .navbar .container-fluid section .fas.fa-search {
-		color: #2d3655;
+		color: #303958;
 	}
 
 
 	.container-fluid .navbar .container-fluid section .fas.fa-search:hover {
-		color: #2d3655;
+		color: #151e3d;
 	}
 
 
 	.container-fluid .navbar .container-fluid section .fas.fa-cart-plus {
-		color: #151e3d;
+		color: #303958;
 	}
 
 	.container-fluid .navbar .container-fluid section .fas.fa-cart-plus:hover {
 		color: #151e3d;
 	}
+
+
+
 
 
 	/* hover dropdown */
@@ -655,6 +701,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<section>
 					<a href="users.php"><i class="fas fa-search"> Users</i></a>
 				</section>
+
 				<section>
 					<a href="../Goturprint.php" target="_blank"><i class="fas fa-print"> Print</i></a> <a
 						style="margin:0 5px;">|</a>
@@ -670,12 +717,24 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 				<thead class="table-dark">
 					<tr style="text-align:center;">
-						<th>No</th>
+						<th>No <span class="d-none d-lg-inline">
+								<?php if(!isset($_GET['urut-terbaru'])){echo'<a href="?urut-terbaru=DESC" style="text-decoration:none;">&#8593;</a>';}else if($_GET['urut-terbaru']=='DESC'){echo'<a href="?urut-terbaru=ASC" style="text-decoration:none;">&#8595;</a>';}else if($_GET['urut-terbaru']=='ASC'){echo'<a href="?urut-terbaru=DESC" style="text-decoration:none;">&#8593;</a>';} ?></span>
+						</th>
 						<th>Image</th>
-						<th>Name</th>
-						<th>Type</th>
-						<th>Size</th>
-						<th>Price</th>
+						<th>Name <span class="d-none d-lg-inline">
+								<?php if(!isset($_GET['urut-nama'])){echo'<a href="?urut-nama=DESC" style="text-decoration:none;">&#8593;</a>';}else if($_GET['urut-nama']=='DESC'){echo'<a href="?urut-nama=ASC" style="text-decoration:none;">&#8595;</a>';}else if($_GET['urut-nama']=='ASC'){echo'<a href="?urut-nama=DESC" style="text-decoration:none;">&#8593;</a>';} ?></span>
+						</th>
+						<th>Type <span class="d-none d-lg-inline">
+								<?php if(!isset($_GET['urut-jenis'])){echo'<a href="?urut-jenis=DESC" style="text-decoration:none;">&#8593;</a>';}else if($_GET['urut-jenis']=='DESC'){echo'<a href="?urut-jenis=ASC" style="text-decoration:none;">&#8595;</a>';}else if($_GET['urut-jenis']=='ASC'){echo'<a href="?urut-jenis=DESC" style="text-decoration:none;">&#8593;</a>';} ?>
+							</span>
+						</th>
+						<th>Size <span class="d-none d-lg-inline">
+								<?php if(!isset($_GET['urut-ukuran'])){echo'<a href="?urut-ukuran=DESC" style="text-decoration:none;">&#8593;</a>';}else if($_GET['urut-ukuran']=='DESC'){echo'<a href="?urut-ukuran=ASC" style="text-decoration:none;">&#8595;</a>';}else if($_GET['urut-ukuran']=='ASC'){echo'<a href="?urut-ukuran=DESC" style="text-decoration:none;">&#8593;</a>';} ?>
+							</span>
+						</th>
+						<th>Price <span class="d-none d-lg-inline">
+								<?php if(!isset($_GET['urut-harga'])){echo'<a href="?urut-harga=DESC" style="text-decoration:none;">&#8593;</a>';}else if($_GET['urut-harga']=='DESC'){echo'<a href="?urut-harga=ASC" style="text-decoration:none;">&#8595;</a>';}else if($_GET['urut-harga']=='ASC'){echo'<a href="?urut-harga=DESC" style="text-decoration:none;">&#8593;</a>';} ?></span>
+						</th>
 						<th>Action</th>
 					</tr>
 				</thead>

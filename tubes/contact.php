@@ -3,7 +3,8 @@
 session_start();
 
 $level=$_SESSION['level'];
-$username=$_SESSION['username'];	
+$username=$_SESSION['username'];
+$status=$_SESSION['status'];	
 
 if(!isset($_SESSION["level"])){
 header("location:logout.php");
