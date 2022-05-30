@@ -494,11 +494,6 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
-
-
-
-
 	<!-- awal navbar -->
 
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -562,8 +557,6 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 							<?php foreach($jenisProduk as $jenis): ?>
 							<li><a name="cari" class="dropdown-item"
 									href="?cari=<?= $jenis['jenis_produk']; ?>#container"><?= $jenis['jenis_produk']; ?></a></li>
-
-
 							<?php endforeach; ?>
 							<li><a class="dropdown-item" href="index.php#container">All items</a></li>
 						</ul>

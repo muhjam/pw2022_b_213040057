@@ -61,6 +61,8 @@ $kode_barang=$jumlah_barang+1;
 // jenis produk
 $jenisProduk=query("SELECT * FROM jenis_produk");
 
+// ukuran produk
+$ukuranProduk=query("SELECT * FROM ukuran");
 
 
 // profile
@@ -695,15 +697,9 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 						<label for="jenis_produk">Jenis :</label>
 						<select id="jenis_produk" class="form-control" name="jenis_produk" required>
 							<option value="">Pilih Jenis Produk</option>
-							<option value="T-Shirt">T-Shirt</option>
-							<option value="Celana">Celana</option>
-							<option value="Flanel">Flanel</option>
-							<option value="Sepatu">Sepatu</option>
-							<option value="Topi">Topi</option>
-							<option value="Jaket">Jaket</option>
-							<option value="Sweater">Sweater</option>
-							<option value="Hoodie">Hoodie</option>
-							<option value="Vest">Vest</option>
+							<?php foreach($jenisProduk as $jenis): ?>
+							<option value="<?= $jenis['jenis_produk'];?>"><?= $jenis['jenis_produk']; ?></option>
+							<?php endforeach; ?>
 						</select>
 					</div>
 
@@ -711,27 +707,9 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 						<label for="inputState">Ukuran :</label>
 						<select id="inputState" class="form-control" name="ukuran" required>
 							<option value="">Pilih Ukuran</option>
-							<option value="S">S</option>
-							<option value="M">M</option>
-							<option value="L">L</option>
-							<option value="XL">XL</option>
-							<option value="XXL">XXL</option>
-							<option value="EU37">EU37</option>
-							<option value="EU38">EU38</option>
-							<option value="EU39">EU39</option>
-							<option value="EU40">EU40</option>
-							<option value="EU41">EU41</option>
-							<option value="EU42">EU42</option>
-							<option value="EU43">EU43</option>
-							<option value="EU44">EU44</option>
-							<option value="27">27</option>
-							<option value="28">28</option>
-							<option value="29">29</option>
-							<option value="30">30</option>
-							<option value="31">31</option>
-							<option value="32">32</option>
-							<option value="33">33</option>
-							<option value="34">34</option>
+							<?php foreach($ukuranProduk as $ukuran): ?>
+							<option value="<?= $ukuran['ukuran'];?>"><?= $ukuran['ukuran']; ?></option>
+							<?php endforeach; ?>
 						</select>
 					</div>
 				</div>
