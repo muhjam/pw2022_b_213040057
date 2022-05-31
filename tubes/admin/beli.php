@@ -37,6 +37,9 @@ $id=$_GET['id'];
 // produk
 $produk=query("SELECT * FROM produk WHERE id='$id'")['0'];
 
+if(empty($produk)){
+	header("location:index.php#container");
+}
 
 
 $jenisProduk=query("SELECT * FROM jenis_produk");

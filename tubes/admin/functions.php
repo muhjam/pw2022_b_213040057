@@ -4,17 +4,17 @@
 
 <?php
 // koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "goturthings");
+$conn = mysqli_connect("localhost", "root", "", "goturthings") or die('KONEKSI GAGAL!!');
 
 function query($query) {
     global $conn;
-    
-    $result = mysqli_query($conn, $query);
+     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+
     $rows = [];
     while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
     }
-    
+
     return $rows;
 }
 
@@ -22,7 +22,7 @@ function query($query) {
 function conn($query) {
     global $conn;
     
-    $result = mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query)or die(mysqli_error($conn));
     
     return $result;
 }

@@ -49,18 +49,23 @@ $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_prod
 	
 // }
 
+
 if(isset($_GET['urut-terbaru'])){
 
 $urut=$_GET['urut-terbaru'];
 
+	if($urut=='DESC'||$urut=='ASC'){
 	$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.id $urut LIMIT $awalData,$jumlahDataPerHalaman");
+	}
 }
 
 if(isset($_GET['urut-nama'])){
 
 $urut=$_GET['urut-nama'];
 
+		if($urut=='DESC'||$urut=='ASC'){
 	$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.nama_produk $urut LIMIT $awalData,$jumlahDataPerHalaman");
+	}
 }
 
 
@@ -68,14 +73,18 @@ if(isset($_GET['urut-jenis'])){
 
 $urut=$_GET['urut-jenis'];
 
+	if($urut=='DESC'||$urut=='ASC'){
 	$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.jenis_produk $urut LIMIT $awalData,$jumlahDataPerHalaman");
+	}
 }
 
 if(isset($_GET['urut-ukuran'])){
 
 $urut=$_GET['urut-ukuran'];
 
+		if($urut=='DESC'||$urut=='ASC'){
 	$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.ukuran $urut LIMIT $awalData,$jumlahDataPerHalaman");
+	}
 }
 
 
@@ -83,7 +92,9 @@ if(isset($_GET['urut-harga'])){
 
 $urut=$_GET['urut-harga'];
 
+		if($urut=='DESC'||$urut=='ASC'){
 	$goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.harga $urut LIMIT $awalData,$jumlahDataPerHalaman");
+	}
 }
 
 
@@ -718,22 +729,54 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<thead class="table-dark">
 					<tr style="text-align:center;">
 						<th>No <span class="d-none d-lg-inline">
-								<?php if(!isset($_GET['urut-terbaru'])){echo'<a href="?urut-terbaru=DESC" style="text-decoration:none;">&#8593;</a>';}else if($_GET['urut-terbaru']=='DESC'){echo'<a href="?urut-terbaru=ASC" style="text-decoration:none;">&#8595;</a>';}else if($_GET['urut-terbaru']=='ASC'){echo'<a href="?urut-terbaru=DESC" style="text-decoration:none;">&#8593;</a>';} ?></span>
+								<?php if(!isset($_GET['urut-terbaru'])):?>
+								<a href="?urut-terbaru=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<?php elseif($_GET['urut-terbaru']=='DESC'):?>
+								<a href="?urut-terbaru=ASC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8595;</a>
+								<?php elseif($_GET['urut-terbaru']=='ASC'):?>
+								<a href="?urut-terbaru=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<?php endif;?>
+							</span>
 						</th>
 						<th>Image</th>
 						<th>Name <span class="d-none d-lg-inline">
-								<?php if(!isset($_GET['urut-nama'])){echo'<a href="?urut-nama=DESC" style="text-decoration:none;">&#8593;</a>';}else if($_GET['urut-nama']=='DESC'){echo'<a href="?urut-nama=ASC" style="text-decoration:none;">&#8595;</a>';}else if($_GET['urut-nama']=='ASC'){echo'<a href="?urut-nama=DESC" style="text-decoration:none;">&#8593;</a>';} ?></span>
+								<?php if(!isset($_GET['urut-nama'])):?>
+								<a href="?urut-nama=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<?php elseif($_GET['urut-nama']=='DESC'):?>
+								<a href="?urut-nama=ASC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8595;</a>
+								<?php elseif($_GET['urut-nama']=='ASC'):?>
+								<a href="?urut-nama=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<?php endif;?>
+							</span>
 						</th>
 						<th>Type <span class="d-none d-lg-inline">
-								<?php if(!isset($_GET['urut-jenis'])){echo'<a href="?urut-jenis=DESC" style="text-decoration:none;">&#8593;</a>';}else if($_GET['urut-jenis']=='DESC'){echo'<a href="?urut-jenis=ASC" style="text-decoration:none;">&#8595;</a>';}else if($_GET['urut-jenis']=='ASC'){echo'<a href="?urut-jenis=DESC" style="text-decoration:none;">&#8593;</a>';} ?>
+								<?php if(!isset($_GET['urut-jenis'])):?>
+								<a href="?urut-jenis=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<?php elseif($_GET['urut-jenis']=='DESC'):?>
+								<a href="?urut-jenis=ASC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8595;</a>
+								<?php elseif($_GET['urut-jenis']=='ASC'):?>
+								<a href="?urut-jenis=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<?php endif;?>
 							</span>
 						</th>
 						<th>Size <span class="d-none d-lg-inline">
-								<?php if(!isset($_GET['urut-ukuran'])){echo'<a href="?urut-ukuran=DESC" style="text-decoration:none;">&#8593;</a>';}else if($_GET['urut-ukuran']=='DESC'){echo'<a href="?urut-ukuran=ASC" style="text-decoration:none;">&#8595;</a>';}else if($_GET['urut-ukuran']=='ASC'){echo'<a href="?urut-ukuran=DESC" style="text-decoration:none;">&#8593;</a>';} ?>
+								<?php if(!isset($_GET['urut-ukuran'])):?>
+								<a href="?urut-ukuran=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<?php elseif($_GET['urut-ukuran']=='DESC'):?>
+								<a href="?urut-ukuran=ASC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8595;</a>
+								<?php elseif($_GET['urut-ukuran']=='ASC'):?>
+								<a href="?urut-ukuran=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<?php endif;?>
 							</span>
 						</th>
 						<th>Price <span class="d-none d-lg-inline">
-								<?php if(!isset($_GET['urut-harga'])){echo'<a href="?urut-harga=DESC" style="text-decoration:none;">&#8593;</a>';}else if($_GET['urut-harga']=='DESC'){echo'<a href="?urut-harga=ASC" style="text-decoration:none;">&#8595;</a>';}else if($_GET['urut-harga']=='ASC'){echo'<a href="?urut-harga=DESC" style="text-decoration:none;">&#8593;</a>';} ?></span>
+								<?php if(!isset($_GET['urut-harga'])):?>
+								<a href="?urut-harga=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<?php elseif($_GET['urut-harga']=='DESC'):?>
+								<a href="?urut-harga=ASC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8595;</a>
+								<?php elseif($_GET['urut-harga']=='ASC'):?>
+								<a href="?urut-harga=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<?php endif;?></span>
 						</th>
 						<th>Action</th>
 					</tr>

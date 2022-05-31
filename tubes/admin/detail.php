@@ -35,6 +35,9 @@ require 'functions.php';
 // produk
 $id=$_GET['id'];
 $produk=query("SELECT * FROM produk WHERE id='$id'")['0'];
+if(empty($produk)){
+	header("location:index.php#container");
+}
 
 
 // jenis produk
