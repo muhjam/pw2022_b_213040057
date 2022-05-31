@@ -36,7 +36,7 @@ require 'functions.php';
 $id=$_GET['id'];
 $produk=query("SELECT * FROM produk WHERE id='$id'")['0'];
 if(empty($produk)){
-	header("location:index.php#container");
+	header("location:dashboard.php");
 }
 
 
