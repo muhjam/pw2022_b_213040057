@@ -4,7 +4,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 // koneksi database
 require 'admin/functions.php';
-$goturthings=query("SELECT * FROM produk");
+$goturthings=query("SELECT * FROM produk ORDER BY id DESC");
 
 ob_clean();
 
