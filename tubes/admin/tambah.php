@@ -530,7 +530,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="dashboard.php" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="dashboard.php" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
 
