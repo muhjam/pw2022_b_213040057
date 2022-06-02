@@ -334,7 +334,7 @@ $error=true;
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="signup.php">New around here? Sign up</a>
 			<a class="dropdown-item" href="forgot.php">Forgot password?</a>
-			<a class="dropdown-item" onclick="history.back()">Back to shopping</a>
+			<a class="dropdown-item" href="index.php">Back to shopping</a>
 		</div>
 	</div>
 
