@@ -1,44 +1,9 @@
 <?php 
-// memeriksa sudah login atau belum
-session_start();
-
-$level=$_SESSION['level'];
-$username=$_SESSION['username'];
-$status=$_SESSION['status'];
-
-if(!isset($_SESSION["level"])){
-header("location:logout.php");
-exit;
-}
-
-if($_SESSION["level"]!='user'){
-	header("location:$level/index.php");
-exit;
-}
-
-
-if($_SESSION["status"]=='ban'){
-	    echo "
-        <script>
-        alert('maaf, akun anda telah diban!')
-        document.location.href='logout.php'
-        </script>";
-exit;
-}
-
 // koneksi database
 require 'functions.php';
 
 
-// pagination
 // konfigurasi
-
-
-
-
-
-
-
 $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.id DESC");
   
 
@@ -53,10 +18,6 @@ $goturthings=cari($_GET["cari"]);
 
 
 $jenisProduk=query("SELECT * FROM jenis_produk");
-
-
-// profile
-$profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto'];
 
 
 
@@ -472,19 +433,10 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 
 
-	/* profile */
-	#profile {
-		transition: 0.3s;
-	}
-
-	#profile:hover {
-		opacity: 0.7;
-	}
 
 	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
 		display: block;
-		margin-top: 0; // remove the gap so it doesn't close
 	}
 	</style>
 
@@ -495,6 +447,8 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+
+
 	<!-- awal navbar -->
 
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -507,15 +461,15 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 			</button>
 
 
-			<a class="navbar-brand" id="logo" href="#">GoturthinQs<span>.</span></a>
+			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="index.php#container" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
 
-			<form id="bar" action="#container" method="post" class="d-lg-block" style="display:none;">
-				<input class="form-control me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
-					name="keyword" autofocus autocomplete="off" id="keyword">
+			<form id="bar" action="index.php#container" method="post" class="d-lg-block" style="display:none;">
+				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
+					name="keyword" autocomplete="off" id="keyword">
 
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
@@ -523,7 +477,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 			<div class="collapse navbar-collapse" id="navbarScroll">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
 							class="fas fa-search"></i></a> </label>
 
 
@@ -531,11 +485,6 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 
 				<ul class="navbar-nav">
-
-					<!-- profile mobile -->
-					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
-							title="<?=$username?>"></a>
 
 
 
@@ -557,9 +506,11 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<?php foreach($jenisProduk as $jenis): ?>
 							<li><a name="cari" class="dropdown-item"
-									href="?cari=<?= $jenis['jenis_produk']; ?>#container"><?= $jenis['jenis_produk']; ?></a></li>
+									href="index.php?cari=<?= $jenis['jenis_produk']; ?>#container"><?= $jenis['jenis_produk']; ?></a></li>
+
+
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All items</a></li>
+							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -570,7 +521,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 						<?php foreach($jenisProduk as $jenis): ?>
 
 						<li class="nav-item">
-							<a name="cari" href="?cari=<?= $jenis['jenis_produk'];?>#container" class="nav-link"
+							<a name="cari" href="index.php?cari=<?= $jenis['jenis_produk'];?>#container" class="nav-link"
 								id="jenis"><?= $jenis['jenis_produk']; ?></a>
 						</li>
 
@@ -587,19 +538,17 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 					</li>
 
 
-					<!-- profile all -->
-					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
-							alt="<?=$username?>" title="<?=$username?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
-
 
 					<!-- bagian dropdown -->
 					<li class="nav-item fs-4 d-lg-none">
 						<a class="nav-link" id="contact" href="contact.php">Contact</a>
 					</li>
-
-
 				</ul>
+
+				<div class="login-register text-center">
+					<a type="button" class="btn btn-secondary ms-lg-5 me-lg-1" style="font-size:10px;" href="login.php">Login</a>
+					<a type="button" class="btn btn-danger" style="font-size:10px;" href="signup.php">Regrister</a>
+				</div>
 
 				<ul class="navbar-nav">
 					<ul class="bar-sosmed d-lg-none mt-2">
@@ -618,7 +567,6 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 		</div>
 	</nav>
 	<!-- akhir navbar -->
-
 
 
 

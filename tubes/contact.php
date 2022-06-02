@@ -1,31 +1,4 @@
 <?php 
-// memeriksa sudah login atau belum
-session_start();
-
-$level=$_SESSION['level'];
-$username=$_SESSION['username'];
-$status=$_SESSION['status'];	
-
-if(!isset($_SESSION["level"])){
-header("location:logout.php");
-exit;
-}
-
-if($_SESSION["level"]!='user'){
-	header("location:$level/index.php");
-exit;
-}
-
-
-
-if($_SESSION["status"]=='ban'){
-	    echo "
-        <script>
-        alert('maaf, akun anda telah diban!')
-        document.location.href='logout.php'
-        </script>";
-exit;
-}
 
 // koneksi database
 require 'functions.php';
@@ -54,13 +27,6 @@ $goturthings=cari($_GET["cari"]);
 
 
 $jenisProduk=query("SELECT * FROM jenis_produk");
-
-
-
-
-
-// profile
-$profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto'];
 
 
 
@@ -438,19 +404,10 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 	}
 
 
-	/* profile */
-	#profile {
-		transition: 0.3s;
-	}
-
-	#profile:hover {
-		opacity: 0.7;
-	}
 
 	/* hover dropdown */
 	.dropdown:hover .dropdown-menu {
 		display: block;
-		margin-top: 0; // remove the gap so it doesn't close
 	}
 	</style>
 
@@ -461,9 +418,6 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
-
-
 
 
 	<!-- awal navbar -->
@@ -503,11 +457,6 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 				<ul class="navbar-nav">
 
-					<!-- profile mobile -->
-					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
-							title="<?=$username?>"></a>
-
 
 
 					<li class="nav-item">
@@ -532,7 +481,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All items</a></li>
+							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -560,19 +509,17 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 					</li>
 
 
-					<!-- profile all -->
-					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
-							alt="<?=$username?>" title="<?=$username?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
-
 
 					<!-- bagian dropdown -->
 					<li class="nav-item fs-4 d-lg-none">
 						<a class="nav-link active" id="contact" href="contact.php">Contact</a>
 					</li>
-
-
 				</ul>
+
+				<div class="login-register text-center">
+					<a type="button" class="btn btn-secondary ms-lg-5 me-lg-1" style="font-size:10px;" href="login.php">Login</a>
+					<a type="button" class="btn btn-danger" style="font-size:10px;" href="signup.php">Regrister</a>
+				</div>
 
 				<ul class="navbar-nav">
 					<ul class="bar-sosmed d-lg-none mt-2">

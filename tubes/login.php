@@ -39,7 +39,7 @@ if($_SESSION['level']=="admin"){
 	header("location:admin/index.php");
 exit;
 }else if($_SESSION['level']=="user"){
-	header("location:index.php");
+	header("location:user/index.php");
 exit;
 }
 
@@ -90,7 +90,7 @@ if(password_verify($password, $row['password'])){
 		$_SESSION['status']=$row['status'];
 
 		// alihkan ke halaman dashboard pegawai
-		header("location:index.php");
+		header("location:user/index.php");
 
 	}else{
 	$error=true;
@@ -127,7 +127,7 @@ if(isset($_POST['remember'])){
 		$_SESSION['level'] = "user";
 
 		// alihkan ke halaman dashboard pegawai
-		header("location:index.php");
+		header("location:user/index.php");
 
 	}else{
 	$error=true;
@@ -178,7 +178,7 @@ $error=true;
 	<title>GoturthinQs.</title>
 
 	<style>
-	#preloader {
+	/* #preloader {
 		position: fixed;
 		left: 0px;
 		top: 0px;
@@ -186,7 +186,7 @@ $error=true;
 		height: 100%;
 		z-index: 9999;
 		background: url(../loader/loader.gif) center no-repeat #fff;
-	}
+	} */
 
 	@media(max-width:767px) {
 
@@ -289,13 +289,8 @@ $error=true;
 
 
 <body>
-
-	<?php if (isset($error)){
-echo"";
-
-					}else{
-						echo"	<div id='preloader'></div>";
-					} ?>
+	<!-- loading -->
+	<!-- <div id='preloader'></div> -->
 
 
 
@@ -339,6 +334,7 @@ echo"";
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="signup.php">New around here? Sign up</a>
 			<a class="dropdown-item" href="forgot.php">Forgot password?</a>
+			<a class="dropdown-item" onclick="history.back()">Back to shopping</a>
 		</div>
 	</div>
 

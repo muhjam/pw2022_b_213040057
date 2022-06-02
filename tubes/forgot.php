@@ -241,6 +241,7 @@ if(isset($_POST["confrim"])){
 			<div class="dropdown-divider"></div>
 
 			<a class="dropdown-item" href="login.php">Are you got account? Lets Login</a>
+			<a class="dropdown-item" onclick="history.back()">Back to shopping</a>
 		</div>
 	</div>
 	<!-- FORM -->

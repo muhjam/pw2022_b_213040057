@@ -2,13 +2,14 @@
 // memeriksa sudah login atau belum
 session_start();
 
+
 if(!isset($_SESSION["level"])){
 header("location:../logout.php");
 exit;
 }
 
 if($_SESSION["level"]!='admin'){
-	header("location:../$level.php");
+	header("location:../$level/index.php");
 exit;
 }
 

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.3.0-dev+20220525.c1e393abce
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 28, 2022 at 05:54 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.1.5
+-- Host: sql309.epizy.com
+-- Generation Time: Jun 01, 2022 at 10:54 AM
+-- Server version: 10.3.27-MariaDB
+-- PHP Version: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `goturthings`
+-- Database: `epiz_31630722_goturthings`
 --
 
 -- --------------------------------------------------------
@@ -95,7 +96,7 @@ CREATE TABLE `produk` (
   `kode_produk` char(8) NOT NULL,
   `nama_produk` varchar(200) NOT NULL,
   `ukuran` char(5) NOT NULL,
-  `harga` int(11) NOT NULL,
+  `harga` int(20) NOT NULL,
   `keterangan` varchar(200) NOT NULL,
   `gambar` varchar(200) DEFAULT NULL,
   `warna` varchar(20) DEFAULT NULL
@@ -106,17 +107,16 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `jenis_produk`, `kode_produk`, `nama_produk`, `ukuran`, `harga`, `keterangan`, `gambar`, `warna`) VALUES
-(49, 'Sweater', '2203001', 'Flece hoddie HOTPING (black)', 'EU37', 499000, 'kondisi pemakaian noramal', '62761efc8d8ec.jpeg', NULL),
-(50, 'Flanel', '2203001', 'dkadkldf', 'M', 199000, 'kondisi pemakaian normal', '627767ec36089.jpg', NULL),
-(51, 'Flanel', '2203001', 'Nike Air Jordan 1 Mid &#039;WhiteLightning&#039;', 'M', 49900, 'kondisi pemakaian noraml', '62778e3ecef7c.jpeg', NULL),
-(53, 'Celana', '2203001', 'Nike Air Force 1 &#039;07 Full White', 'EU40', 499000, 'kondisi dalampemakaian noraml', '62777ce4b6169.jpg', NULL),
-(54, 'Hoodie', '2203001', 'aaaaaaa', 'EU41', 899000, 'kondisi pemakaian noramal', '62777ea6b88de.jpg', NULL),
-(55, 'Celana', '2203002', 'Nike Air Force 1 &#039;07 Full White', 'L', 199000, 'kondisi pemakaian noramal', '6277ab2d8730d.jpg', NULL),
-(57, 'Flanel', '2203001', 'Flece hoddie HOTPING (black)', 'XL', 499000, 'kondisi pemakaian noraml', '627a7d3182dcb.jpg', NULL),
-(58, 'Topi', '2203008', 'dkadkldf', 'M', 49900, 'kondisi dalam pemakaian noraml', '627a7d41ac005.jpg', NULL),
-(59, 'Flanel', '2203002', 'Nike Air Force 1 &#039;07 Full White', 'EU37', 899000, 'kondisi pemakaian noraml', '627a7d52e6bc0.jpg', NULL),
-(60, 'Sepatu', 'rwqrqwr', 'dfsdvss', 'L', 2214, 'kondisi pemakaian noramal', '628f4906a6cda.jpg', '#c1bc9a'),
-(63, 'Celana', '2203001', 'Flece hoddie HOTPING (black)', 'XL', 199000, 'kondisi dalam pemakaian noraml kondisi 90%', '628f5d0ed4f36.jpg', '#3357e6');
+(64, 'Jaket', 'KBG1', 'Jacket Flace Dord', 'XL', 499000, 'kondisi 90% pemakaian noraml, sudah dicuci sebelum dijual.', '628f9d62db1d7.jpg', '#e5e0e0'),
+(65, 'Hoodie', 'KBG2', 'Flece hoddie Baby', 'M', 499000, 'Kondisi 90%, bekas dipake pacar nya justin bibir yang terkenal se rt 04. ini khusus wanita', '628f9fe8ad50c.jpg', '#eab3d0'),
+(66, 'Sepatu', 'KBG3', 'Nike air force 1 (Full White)', 'EU40', 899000, 'kondisi 90% pemakaian sehari hari seperti biasanya.', '628fa1d886dac.jpeg', '#ffffff'),
+(67, 'Celana', 'KBG4', 'Jeans Leviâ€™s Crome Heart', '30', 299000, 'kondisi 85% dalam pemakaian noramal', '628fa38e9066b.jpg', '#4b7caa'),
+(68, 'Topi', 'KBG5', 'Hat DiSney Minnie mouse', 'M', 99000, 'kondisi 70% dalam pemakaian noramal', '628faa8318edf.jpg', '#e54343'),
+(75, 'Hoodie', 'KBG6', 'Flece hoddie LA', 'L', 499000, 'kondisi 75% dalam pemakaian noramal', '62924af0c377f.jpg', '#0a27ff'),
+(76, 'Jaket', 'KBG7', 'MLB varsity', 'XL', 599000, 'kondisi 75% dalam pemakaian noramal', '6292f1b03661d.jpg', '#bb1b1b'),
+(79, 'Sepatu', 'KBG8', 'Nike Air Force 1 Mid Sail University Red', 'EU42', 550000, 'Kondisi 70%, pemakaian normal', '62976b807a758.jpg', '#ffffff'),
+(80, 'Sepatu', 'KBG9', 'Nike Air Jordan 1 Mid Triple White', 'EU42', 650000, 'Kondisi 70%, pemakaian normal', '62976c241922d.jpg', '#ffffff'),
+(81, 'Sepatu', 'KBG10', 'Nike Airmax 97 Midnight Navy', 'EU43', 500000, 'Kondisi 70%, pemakaian normal', '62976d0d110e6.jpg', '#000000');
 
 -- --------------------------------------------------------
 
@@ -199,13 +199,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `foto`, `no_telp`, `alamat`, `level`, `gender`, `lahir`, `status`) VALUES
-(1, 'admin', 'aaaa@email.com', '$2y$10$m0g0ajHhoISUQ7CJcTgeCOQC/mSGbTSz0IpRes6WssyyCB5RSEnHO', '628f32f6cb528.png', '', '', 'admin', 'male', NULL, 'no'),
-(5, 'jamjam', 'muhhjam@gmail.com', '$2y$10$f.xZnZ0NRUiyePTdAr87I.QwRXa.x0SPsHJ./vfZVD0K4Ama781ty', '629138e3067e8.jpg', '081257578571', 'Jl. Tutwuri Handayani No. 81 RT.005/RW.002 Kel. Citeureup Kec. Cimahi Utara Kota. Cimahi', 'admin', 'male', '2002-12-20', 'no'),
-(10, 'udinn', 'jamjam@email.com', '$2y$10$mczzYJNnBWYRYe27qpwqy.8qP6THWmE.vfq4AxZWU8RwnaP6DYA3.', 'default.png', '081931455863', 'cucuck', 'user', 'female', NULL, 'ban'),
-(19, 'adam', '', '$2y$10$R1ak5bNo85vYSOTsfxhbnOpikDUqH7idtPdPbLUXrmNQbkWGhFDhu', 'default.png', '', '', 'user', 'male', '2022-05-11', 'no'),
-(20, 'akas', '', '$2y$10$wmWXWPKtNjwzzHqma5E0PevnG/nRa53ndG4H7VfNQlau1QfeYve3m', 'default.png', '', '', 'user', '-', '2022-05-25', 'no'),
-(21, 'gay', '', '$2y$10$fiKSHGQ1nxS8NU3TjZlhVepDq5AcUaLNoCUyXvZddjazhUy/uHpzW', '628e666877897.jpg', '', '', 'admin', '-', '2022-05-25', 'no'),
-(22, 'user', '', '$2y$10$ji/xNEgo4z.e70kX5uA2jeiNPB/Y1xIhMtRq6PCVb4CelQ8uED/.u', '62919454b4825.png', '', '', 'user', 'male', '2022-05-04', 'no');
+(1, 'admin', 'aaaa@email.com', '$2y$10$m0g0ajHhoISUQ7CJcTgeCOQC/mSGbTSz0IpRes6WssyyCB5RSEnHO', '6292534c131c8.png', '', '', 'admin', 'male', NULL, 'no'),
+(5, 'jamjam', 'muhhjam@gmail.com', '$2y$10$ChSXbbx1RDzzNHfJejwMaeSRCe8/wjnSYELg9iVJ.KM2PAn9T4noa', '6292499a9c287.jpg', '081257578571', 'Jl. Tutwuri Handayani No. 81 RT.005/RW.002 Kel. Citeureup Kec. Cimahi Utara Kota. Cimahi', 'admin', 'male', '2002-12-20', 'no'),
+(25, 'user', '', '$2y$10$yH.6BIRjTGvTS7ewNwJ8fuO62ymUdg/85toa4B0LukaNuvHugkyBO', 'default.png', '', '', 'user', '-', '2022-05-26', 'no'),
+(27, 'imam', '', '$2y$10$eZTgonbDYhxGPN5pX5x1aeMk5P1nxUxzGcqy7urIr0CIlzYqHQIf.', 'default.png', '', '', 'user', '-', '2022-05-27', 'no'),
+(28, 'deni pajri', '', '$2y$10$Biku28We8krOjMONoYGQa./3UxwVYN2ci1P2X5OnQmHlmls4ovE6O', 'default.png', '', '', 'user', '-', '2022-05-28', 'no');
 
 --
 -- Indexes for dumped tables
@@ -266,13 +264,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
@@ -297,6 +295,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-

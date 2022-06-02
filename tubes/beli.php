@@ -1,36 +1,4 @@
 <?php 
-// memeriksa sudah login atau belum
-session_start();
-
-$level=$_SESSION['level'];
-$username=$_SESSION['username'];
-$status=$_SESSION['status'];
-
-if(!isset($_SESSION["level"])){
-header("location:logout.php");
-exit;
-}
-
-
-if($_SESSION["level"]!='user'){
-	header("location:$level/index.php");
-exit;
-}
-
-
-
-
-if($_SESSION["status"]=='ban'){
-	    echo "
-        <script>
-        alert('maaf, akun anda telah diban!')
-        document.location.href='logout.php'
-        </script>";
-exit;
-}
-
-
-
 require 'functions.php';
 
 
@@ -46,9 +14,6 @@ if(empty($produk)){
 
 $jenisProduk=query("SELECT * FROM jenis_produk");
 
-
-// profile
-$profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto'];
 
 
 ?>
@@ -610,11 +575,6 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 				<ul class="navbar-nav">
 
-					<!-- profile mobile -->
-					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
-							title="<?=$username?>"></a>
-
 
 
 					<li class="nav-item">
@@ -639,7 +599,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All items</a></li>
+							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -667,19 +627,17 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 					</li>
 
 
-					<!-- profile all -->
-					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="profile/<?=$profile;?>"
-							alt="<?=$username?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
-
 
 					<!-- bagian dropdown -->
 					<li class="nav-item fs-4 d-lg-none">
 						<a class="nav-link" id="contact" href="contact.php">Contact</a>
 					</li>
-
-
 				</ul>
+
+				<div class="login-register text-center">
+					<a type="button" class="btn btn-secondary ms-lg-5 me-lg-1" style="font-size:10px;" href="login.php">Login</a>
+					<a type="button" class="btn btn-danger" style="font-size:10px;" href="signup.php">Regrister</a>
+				</div>
 
 				<ul class="navbar-nav">
 					<ul class="bar-sosmed d-lg-none mt-2">
@@ -738,10 +696,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 						<h6 class="card-text mt-2 mb-3"><?= $produk["keterangan"]; ?></h6>
 
-						<a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Saya%20mau%20memesan%20<?= $produk['jenis_produk']?>%20<?= $produk['nama_produk']?>%20ukuran%20<?= $produk['ukuran']?>,%20dengan%20kode%20barang:%20<?= $produk['kode_produk']?>."
-							type="button" class="btn btn-success my-2" target="_blank"><i class="fab fa-whatsapp"></i> Lets Buy</a>
-
-
+						<a href="../login.php" type="button" class="btn btn-danger my-2">Login First</a>
 					</div>
 				</div>
 			</div>

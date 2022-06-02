@@ -12,7 +12,7 @@ exit;
 }
 
 if($_SESSION["level"]!='admin'){
-	header("location:../$level.php");
+	header("location:../$level/index.php");
 exit;
 }
 
@@ -624,7 +624,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 				<ul class="navbar-nav ms-auto navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
 					<li class=" nav-item dropdown">
-						<a class="nav-link dropdown-toggle d-lg-block d-none active" href="#" id="navbarDropdownMenuLink"
+						<a class="nav-link dropdown-toggle d-lg-block d-none active mt-2" href="#" id="navbarDropdownMenuLink"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Shop
 						</a>
@@ -635,7 +635,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All items</a></li>
+							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -658,19 +658,28 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0']['foto']
 
 					</div>
 
-					<li class="nav-item d-lg-block d-none">
+					<li class="nav-item d-lg-block d-none mt-2">
 						<a class="nav-link" href="contact.php">Contact</a>
 					</li>
 
-					<li class="nav-item d-lg-block d-none">
+					<li class="nav-item d-lg-block d-none mt-2">
 						<a class="nav-link" href="dashboard.php">Dashboard</a>
 					</li>
 
 
 					<!-- profile all -->
-					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="../profile/<?=$profile;?>"
-							alt="<?=$username?>" title="<?=$username?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"></a>
+					<li class=" nav-item dropdown">
+						<a class="nav-link dropdown-toggle ms-5 d-none d-lg-block" href="#" id="navbarDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<img id="profile" src="../profile/<?=$profile;?>" alt="<?=$username?>" title="<?=$username?>"
+								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;">
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li><a name="cari" class="dropdown-item" href="profile.php">Profile</a></li>
+							<li><a class="dropdown-item" href="../logout.php" style="color:red;">Logout</a></li>
+						</ul>
+					</li>
+
 
 
 					<!-- bagian dropdown -->

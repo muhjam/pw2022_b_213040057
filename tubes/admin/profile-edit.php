@@ -6,13 +6,14 @@ $level=$_SESSION['level'];
 $username=$_SESSION['username'];
 $status=$_SESSION['status'];
 
+
 if(!isset($_SESSION["level"])){
 header("location:../logout.php");
 exit;
 }
 
 if($_SESSION["level"]!='admin'){
-	header("location:../$level.php");
+	header("location:../$level/index.php");
 exit;
 }
 
@@ -635,15 +636,15 @@ if(isset($_POST["berhasil"])){
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
+			<a class="navbar-brand" id="logo" href="#">GoturthinQs<span>.</span></a>
 
-			<a href="index.php#container" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
 
 			<form id="bar" action="" method="post" class="d-lg-block" style="display:none;">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
-					name="keyword" autocomplete="off" id="keyword">
+					name="keyword" autofocus autocomplete="off" id="keyword">
 
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
@@ -651,7 +652,7 @@ if(isset($_POST["berhasil"])){
 			<div class="collapse navbar-collapse" id="navbarScroll">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
 							class="fas fa-search"></i></a> </label>
 
 
@@ -662,12 +663,12 @@ if(isset($_POST["berhasil"])){
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #ffff;"
 							title="<?=$username?>"></a>
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 " style="cursor:pointer;"
+						<a href="index.php#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -676,7 +677,7 @@ if(isset($_POST["berhasil"])){
 
 				<ul class="navbar-nav ms-auto navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
-					<li class=" nav-item dropdown">
+					<li class=" nav-item dropdown mt-2">
 						<a class="nav-link dropdown-toggle d-lg-block d-none" href="#" id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
 							Shop
@@ -688,13 +689,13 @@ if(isset($_POST["berhasil"])){
 
 
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All items</a></li>
+							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
 						</ul>
 					</li>
 
 
 
-					<div class="shop d-lg-none">
+					<div class="shop d-lg-none ">
 
 						<?php foreach($jenisProduk as $jenis): ?>
 
@@ -711,11 +712,11 @@ if(isset($_POST["berhasil"])){
 
 					</div>
 
-					<li class="nav-item d-lg-block d-none">
+					<li class="nav-item d-lg-block d-none mt-2">
 						<a class="nav-link" href="contact.php">Contact</a>
 					</li>
 
-					<li class="nav-item d-lg-block d-none">
+					<li class="nav-item d-lg-block d-none mt-2">
 						<a class="nav-link " href="dashboard.php">Dashboard</a>
 					</li>
 
@@ -723,9 +724,17 @@ if(isset($_POST["berhasil"])){
 
 
 					<!-- profile all -->
-					<a class="ms-5 d-none d-lg-block" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							alt="<?=$username?>" title="<?=$username?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"></a>
+					<li class=" nav-item dropdown">
+						<a class="nav-link dropdown-toggle ms-5 d-none d-lg-block active" href="#" id="navbarDropdownMenuLink"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" title="<?=$username?>"
+								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #ffff;">
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li><a name="cari" class="dropdown-item" href="profile.php">Profile</a></li>
+							<li><a class="dropdown-item" href="../logout.php" style="color:red;">Logout</a></li>
+						</ul>
+					</li>
 
 
 					<!-- bagian dropdown -->
@@ -752,12 +761,12 @@ if(isset($_POST["berhasil"])){
 								href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
 								target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 					</ul>
-
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<!-- akhir navbar -->
+
 
 
 

@@ -9,6 +9,6 @@ setcookie('email', '', time() - 3600);
 setcookie('key', '', time() - 3600);
 
 
-header("location:login.php");
+header("location:index.php");
 exit;
  ?>
