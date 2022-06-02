@@ -1,6 +1,147 @@
 <?php 
-// koneksi database
+
+
+// cek udah login apa belum
+session_start();
+
+// menghubungkan php dengan koneksi database
 require 'functions.php';
+
+// cek cookie
+if(isset($_COOKIE['id'])&&isset($_COOKIE['key'])){
+  $id=$_COOKIE['id'];
+  $key=$_COOKIE['key'];
+
+  // ambil username berdasarkan id
+  $result= mysqli_query($conn, "SELECT * FROM users WHERE id=$id");
+  $row=mysqli_fetch_assoc($result);
+
+  // cek cookie dan username
+  if($key===hash('sha256', $row['username'])){
+	$_SESSION['level']=$row['level'];
+	$_SESSION['username']=$row['username'];
+    $_SESSION['status']=$row['status'];
+
+  }
+}
+
+
+if(isset($_COOKIE['level'])){
+  if($_COOKIE['level']=='true'){
+    $_SESSION['level']=$row['level'];
+		$_SESSION['username']=$row['username'];
+		$_SESSION['status']=$row['status'];
+  }
+}
+
+// cek apakah sudah login
+if(isset($_SESSION["level"])){
+
+if($_SESSION['level']=="admin"){
+	header("location:admin/index.php");
+exit;
+}else if($_SESSION['level']=="user"){
+	header("location:user/index.php");
+exit;
+}
+
+
+}
+
+
+
+
+
+
+// cek apakah tombol submit sudah di tekan atau belum
+if (isset($_POST["login"])) {
+
+$username=$_POST["username"];
+$password=$_POST["password"];
+
+
+// Cek user name
+$result=mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
+
+if(mysqli_num_rows($result)===1){
+
+    // Cek password
+$row=mysqli_fetch_assoc($result);
+
+if(password_verify($password, $row['password'])){
+
+
+
+	// cek jika user login sebagai admin
+	if($row['level']=="admin"){
+
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "admin";
+		$_SESSION['status']=$row['status'];
+
+
+		// alihkan ke halaman dashboard admin
+		header("location:admin/index.php");
+
+	// cek jika user login sebagai pegawai
+	}else if($row['level']=="user"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "user";
+		$_SESSION['status']=$row['status'];
+
+		// alihkan ke halaman dashboard pegawai
+		header("location:user/index.php");
+
+	}else{
+	$error=true;
+	}	
+
+
+
+
+}
+
+
+
+
+// cek remember me
+if(isset($_POST['remember'])){
+  // buat cookie
+  setcookie('id', $row['id'], time() + 60);
+  setcookie('key', hash('sha256', $row['username']), time() + 60);
+
+		// cek jika user login sebagai admin
+	if($row['level']=="admin"){
+
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "admin";
+		
+		// alihkan ke halaman dashboard admin
+		header("location:admin/index.php");
+
+	// cek jika user login sebagai pegawai
+	}else if($row['level']=="user"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "user";
+
+		// alihkan ke halaman dashboard pegawai
+		header("location:user/index.php");
+
+	}else{
+	$error=true;
+	}	
+}
+
+
+}
+
+$error=true;
+
+}
 
 
 // konfigurasi
