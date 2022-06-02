@@ -696,7 +696,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 						<h6 class="card-text mt-2 mb-3"><?= $produk["keterangan"]; ?></h6>
 
-						<a href="../login.php" type="button" class="btn btn-danger my-2">Login First</a>
+						<a href="login.php" type="button" class="btn btn-danger my-2">Login First</a>
 					</div>
 				</div>
 			</div>
