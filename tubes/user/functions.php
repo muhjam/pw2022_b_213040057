@@ -150,7 +150,7 @@ $namaFileBaru.=$ekstensiGambar;
 
 
 
-move_uploaded_file($tmpName, 'profile/'.$namaFileBaru); 
+move_uploaded_file($tmpName, '../profile/'.$namaFileBaru); 
 return $namaFileBaru;
 }
 
