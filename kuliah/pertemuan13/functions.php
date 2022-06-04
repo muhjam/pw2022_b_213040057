@@ -107,6 +107,8 @@ function upload(){
     $filetype=pathinfo($filename, PATHINFO_EXTENSION);
     $allowedtype=['jpg', 'jpeg', 'png'];
 
+    $filetype=strtolower($filetype);
+    
     // cek apakah yang diupload bukan gambar
     if(!in_array($filetype, $allowedtype)){
     echo"<script>
@@ -128,7 +130,7 @@ function upload(){
     // proses upload gambar
 $newfilename = uniqid() . $filename;
 
-    move_uploaded_file(strtolower($filetmpname), 'img/' . $newfilename);
+    move_uploaded_file($filetmpname, 'img/' . $newfilename);
 
     return $newfilename;
 

@@ -18,6 +18,20 @@ exit;
 // koneksi database
 require 'functions.php';
 
+if(!isset($_GET['id'])){
+    header('location:dashboard.php');
+}
+
+
+$id= $_GET["id"];
+// query data mahasiswa berdasarkan id
+$produk= query("SELECT * FROM produk WHERE id=$id")[0]; // supaya ga manggil 0 nya lagi
+
+if(empty($produk)){
+	header("location:dashboard.php");
+}
+
+
 $id = $_GET["id"];
 if (delete($id) > 0) {
     echo "

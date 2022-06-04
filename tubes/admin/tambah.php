@@ -529,7 +529,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<a class="navbar-brand" id="logo" href="#">GoturthinQs<span>.</span></a>
+			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
@@ -617,17 +617,18 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 					<!-- profile all -->
-					<li class=" nav-item dropdown">
-						<a class="nav-link dropdown-toggle ms-5 d-none d-lg-block" href="#" id="navbarDropdownMenuLink"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<li class=" nav-item dropdown ms-5">
+						<a class="nav-link dropdown-toggle  d-none d-lg-block" href="#" id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
 							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" title="<?=$username?>"
 								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;">
 						</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<ul class="dropdown-menu" style="margin-left:-45px;" aria-labelledby="navbarDropdownMenuLink">
 							<li><a name="cari" class="dropdown-item" href="profile.php">Profile</a></li>
 							<li><a class="dropdown-item" href="../logout.php" style="color:red;">Logout</a></li>
 						</ul>
 					</li>
+
 
 
 					<!-- bagian dropdown -->
@@ -750,7 +751,9 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 				<div class="mb-3">
 					<label for="gambar" class="form-label">Pilih Gambar:</label>
-					<input class="form-control form-control-sm" id="gambar" type="file" name="gambar" required>
+					<img src="" class="img-thumbnail mb-2" style="width:120px;display:none;" id=img-preview>
+					<input class="form-control form-control-sm" id="gambar" type="file" name="gambar" required
+						onchange="previewImage();">
 				</div>
 
 				<div class="row mt-4">
@@ -794,7 +797,19 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 	<!-- my javascript -->
-	<script src="../js/script.js"></script>
+	<script>
+	function previewImage() {
+		const gambar = document.querySelector("#gambar");
+		const imgPreview = document.querySelector("#img-preview");
+		imgPreview.style.display = "block";
+		var oFReader = new FileReader();
+		oFReader.readAsDataURL(gambar.files[0]);
+
+		oFReader.onload = function(oFREvent) {
+			imgPreview.src = oFREvent.target.result;
+		};
+	}
+	</script>
 
 
 	<!-- Optional JavaScript; choose one of the two! -->

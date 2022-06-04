@@ -748,15 +748,14 @@ $profile=query("SELECT * FROM users WHERE username='$username'")['0'];
 
 
 					<!-- profile all -->
-					<li class=" nav-item dropdown">
-						<a class="nav-link dropdown-toggle ms-5 d-none d-lg-block active " href="#" id="navbarDropdownMenuLink"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<li class=" nav-item dropdown ms-5">
+						<a class="nav-link dropdown-toggle  d-none d-lg-block" href="#" id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
 							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" title="<?=$username?>"
-								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;">
+								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #ffff;">
 						</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<li><a name="cari" class="dropdown-item" href="profile.php">Profile</a>
-							</li>
+						<ul class="dropdown-menu" style="margin-left:-45px;" aria-labelledby="navbarDropdownMenuLink">
+							<li><a name="cari" class="dropdown-item" href="profile.php">Profile</a></li>
 							<li><a class="dropdown-item" href="../logout.php" style="color:red;">Logout</a></li>
 						</ul>
 					</li>

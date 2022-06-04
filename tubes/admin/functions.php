@@ -32,6 +32,20 @@ function conn($query) {
 // TAMBAH
 function tambah($data) {
     global $conn;
+
+// cek apakah user tidak mengupload gambar
+if($_FILES["gambar"]["error"]===4){
+    $gambar='nophoto.png';
+}else{
+    // jalankan fungsi upload
+    $gambar=upload();
+    // cek jika upload gagal
+    if(!$gambar){
+        return false;
+    }
+}
+
+
     $jenis_produk =($data["jenis_produk"]);
     $kode_produk= htmlspecialchars($data["kode_produk"]);
     $nama_produk = htmlspecialchars($data["nama_produk"]);
@@ -46,22 +60,9 @@ function tambah($data) {
     $hargaBaru=preg_replace("/[^0-9]/", "", $harga);
     $keteranganBaru= str_replace("'","",$keterangan);
 
-    $gambar=upload();
-
-    if(!$gambar){
-        return false;
-    }
 
     // query insert data
     $query ="INSERT INTO `produk`(`jenis_produk`, `kode_produk`, `nama_produk`, `ukuran`, `harga`, `keterangan`, `gambar`,`warna`) VALUES ('$jenis_produk','$kodeProduk','$namaProduk','$ukuran','$hargaBaru','$keteranganBaru','$gambar','$warna');";
-
-if($ukuran==''||$jenis_produk==''){
-            echo
-        "        <script>
-        alert('pilih ukuran terlebih dahulu!')
-        document.location.href='tambah.php'
-        </script>";
-}
 
     mysqli_query($conn, $query);
 
@@ -71,48 +72,39 @@ if($ukuran==''||$jenis_produk==''){
 
 // Function Upload
 function upload(){
-    $namaFile= $_FILES['gambar']['name'];
-    $ukuranFile=$_FILES['gambar']['size'];
-    $error=$_FILES['gambar']['error'];
-    $tmpName=$_FILES['gambar']['tmp_name'];
+   // siapkan data gambar
+    $filename=$_FILES['gambar']['name'];
+    $filetmpname=$_FILES['gambar']['tmp_name'];
+    $filesize=$_FILES['gambar']['size'];
+    $filetype=pathinfo($filename, PATHINFO_EXTENSION);
+    $allowedtype=['jpg', 'jpeg', 'png'];
 
-// cek apakah tidak ada gambar yang diupload
-if($error===4){
+   $filetype=strtolower($filetype);
+
+    // cek apakah yang diupload bukan gambar
+    if(!in_array($filetype, $allowedtype)){
     echo"<script>
-    alert('pilih gambar terlebih dahulu!');    
+    alert('Yang anda upload bukan gambar!');
     </script>";
-    return false;
-}
 
-//  cek apakah yang diupload adalah gambar
-$ekstensiGambarValid=['jpg', 'jpeg', 'png'];
-$ekstensiGambar = explode('.', $namaFile);
-$ekstensiGambar= strtolower(end($ekstensiGambar));
-if(!in_array($ekstensiGambar,$ekstensiGambarValid)){
-        echo"<script>
-alert('Yang anda upload bukan gambar!');    
+    return false;
+    }
+
+    // cek apakah gambar terlalu besar
+    if($filesize > 1000000){
+    echo"<script>
+    alert('Ukuran gambar terlalu besar!');
     </script>";
+    
     return false;
-}
+    }
 
-//  Cek jika ukuran nya terlalu besar
-if($ukuranFile > 1000000){
-          echo"<script>
-alert('Ukuran gambar terlalu besar!')
-    </script>";
-    return false;
-}
+    // proses upload gambar
+    $newfilename = uniqid() . $filename;
 
-// lolos pengecekan, gambar siap upload
-// generate nama gambar baru
-$namaFileBaru=uniqid();
-$namaFileBaru.='.';
-$namaFileBaru.=$ekstensiGambar;
+    move_uploaded_file($filetmpname, '../img/' . $newfilename);
 
-
-
-move_uploaded_file($tmpName, '../img/'.$namaFileBaru); 
-return $namaFileBaru;
+    return $newfilename;
 }
 
 
@@ -120,49 +112,39 @@ return $namaFileBaru;
 
 // Function Upload profile
 function uploadProfile(){
-    $namaFile= $_FILES['gambar']['name'];
-    $ukuranFile=$_FILES['gambar']['size'];
-    $error=$_FILES['gambar']['error'];
-    $tmpName=$_FILES['gambar']['tmp_name'];
+   // siapkan data gambar
+    $filename=$_FILES['gambar']['name'];
+    $filetmpname=$_FILES['gambar']['tmp_name'];
+    $filesize=$_FILES['gambar']['size'];
+    $filetype=pathinfo($filename, PATHINFO_EXTENSION);
+    $allowedtype=['jpg', 'jpeg', 'png'];
 
-// cek apakah tidak ada gambar yang diupload
-if($error===4){
+   $filetype=strtolower($filetype);
+
+    // cek apakah yang diupload bukan gambar
+    if(!in_array($filetype, $allowedtype)){
     echo"<script>
-    alert('pilih gambar terlebih dahulu!');    
+    alert('Yang anda upload bukan gambar!')
     </script>";
-    return false;
-}
 
-//  cek apakah yang diupload adalah gambar
-$ekstensiGambarValid=['jpg', 'jpeg', 'png'];
-$ekstensiGambar = explode('.', $namaFile);
-$ekstensiGambar= strtolower(end($ekstensiGambar));
-if(!in_array($ekstensiGambar,$ekstensiGambarValid)){
-        echo"<script>
-alert('Yang anda upload bukan gambar!');    
+    return false;
+    }
+
+    // cek apakah gambar terlalu besar
+    if($filesize > 8000000){
+    echo"<script>
+    alert('Ukuran gambar terlalu besar!')
     </script>";
+
     return false;
-}
+    }
 
-//  Cek jika ukuran nya terlalu besar
-if($ukuranFile > 10000000){
-          echo"<script>
-alert('Ukuran gambar terlalu besar!')
-document.location.href='profile-edit.php'  
-    </script>";
-    return false;
-}
+    // proses upload gambar
+    $newfilename = uniqid() . $filename;
 
-// lolos pengecekan, gambar siap upload
-// generate nama gambar baru
-$namaFileBaru=uniqid();
-$namaFileBaru.='.';
-$namaFileBaru.=$ekstensiGambar;
+    move_uploaded_file($filetmpname, '../profile/' . $newfilename);
 
-
-
-move_uploaded_file($tmpName, '../profile/'.$namaFileBaru); 
-return $namaFileBaru;
+    return $newfilename;
 }
 
 
@@ -171,10 +153,19 @@ return $namaFileBaru;
 // Function delete
 function delete($id) {
     global $conn;
-    mysqli_query($conn, "DELETE FROM produk WHERE `produk`.`id` = '$id'");
-    return mysqli_affected_rows($conn);
+    // query mahasiswa berdasarkan id
+$produk=query("SELECT * FROM produk WHERE id=$id")[0];
+
+// cek jika gambar default
+if($produk["gambar"]!=='nophoto.png'){
+    // hapus gambar
+    unlink('../img/' . $produk["gambar"]);
 }
 
+    mysqli_query($conn, "DELETE FROM produk WHERE `produk`.`id` = '$id'");
+    return mysqli_affected_rows($conn);
+
+}
 
 // Ubah data
 function ubah($data) {
@@ -199,6 +190,16 @@ if($_FILES['gambar']['error']===4){
     $gambar=$gambarLama;
 }else{
     $gambar=upload();
+
+    // cek jika upload gagal
+    if(!$gambar){
+        return false;
+    }    
+
+        // hapus gambar lama
+    unlink('../img/' . $gambarLama);
+
+
 }
 
 
@@ -456,13 +457,22 @@ function editFoto($data){
      $id=htmlspecialchars($data["id"]);
     $gambarLama=htmlspecialchars($data["gambarLama"]);
 
- // cek apakah user pilih gambar baru atau tidak
+    // cek apakah user pilih gambar baru atau tidak
 if($_FILES['gambar']['error']===4){
     $gambar=$gambarLama;
 }else{
     $gambar=uploadProfile();
-}
 
+    // cek jika upload gagal
+    if(!$gambar){
+        return false;
+    }    
+
+        // hapus gambar lama
+    unlink('../profile/' . $gambarLama);
+
+
+}
 
 $query = "UPDATE `users` SET `foto`='$gambar' WHERE `id`='$id'; ";
 

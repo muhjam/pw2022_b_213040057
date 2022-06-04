@@ -25,7 +25,7 @@ if($_SESSION["status"]=='ban'){
 	    echo "
         <script>
         alert('maaf, akun anda telah diban!')
-        document.location.href='../log.php'
+        document.location.href='../logout.php'
         </script>";
 exit;
 }
@@ -35,10 +35,23 @@ exit;
 require 'functions.php';
 
 // ambil data di URL
+
+if(!isset($_GET['id'])){
+header("location:dashboard.php");
+
+}
+
+
+
 $id= $_GET["id"];
 
 // query data mahasiswa berdasarkan id
 $produk= query("SELECT * FROM produk WHERE id=$id")[0]; // supaya ga manggil 0 nya lagi
+
+if(empty($produk)){
+	header("location:dashboard.php");
+}
+
 
 // cek apakah tombol submit telah ditekan atau belum
 if (isset($_POST["submit"])) {
@@ -535,7 +548,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<a class="navbar-brand" id="logo" href="#">GoturthinQs<span>.</span></a>
+			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
@@ -623,17 +636,18 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 					<!-- profile all -->
-					<li class=" nav-item dropdown">
-						<a class="nav-link dropdown-toggle ms-5 d-none d-lg-block" href="#" id="navbarDropdownMenuLink"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<li class=" nav-item dropdown ms-5">
+						<a class="nav-link dropdown-toggle  d-none d-lg-block" href="#" id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
 							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" title="<?=$username?>"
 								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;">
 						</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<ul class="dropdown-menu" style="margin-left:-45px;" aria-labelledby="navbarDropdownMenuLink">
 							<li><a name="cari" class="dropdown-item" href="profile.php">Profile</a></li>
 							<li><a class="dropdown-item" href="../logout.php" style="color:red;">Logout</a></li>
 						</ul>
 					</li>
+
 
 
 					<!-- bagian dropdown -->
@@ -760,18 +774,11 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					</div>
 				</div>
 
-
-				<label for="gambar" class="form-label">Pilih Gambar:</label>
-				<div class="row mb-3">
-					<div class="form-grup col-md-2 mb-3 ms-3">
-						<img src="../img/<?= $produk["gambar"]?> " width="40px">
-					</div>
-					<div class="form-grup col-md-6">
-
-						<input class="form-control form-control-sm " id="gambar" type="file" name="gambar"
-							value="<?= $produk["gambar"]?>">
-					</div>
-
+				<div class="mb-3">
+					<label for="gambar" class="form-label">Pilih Gambar:</label>
+					<img src="../img/<?= $produk["gambar"]?> " class="img-thumbnail mb-2" style="width:120px;" id=img-preview>
+					<input class="form-control form-control-sm" id="gambar" type="file" name="gambar" required
+						onchange="previewImage();">
 				</div>
 
 
@@ -832,6 +839,22 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
+
+
+	<!-- my javascript -->
+	<script>
+	function previewImage() {
+		const gambar = document.querySelector("#gambar");
+		const imgPreview = document.querySelector("#img-preview");
+		var oFReader = new FileReader();
+		oFReader.readAsDataURL(gambar.files[0]);
+
+		oFReader.onload = function(oFREvent) {
+			imgPreview.src = oFREvent.target.result;
+		};
+	}
+	</script>
+
 </body>
 
 </html>
