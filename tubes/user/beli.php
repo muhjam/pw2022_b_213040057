@@ -48,7 +48,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 // profile
-$profile=query("SELECT foto FROM users WHERE username='$username'")['0'];
+$profile=query("SELECT foto FROM users WHERE username='$username'")[0];
 
 
 ?>
@@ -611,7 +611,7 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0'];
 				<ul class="navbar-nav">
 
 					<!-- profile mobile -->
-					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile;?>"
+					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
 							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
 							title="<?=$username?>"></a>
 

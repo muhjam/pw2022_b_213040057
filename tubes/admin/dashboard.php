@@ -843,34 +843,39 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 			</table>
 		</div>
 
-		<!-- Pagination -->
-		<div id="page" class="mb-5">
-			<?php if($halamanAktif>1): ?>
-			<a style="margin-right:5px;" href="?page=<?= $halamanAktif - 1; ?>">&lt</a>
-			<?php endif; ?>
-
-			<?php for($i=1;$i<=$jumlahHalaman;$i++) : ?>
-
-			<?php if($i == $halamanAktif): ?>
-			<a href="?page=<?= $i; ?>" style="font-weight:bold;color:red;margin:0 5px;"><?= $i; ?></a>
-
-			<?php else: ?>
-			<a style="margin:0 5px;" href="?page=<?= $i; ?>"><?= $i; ?></a>
-			<?php endif; ?>
-
-			<?php endfor; ?>
-
-			<?php if($halamanAktif<$jumlahHalaman): ?>
-			<a href="?page=<?= $halamanAktif + 1; ?>">&gt</a>
-			<?php endif; ?>
 
 
 
+		<!-- Pagenation -->
+		<nav aria-label="..." id="page" class="mb-5 mt-3">
+			<ul class="pagination justify-content-end me-3">
+				<li class="page-item">
+					<?php if($halamanAktif>1): ?>
+					<a class="page-link" href="?page=<?= $halamanAktif - 1; ?>" tabindex="-1" aria-disabled="true">Previous</a>
+					<?php endif; ?>
+				</li>
+
+				<?php for($i=1;$i<=$jumlahHalaman;$i++) : ?>
+
+				<?php if($i == $halamanAktif): ?>
+				<li class="page-item  active"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+				<?php else: ?>
+
+				<li class="page-item" aria-current="page">
+					<a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+				</li>
+				<?php endif; ?>
+				<?php endfor; ?>
 
 
+				<li class="page-item">
+					<?php if($halamanAktif<$jumlahHalaman): ?>
+					<a class="page-link" href="?page=<?= $halamanAktif + 1; ?>">Next</a>
+					<?php endif; ?>
+				</li>
 
-		</div>
-
+			</ul>
+		</nav>
 
 
 	</div>
@@ -898,7 +903,6 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		</ul>
 	</div>
 	<!-- akhir footer -->
-
 
 
 

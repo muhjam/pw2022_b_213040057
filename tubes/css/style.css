@@ -67,15 +67,6 @@ body {
     color: #151e3d;
 }
 
-#page {
-    text-align: center;
-}
-
-#page a {
-    color: #151e3d;
-    text-decoration: none;
-}
-
 @media (max-width: 770px) {
     .container-fluid {
         width: fit-content;
