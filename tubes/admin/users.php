@@ -690,6 +690,13 @@ if(isset($_POST['submit'])){
 					<!-- isi tabel -->
 
 					<?php $i=1; ?>
+					<?php if(!isset($_GET['page'])): ?>
+					<?php $i; ?>
+					<?php elseif(isset($_GET['page'])): ?>
+
+					<?php $a=$_GET['page']; ?>
+					<?php $i=5*$a-4; ?>
+					<?php endif; ?>
 					<?php foreach ($users as $user ) :?>
 					<tbody>
 						<tr style="text-align:center;">
@@ -733,35 +740,36 @@ if(isset($_POST['submit'])){
 			</table>
 		</div>
 
-		<!-- Pagination -->
-		<div id="page" class="mb-5">
-			<?php if($halamanAktif>1): ?>
-			<a style="margin-right:5px;" href="?page=<?= $halamanAktif - 1; ?>">&lt</a>
-			<?php endif; ?>
+		<!-- Pagenation -->
+		<nav aria-label="Page navigation example" id="page" class="mb-5 mt-5">
+			<ul class="pagination justify-content-center me-3">
+				<li class="page-item">
+					<?php if($halamanAktif>1): ?>
+					<a class="page-link" href="?page=<?= $halamanAktif - 1; ?>" aria-label="Previous" style="color:black;">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+					<?php endif; ?>
+				</li>
+				<?php for($i=1;$i<=$jumlahHalaman;$i++) : ?>
 
-			<?php for($i=1;$i<=$jumlahHalaman;$i++) : ?>
+				<?php if($i == $halamanAktif): ?>
+				<li class="page-item active"><a style="background-color:#2d2d2d;border:1px solid white;" class="page-link"
+						href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+				<?php else: ?>
+				<li class="page-item"><a class="page-link" href="?page=<?= $i; ?>" style="color:black;"><?= $i; ?></a></li>
+				<?php endif; ?>
 
-			<?php if($i == $halamanAktif): ?>
-			<a href="?page=<?= $i; ?>" style="font-weight:bold;color:red;margin:0 5px;"><?= $i; ?></a>
+				<?php endfor; ?>
 
-			<?php else: ?>
-			<a style="margin:0 5px;" href="?page=<?= $i; ?>"><?= $i; ?></a>
-			<?php endif; ?>
-
-			<?php endfor; ?>
-
-			<?php if($halamanAktif<$jumlahHalaman): ?>
-			<a href="?page=<?= $halamanAktif + 1; ?>">&gt</a>
-			<?php endif; ?>
-
-
-
-
-
-
-		</div>
-
-
+				<li class="page-item">
+					<?php if($halamanAktif<$jumlahHalaman): ?>
+					<a class="page-link" href="?page=<?= $halamanAktif + 1; ?>" aria-label="Next" style="color:black;">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+					<?php endif; ?>
+				</li>
+			</ul>
+		</nav>
 
 	</div>
 

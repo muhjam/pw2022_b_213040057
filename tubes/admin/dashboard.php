@@ -99,7 +99,7 @@ $urut=$_GET['urut-harga'];
 }
 
 
-
+$produk=query('SELECT * FROM produk');
 
 
 
@@ -740,11 +740,11 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					<tr style="text-align:center;">
 						<th>No <span class="d-none d-lg-inline">
 								<?php if(!isset($_GET['urut-terbaru'])):?>
-								<a href="?urut-terbaru=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
-								<?php elseif($_GET['urut-terbaru']=='DESC'):?>
-								<a href="?urut-terbaru=ASC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8595;</a>
+								<a href="?urut-terbaru=ASC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
 								<?php elseif($_GET['urut-terbaru']=='ASC'):?>
-								<a href="?urut-terbaru=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
+								<a href="?urut-terbaru=DESC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8595;</a>
+								<?php elseif($_GET['urut-terbaru']=='DESC'):?>
+								<a href="?urut-terbaru=ASC&page=<?=$halamanAktif?>" style="text-decoration:none;">&#8593;</a>
 								<?php endif;?>
 							</span>
 						</th>
@@ -810,11 +810,21 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					<!-- isi tabel -->
 
 					<?php $i=1; ?>
+					<?php if(!isset($_GET['page'])): ?>
+					<?php $i; ?>
+					<?php elseif(isset($_GET['page'])): ?>
+
+					<?php $a=$_GET['page']; ?>
+					<?php $i=5*$a-4; ?>
+					<?php endif; ?>
+
 					<?php foreach ($goturthings as $goturthing ) :?>
 					<tbody>
 						<tr style="text-align:center;">
+
 							<td><?= $i; ?></td>
-							<td><img src=" ../img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover">
+
+							<td><img src="../img/<?= $goturthing["gambar"] ?>" style="width:100px; height:100px; object-fit:cover">
 							</td>
 							<td><?= $goturthing["nama_produk"]; ?></td>
 							<td><?= $goturthing["jenis_produk"]; ?></td>
@@ -847,35 +857,36 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
 		<!-- Pagenation -->
-		<nav aria-label="..." id="page" class="mb-5 mt-3">
-			<ul class="pagination justify-content-end me-3">
+		<nav aria-label="Page navigation example" id="page" class="mb-5 mt-5">
+			<ul class="pagination justify-content-center me-3">
 				<li class="page-item">
 					<?php if($halamanAktif>1): ?>
-					<a class="page-link" href="?page=<?= $halamanAktif - 1; ?>" tabindex="-1" aria-disabled="true">Previous</a>
+					<a class="page-link" href="?page=<?= $halamanAktif - 1; ?>" aria-label="Previous" style="color:black;">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
 					<?php endif; ?>
 				</li>
-
 				<?php for($i=1;$i<=$jumlahHalaman;$i++) : ?>
 
 				<?php if($i == $halamanAktif): ?>
-				<li class="page-item  active"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+				<li class="page-item active"><a style="background-color:#2d2d2d;border:1px solid white;" class="page-link"
+						href="?page=<?= $i; ?>"><?= $i; ?></a></li>
 				<?php else: ?>
-
-				<li class="page-item" aria-current="page">
-					<a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
-				</li>
+				<li class="page-item"><a class="page-link" href="?page=<?= $i; ?>" style="color:black;"><?= $i; ?></a></li>
 				<?php endif; ?>
-				<?php endfor; ?>
 
+				<?php endfor; ?>
 
 				<li class="page-item">
 					<?php if($halamanAktif<$jumlahHalaman): ?>
-					<a class="page-link" href="?page=<?= $halamanAktif + 1; ?>">Next</a>
+					<a class="page-link" href="?page=<?= $halamanAktif + 1; ?>" aria-label="Next" style="color:black;">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
 					<?php endif; ?>
 				</li>
-
 			</ul>
 		</nav>
+
 
 
 	</div>
