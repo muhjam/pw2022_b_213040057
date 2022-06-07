@@ -63,8 +63,10 @@ if (isset($_POST["ubah"])) {
 					</div>
 					<div class="mb-3">
 						<label for="gambar" class="form-label">Gambar</label>
-						<img src="" class="img-thumbnail" style="width:120px;display:none;" id=img-preview>
+						<img src="img/<?= $mhs['gambar'];?>" class="img-thumbnail mb-2" style="width:120px;" id=img-preview>
 						<input type="file" class="form-control" id="gambar" name="gambar" onchange="previewImage();">
+						<input class="form-control form-control-sm" id="gambarLama" type="hidden" name="gambarLama"
+							value="<?= $mhs["gambar"]?>">
 					</div>
 					<button type="submit" name="ubah" class="btn btn-primary">Ubah Data Mahasiswa</button>
 				</form>
@@ -85,6 +87,22 @@ if (isset($_POST["ubah"])) {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+
+
+	<!-- my javascript -->
+	<script>
+	function previewImage() {
+		const gambar = document.querySelector("#gambar");
+		const imgPreview = document.querySelector("#img-preview");
+		var oFReader = new FileReader();
+		oFReader.readAsDataURL(gambar.files[0]);
+
+		oFReader.onload = function(oFREvent) {
+			imgPreview.src = oFREvent.target.result;
+		};
+	}
+	</script>
+
 </body>
 
 </html>
