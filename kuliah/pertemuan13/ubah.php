@@ -41,7 +41,7 @@ if (isset($_POST["ubah"])) {
 
 		<div class="row mt-3">
 			<div class="col-8">
-				<form action="" method="POST" autocomplete="off">
+				<form action="" method="post" autocomplete="off" enctype="multipart/form-data">
 					<input type="hidden" class="form-control" id="id" name="id" required value="<?= $mhs['id']?>">
 
 					<div class="mb-3">
@@ -63,7 +63,8 @@ if (isset($_POST["ubah"])) {
 					</div>
 					<div class="mb-3">
 						<label for="gambar" class="form-label">Gambar</label>
-						<input type="text" class="form-control" id="gambar" name="gambar" value="<?= $mhs['gambar']?>">
+						<img src="" class="img-thumbnail" style="width:120px;display:none;" id=img-preview>
+						<input type="file" class="form-control" id="gambar" name="gambar" onchange="previewImage();">
 					</div>
 					<button type="submit" name="ubah" class="btn btn-primary">Ubah Data Mahasiswa</button>
 				</form>

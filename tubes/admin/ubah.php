@@ -777,8 +777,9 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<div class="mb-3">
 					<label for="gambar" class="form-label">Pilih Gambar:</label>
 					<img src="../img/<?= $produk["gambar"]?> " class="img-thumbnail mb-2" style="width:120px;" id=img-preview>
-					<input class="form-control form-control-sm" id="gambar" type="file" name="gambar" required
-						onchange="previewImage();">
+					<input class="form-control form-control-sm" id="gambar" type="file" name="gambar" onchange="previewImage();">
+					<input class="form-control form-control-sm" id="gambarLama" type="hidden" name="gambarLama"
+						value="<?= $produk["gambar"]?>">
 				</div>
 
 
