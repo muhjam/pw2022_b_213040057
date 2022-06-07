@@ -85,6 +85,15 @@ $ukuranProduk=query("SELECT * FROM ukuran");
 $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 
+// mencari ukuran berdasarkan jenisnya
+
+$ukurann=$produk['jenis_produk'];
+
+$query="SELECT * FROM ukuran_jenis_produk
+             WHERE
+            jenis_produk LIKE '%$ukurann%'
+					";
+$ukuranProduk= query($query);
 
 ?>
 <!DOCTYPE html>
@@ -729,19 +738,21 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 					<div class="form-group col-md-6 mb-3">
 						<label for="jenis_produk">Jenis :</label>
 						<select id="jenis_produk" class="form-control" name="jenis_produk" required>
-							<option required value="<?= $produk["jenis_produk"]?>"><?= $produk["jenis_produk"]?></option>
 							<?php foreach($jenisProduk as $jenis): ?>
-							<option value="<?= $jenis['jenis_produk'];?>"><?= $jenis['jenis_produk']; ?></option>
+							<option value="<?= $jenis['jenis_produk'];?>" <?php if($jenis['jenis_produk']==$produk['jenis_produk']){
+								echo"selected";
+							} ?>><?= $jenis['jenis_produk']; ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>
 
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-6" id="container">
 						<label for="inputState">Ukuran :</label>
 						<select id="inputState" class="form-control" name="ukuran" required>
-							<option required value="<?= $produk["ukuran"]?>"><?= $produk["ukuran"]?></option>
 							<?php foreach($ukuranProduk as $ukuran): ?>
-							<option value="<?= $ukuran['ukuran'];?>"><?= $ukuran['ukuran']; ?></option>
+							<option value="<?= $ukuran['ukuran'];?>" <?php if($ukuran['ukuran']==$produk['ukuran']){
+								echo"selected";
+							} ?>><?= $ukuran['ukuran']; ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>
@@ -755,7 +766,6 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 							required value="Rp. <?= $produk["harga"]?>">
 					</div>
 				</div>
-
 
 				<div class="form-group row mb-3">
 					<label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
@@ -844,6 +854,34 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 	<!-- my javascript -->
 	<script>
+	// ambil elemen2 yang dibutuhkan
+	var jenisProduk = document.getElementById("jenis_produk");
+	var container = document.getElementById("container");
+
+	// tambahkan event ketika keyboard ditulis
+	jenisProduk.addEventListener("change", function() {
+
+
+		// buat object ajax
+		var xhr = new XMLHttpRequest();
+
+		// cek kesiapan ajax
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				container.innerHTML = xhr.responseText;
+			}
+		};
+
+		// eksekusi ajax
+		xhr.open("GET", "ajax/ubah.php?jenisProduk=" + jenisProduk.value + "&id=<?=$_GET['id'];?>", true);
+		xhr.send();
+
+
+	});
+
+
+
+
 	function previewImage() {
 		const gambar = document.querySelector("#gambar");
 		const imgPreview = document.querySelector("#img-preview");

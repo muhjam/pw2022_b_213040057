@@ -705,21 +705,20 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 				<div class="row mt-3 mb-3 ">
 					<div class="form-group col-md-6 mb-3">
 						<label for="jenis_produk">Jenis :</label>
+
 						<select id="jenis_produk" class="form-control" name="jenis_produk" required>
 							<option value="">Pilih Jenis Produk</option>
 							<?php foreach($jenisProduk as $jenis): ?>
-							<option value="<?= $jenis['jenis_produk'];?>"><?= $jenis['jenis_produk']; ?></option>
+							<option value="<?= $jenis['jenis_produk'];?>">
+								<?= $jenis['jenis_produk']; ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>
 
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-6 d-none" id="container">
 						<label for="inputState">Ukuran :</label>
 						<select id="inputState" class="form-control" name="ukuran" required>
 							<option value="">Pilih Ukuran</option>
-							<?php foreach($ukuranProduk as $ukuran): ?>
-							<option value="<?= $ukuran['ukuran'];?>"><?= $ukuran['ukuran']; ?></option>
-							<?php endforeach; ?>
 						</select>
 					</div>
 				</div>
@@ -798,6 +797,40 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 	<!-- my javascript -->
 	<script>
+	// ambil elemen2 yang dibutuhkan
+	var jenisProduk = document.getElementById("jenis_produk");
+	var container = document.getElementById("container");
+
+	// tambahkan event ketika keyboard ditulis
+	jenisProduk.addEventListener("change", function() {
+
+		container.classList.remove('d-none');
+
+		// buat object ajax
+		var xhr = new XMLHttpRequest();
+
+		// cek kesiapan ajax
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				container.innerHTML = xhr.responseText;
+			}
+		};
+
+		// eksekusi ajax
+		xhr.open("GET", "ajax/tambah.php?jenisProduk=" + jenisProduk.value, true);
+		xhr.send();
+
+		if (jenisProduk.value == '') {
+			container.classList.add('d-none');
+		}
+
+
+	});
+
+
+
+
+
 	function previewImage() {
 		const gambar = document.querySelector("#gambar");
 		const imgPreview = document.querySelector("#img-preview");
