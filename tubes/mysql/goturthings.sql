@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: sql309.epizy.com
--- Generation Time: Jun 01, 2022 at 10:54 AM
--- Server version: 10.3.27-MariaDB
--- PHP Version: 7.2.22
+-- Host: localhost
+-- Generation Time: Jun 07, 2022 at 10:33 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `epiz_31630722_goturthings`
+-- Database: `goturthings`
 --
 
 -- --------------------------------------------------------
@@ -61,10 +60,10 @@ INSERT INTO `jenis_produk` (`jenis_produk`) VALUES
 ('Flanel'),
 ('Hoodie'),
 ('Jaket'),
+('Rompi'),
 ('Sepatu'),
 ('Sweater'),
-('Topi'),
-('Vest');
+('Topi');
 
 -- --------------------------------------------------------
 
@@ -107,16 +106,16 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `jenis_produk`, `kode_produk`, `nama_produk`, `ukuran`, `harga`, `keterangan`, `gambar`, `warna`) VALUES
-(64, 'Jaket', 'KBG1', 'Jacket Flace Dord', 'XL', 499000, 'kondisi 90% pemakaian noraml, sudah dicuci sebelum dijual.', '628f9d62db1d7.jpg', '#e5e0e0'),
-(65, 'Hoodie', 'KBG2', 'Flece hoddie Baby', 'M', 499000, 'Kondisi 90%, bekas dipake pacar nya justin bibir yang terkenal se rt 04. ini khusus wanita', '628f9fe8ad50c.jpg', '#eab3d0'),
-(66, 'Sepatu', 'KBG3', 'Nike air force 1 (Full White)', 'EU40', 899000, 'kondisi 90% pemakaian sehari hari seperti biasanya.', '628fa1d886dac.jpeg', '#ffffff'),
-(67, 'Celana', 'KBG4', 'Jeans Leviâ€™s Crome Heart', '30', 299000, 'kondisi 85% dalam pemakaian noramal', '628fa38e9066b.jpg', '#4b7caa'),
-(68, 'Topi', 'KBG5', 'Hat DiSney Minnie mouse', 'M', 99000, 'kondisi 70% dalam pemakaian noramal', '628faa8318edf.jpg', '#e54343'),
-(75, 'Hoodie', 'KBG6', 'Flece hoddie LA', 'L', 499000, 'kondisi 75% dalam pemakaian noramal', '62924af0c377f.jpg', '#0a27ff'),
-(76, 'Jaket', 'KBG7', 'MLB varsity', 'XL', 599000, 'kondisi 75% dalam pemakaian noramal', '6292f1b03661d.jpg', '#bb1b1b'),
-(79, 'Sepatu', 'KBG8', 'Nike Air Force 1 Mid Sail University Red', 'EU42', 550000, 'Kondisi 70%, pemakaian normal', '62976b807a758.jpg', '#ffffff'),
-(80, 'Sepatu', 'KBG9', 'Nike Air Jordan 1 Mid Triple White', 'EU42', 650000, 'Kondisi 70%, pemakaian normal', '62976c241922d.jpg', '#ffffff'),
-(81, 'Sepatu', 'KBG10', 'Nike Airmax 97 Midnight Navy', 'EU43', 500000, 'Kondisi 70%, pemakaian normal', '62976d0d110e6.jpg', '#000000');
+(64, 'Jaket', 'KBG1', 'Jacket Flace Dord', 'XL', 499000, 'kondisi 90% pemakaian noraml, sudah dicuci sebelum dijual.', '629ee46a3d1cc6297755722989.jpg', '#e5e0e0'),
+(65, 'Hoodie', 'KBG2', 'Flece hoddie Baby', 'M', 499000, 'Kondisi 90%, bekas dipake pacar nya justin bibir yang terkenal se rt 04. ini khusus wanita', '629ee448cbc0962977519ef41b.jpg', '#eab3d0'),
+(66, 'Sepatu', 'KBG3', 'Nike air force 1 (Full White)', 'EU39', 899000, 'kondisi 90% pemakaian sehari hari seperti biasanya.', '629ee432d2cdb48783731_f1d57525-9f99-497e-85d2-0824677e962b_750_750.jpeg', '#ffffff'),
+(67, 'Celana', 'KBG4', 'Jeans Leviâ€™s Crome Heart', '30', 299000, 'kondisi 85% dalam pemakaian noramal', '629ee36b8a4ef629774ea7a02d.jpg', '#4b7caa'),
+(68, 'Topi', 'KBG5', 'Hat DiSney Minnie mouse', 'M', 99000, 'kondisi 70% dalam pemakaian noramal', '629ee358b124c629774844eb7f.jpg', '#e54343'),
+(75, 'Hoodie', 'KBG6', 'Flece hoddie LA', 'L', 499000, 'kondisi 75% dalam pemakaian noramal', '629ee348a7b4c629774780cbc5.jpg', '#0a27ff'),
+(76, 'Jaket', 'KBG7', 'MLB varsity', 'XL', 599000, 'kondisi 75% dalam pemakaian noramal', '629ee331d512f6297746aef496.jpg', '#bb1b1b'),
+(79, 'Sepatu', 'KBG8', 'Nike Air Force 1 Mid Sail University Red', 'EU42', 550000, 'Kondisi 70%, pemakaian normal', '629ee328174426297745a1dba9.jpg', '#ffffff'),
+(80, 'Sepatu', 'KBG9', 'Nike Air Jordan 1 Mid Triple White', 'EU42', 650000, 'Kondisi 70%, pemakaian normal', '629ee315f15bb6297744ba0e05.jpg', '#ffffff'),
+(81, 'Sepatu', 'KBG10', 'Nike Airmax 97 Midnight Navy', 'EU42', 500000, 'Kondisi 70%, pemakaian normal', '629ee306c5944629b9b7d6bfffsama.PNG', '#000000');
 
 -- --------------------------------------------------------
 
@@ -159,6 +158,7 @@ INSERT INTO `ukuran` (`ukuran`) VALUES
 ('32'),
 ('33'),
 ('34'),
+('EU36'),
 ('EU37'),
 ('EU38'),
 ('EU39'),
@@ -170,9 +170,77 @@ INSERT INTO `ukuran` (`ukuran`) VALUES
 ('L'),
 ('M'),
 ('S'),
-('UK36'),
 ('XL'),
 ('XXL');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ukuran_jenis_produk`
+--
+
+CREATE TABLE `ukuran_jenis_produk` (
+  `ukuran` char(5) DEFAULT NULL,
+  `jenis_produk` char(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ukuran_jenis_produk`
+--
+
+INSERT INTO `ukuran_jenis_produk` (`ukuran`, `jenis_produk`) VALUES
+('L', 'Baju'),
+('M', 'Baju'),
+('S', 'Baju'),
+('XL', 'Baju'),
+('XXL', 'Baju'),
+('L', 'Flanel'),
+('M', 'Flanel'),
+('S', 'Flanel'),
+('XL', 'Flanel'),
+('XXL', 'Flanel'),
+('L', 'Hoodie'),
+('M', 'Hoodie'),
+('S', 'Hoodie'),
+('XL', 'Hoodie'),
+('XXL', 'Hoodie'),
+('L', 'Jaket'),
+('M', 'Jaket'),
+('S', 'Jaket'),
+('XL', 'Jaket'),
+('XXL', 'Jaket'),
+('L', 'Sweater'),
+('M', 'Sweater'),
+('S', 'Sweater'),
+('XL', 'Sweater'),
+('XXL', 'Sweater'),
+('L', 'Topi'),
+('M', 'Topi'),
+('S', 'Topi'),
+('XL', 'Topi'),
+('XXL', 'Topi'),
+('L', 'Rompi'),
+('M', 'Rompi'),
+('S', 'Rompi'),
+('XL', 'Rompi'),
+('XXL', 'Rompi'),
+('27', 'Celana'),
+('28', 'Celana'),
+('29', 'Celana'),
+('30', 'Celana'),
+('31', 'Celana'),
+('32', 'Celana'),
+('33', 'Celana'),
+('34', 'Celana'),
+('EU36', 'Sepatu'),
+('EU37', 'Sepatu'),
+('EU38', 'Sepatu'),
+('EU39', 'Sepatu'),
+('EU40', 'Sepatu'),
+('EU41', 'Sepatu'),
+('EU42', 'Sepatu'),
+('EU43', 'Sepatu'),
+('EU44', 'Sepatu');
 
 -- --------------------------------------------------------
 
@@ -199,11 +267,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `foto`, `no_telp`, `alamat`, `level`, `gender`, `lahir`, `status`) VALUES
-(1, 'admin', 'aaaa@email.com', '$2y$10$m0g0ajHhoISUQ7CJcTgeCOQC/mSGbTSz0IpRes6WssyyCB5RSEnHO', '6292534c131c8.png', '', '', 'admin', 'male', NULL, 'no'),
-(5, 'jamjam', 'muhhjam@gmail.com', '$2y$10$ChSXbbx1RDzzNHfJejwMaeSRCe8/wjnSYELg9iVJ.KM2PAn9T4noa', '6292499a9c287.jpg', '081257578571', 'Jl. Tutwuri Handayani No. 81 RT.005/RW.002 Kel. Citeureup Kec. Cimahi Utara Kota. Cimahi', 'admin', 'male', '2002-12-20', 'no'),
-(25, 'user', '', '$2y$10$yH.6BIRjTGvTS7ewNwJ8fuO62ymUdg/85toa4B0LukaNuvHugkyBO', 'default.png', '', '', 'user', '-', '2022-05-26', 'no'),
-(27, 'imam', '', '$2y$10$eZTgonbDYhxGPN5pX5x1aeMk5P1nxUxzGcqy7urIr0CIlzYqHQIf.', 'default.png', '', '', 'user', '-', '2022-05-27', 'no'),
-(28, 'deni pajri', '', '$2y$10$Biku28We8krOjMONoYGQa./3UxwVYN2ci1P2X5OnQmHlmls4ovE6O', 'default.png', '', '', 'user', '-', '2022-05-28', 'no');
+(1, 'admin', 'aaaa@email.com', '$2y$10$J3vsgcr1NjybgFL/bKTqfOLSPPTK.ytBsVCDNyVt9ixo55XAlG6S.', '629ee4f25fd4cicon.png', '', '', 'admin', 'male', NULL, 'no'),
+(5, 'jamjam', 'muhhjam@gmail.com', '$2y$10$ChSXbbx1RDzzNHfJejwMaeSRCe8/wjnSYELg9iVJ.KM2PAn9T4noa', '629ee2d4f193d629b9b5fc6f5dIMG20211121182503.jpg', '081257578571', 'Jl. Tutwuri Handayani No. 81 RT.005/RW.002 Kel. Citeureup Kec. Cimahi Utara Kota. Cimahi', 'admin', 'male', '2002-12-20', 'no'),
+(25, 'user', '', '$2y$10$yH.6BIRjTGvTS7ewNwJ8fuO62ymUdg/85toa4B0LukaNuvHugkyBO', 'default.png', '', '', 'user', '-', '2022-05-26', 'no');
 
 --
 -- Indexes for dumped tables
@@ -248,6 +314,13 @@ ALTER TABLE `ukuran`
   ADD PRIMARY KEY (`ukuran`);
 
 --
+-- Indexes for table `ukuran_jenis_produk`
+--
+ALTER TABLE `ukuran_jenis_produk`
+  ADD KEY `ukuran` (`ukuran`),
+  ADD KEY `jenis_produk` (`jenis_produk`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -264,7 +337,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -282,6 +355,13 @@ ALTER TABLE `users`
 ALTER TABLE `produk`
   ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`jenis_produk`) REFERENCES `jenis_produk` (`jenis_produk`),
   ADD CONSTRAINT `produk_ibfk_2` FOREIGN KEY (`ukuran`) REFERENCES `ukuran` (`ukuran`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `ukuran_jenis_produk`
+--
+ALTER TABLE `ukuran_jenis_produk`
+  ADD CONSTRAINT `ukuran_jenis_produk_ibfk_1` FOREIGN KEY (`ukuran`) REFERENCES `ukuran` (`ukuran`),
+  ADD CONSTRAINT `ukuran_jenis_produk_ibfk_2` FOREIGN KEY (`jenis_produk`) REFERENCES `jenis_produk` (`jenis_produk`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users`
