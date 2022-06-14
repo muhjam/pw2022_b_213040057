@@ -649,11 +649,11 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="index.php#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search"></i></a>
 
 
-			<form id="bar" action="" method="post" class="d-lg-block" style="display:none;">
+			<form id="bar" action="index.php#container" method="post" class="d-lg-block" style="display:none;">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
 					name="keyword" autofocus autocomplete="off" id="keyword">
 
@@ -663,7 +663,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 			<div class="collapse navbar-collapse" id="navbarScroll">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
 							class="fas fa-search"></i></a> </label>
 
 
