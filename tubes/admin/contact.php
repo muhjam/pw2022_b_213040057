@@ -496,7 +496,7 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 
 			<form id="bar" action="index.php" method="post" class="d-lg-block" style="display:none;">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
-					name="keyword" autofocus autocomplete="off" id="keyword">
+					name="keyword" autocomplete="off" id="keyword">
 
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
@@ -664,7 +664,8 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 			</div>
 
 			<div class="col-12 mb-3">
-				<input type="email" name="email" class="form-control w-100" id="colFormLabel" placeholder="Email">
+				<input type="email" name="email" class="form-control w-100" id="colFormLabel" placeholder="Email" required
+					autofocus>
 			</div>
 
 			<div class="form-floating mb-3">

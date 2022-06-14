@@ -674,7 +674,6 @@ $profile=query("SELECT * FROM users WHERE username='$username'")[0];
 		<div class="arrival text-center my-5">
 			<span
 				style="border-top: 1px solid #555;border-bottom: 1px solid #555;padding: 3px 0px;letter-spacing: 5px;font-size: 18px;color: #555;text-transform:uppercase;"><?= $_GET['cari']; ?></span>
-
 		</div>
 
 		<?php endif; ?>

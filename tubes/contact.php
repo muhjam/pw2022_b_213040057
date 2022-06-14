@@ -577,7 +577,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 			</div>
 
 			<div class="col-12 mb-3">
-				<input type="email" name="email" class="form-control w-100" id="colFormLabel" placeholder="Email">
+				<input type="email" name="email" class="form-control w-100" id="colFormLabel" placeholder="Email" required
+					autofocus>
 			</div>
 
 			<div class="form-floating mb-3">
