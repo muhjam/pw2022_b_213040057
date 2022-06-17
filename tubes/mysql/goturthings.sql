@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2022 at 10:33 AM
+-- Generation Time: Jun 17, 2022 at 07:23 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.29
 
@@ -133,7 +133,8 @@ CREATE TABLE `status` (
 
 INSERT INTO `status` (`status`) VALUES
 ('ban'),
-('no');
+('non'),
+('on');
 
 -- --------------------------------------------------------
 
@@ -259,17 +260,17 @@ CREATE TABLE `users` (
   `level` char(5) DEFAULT NULL,
   `gender` char(6) DEFAULT '-',
   `lahir` date DEFAULT current_timestamp(),
-  `status` char(3) DEFAULT 'no'
+  `status` char(3) DEFAULT 'non',
+  `kode_aktifasi` char(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `foto`, `no_telp`, `alamat`, `level`, `gender`, `lahir`, `status`) VALUES
-(1, 'admin', 'aaaa@email.com', '$2y$10$J3vsgcr1NjybgFL/bKTqfOLSPPTK.ytBsVCDNyVt9ixo55XAlG6S.', '629ee4f25fd4cicon.png', '', '', 'admin', 'male', NULL, 'no'),
-(5, 'jamjam', 'muhhjam@gmail.com', '$2y$10$ChSXbbx1RDzzNHfJejwMaeSRCe8/wjnSYELg9iVJ.KM2PAn9T4noa', '629ee2d4f193d629b9b5fc6f5dIMG20211121182503.jpg', '081257578571', 'Jl. Tutwuri Handayani No. 81 RT.005/RW.002 Kel. Citeureup Kec. Cimahi Utara Kota. Cimahi', 'admin', 'male', '2002-12-20', 'no'),
-(25, 'user', '', '$2y$10$yH.6BIRjTGvTS7ewNwJ8fuO62ymUdg/85toa4B0LukaNuvHugkyBO', 'default.png', '', '', 'user', '-', '2022-05-26', 'no');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `foto`, `no_telp`, `alamat`, `level`, `gender`, `lahir`, `status`, `kode_aktifasi`) VALUES
+(63, 'Admin GoturthinQs', 'GoturthinQs@gmail.com', '$2y$10$MGw3aVYh6y0cDwkS3uxoLOPbvkgE0jMHGKTfDgLiVgujk6kR1IJVy', '62aade75835bcicon.png', '', '', 'admin', '-', '2022-06-16', 'on', 'e8a314'),
+(66, 'Muhamad Jamaludin Padmawinata', 'muhhjam@gmail.com', '$2y$10$19QiA9B0A8hX/pBkKuDsIe6bmmZYc22dQcnngWOihMrQ9tEPshuaK', 'default.png', '', '', 'user', '-', '2022-06-16', 'on', 'a93354');
 
 --
 -- Indexes for dumped tables
@@ -337,13 +338,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- Constraints for dumped tables
