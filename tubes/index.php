@@ -1,11 +1,16 @@
-<?php 
-
-
+<?php
 // cek udah login apa belum
 session_start();
-
-// menghubungkan php dengan koneksi database
 require 'functions.php';
+
+
+if(isset($_SESSION['akunbaru'])){
+$email=$_SESSION['akunbaru'];
+// koneksi ke database
+$conn=koneksi();
+mysqli_query($conn, "DELETE FROM users WHERE `users`.`email` = '$email'");
+}
+
 
 // cek cookie
 if(isset($_COOKIE['id'])&&isset($_COOKIE['key'])){
@@ -17,11 +22,12 @@ if(isset($_COOKIE['id'])&&isset($_COOKIE['key'])){
   $row=mysqli_fetch_assoc($result);
 
   // cek cookie dan username
-  if($key===hash('sha256', $row['username'])){
+  if($key===hash('sha256', $row['email'])){
 	$_SESSION['level']=$row['level'];
 	$_SESSION['username']=$row['username'];
     $_SESSION['status']=$row['status'];
-
+	$_SESSION['email']=$row['email'];	
+			$_SESSION['id']=$row['id'];
   }
 }
 
@@ -31,6 +37,8 @@ if(isset($_COOKIE['level'])){
     $_SESSION['level']=$row['level'];
 		$_SESSION['username']=$row['username'];
 		$_SESSION['status']=$row['status'];
+		$_SESSION['email']=$row['email'];
+		$_SESSION['id']=$row['id'];
   }
 }
 
@@ -56,17 +64,40 @@ exit;
 // cek apakah tombol submit sudah di tekan atau belum
 if (isset($_POST["login"])) {
 
-$username=$_POST["username"];
+$email=$_POST["email"];
 $password=$_POST["password"];
 
 
-// Cek user name
-$result=mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
+// Cek Full Name
+$result=mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
+
+// jika akun belum di buat
+if(mysqli_num_rows($result)===0){
+	    echo "
+        <script>
+        alert('Anda belum membuat akun!')
+							document.location.href='login.php'
+        </script>";
+}
 
 if(mysqli_num_rows($result)===1){
-
-    // Cek password
+  //  memanggil isinya
 $row=mysqli_fetch_assoc($result);
+
+// cek status
+	if($row['status']=="non"){
+			echo " <script>
+        alert('Anda belum membuat akun!')
+				document.location.href='login.php'
+        </script>";
+		}else if($row['status']=="ban"){
+			echo " <script>
+        alert('Maaf, akun anda telah diban!')
+				document.location.href='login.php'
+        </script>";
+		}
+
+ // Cek password
 
 if(password_verify($password, $row['password'])){
 
@@ -74,26 +105,24 @@ if(password_verify($password, $row['password'])){
 
 	// cek jika user login sebagai admin
 	if($row['level']=="admin"){
-
 		// buat session login dan username
 		$_SESSION['username'] = $username;
+		$_SESSION['email'] = $email;
 		$_SESSION['level'] = "admin";
+		$_SESSION['id']=$row['id'];
 		$_SESSION['status']=$row['status'];
-
-
-		// alihkan ke halaman dashboard admin
+		// alihkan ke halaman admin
 		header("location:admin/index.php");
-
 	// cek jika user login sebagai pegawai
 	}else if($row['level']=="user"){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
-		$_SESSION['level'] = "user";
+		$_SESSION['email'] = $email;
+		$_SESSION['level'] = "admin";
+		$_SESSION['id']=$row['id'];
 		$_SESSION['status']=$row['status'];
-
-		// alihkan ke halaman dashboard pegawai
+			// alihkan ke halaman user
 		header("location:user/index.php");
-
 	}else{
 	$error=true;
 	}	
@@ -116,9 +145,11 @@ if(isset($_POST['remember'])){
 	if($row['level']=="admin"){
 
 		// buat session login dan username
-		$_SESSION['username'] = $username;
+			$_SESSION['username'] = $username;
+		$_SESSION['email'] = $email;
 		$_SESSION['level'] = "admin";
-		
+		$_SESSION['id']=$row['id'];
+		$_SESSION['status']=$row['status'];
 		// alihkan ke halaman dashboard admin
 		header("location:admin/index.php");
 
@@ -126,8 +157,10 @@ if(isset($_POST['remember'])){
 	}else if($row['level']=="user"){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
-		$_SESSION['level'] = "user";
-
+		$_SESSION['email'] = $email;
+		$_SESSION['level'] = "admin";
+		$_SESSION['id']=$row['id'];
+		$_SESSION['status']=$row['status'];
 		// alihkan ke halaman dashboard pegawai
 		header("location:user/index.php");
 
@@ -144,7 +177,15 @@ $error=true;
 }
 
 
+// pagination
 // konfigurasi
+
+
+
+
+
+
+
 $goturthings = query("SELECT * FROM jenis_produk INNER JOIN produk ON jenis_produk.jenis_produk=produk.jenis_produk INNER JOIN ukuran ON ukuran.ukuran = produk.ukuran ORDER BY produk.id DESC");
   
 
@@ -170,10 +211,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 
-
- ?>
-
-
+?>
 
 
 

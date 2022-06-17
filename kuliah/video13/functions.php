@@ -7,7 +7,7 @@
 $conn = mysqli_connect("localhost", "root", "", "phpdasar");
 
 function query($query) {
-    global $conn;
+   $conn=koneksi();
     $result = mysqli_query($conn, $query);
     $rows = [];
     while ($row = mysqli_fetch_assoc($result)) {
@@ -20,7 +20,7 @@ function query($query) {
 // TAMBAH
 
 function tambah($data) {
-    global $conn;
+   $conn=koneksi();
 
     $nrp = htmlspecialchars($data["nrp"]);
     $nama = htmlspecialchars($data["nama"]);
@@ -38,13 +38,13 @@ function tambah($data) {
 }
 
 function hapus($id) {
-    global $conn;
+   $conn=koneksi();
     mysqli_query($conn, "DELETE FROM mahasiswa WHERE id=$id");
     return mysqli_affected_rows($conn);
 }
 
 function ubah($data) {
-    global $conn;
+   $conn=koneksi();
 
     $id= ($data["id"]);
     $nrp = htmlspecialchars($data["nrp"]);

@@ -1,5 +1,4 @@
 <?php
-require 'functions.php';
 $mahasiswa = query("SELECT * FROM mahasiswa");
 
 // jika tombol cari diklik

@@ -1,6 +1,7 @@
 <?php 
 // memeriksa sudah login atau belum
 session_start();
+require 'functions.php';
 
 // cek apakah sudah login
 if(isset($_SESSION["level"])){
@@ -9,40 +10,20 @@ if($_SESSION['level']=="admin"){
 	header("location:admin/index.php");
 exit;
 }else if($_SESSION['level']=="user"){
-	header("location:index.php");
+	header("location:user/index.php");
 exit;
 }
 
-
 }
 
-// koneksi database
-require 'functions.php';
-
-
-
-if(isset($_POST["confrim"])){
-  if(confrim($_POST)>0){
-
-  } else {
- echo mysqli_error($conn);
-}
-}
+$_SESSION=[];
+session_unset();
 
 
 
 
-      if(isset($_POST["change"])){
-      if(changepw($_POST)>0){
-        echo "
-        <script>
-        alert('Password telah diubah!')
-        document.location.href='login.php'
-        </script>";
-        }else {
-        echo mysqli_error($conn);
-       }
-      }
+
+
  ?>
 
 <!DOCTYPE html>
@@ -191,50 +172,26 @@ if(isset($_POST["confrim"])){
 
 
 <body>
-
-
-
 	<div class="container-fluid">
 
 		<div class="logo">
 			<h1>GoturPassword<span>.</span></h1>
-			<h6 class="subtitle" id="subtitle1" style="display:;">Cari username anda disini</h6>
-			<h6 class="subtitle" id="subtitle2" style="display:none;">Buat password baru disini</h6>
+			<h6 class="subtitle" id="subtitle1" style="display:;">Cari akun anda disini</h6>
 		</div>
 
 		<div class="konten">
-			<form action="" method="post" class="px-4 py-3" id="us" style="display:;">
-				<!-- mencari user -->
+			<form action="functions_forgot_password.php" method="post" class="px-4 py-3" id="us" style="display:;">
+				<?php $kode_aktifasi=gen_uid(); ?>
+				<input type="hidden" hidden name="kode_aktifasi" class="form-control" required maxlength="6"
+					value="<?= $kode_aktifasi;?>">
 
+				<!-- mencari email -->
 				<div class="mb-3">
-					<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
-					<input type="text" name="username" class="form-control" id="exampleDropdownFormEm" placeholder="Cari Username"
+					<label for="exampleDropdownFormEmail1" class="form-label">Email</label>
+					<input type="email" name="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="Cari Email"
 						required>
 				</div>
-				<button type="submit" class="btn btn-outline-danger " name="confrim" id="btn">Confrim</button>
-
-			</form>
-
-
-			<form action="" method="post" class="px-4 py-3" style="display:none;" id="pw">
-
-				<!-- mengubah password -->
-				<?php if (isset($error)) : ?>
-				<p>Konfirmasi password tidak sesuai</p>
-				<?php endif; ?>
-				<input type="hidden" name="username" class="form-control" id="exampleDropdownFormPassword1"
-					placeholder="Masukan Password Baru" value="<?=$_GET['username']; ?>" maxlength="20">
-				<div class="mb-3">
-					<label for="exampleDropdownFormPassword1" class="form-label">New Password</label>
-					<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Masukan Password Baru" required required minlength="8">
-				</div>
-				<div class="mb-3">
-					<label for="exampleDropdownFormPassword1" class="form-label">Konfirmasi Password</label>
-					<input type="password" name="password2" class="form-control" id="exampleDropdownFormPassword1"
-						placeholder="Konfirmasi Password" required required minlength="8">
-				</div>
-				<button type="submit" class="btn btn-outline-danger " name="change">Change</button>
+				<button type="submit" class="btn btn-outline-danger " name="confirm" id="btn">Confirm</button>
 
 			</form>
 
@@ -244,33 +201,6 @@ if(isset($_POST["confrim"])){
 			<a class="dropdown-item" href="index.php">Back to shopping</a>
 		</div>
 	</div>
-	<!-- FORM -->
-	<?php 
-if(isset($_GET['username'])){
-
-	$username=$_GET['username'];
-
-// Cek username sudah ada atau belum
-    $result=mysqli_query($conn,"SELECT username FROM users WHERE username='$username'");
-
-
-if(mysqli_num_rows($result)>0){
-
-    if(isset($_GET['username'])){
-echo"<script>
-    var us = document.getElementById('us');
-    var pw = document.getElementById('pw');
-   
-    pw.setAttribute('style', 'display:;');
-    us.setAttribute('style', 'display:none;');
-    subtitle2.setAttribute('style', 'display:;');
-    subtitle1.setAttribute('style', 'display:none;');
-    
-  </script>";
-    }
-     }
-}
- ?>
 
 
 	<!-- my javascript -->

@@ -1,11 +1,13 @@
 <?php 
 // memeriksa sudah login atau belum
 session_start();
+require 'functions.php';
 
 $level=$_SESSION['level'];
 $username=$_SESSION['username'];
+$email=$_SESSION['email'];
+$id=$_SESSION['id'];
 $status=$_SESSION['status'];
-
 
 if(!isset($_SESSION["level"])){
 header("location:../logout.php");
@@ -18,19 +20,6 @@ exit;
 }
 
 
-
-
-if($_SESSION["status"]=='ban'){
-	    echo "
-        <script>
-        alert('maaf, akun anda telah diban!')
-        document.location.href='../logout.php'
-        </script>";
-exit;
-}
-
-// koneksi database
-require 'functions.php';
 
 
 
@@ -56,8 +45,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 // profile
-$profile=query("SELECT * FROM users WHERE username='$username'")[0];
-
+$profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 
 
@@ -531,8 +519,8 @@ if(isset($_POST['submit'])){
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #ffff;"
-							title="<?=$username?>"></a>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #ffff;" title="<?=$profile['username']?>
+"></a>
 
 
 					<li class="nav-item">
@@ -595,7 +583,8 @@ if(isset($_POST['submit'])){
 					<li class=" nav-item dropdown ms-5">
 						<a class="nav-link dropdown-toggle  d-none d-lg-block" href="#" id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
-							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" title="<?=$username?>"
+							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>"
+								title="<?=$profile['username']?>"
 								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #ffff;">
 						</a>
 						<ul class="dropdown-menu" style="margin-left:-45px;" aria-labelledby="navbarDropdownMenuLink">
@@ -663,7 +652,7 @@ if(isset($_POST['submit'])){
 					<tr style="text-align:center;">
 						<th>No</th>
 						<th>Picture</th>
-						<th>User Name</th>
+						<th>Email</th>
 						<th>Level</th>
 						<th>Change</th>
 					</tr>
@@ -701,9 +690,10 @@ if(isset($_POST['submit'])){
 							<td><?= $i; ?></td>
 
 							<td><img src=" ../profile/<?= $user["foto"] ?>" style="width:100px; height:100px; object-fit:cover"
-									alt="<?=$username?>" title="<?=$username?>">
+									alt="<?=$profile['username']?>" title="<?=$user['username']?>
+">
 							</td>
-							<td style="text-transform:capitalize;"><?= $user["username"]; ?></td>
+							<td><?= $user["email"]; ?></td>
 							<td style="text-transform:capitalize;"><?= $user["level"]; ?></td>
 							<td>
 
@@ -715,13 +705,12 @@ if(isset($_POST['submit'])){
 
 
 
-								<?php if($user['level']!='admin'&&$user['status']!='ban'): ?>
+								<?php if($user['level']!='admin'&&$user['status']=='on'): ?>
 								<a href="level-ubah.php?id=<?= $user["id"] ?>"
 									onclick="return confirm('Anda yakin akan menjadikan admin akun ini?')"
 									class="btn badge bg-primary mt-2">Admin</a>
 
-
-								<?php if($user['status']=='no'): ?>
+								<?php if($user['status']=='on'): ?>
 								<a href="level-ban.php?id=<?= $user["id"] ?>&status=ban ?>"
 									onclick="return confirm('Anda yakin akan ban akun ini?')" class="btn badge bg-danger mt-2">Ban</a>
 								<?php endif; ?>

@@ -1,6 +1,7 @@
 <?php 
 // memeriksa sudah login atau belum
 session_start();
+require 'functions.php';
 
 // cek apakah sudah login
 if(isset($_SESSION["level"])){
@@ -9,28 +10,35 @@ if($_SESSION['level']=="admin"){
 	header("location:admin/index.php");
 exit;
 }else if($_SESSION['level']=="user"){
-	header("location:index.php");
+	header("location:user/index.php");
 exit;
 }
 
 
 }
 
-// koneksi database
-require 'functions.php';
+if(isset($_SESSION['akunbaru'])){
+$email=$_SESSION['akunbaru'];
+// koneksi ke database
+$conn=koneksi();
+mysqli_query($conn, "DELETE FROM users WHERE `users`.`email` = '$email'");
 
-if(isset($_POST["signup"])){
-  if(signup($_POST)>0){
-  
-        echo "
-        <script>
-        alert('User baru berhasil ditambahkan!')
-        document.location.href='login.php'
-        </script>";
-    } else {
-        echo mysqli_error($conn);
-    }
-  }
+$_SESSION=[];
+session_unset();
+
+}
+
+
+$_SESSION=[];
+session_unset();
+
+
+
+
+
+
+
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -182,33 +190,39 @@ if(isset($_POST["signup"])){
 
 		<div class="logo">
 			<h1>GoturSiQnUp<span>.</span></h1>
-			<h6 class="subtitle">Buat account keren kalian disini</h6>
+			<h6 class="subtitle">Buat akun keren kalian disini</h6>
 		</div>
 
 		<div class="konten">
-			<form action="" method="post" class="px-4 py-3">
+			<form action="functions_create_email.php" method="post" class="px-4 py-3">
 				<div class="mb-3">
-
-
 					<?php if (isset($error)) : ?>
 					<p>Konfirmasi password tidak sesuai</p>
 					<?php endif; ?>
+					<?php $kode_aktifasi=gen_uid(); ?>
+					<input type="hidden" hidden name="kode_aktifasi" class="form-control" required maxlength="6"
+						value="<?= $kode_aktifasi;?>">
 
-					<label for="exampleDropdownFormEmail1" class="form-label">Username</label>
-					<input type="text" name="username" class="form-control" id="exampleDropdownFormEm"
-						placeholder="Masukan Username" required maxlength="20">
+					<label for="email" class="form-label">Email</label>
+					<input type="email" name="email" class="form-control" id="email" placeholder="exp goturthinqs123@gmail.com"
+						required>
 				</div>
 				<div class="mb-3">
-					<label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+					<label for="username" class="form-label">Full Name</label>
+					<input type="text" name="username" class="form-control" id="username" placeholder="Masukan Nama Lengkap"
+						required maxlength="50">
+				</div>
+				<div class="mb-3">
+					<label for="username" class="form-label">Password</label>
 					<input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
 						placeholder="Masukan Password" required minlength="8">
 				</div>
 				<div class="mb-3">
-					<label for="exampleDropdownFormPassword1" class="form-label">Konfirmasi Password</label>
-					<input type="password" name="password2" class="form-control" id="exampleDropdownFormPassword1"
+					<label for="exampleDropdownFormPassword2" class="form-label">Confirm Password</label>
+					<input type="password" name="password2" class="form-control" id="exampleDropdownFormPassword2"
 						placeholder="Konfirmasi Password" required minlength="8">
 				</div>
-				<button type="submit" class="btn btn-outline-danger " name="signup">Sign Up</button>
+				<button type="submit" class="btn btn-outline-danger" name="signup">Sign up</button>
 
 			</form>
 			<div class="dropdown-divider"></div>

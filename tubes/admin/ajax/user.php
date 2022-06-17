@@ -28,7 +28,7 @@ $users= query($query);
 		<tr style="text-align:center;">
 			<th>No</th>
 			<th>Picture</th>
-			<th>User Name</th>
+			<th>Full Name</th>
 			<th>Level</th>
 			<th>Change</th>
 		</tr>

@@ -1,5 +1,4 @@
 <?php
-require 'functions.php';
 
 // Cek apakah tombol tambah di klik
 if (isset($_POST["tambah"])) {

@@ -27,7 +27,7 @@ $users= query($query);
 		<tr style="text-align:center;">
 			<th>No</th>
 			<th>Picture</th>
-			<th>User Name</th>
+			<th>Full Name</th>
 			<th>Email</th>
 			<th>No Telp</th>
 			<th>Address</th>
@@ -57,7 +57,9 @@ $users= query($query);
 				<td><?= $i; ?></td>
 
 				<td><img src=" ../profile/<?= $user["foto"] ?>" style="width:100px; height:100px; object-fit:cover"
-						alt="<?=$username?>" title="<?=$username?>">
+						alt="<?=$profile['username']?>"
+ title="<?=$profile['username']?>
+">
 				</td>
 				<td style="text-transform:capitalize;"><?= $user["username"]; ?></td>
 				<td>

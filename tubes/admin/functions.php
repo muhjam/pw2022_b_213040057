@@ -3,11 +3,16 @@
 <!-- RESULT ITU DI ANALOGIKAN LEMARI -->
 
 <?php
-// koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "goturthings") or die('KONEKSI GAGAL!!');
+function koneksi()
+{
+  $conn = mysqli_connect('localhost', 'root', '', 'goturthings') or die('KONEKSI GAGAL!!');
+
+    return $conn;
+}
 
 function query($query) {
-    global $conn;
+   $conn=koneksi();
+    
      $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
     $rows = [];
@@ -19,19 +24,10 @@ function query($query) {
 }
 
 
-function conn($query) {
-    global $conn;
-    
-    $result = mysqli_query($conn, $query)or die(mysqli_error($conn));
-    
-    return $result;
-}
-
-
 
 // TAMBAH
 function tambah($data) {
-    global $conn;
+   $conn=koneksi();
 
 // cek apakah user tidak mengupload gambar
 if($_FILES["gambar"]["error"]===4){
@@ -100,6 +96,7 @@ function upload(){
     }
 
     // proses upload gambar
+
     $newfilename = uniqid() . $filename;
 
     move_uploaded_file($filetmpname, '../img/' . $newfilename);
@@ -152,7 +149,7 @@ function uploadProfile(){
 
 // Function delete
 function delete($id) {
-    global $conn;
+   $conn=koneksi();
     // query mahasiswa berdasarkan id
 $produk=query("SELECT * FROM produk WHERE id=$id")[0];
 
@@ -169,7 +166,7 @@ if($produk["gambar"]!=='nophoto.png'){
 
 // Ubah data
 function ubah($data) {
-    global $conn;
+   $conn=koneksi();
     $id=htmlspecialchars($data["id"]);
     $jenis_produk =($data["jenis_produk"]);
     $kode_produk= htmlspecialchars($data["kode_produk"]);
@@ -283,7 +280,7 @@ $keyword=$_GET['cari'];
 
 // Signup
 function signup($data){
-    global $conn;
+   $conn=koneksi();
 
     $username= strtolower(stripslashes($data["username"]));
     $password= mysqli_real_escape_string($conn, $data["password"]);
@@ -342,7 +339,7 @@ return mysqli_affected_rows($conn);
 // Change Password
 // mencari username
 function confrim($data){
-    global $conn;
+   $conn=koneksi();
 
     $username= strtolower(stripslashes($data["username"]));
 
@@ -452,7 +449,7 @@ function idr($harga){
 
 // profile
 function editFoto($data){
- global $conn;
+$conn=koneksi();
 
      $id=htmlspecialchars($data["id"]);
     $gambarLama=htmlspecialchars($data["gambarLama"]);
@@ -460,8 +457,18 @@ function editFoto($data){
     // cek apakah user pilih gambar baru atau tidak
 if($_FILES['gambar']['error']===4){
     $gambar=$gambarLama;
-}else{
+}else if($gambarLama=='default.png'){
     $gambar=uploadProfile();
+
+    // cek jika upload gagal
+    if(!$gambar){
+        return false;
+    }    
+
+
+
+}else{
+      $gambar=uploadProfile();
 
     // cek jika upload gagal
     if(!$gambar){
@@ -470,9 +477,8 @@ if($_FILES['gambar']['error']===4){
 
         // hapus gambar lama
     unlink('../profile/' . $gambarLama);
-
-
 }
+
 
 $query = "UPDATE `users` SET `foto`='$gambar' WHERE `id`='$id'; ";
 
@@ -484,27 +490,26 @@ $query = "UPDATE `users` SET `foto`='$gambar' WHERE `id`='$id'; ";
 
 
 
+
 function edit($data){
 
- global $conn;
+$conn=koneksi();
 
     $id=htmlspecialchars($data["id"]);
-    $username =htmlspecialchars(strtolower(stripslashes($data["username"])));
+    $username =htmlspecialchars(stripslashes($data["username"]));
     $email= htmlspecialchars($data["email"]);
     $noTelp = ($data["no_telp"]);
     $alamat = htmlspecialchars($data["alamat"]);
     $gender = htmlspecialchars($data["gender"]);
     $lahir=htmlspecialchars($data["lahir"]);
 
-    $user=$_SESSION['username'];
+    $emaillama=$_SESSION['email'];
 
 
 
 
-if($username==$user){
-
-
-$query = "UPDATE `users` SET `email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`lahir`='$lahir' WHERE `id`='$id'; ";
+if($email==$emaillama){
+$query = "UPDATE `users` SET `username`='$username',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`lahir`='$lahir' WHERE `id`='$id'; ";
 
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
@@ -513,12 +518,12 @@ $query = "UPDATE `users` SET `email`='$email',`no_telp`='$noTelp',`gender`='$gen
 
 
 // Cek username sudah ada atau belum
-    $result=mysqli_query($conn,"SELECT username FROM users WHERE username='$username'");
+    $result=mysqli_query($conn,"SELECT email FROM users WHERE email='$email'");
 
 if(mysqli_fetch_assoc($result)){
 echo"
 <script>
-alert('Username sudah terdaftar!')
+alert('Email sudah terdaftar!')
 document.location.href='profile-edit.php'
 </script>
 ";
@@ -531,31 +536,24 @@ return false;
 
   // cek apakah user pilih gambar baru atau tidak
 
-if($username!=$user){
+if($emaillama!=$email){
 
-$query = "UPDATE `users` SET `username`='$username',`email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`lahir`='$lahir' WHERE `id`='$id'; ";
+$query = "UPDATE `users` SET `username`='$username',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`lahir`='$lahir' WHERE `id`='$id'; ";
 
     mysqli_query($conn, $query);
-
-
-echo"
-<script>
-alert('Username telah diubah!')
-document.location.href='../logout.php'
-</script>
-";
-
-
     return mysqli_affected_rows($conn);
-
 }
+
+
+
+
 }
 
 
 
 // Function ubah level
 function ubahLevel($id) {
-    global $conn;
+   $conn=koneksi();
 
     mysqli_query($conn, "UPDATE users SET level='admin' WHERE `users`.`id` = '$id'");
     return mysqli_affected_rows($conn);
@@ -564,7 +562,7 @@ function ubahLevel($id) {
 
 // Function ban
 function banLevel($id) {
-    global $conn;
+   $conn=koneksi();
 
     mysqli_query($conn, "UPDATE users SET status='ban' WHERE `users`.`id` = '$id'");
     return mysqli_affected_rows($conn);
@@ -573,9 +571,9 @@ function banLevel($id) {
 
 // Function heal
 function healLevel($id) {
-    global $conn;
+   $conn=koneksi();
 
-    mysqli_query($conn, "UPDATE users SET status='no' WHERE `users`.`id` = '$id'");
+    mysqli_query($conn, "UPDATE users SET status='on' WHERE `users`.`id` = '$id'");
     return mysqli_affected_rows($conn);
 }
 

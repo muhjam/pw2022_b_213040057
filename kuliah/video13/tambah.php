@@ -1,5 +1,4 @@
 <?php
-require 'functions.php';
 
 // cek apakah tombol submit telah ditekan atau belum
 if (isset($_POST["submit"])) {

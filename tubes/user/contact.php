@@ -1,10 +1,12 @@
 <?php 
 // memeriksa sudah login atau belum
 session_start();
+require 'functions.php';
 
 $level=$_SESSION['level'];
 $username=$_SESSION['username'];
-$status=$_SESSION['status'];	
+$email=$_SESSION['email'];	
+$id=$_SESSION['id'];
 
 if(!isset($_SESSION["level"])){
 header("location:../logout.php");
@@ -19,18 +21,6 @@ exit;
 
 
 
-
-if($_SESSION["status"]=='ban'){
-	    echo "
-        <script>
-        alert('maaf, akun anda telah diban!')
-        document.location.href='../logout.php'
-        </script>";
-exit;
-}
-
-// koneksi database
-require 'functions.php';
 
 
 // pagination
@@ -59,11 +49,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 
-
-
 // profile
-$profile=query("SELECT foto FROM users WHERE username='$username'")['0'];
-
+$profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 
 // tombol cari
@@ -507,8 +494,8 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0'];
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
-							title="<?=$username?>"></a>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;" title="<?=$profile['username']?>
+"></a>
 
 
 
@@ -565,7 +552,8 @@ $profile=query("SELECT foto FROM users WHERE username='$username'")['0'];
 					<li class=" nav-item dropdown ms-5">
 						<a class="nav-link dropdown-toggle  d-none d-lg-block" href="#" id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
-							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" title="<?=$username?>"
+							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>"
+								title="<?=$profile['username']?>"
 								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;">
 						</a>
 						<ul class="dropdown-menu" style="margin-left:-45px;" aria-labelledby="navbarDropdownMenuLink">

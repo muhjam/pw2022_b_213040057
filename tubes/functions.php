@@ -3,11 +3,16 @@
 <!-- RESULT ITU DI ANALOGIKAN LEMARI -->
 
 <?php
-// koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "goturthings") or die('KONEKSI GAGAL!!');
+function koneksi()
+{
+     $conn = mysqli_connect('localhost', 'root', '', 'goturthings') or die('KONEKSI GAGAL!!');
+
+    return $conn;
+}
+
 
 function query($query) {
-    global $conn;
+    $conn = Koneksi();
     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
     $rows = [];
@@ -21,7 +26,7 @@ function query($query) {
 
 // TAMBAH
 function tambah($data) {
-    global $conn;
+   $conn=koneksi();
     $jenis_produk =($data["jenis_produk"]);
     $kode_produk= htmlspecialchars($data["kode_produk"]);
     $nama_produk = htmlspecialchars($data["nama_produk"]);
@@ -159,7 +164,7 @@ return $namaFileBaru;
 
 // Function delete
 function delete($id) {
-    global $conn;
+   $conn=koneksi();
     mysqli_query($conn, "DELETE FROM produk WHERE `produk`.`id` = '$id'");
     return mysqli_affected_rows($conn);
 }
@@ -167,7 +172,7 @@ function delete($id) {
 
 // Ubah data
 function ubah($data) {
-    global $conn;
+   $conn=koneksi();
     $id=htmlspecialchars($data["id"]);
     $jenis_produk =($data["jenis_produk"]);
     $kode_produk= htmlspecialchars($data["kode_produk"]);
@@ -201,6 +206,10 @@ if($_FILES['gambar']['error']===4){
 
 
 }
+
+
+
+
 
 
 
@@ -266,33 +275,67 @@ $keyword=$_GET['cari'];
 
 
 
+// function kode_aktifasi
+function gen_uid($l=6){
+    return substr(uniqid(), 7, $l);
+} 
+
+
+// function aktifasi
+function aktifasi($data){
+   $conn=koneksi();
+$kode_aktifasi=$data["kode_aktifasi"];
+
+
+        $query = "UPDATE `users` SET `status`='on' WHERE `kode_aktifasi`='$kode_aktifasi';
+                ";
+    mysqli_query($conn, $query);
+
+
+    return mysqli_affected_rows($conn);
+} 
+
+// function mengubah kode aktifasi
+function updateAktifasi($data){
+   $conn=koneksi();
+$email=htmlspecialchars($data["email"]);
+$kode_aktifasi=$data["kode_aktifasi"];
+    
+$query = "UPDATE `users` SET `kode_aktifasi`='$kode_aktifasi'WHERE `email`='$email'";
+mysqli_query($conn, $query);
+
+ return mysqli_affected_rows($conn);
+}
+
+// function aktifasi
+function updateEmail($data){
+   $conn=koneksi();
+     $username= htmlspecialchars(stripslashes($data["username"]));
+    $email=htmlspecialchars($data["email"]);
+    $password= mysqli_real_escape_string($conn, $data["password"]);
+    $password2= mysqli_real_escape_string($conn,$data["password2"]);
+    $kode_aktifasi=$data["kode_aktifasi"];
+
+
+        $query = "UPDATE `users` SET `status`='on' WHERE `kode_aktifasi`='$kode_aktifasi';
+                ";
+    mysqli_query($conn, $query);
+
+
+    return mysqli_affected_rows($conn);
+} 
+
+
 
 // Signup
 function signup($data){
-    global $conn;
+   $conn=koneksi();
 
-    $username= strtolower(stripslashes($data["username"]));
+    $username= htmlspecialchars(stripslashes($data["username"]));
+    $email=htmlspecialchars($data["email"]);
     $password= mysqli_real_escape_string($conn, $data["password"]);
     $password2= mysqli_real_escape_string($conn,$data["password2"]);
-
-
-// Cek username sudah ada atau belum
-    $result=mysqli_query($conn,"SELECT username FROM users WHERE username='$username'");
-
-if(mysqli_fetch_assoc($result)){
-echo"
-<script>
-alert('Username sudah terdaftar!')
-document.location.href='signup.php'
-</script>
-";
-
-return false;
-}
-
-
-
-
+    $kode_aktifasi=$data["kode_aktifasi"];
 
 
     // cek konsfirmasi password
@@ -315,7 +358,7 @@ $password=password_hash($password, PASSWORD_DEFAULT);
 
 
     // tambahkan user baru ke database
-mysqli_query($conn, "INSERT INTO `users`(`username`, `password`, `level`) VALUES ('$username','$password', 'user')");
+mysqli_query($conn, "INSERT INTO `users`(`username`,`email`, `password`,  `level`, `kode_aktifasi`) VALUES ('$username','$email','$password','user','$kode_aktifasi')");
 
 return mysqli_affected_rows($conn);
 
@@ -326,60 +369,21 @@ return mysqli_affected_rows($conn);
 
 
 // Change Password
-// mencari username
-function confrim($data){
-    global $conn;
-
-    $username= strtolower(stripslashes($data["username"]));
-
-
-// Cek username sudah ada atau belum
-    $result=mysqli_query($conn,"SELECT username FROM users WHERE username='$username'");
-
-$user='location:forgot.php?username='.$username.'';
-
-if(mysqli_num_rows($result)==0){
-echo"
-<script>
-alert('Username tidak ditemukan!')
-document.location.href='forgot.php'
-</script>
-";
-return false;
-}else if(mysqli_num_rows($result)>0){  
-echo'
-<script>
-alert("Username ditemukan!")
-</script>
-';
-
-header("$user");
-
-}
-
-
-
-}
-
-
-
-
 // Change
 function changepw($data){
-    global $conn, $username;
+   $conn=koneksi();
 
-    $username= strtolower(stripslashes($data["username"]));
+    $email=htmlspecialchars($data["email"]);
     $password= mysqli_real_escape_string($conn, $data["password"]);
     $password2= mysqli_real_escape_string($conn,$data["password2"]);
 
 
-    $user="        <script>
-        alert('konfirmasi password tidak sesuai!');
-        document.location.href='forgot.php?username=".$username."'
-        </script>";
     // cek konsfirmasi password
     if($password !== $password2){
-        echo $user;
+        echo "<script>
+        alert('konfirmasi password tidak sesuai!');
+        document.location.href='signup.php'
+        </script>";
         
         return false;
     }
@@ -388,24 +392,13 @@ function changepw($data){
     // enkriosi password
 $password=password_hash($password, PASSWORD_DEFAULT);   
 
-$result=mysqli_query($conn,"SELECT username FROM users WHERE username='$username'");
-if(mysqli_num_rows($result)==0){
-echo"
-<script>
-alert('Username tidak diketahui!')
-document.location.href='forgot.php'
-</script>
-";
-return false;
-}else if(mysqli_num_rows($result)>0){
-
-    // tambahkan user baru ke database
-mysqli_query($conn, "UPDATE users SET password='$password' WHERE username='$username'");
+// tambahkan user baru ke database
+mysqli_query($conn, "UPDATE users SET password='$password' WHERE email='$email'");
 
 
 return mysqli_affected_rows($conn);
 
-}
+
 
 
 }
@@ -438,7 +431,7 @@ function idr($harga){
 
 // profile
 function editFoto($data){
- global $conn;
+$conn=koneksi();
 
     $id=htmlspecialchars($data["id"]);
     $gambarLama=htmlspecialchars($data["gambarLama"]);
@@ -461,77 +454,72 @@ $query = "UPDATE `users` SET `foto`='$gambar' WHERE `id`='$id'; ";
 
 
 
-function edit($data){
+// function edit($data){
 
- global $conn;
+// $conn=koneksi();
 
-    $id=htmlspecialchars($data["id"]);
-    $username =htmlspecialchars(strtolower(stripslashes($data["username"])));
-    $email= htmlspecialchars($data["email"]);
-    $noTelp = ($data["no_telp"]);
-    $alamat = htmlspecialchars($data["alamat"]);
-    $gender = htmlspecialchars($data["gender"]);
-    $lahir=htmlspecialchars($data["lahir"]);
+//     $id=htmlspecialchars($data["id"]);
+//     $username =htmlspecialchars(stripslashes($data["username"]));
+//     $email= htmlspecialchars($data["email"]);
+//     $noTelp = ($data["no_telp"]);
+//     $alamat = htmlspecialchars($data["alamat"]);
+//     $gender = htmlspecialchars($data["gender"]);
+//     $lahir=htmlspecialchars($data["lahir"]);
 
-    $user=$_SESSION['username'];
-
-
-
-
-if($username==$user){
-
-
-$query = "UPDATE `users` SET `email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`lahir`='$lahir' WHERE `id`='$id'; ";
-
-    mysqli_query($conn, $query);
-    return mysqli_affected_rows($conn);
-}
-
-
-
-// Cek username sudah ada atau belum
-    $result=mysqli_query($conn,"SELECT username FROM users WHERE username='$username'");
-
-if(mysqli_fetch_assoc($result)){
-echo"
-<script>
-alert('Username sudah terdaftar!')
-document.location.href='profile-edit.php'
-</script>
-";
-
-return false;
-}
-
-// username nya tidak ada yang sama
-
-
-  // cek apakah user pilih gambar baru atau tidak
-
-if($username!=$user){
-
-$query = "UPDATE `users` SET `username`='$username',`email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`lahir`='$lahir' WHERE `id`='$id'; ";
-
-    mysqli_query($conn, $query);
-
-
-echo"
-<script>
-alert('Username telah diubah!')
-document.location.href='../logout.php'
-</script>
-";
-
-
-    return mysqli_affected_rows($conn);
-
-}
+//     $emaillama=$_SESSION['email'];
 
 
 
 
-}
+// if($email==$emaillama){
+// $query = "UPDATE `users` SET `username`='$username',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`lahir`='$lahir' WHERE `id`='$id'; ";
 
+//     mysqli_query($conn, $query);
+//     return mysqli_affected_rows($conn);
+// }
+
+
+
+// // Cek username sudah ada atau belum
+//     $result=mysqli_query($conn,"SELECT email FROM users WHERE email='$email'");
+
+// if(mysqli_fetch_assoc($result)){
+// echo"
+// <script>
+// alert('Email sudah terdaftar!')
+// document.location.href='profile-edit.php'
+// </script>
+// ";
+
+// return false;
+// }
+
+// // username nya tidak ada yang sama
+
+
+//   // cek apakah user pilih gambar baru atau tidak
+
+// if($emaillama!=$email){
+
+
+
+// }
+
+
+
+
+// }
+
+// ubahEmail($email){
+
+// $query = "UPDATE `users` SET `username`='$username',`email`='$email',`no_telp`='$noTelp',`gender`='$gender',`alamat`='$alamat',`lahir`='$lahir' WHERE `id`='$id'; ";
+
+//     mysqli_query($conn, $query);
+
+
+
+//     return mysqli_affected_rows($conn);
+// }
 
 
 

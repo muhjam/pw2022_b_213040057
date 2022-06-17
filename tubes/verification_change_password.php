@@ -1,0 +1,128 @@
+<?php 
+session_start();
+require 'functions.php';
+if(!isset($_SESSION['masuk'])=="masuk"){
+	header("location:logout.php");
+	exit;
+}
+
+if(isset($_SESSION['forgot'])=="forgot"){
+	header("location:logout.php");
+	exit;
+}
+
+
+
+$email=$_SESSION['akun'];
+
+
+if(isset($_POST['aktifasi'])){
+	$aktifasi = query("SELECT kode_aktifasi FROM users WHERE email='$email'")[0]['kode_aktifasi'];
+
+	if($_POST['kode_aktifasi']==$aktifasi){
+		aktifasi($_POST);
+		
+$_SESSION['aktifasi']=$aktifasi;
+		     echo "
+        <script>
+				document.location.href='change_password.php';
+        </script>";
+	}else{
+        echo "
+        <script>
+        alert('Kode aktifasi salah!')
+        </script>";
+	}
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords"
+		content="trifthing, bandung, baju bekas, online shope, fashion, baju keren, baju bekas keren, barang bekas, barang keren, goturthinqs, goturthings, tempat trifthing" />
+	<meta name="author" content="Jam-Jam" />
+
+
+	<!--icon  -->
+	<link rel="icon" href="icon/icon.png">
+
+
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- Font-Awessome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@500&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@600&display=swap"
+		rel="stylesheet">
+	<title>GoturthinQs.</title>
+
+	<!-- Styles -->
+	<style>
+	html,
+	body {
+		background-color: #fff;
+		color: #636b6f;
+		font-family: "Raleway", sans-serif;
+		font-weight: 100;
+		height: 100vh;
+		margin: 0;
+	}
+
+	.full-height {
+		height: 100vh;
+	}
+
+	.flex-center {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	.position-ref {
+		position: relative;
+	}
+
+	.content {
+		text-align: center;
+	}
+
+	.title {
+		font-size: 36px;
+		padding: 20px;
+	}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="flex-center position-ref full-height">
+		<div class="content">
+			<div class="title text-center">
+				Check your email to verification.
+				<form action="" method="post">
+
+					<input type="text" name="kode_aktifasi" class="form-control" placeholder="Masukan Kode Aktifasi Disini!"
+						style="text-align: center" required maxlength="6" autocomplete="off">
+					<button type="submit" class="btn btn-dark" name="aktifasi">Actifation</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>

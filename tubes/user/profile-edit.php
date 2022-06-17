@@ -1,11 +1,12 @@
 <?php 
 // memeriksa sudah login atau belum
 session_start();
+require 'functions.php';
 
 $level=$_SESSION['level'];
 $username=$_SESSION['username'];
-$status=$_SESSION['status'];
-
+$email=$_SESSION['email'];
+$id=$_SESSION['id'];
 if(!isset($_SESSION["level"])){
 header("location:../logout.php");
 exit;
@@ -19,18 +20,6 @@ exit;
 
 
 
-
-if($_SESSION["status"]=='ban'){
-	    echo "
-        <script>
-        alert('maaf, akun anda telah diban!')
-        document.location.href='logout.php'
-        </script>";
-exit;
-}
-
-// koneksi database
-require 'functions.php';
 
 
 // pagination
@@ -59,8 +48,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 // profile
-$profile=query("SELECT * FROM users WHERE username='$username'")[0];
-
+$profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 
 
@@ -771,7 +759,7 @@ if(isset($_POST["berhasil"])){
 					class="fas fa-search"></i></a>
 
 
-			<form id="bar" action="" method="post" class="d-lg-block" style="display:none;">
+			<form id="bar" action="../functions_edit_akun.php" method="post" class="d-lg-block" style="display:none;">
 				<input id="formm" class="form-control me-lg-2" type="text" placeholder="Cari Produk Goturthings"
 					aria-label="Search" name="keyword" autocomplete="off" id="keyword">
 
@@ -793,7 +781,7 @@ if(isset($_POST["berhasil"])){
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
 							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid white;"
-							title="<?=$username?>"></a>
+							title="<?=$profile['username']?>"></a>
 
 
 
@@ -850,7 +838,8 @@ if(isset($_POST["berhasil"])){
 					<li class=" nav-item dropdown ms-5">
 						<a class="nav-link dropdown-toggle  d-none d-lg-block" href="#" id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
-							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$username?>" title="<?=$username?>"
+							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>"
+								title="<?=$profile['username']?>"
 								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #ffff;">
 						</a>
 						<ul class="dropdown-menu" style="margin-left:-45px;" aria-labelledby="navbarDropdownMenuLink">
@@ -939,12 +928,12 @@ if(isset($_POST["berhasil"])){
 			<table style="margin:0 auto;">
 				<tr>
 					<th>
-						<label id="profile-text" for="username" class="text-center">User Name </label>
+						<label id="profile-text" for="username" class="text-center">Full Name </label>
 					</th>
 					<td>:</td>
 					<td>
 						<input name="username" type="text" class="form-control" id="username" placeholder="-" name="username"
-							maxlength="20" required value="<?= $username?>">
+							maxlength="20" required value="<?= $profile['username']?>">
 					</td>
 				</tr>
 
@@ -955,7 +944,7 @@ if(isset($_POST["berhasil"])){
 					<td>:</td>
 					<td>
 						<input name="email" type="email" class="form-control" id="email" placeholder="-" name="email"
-							maxlength="200" value=" <?= $profile['email']; ?>">
+							maxlength="200" value=" <?= $profile['email'];?>" readonly>
 					</td>
 				</tr>
 

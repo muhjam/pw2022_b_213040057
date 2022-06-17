@@ -1,6 +1,7 @@
 <?php
 // memeriksa sudah login atau belum
 session_start();
+require 'functions.php';
 
 
 if(!isset($_SESSION["level"])){
@@ -15,8 +16,7 @@ exit;
 
 
 
-// koneksi database
-require 'functions.php';
+
 
 if(!isset($_GET['id'])){
     header('location:dashboard.php');
