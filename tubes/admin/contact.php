@@ -221,7 +221,8 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 	}
 
 	@media (max-width: 990px) {
-/* navbar */
+
+		/* navbar */
 		#navbarScroll {
 			overflow: hidden;
 			height: 0px;
@@ -247,6 +248,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 				height: 220px;
 			}
 		}
+
 		.navbar-nav {
 			text-align: center;
 		}
@@ -478,8 +480,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 		display: block;
 		margin-top: 0; // remove the gap so it doesn't close
 	}
-	
-</style>
+	</style>
 
 
 	<!-- link my css -->
@@ -499,13 +500,13 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
 				style="color:white;font-size:20px;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
 				style="color:white;font-size:20px;">
 			</span>
 
