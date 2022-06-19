@@ -629,7 +629,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 	<div id="carouselExampleFade" class="carousel slide carousel-fade mt-5" data-bs-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="../img/slide.png" class="d-block w-100" alt="slide1">
+				<img src="../img/slide.png" class="d-block w-100" alt="slide1" style="object-fit:cover;">
 			</div>
 			<div class="carousel-item">
 				<img src="../img/slidee.png" class="d-block w-100" alt="slide2">
@@ -638,14 +638,18 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 				<img src="../img/slideee.png" class="d-block w-100" alt="slide3">
 			</div>
 		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<div class="carousel-control-prev" style="pointer-events:none;">
+			<span class="fas fa-angle-left bg-dark" aria-hidden="true" data-bs-target="#carouselExampleFade"
+				data-bs-slide="prev" type="button"
+				style="border-radius:100%;width:50px;height:50px;line-height:50px;font-size:25px;pointer-events:auto;cursor:pointer;"></span>
 			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		</div>
+		<div class="carousel-control-next" style="pointer-events:none;">
+			<span class="fas fa-angle-right bg-dark" aria-hidden="true" data-bs-target="#carouselExampleFade"
+				data-bs-slide="next" type="button"
+				style="border-radius:100%;width:50px;height:50px;line-height:50px;font-size:25px;pointer-events:auto;cursor:pointer;"></span>
 			<span class="visually-hidden">Next</span>
-		</button>
+		</div>
 	</div>
 	<!-- akhir slide image -->
 

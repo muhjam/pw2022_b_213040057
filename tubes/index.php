@@ -751,7 +751,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	<div id="carouselExampleFade" class="carousel slide carousel-fade mt-5" data-bs-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="img/slide.png" class="d-block w-100" alt="slide1">
+				<img src="img/slide.png" class="d-block w-100" alt="slide1" style="object-fit:cover;">
 			</div>
 			<div class="carousel-item">
 				<img src="img/slidee.png" class="d-block w-100" alt="slide2">
@@ -760,14 +760,18 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 				<img src="img/slideee.png" class="d-block w-100" alt="slide3">
 			</div>
 		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<div class="carousel-control-prev" style="pointer-events:none;">
+			<span class="fas fa-angle-left bg-dark" aria-hidden="true" data-bs-target="#carouselExampleFade"
+				data-bs-slide="prev" type="button"
+				style="border-radius:100%;width:50px;height:50px;line-height:50px;font-size:25px;pointer-events:auto;cursor:pointer;"></span>
 			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		</div>
+		<div class="carousel-control-next" style="pointer-events:none;">
+			<span class="fas fa-angle-right bg-dark" aria-hidden="true" data-bs-target="#carouselExampleFade"
+				data-bs-slide="next" type="button"
+				style="border-radius:100%;width:50px;height:50px;line-height:50px;font-size:25px;pointer-events:auto;cursor:pointer;"></span>
 			<span class="visually-hidden">Next</span>
-		</button>
+		</div>
 	</div>
 	<!-- akhir slide image -->
 
@@ -870,7 +874,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 	<div class="footer container" id="footer">
 		<p class=""><i class="far fa-copyright"></i> 2022 <a href="https://www.instagram.com/muhamadjamaludinpad/"
-				target="_blank" style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br> All
+				target="_blank" style="text-decoration:none;	color:#2d2d2d;">Muhamad Jamaludin</a>. Created With Love. <br>
+			All
 			Picture
 			From: <a href="https://www.instagram.com/goturthings/" target="_blank"
 				style="text-decoration:none;	color: #151e3d;">GoturthinQs</a><span style="color:red;">.</span></p>
