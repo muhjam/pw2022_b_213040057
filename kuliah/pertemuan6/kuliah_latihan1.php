@@ -95,7 +95,8 @@ $mahasiswa = [
             line-height: 20px;
             list-style: none;
         }
-    </style>
+    
+</style>
 
 </head>
 

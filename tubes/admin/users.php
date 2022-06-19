@@ -247,6 +247,32 @@ if(isset($_POST['submit'])){
 	}
 
 	@media (max-width: 990px) {
+/* navbar */
+		#navbarScroll {
+			overflow: hidden;
+			height: 0px;
+		}
+
+
+		@keyframes slideup {
+			0% {
+				height: 220px;
+			}
+
+			100% {
+				height: 0px;
+			}
+		}
+
+		@keyframes slidedown {
+			0% {
+				height: 0px;
+			}
+
+			100% {
+				height: 220px;
+			}
+		}
 		.navbar-nav {
 			text-align: center;
 		}
@@ -476,7 +502,8 @@ if(isset($_POST['submit'])){
 		display: block;
 		margin-top: 0; // remove the gap so it doesn't close
 	}
-	</style>
+	
+</style>
 
 
 	<!-- link my css -->
@@ -494,15 +521,22 @@ if(isset($_POST['submit'])){
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" 
+				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
 
-			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" 
+				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
+
+
+
+			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
-					class="fas fa-search"></i></a>
+					class="fas fa-search" style="color:white;"></i></a>
 
 
 			<form id="bar" action="" method="post" class="d-lg-block" style="display:none;">
@@ -512,7 +546,7 @@ if(isset($_POST['submit'])){
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i

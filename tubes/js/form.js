@@ -1,3 +1,21 @@
+// nav
+const btnBars = document.querySelector(".fa-bars");
+const btnMinus = document.querySelector(".fa-minus");
+const show = document.querySelector(".navbar-collapse");
+
+btnBars.addEventListener("click", function() {
+    btnBars.classList.toggle("d-none");
+    btnMinus.classList.toggle("d-none");
+    show.setAttribute("style", "animation:slidedown 0.5s ease forwards;");
+});
+
+btnMinus.addEventListener("click", function() {
+    btnBars.classList.toggle("d-none");
+    btnMinus.classList.toggle("d-none");
+    show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
+});
+// selesai nav
+
 const scriptURL =
     "https://script.google.com/macros/s/AKfycbzSt1bcuGMf1X3xK2yY7ocsKTA1ngPMFtHdfllE7bUNdJajko6meJ4FXX3PeJGFj0QUXQ/exec";
 const form = document.forms["goturthinqs-contact-from"];

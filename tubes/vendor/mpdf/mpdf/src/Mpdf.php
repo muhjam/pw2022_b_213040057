@@ -1479,7 +1479,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 
 		if (file_exists($this->defaultCssFile)) {
 			$css = file_get_contents($this->defaultCssFile);
-			$this->cssManager->ReadCSS('<style> ' . $css . ' </style>');
+			$this->cssManager->ReadCSS('<style> ' . $css . ' 
+</style>');
 		} else {
 			throw new \Mpdf\MpdfException(sprintf('Unable to read default CSS file "%s"', $this->defaultCssFile));
 		}
@@ -13205,7 +13206,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 			$this->fixedPosBlockSave = [];
 		}
 		if ($mode === HTMLParserMode::HEADER_CSS) {
-			$html = '<style> ' . $html . ' </style>';
+			$html = '<style> ' . $html . ' 
+</style>';
 		} // stylesheet only
 
 		if ($this->allow_charset_conversion) {

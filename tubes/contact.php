@@ -179,6 +179,32 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	}
 
 	@media (max-width: 990px) {
+/* navbar */
+		#navbarScroll {
+			overflow: hidden;
+			height: 0px;
+		}
+
+
+		@keyframes slideup {
+			0% {
+				height: 220px;
+			}
+
+			100% {
+				height: 0px;
+			}
+		}
+
+		@keyframes slidedown {
+			0% {
+				height: 0px;
+			}
+
+			100% {
+				height: 220px;
+			}
+		}
 		.navbar-nav {
 			text-align: center;
 		}
@@ -398,7 +424,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	.dropdown:hover .dropdown-menu {
 		display: block;
 	}
-	</style>
+	
+</style>
 
 
 	<!-- link my css -->
@@ -415,7 +442,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+			<button class="navbar-toggler me-auto" type="button"  data-bs-target="#navbarScroll"
 				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -424,7 +451,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="index.php#container" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
-					class="fas fa-search"></i></a>
+					class="fas fa-search" style="color:white;"></i></a>
 
 
 			<form id="bar" action="index.php#container" method="post" class="d-lg-block" style="display:none;">
@@ -434,7 +461,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
@@ -738,6 +765,18 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 	<!-- style form -->
 	<script src='js/form.js'>
+// nav
+	const btnBars = document.querySelector('.fa-bars');
+	const btnMinus = document.querySelector('.fa-minus');
+
+	btnBars.addEventListener('click', function() {
+		btnMinus.classList.toggle('d-none');
+	});
+
+	btnMinus.addEventListener('click', function() {
+		btnBars.classList.toggle('d-none');
+		btnMinus.classList.toggle('d-none');
+	});
 	const scriptURL =
 		'https://script.google.com/macros/s/AKfycbzSt1bcuGMf1X3xK2yY7ocsKTA1ngPMFtHdfllE7bUNdJajko6meJ4FXX3PeJGFj0QUXQ/exec'
 	const form = document.forms['goturthinqs-contact-from'];

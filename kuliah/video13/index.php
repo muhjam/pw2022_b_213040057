@@ -26,7 +26,8 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
             margin: 10px;
             width: fit-content;
         }
-    </style>
+    
+</style>
 
 </head>
 

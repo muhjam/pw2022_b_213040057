@@ -10,7 +10,8 @@
         .warna-baris {
             background-color: red;
         }
-    </style>
+    
+</style>
 
 </head>
 

@@ -273,6 +273,32 @@ if(isset($_POST["berhasil"])){
 	}
 
 	@media (max-width: 990px) {
+/* navbar */
+		#navbarScroll {
+			overflow: hidden;
+			height: 0px;
+		}
+
+
+		@keyframes slideup {
+			0% {
+				height: 220px;
+			}
+
+			100% {
+				height: 0px;
+			}
+		}
+
+		@keyframes slidedown {
+			0% {
+				height: 0px;
+			}
+
+			100% {
+				height: 220px;
+			}
+		}
 		#card {
 			width: 50%;
 		}
@@ -727,7 +753,8 @@ if(isset($_POST["berhasil"])){
 		display: block;
 		margin-top: 0; // remove the gap so it doesn't close
 	}
-	</style>
+	
+</style>
 
 
 	<!-- link my css -->
@@ -747,7 +774,7 @@ if(isset($_POST["berhasil"])){
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+			<button class="navbar-toggler me-auto" type="button"  data-bs-target="#navbarScroll"
 				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -756,7 +783,7 @@ if(isset($_POST["berhasil"])){
 			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="index.php#container" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
-					class="fas fa-search"></i></a>
+					class="fas fa-search" style="color:white;"></i></a>
 
 
 			<form id="bar" action="../functions_edit_akun.php" method="post" class="d-lg-block" style="display:none;">
@@ -766,7 +793,7 @@ if(isset($_POST["berhasil"])){
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
@@ -1150,54 +1177,7 @@ if(isset($_POST["berhasil"])){
 
 
 	<!-- main js -->
-	<script src="js/main.js">
-	// ambil elemen2 yang dibutuhkan
-	var keyword = document.getElementById('keyword');
-	var container = document.getElementById('container');
-	var loadMore = document.getElementById('loadMore');
-
-
-	// tambahkan event ketika keyboard ditulis
-	keyword.addEventListener('keyup', function() {
-		// buat object ajax
-		var xhr = new XMLHttpRequest();
-
-		// cek kesiapan ajax
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState == 4 && xhr.status == 200) {
-				container.innerHTML = xhr.responseText;
-			}
-		}
-
-		// eksekusi ajax
-		xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
-		xhr.send();
-
-
-
-	});
-
-
-	// button search
-	var search = document.getElementById('cariin');
-	var bar = document.getElementById('bar');
-	var exit = document.getElementById('exit');
-
-	search.addEventListener('click', function() {
-
-		var bar = document.getElementById('bar');
-		bar.setAttribute("style", "display:;");
-
-	});
-
-	exit.addEventListener('click', function() {
-
-		var bar = document.getElementById('bar');
-		bar.setAttribute("style", "display:none;");
-
-	});
-	</script>
-
+<script src="js/main.js"></script>
 
 
 	<!-- Optional JavaScript; choose one of the two! -->

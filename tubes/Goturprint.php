@@ -35,7 +35,8 @@ $html='<!DOCTYPE html>
 		tr:nth-child(even){
 			background-color:#ddd;
 		}
-		</style>
+		
+</style>
 
 </head>
 <body>

@@ -209,7 +209,6 @@ if(isset($_POST["berhasil"])){
 
 	@media (min-width: 1400px) {
 
-
 		/* cari1 */
 		.formm {
 			position: relative;
@@ -257,6 +256,36 @@ if(isset($_POST["berhasil"])){
 	}
 
 	@media (max-width: 990px) {
+
+		/* navbar */
+		#navbarScroll {
+			overflow: hidden;
+			height: 0px;
+		}
+
+
+		@keyframes slideup {
+			0% {
+				height: 220px;
+			}
+
+			100% {
+				height: 0px;
+			}
+		}
+
+		@keyframes slidedown {
+			0% {
+				height: 0px;
+			}
+
+			100% {
+				height: 220px;
+			}
+		}
+
+
+
 		#card {
 			width: 50%;
 		}
@@ -278,6 +307,8 @@ if(isset($_POST["berhasil"])){
 			left: 10px;
 			top: 15px;
 		}
+
+
 	}
 
 	@media (max-width: 425px) {
@@ -623,15 +654,22 @@ if(isset($_POST["berhasil"])){
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
 
-			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="true" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
+
+
+
+			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="index.php#container" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
-					class="fas fa-search"></i></a>
+					class="fas fa-search" style="color:white;"></i></a>
 
 
 			<form id="bar" action="index.php#container" method="post" class="d-lg-block" style="display:none;">
@@ -641,7 +679,7 @@ if(isset($_POST["berhasil"])){
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
@@ -655,8 +693,8 @@ if(isset($_POST["berhasil"])){
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #ffff;" title="<?=$profile['username']?>
-"></a>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #ffff;"
+							title="<?=$profile['username']?>"></a>
 
 
 					<li class="nav-item">
@@ -701,7 +739,6 @@ if(isset($_POST["berhasil"])){
 						<li class="nav-item">
 							<a name="cari" href="index.php#container" class="nav-link" id="jenis">All Items</a>
 						</li>
-
 					</div>
 
 					<li class="nav-item d-lg-block d-none mt-2">
@@ -814,8 +851,7 @@ if(isset($_POST["berhasil"])){
 					<td>:</td>
 					<td>
 						<input name="username" type="text" class="form-control" id="username" placeholder="-" name="username"
-							maxlength="20" required value="<?= $profile['username']?>"
->
+							maxlength="20" required value="<?= $profile['username']?>">
 					</td>
 				</tr>
 
@@ -945,6 +981,7 @@ if(isset($_POST["berhasil"])){
 	</script>
 
 
+
 	<!-- loadmore -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -1021,58 +1058,25 @@ if(isset($_POST["berhasil"])){
 	document.addEventListener("DOMContentLoaded", function() {
 		createButton(configObj, null);
 	});
-	</script>
+
+	// nav
+	const btnBars = document.querySelector(".fa-bars");
+	const btnMinus = document.querySelector(".fa-minus");
+	const show = document.querySelector(".navbar-collapse");
 
 
-	<!-- main js -->
-	<script src="js/main.js">
-	// ambil elemen2 yang dibutuhkan
-	var keyword = document.getElementById('keyword');
-	var container = document.getElementById('container');
-	var loadMore = document.getElementById('loadMore');
-
-
-	// tambahkan event ketika keyboard ditulis
-	keyword.addEventListener('keyup', function() {
-		// buat object ajax
-		var xhr = new XMLHttpRequest();
-
-		// cek kesiapan ajax
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState == 4 && xhr.status == 200) {
-				container.innerHTML = xhr.responseText;
-			}
-		}
-
-		// eksekusi ajax
-		xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
-		xhr.send();
-
-
-
+	btnBars.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slidedown 0.5s ease forwards;");
 	});
 
-
-	// button search
-	var search = document.getElementById('cariin');
-	var bar = document.getElementById('bar');
-	var exit = document.getElementById('exit');
-
-	search.addEventListener('click', function() {
-
-		var bar = document.getElementById('bar');
-		bar.setAttribute("style", "display:;");
-
-	});
-
-	exit.addEventListener('click', function() {
-
-		var bar = document.getElementById('bar');
-		bar.setAttribute("style", "display:none;");
-
+	btnMinus.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
 	});
 	</script>
-
 
 
 	<!-- Optional JavaScript; choose one of the two! -->
@@ -1082,34 +1086,6 @@ if(isset($_POST["berhasil"])){
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 	</script>
 
-
-	<!-- profile -->
-	<script>
-	// Get the modal
-	var modal = document.getElementById('myModal');
-
-	// Get the image and insert it inside the modal - use its "alt" text as a caption
-	var img = document.getElementById('myImg');
-	var modalImg = document.getElementById("img01");
-	var captionText = document.getElementById("caption");
-	img.onclick = function() {
-		modal.style.display = "block";
-		modalImg.src = this.src;
-		modalImg.alt = this.alt;
-		captionText.innerHTML = this.alt;
-	}
-
-
-	// When the user clicks on <span> (x), close the modal
-	modal.onclick = function() {
-		img01.className += " out";
-		setTimeout(function() {
-			modal.style.display = "none";
-			img01.className = "modal-content";
-		}, 400);
-
-	}
-	</script>
 
 	<!-- Option 2: Separate Popper and Bootstrap JS -->
 	<!--

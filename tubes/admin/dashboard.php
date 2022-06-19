@@ -264,6 +264,34 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 	}
 
 	@media (max-width: 990px) {
+
+		/* navbar */
+		#navbarScroll {
+			overflow: hidden;
+			height: 0px;
+		}
+
+
+		@keyframes slideup {
+			0% {
+				height: 220px;
+			}
+
+			100% {
+				height: 0px;
+			}
+		}
+
+		@keyframes slidedown {
+			0% {
+				height: 0px;
+			}
+
+			100% {
+				height: 220px;
+			}
+		}
+
 		.navbar-nav {
 			text-align: center;
 		}
@@ -542,15 +570,22 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
 
-			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
 
-			<a href="#" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
-					class="fas fa-search"></i></a>
+
+
+			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
+
+			<a href="#" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i class="fas fa-search"
+					style="color:white;"></i></a>
 
 
 			<form id="bar" action="" method="post" class="d-lg-block" style="display:none;">
@@ -560,7 +595,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#"><i
@@ -574,8 +609,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
-							title="<?=$profile['username']?>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;" title="<?=$profile['username']?>
 "></a>
 
 
@@ -639,7 +673,8 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 					<li class=" nav-item dropdown ms-5">
 						<a class="nav-link dropdown-toggle  d-none d-lg-block" href="#" id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
-							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>" title="<?=$profile['username']?>"
+							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>"
+								title="<?=$profile['username']?>"
 								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;">
 						</a>
 						<ul class="dropdown-menu" style="margin-left:-45px;" aria-labelledby="navbarDropdownMenuLink">
@@ -910,52 +945,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 
 
-	<script>
-	// ambil elemen2 yang dibutuhkan
-	var keyword = document.getElementById("keyword");
-	var container = document.getElementById("container");
-	var page = document.getElementById("page");
-
-	// tambahkan event ketika keyboard ditulis
-	keyword.addEventListener("keyup", function() {
-		var page = document.getElementById("page");
-		page.setAttribute("style", "display:none;");
-
-		// buat object ajax
-		var xhr = new XMLHttpRequest();
-
-		// cek kesiapan ajax
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState == 4 && xhr.status == 200) {
-				container.innerHTML = xhr.responseText;
-			}
-		};
-
-		// eksekusi ajax
-		xhr.open("GET", "ajax/produk.php?keyword=" + keyword.value, true);
-		xhr.send();
-
-		// memunculkan page atau refresh halaman
-		if (keyword.value === "") {
-			location.reload();
-		}
-	});
-
-	// button search
-	var search = document.getElementById("cariin");
-	var bar = document.getElementById("bar");
-	var exit = document.getElementById("exit");
-
-	search.addEventListener("click", function() {
-		var bar = document.getElementById("bar");
-		bar.setAttribute("style", "display:;");
-	});
-
-	exit.addEventListener("click", function() {
-		var bar = document.getElementById("bar");
-		bar.setAttribute("style", "display:none;");
-	});
-	</script>
+	<script src="js/main.js"></script>
 
 
 

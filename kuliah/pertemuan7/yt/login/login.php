@@ -49,6 +49,7 @@ if (isset($_POST["submit"])) {
         font-style: italic;
         font-size: 15px;
     }
+
 </style>
 
 <body>

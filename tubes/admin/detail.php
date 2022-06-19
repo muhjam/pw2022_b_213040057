@@ -174,7 +174,7 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 		/* cari1 */
 		.formm {
 			position: relative;
-			width: 350px;
+			width: 290px;
 			height: 30px;
 			left: 10%;
 		}
@@ -186,6 +186,34 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 	}
 
 	@media (max-width: 990px) {
+
+		/* navbar */
+		#navbarScroll {
+			overflow: hidden;
+			height: 0px;
+		}
+
+
+		@keyframes slideup {
+			0% {
+				height: 220px;
+			}
+
+			100% {
+				height: 0px;
+			}
+		}
+
+		@keyframes slidedown {
+			0% {
+				height: 0px;
+			}
+
+			100% {
+				height: 220px;
+			}
+		}
+
 		#card {
 			width: 50%;
 		}
@@ -569,16 +597,16 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler me-auto" type="button" data-bs-target="#navbarScroll" aria-controls="navbarScroll"
+				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 
 			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="dashboard.php" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
-					class="fas fa-search"></i></a>
+			<a href="dashboard.php" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i class="fas fa-search"
+					style="color:white;"></i></a>
 
 
 			<form id="bar" action="dashboard.php" method="post" class="d-lg-block" style="display:none;">
@@ -588,7 +616,7 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="dashboard.php"><i
@@ -602,8 +630,7 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
-							title="<?=$profile['username']?>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;" title="<?=$profile['username']?>
 "></a>
 
 
@@ -666,7 +693,8 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 					<li class=" nav-item dropdown ms-5">
 						<a class="nav-link dropdown-toggle  d-none d-lg-block" href="#" id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
-							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>" title="<?=$profile['username']?>"
+							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>"
+								title="<?=$profile['username']?>"
 								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;">
 						</a>
 						<ul class="dropdown-menu" style="margin-left:-45px;" aria-labelledby="navbarDropdownMenuLink">

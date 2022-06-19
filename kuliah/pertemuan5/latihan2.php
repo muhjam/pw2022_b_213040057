@@ -23,7 +23,8 @@ $angka = [3, 2, 15, 20, 11, 77, 89];
         .clear {
             clear: both;
         }
-    </style>
+    
+</style>
 </head>
 
 <body>

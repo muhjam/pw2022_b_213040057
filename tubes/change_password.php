@@ -183,7 +183,8 @@ if(isset($_POST["change"])){
 			font-size: 15px;
 		}
 	}
-	</style>
+	
+</style>
 
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/login.css">

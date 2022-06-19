@@ -19,7 +19,8 @@
         .clear {
             clear: both;
         }
-    </style>
+    
+</style>
 
 </head>
 

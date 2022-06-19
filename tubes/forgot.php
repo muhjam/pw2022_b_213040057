@@ -159,7 +159,8 @@ session_unset();
 			font-size: 15px;
 		}
 	}
-	</style>
+	
+</style>
 
 
 

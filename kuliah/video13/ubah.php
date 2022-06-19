@@ -54,7 +54,8 @@ if (isset($_POST["submit"])) {
             cursor: pointer;
             margin-left: 30%;
         }
-    </style>
+    
+</style>
 
 </head>
 

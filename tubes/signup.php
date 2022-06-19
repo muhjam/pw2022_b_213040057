@@ -172,7 +172,8 @@ session_unset();
 			font-size: 15px;
 		}
 	}
-	</style>
+	
+</style>
 
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/login.css">

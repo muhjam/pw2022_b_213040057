@@ -97,8 +97,10 @@ class CssManager
 			for ($i = 0; $i < $count_m; $i++) {
 				// Remove comment tags
 				$sub = preg_replace('/(<\!\-\-|\-\->)/s', ' ', $m[1][$i]);
-				$sub = '>'.preg_replace('|/\*.*?\*/|s', ' ', $sub).'</style>';
-				$html = str_replace('>'.$m[1][$i].'</style>', $sub, $html);
+				$sub = '>'.preg_replace('|/\*.*?\*/|s', ' ', $sub).'
+</style>';
+				$html = str_replace('>'.$m[1][$i].'
+</style>', $sub, $html);
 			}
 		}
 
