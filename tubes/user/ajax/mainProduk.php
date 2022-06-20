@@ -80,7 +80,7 @@ $goturthings= query($query);
 			<a href="beli.php?id=<?= $goturthing["id"]?>" id="card" class="mb-5 news-item"
 				style="text-decoration:none;color:black;">
 				<div id="inner">
-					<img id="myImg" src=" img/<?= $goturthing["gambar"] ?>" class="card-img-top"
+					<img id="myImg" src="../img/<?= $goturthing["gambar"] ?>" class="card-img-top"
 						alt="<?= $goturthing["kode_produk"] ?>" style="height:300px;object-fit:cover;">
 				</div>
 				<p class="card-title mt-2"><?= $goturthing["nama_produk"] ?></p>
