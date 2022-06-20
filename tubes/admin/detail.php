@@ -597,13 +597,20 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button" data-bs-target="#navbarScroll" aria-controls="navbarScroll"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
+
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
 
 
-			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
+
+			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="dashboard.php" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i class="fas fa-search"
 					style="color:white;"></i></a>
@@ -835,6 +842,24 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 		}, 400);
 
 	}
+
+	// nav
+	const btnBars = document.querySelector(".fa-bars");
+	const btnMinus = document.querySelector(".fa-minus");
+	const show = document.querySelector(".navbar-collapse");
+
+
+	btnBars.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slidedown 0.5s ease forwards;");
+	});
+
+	btnMinus.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
+	});
 	</script>
 
 

@@ -158,7 +158,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	}
 
 	@media (max-width: 990px) {
-/* navbar */
+
+		/* navbar */
 		#navbarScroll {
 			overflow: hidden;
 			height: 0px;
@@ -184,6 +185,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 				height: 220px;
 			}
 		}
+
 		#card {
 			width: 50%;
 		}
@@ -553,8 +555,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 		display: block;
 		margin-top: 0; // remove the gap so it doesn't close
 	}
-	
-</style>
+	</style>
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/style.css">
 
@@ -570,13 +571,19 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button"  data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
+
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
 
 
-			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
+
+			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="index.php#container" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search" style="color:white;"></i></a>
@@ -782,6 +789,23 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 		}, 400);
 
 	}
+
+	// nav
+	const btnBars = document.querySelector(".fa-bars");
+	const btnMinus = document.querySelector(".fa-minus");
+	const show = document.querySelector(".navbar-collapse");
+
+	btnBars.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slidedown 0.5s ease forwards;");
+	});
+
+	btnMinus.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
+	});
 	</script>
 
 

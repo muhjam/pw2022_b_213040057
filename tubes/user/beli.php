@@ -187,7 +187,8 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 	}
 
 	@media (max-width: 990px) {
-/* navbar */
+
+		/* navbar */
 		#navbarScroll {
 			overflow: hidden;
 			height: 0px;
@@ -213,6 +214,7 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 				height: 220px;
 			}
 		}
+
 		#card {
 			width: 50%;
 		}
@@ -582,8 +584,7 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 		display: block;
 		margin-top: 0; // remove the gap so it doesn't close
 	}
-	
-</style>
+	</style>
 	<!-- link my css -->
 	<link rel="stylesheet" href="css/style.css">
 
@@ -599,13 +600,19 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button"  data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
+
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
 
 
-			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
+
+			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="index.php#container" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search" style="color:white;"></i></a>
@@ -632,8 +639,7 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
-							title="<?=$profile['username']?>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;" title="<?=$profile['username']?>
 "></a>
 
 
@@ -693,7 +699,8 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 					<li class=" nav-item dropdown ms-5">
 						<a class="nav-link dropdown-toggle  d-none d-lg-block" href="#" id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
-							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>" title="<?=$profile['username']?>"
+							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>"
+								title="<?=$profile['username']?>"
 								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;">
 						</a>
 						<ul class="dropdown-menu" style="margin-left:-45px;" aria-labelledby="navbarDropdownMenuLink">
@@ -835,6 +842,24 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 		}, 400);
 
 	}
+
+
+	// nav
+	const btnBars = document.querySelector(".fa-bars");
+	const btnMinus = document.querySelector(".fa-minus");
+	const show = document.querySelector(".navbar-collapse");
+
+	btnBars.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slidedown 0.5s ease forwards;");
+	});
+
+	btnMinus.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
+	});
 	</script>
 
 

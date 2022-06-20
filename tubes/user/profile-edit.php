@@ -273,7 +273,8 @@ if(isset($_POST["berhasil"])){
 	}
 
 	@media (max-width: 990px) {
-/* navbar */
+
+		/* navbar */
 		#navbarScroll {
 			overflow: hidden;
 			height: 0px;
@@ -299,6 +300,7 @@ if(isset($_POST["berhasil"])){
 				height: 220px;
 			}
 		}
+
 		#card {
 			width: 50%;
 		}
@@ -753,8 +755,7 @@ if(isset($_POST["berhasil"])){
 		display: block;
 		margin-top: 0; // remove the gap so it doesn't close
 	}
-	
-</style>
+	</style>
 
 
 	<!-- link my css -->
@@ -774,13 +775,19 @@ if(isset($_POST["berhasil"])){
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button"  data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
+
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
 
 
-			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
+
+			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="index.php#container" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search" style="color:white;"></i></a>
@@ -1176,8 +1183,25 @@ if(isset($_POST["berhasil"])){
 	</script>
 
 
-	<!-- main js -->
-<script src="js/main.js"></script>
+
+	<script>
+	// nav
+	const btnBars = document.querySelector(".fa-bars");
+	const btnMinus = document.querySelector(".fa-minus");
+	const show = document.querySelector(".navbar-collapse");
+
+	btnBars.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slidedown 0.5s ease forwards;");
+	});
+
+	btnMinus.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
+	});
+	</script>
 
 
 	<!-- Optional JavaScript; choose one of the two! -->
@@ -1188,33 +1212,6 @@ if(isset($_POST["berhasil"])){
 	</script>
 
 
-	<!-- profile -->
-	<script>
-	// Get the modal
-	var modal = document.getElementById('myModal');
-
-	// Get the image and insert it inside the modal - use its "alt" text as a caption
-	var img = document.getElementById('myImg');
-	var modalImg = document.getElementById("img01");
-	var captionText = document.getElementById("caption");
-	img.onclick = function() {
-		modal.style.display = "block";
-		modalImg.src = this.src;
-		modalImg.alt = this.alt;
-		captionText.innerHTML = this.alt;
-	}
-
-
-	// When the user clicks on <span> (x), close the modal
-	modal.onclick = function() {
-		img01.className += " out";
-		setTimeout(function() {
-			modal.style.display = "none";
-			img01.className = "modal-content";
-		}, 400);
-
-	}
-	</script>
 
 	<!-- Option 2: Separate Popper and Bootstrap JS -->
 	<!--

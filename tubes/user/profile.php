@@ -233,7 +233,8 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 	}
 
 	@media (max-width: 990px) {
-/* navbar */
+
+		/* navbar */
 		#navbarScroll {
 			overflow: hidden;
 			height: 0px;
@@ -259,6 +260,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 				height: 220px;
 			}
 		}
+
 		#card {
 			width: 50%;
 		}
@@ -656,8 +658,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 		display: block;
 		margin-top: 0; // remove the gap so it doesn't close
 	}
-	
-</style>
+	</style>
 
 
 	<!-- link my css -->
@@ -677,13 +678,19 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 		<div class="container">
 
-			<button class="navbar-toggler me-auto" type="button"  data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
+
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;">
+			</span>
 
 
-			<a class="navbar-brand" id="logo" href="index.php">GoturthinQs<span>.</span></a>
+
+			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
 			<a href="index.php#container" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search" style="color:white;"></i></a>
@@ -786,7 +793,16 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 					</li>
 				</ul>
 
-
+				<ul class="bar-sosmed d-lg-none mt-2">
+					<li><a href="https://www.instagram.com/goturthings/" target="_blank"> <i class="fab fa-instagram"></i></a>
+					</li>
+					<li><a href="https://www.facebook.com/profile.php?id=100078019380277" target="_blank"><i
+								class="fab fa-facebook"></i></a></li>
+					<li><a href="https://twitter.com/muhjmlpad" target="_blank"><i class="fab fa-twitter"></i></a></li>
+					<li><a
+							href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $username;?>.%20Salam%20kenal%20Admin%20goturthinqs."
+							target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+				</ul>
 			</div>
 		</div>
 	</nav>
@@ -962,9 +978,6 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 	</script>
 
 
-	<!-- main js -->
-	<script src="js/main.js"></script>
-
 
 	<!-- Optional JavaScript; choose one of the two! -->
 
@@ -1001,7 +1014,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 	}
 
-		// nav
+	// nav
 	const btnBars = document.querySelector(".fa-bars");
 	const btnMinus = document.querySelector(".fa-minus");
 	const show = document.querySelector(".navbar-collapse");
@@ -1018,7 +1031,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 		btnMinus.classList.toggle("d-none");
 		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
 	});
-</script>
+	</script>
 
 	<!-- Option 2: Separate Popper and Bootstrap JS -->
 	<!--
