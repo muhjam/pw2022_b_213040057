@@ -382,7 +382,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	}
 
 	@media (max-width: 990px) {
-/* navbar */
+
+		/* navbar */
 		#navbarScroll {
 			overflow: hidden;
 			height: 0px;
@@ -408,6 +409,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 				height: 220px;
 			}
 		}
+
 		#card {
 			width: 50%;
 		}
@@ -643,8 +645,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	.dropdown:hover .dropdown-menu {
 		display: block;
 	}
-	
-</style>
+	</style>
 
 
 	<!-- link my css -->
@@ -661,13 +662,13 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
 				style="color:white;font-size:20px;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
 				style="color:white;font-size:20px;">
 			</span>
 
@@ -1013,16 +1014,14 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	</script>
 
 
-	<!-- main js -->
-	<script src="js/main.js">
+	<script>
 	// ambil elemen2 yang dibutuhkan
-	var keyword = document.getElementById('keyword');
-	var container = document.getElementById('container');
-	var loadMore = document.getElementById('loadMore');
-
+	var keyword = document.getElementById("keyword");
+	var container = document.getElementById("container");
+	var loadMore = document.getElementById("loadMore");
 
 	// tambahkan event ketika keyboard ditulis
-	keyword.addEventListener('keyup', function() {
+	keyword.addEventListener("keyup", function() {
 		// buat object ajax
 		var xhr = new XMLHttpRequest();
 
@@ -1031,50 +1030,45 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				container.innerHTML = xhr.responseText;
 			}
-		}
+		};
 
 		// eksekusi ajax
-		xhr.open('GET', 'ajax/mainProduk.php?keyword=' + keyword.value, true);
+		xhr.open("GET", "ajax/mainProduk.php?keyword=" + keyword.value, true);
 		xhr.send();
-
-
-
 	});
-
 
 	// button search
-	var search = document.getElementById('cariin');
-	var bar = document.getElementById('bar');
-	var exit = document.getElementById('exit');
+	var search = document.getElementById("cariin");
+	var bar = document.getElementById("bar");
+	var exit = document.getElementById("exit");
 
-	search.addEventListener('click', function() {
-
-		var bar = document.getElementById('bar');
+	search.addEventListener("click", function() {
+		var bar = document.getElementById("bar");
 		bar.setAttribute("style", "display:;");
-
 	});
 
-	exit.addEventListener('click', function() {
-
-		var bar = document.getElementById('bar');
+	exit.addEventListener("click", function() {
+		var bar = document.getElementById("bar");
 		bar.setAttribute("style", "display:none;");
-
 	});
 
 	// nav
-	const btnBars = document.querySelector('.fa-bars');
-	const btnMinus = document.querySelector('.fa-minus');
+	const btnBars = document.querySelector(".fa-bars");
+	const btnMinus = document.querySelector(".fa-minus");
+	const show = document.querySelector(".navbar-collapse");
 
-	btnBars.addEventListener('click', function() {
-		btnMinus.classList.toggle('d-none');
+	btnBars.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slidedown 0.5s ease forwards;");
 	});
 
-	btnMinus.addEventListener('click', function() {
-		btnBars.classList.toggle('d-none');
-		btnMinus.classList.toggle('d-none');
+	btnMinus.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
 	});
 	</script>
-
 
 
 	<!-- Optional JavaScript; choose one of the two! -->
