@@ -25,21 +25,23 @@ var search = document.getElementById("cariin");
 var bar = document.getElementById("bar");
 var exit = document.getElementById("exit");
 
+// nav
+const btnBars = document.querySelector(".fa-bars");
+const btnMinus = document.querySelector(".fa-minus");
+const show = document.querySelector(".navbar-collapse");
+
 search.addEventListener("click", function() {
     var bar = document.getElementById("bar");
     bar.setAttribute("style", "display:;");
+    btnBars.classList.remove("d-none");
+    btnMinus.classList.add("d-none");
+    show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
 });
 
 exit.addEventListener("click", function() {
     var bar = document.getElementById("bar");
     bar.setAttribute("style", "display:none;");
 });
-
-// nav
-const btnBars = document.querySelector(".fa-bars");
-const btnMinus = document.querySelector(".fa-minus");
-const show = document.querySelector(".navbar-collapse");
-
 
 btnBars.addEventListener("click", function() {
     btnBars.classList.toggle("d-none");

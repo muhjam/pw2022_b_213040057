@@ -235,7 +235,8 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 	}
 
 	@media (max-width: 990px) {
-/* navbar */
+
+		/* navbar */
 		#navbarScroll {
 			overflow: hidden;
 			height: 0px;
@@ -261,6 +262,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 				height: 220px;
 			}
 		}
+
 		#card {
 			width: 50%;
 		}
@@ -504,8 +506,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 	.dropdown:hover .dropdown-menu {
 		display: block;
 	}
-	
-</style>
+	</style>
 
 
 	<!-- link my css -->
@@ -520,13 +521,13 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
 				style="color:white;font-size:20px;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
 				style="color:white;font-size:20px;">
 			</span>
 
@@ -538,14 +539,15 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 					class="fas fa-search" style="color:white;"></i></a>
 
 
-			<form id="bar" action="#container" method="post" class="d-lg-block" style="display:none;">
+			<form id="bar" action="" method="post" class="d-lg-block"
+				style="<?php if(isset($_GET['mencari'])){echo"display:;";}else{echo"display:none;";}?>">
 				<input class="form-control me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
 					name="keyword" autofocus autocomplete="off" id="keyword">
 
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse show" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
@@ -886,7 +888,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 
 	<!-- main js -->
-<script src="js/main.js"></script>
+	<script src="js/main.js"></script>
 
 
 	<!-- Optional JavaScript; choose one of the two! -->

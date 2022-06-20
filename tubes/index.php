@@ -680,14 +680,15 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 					class="fas fa-search" style="color:white;"></i></a>
 
 
-			<form id="bar" action="index.php#container" method="post" class="d-lg-block" style="display:none;">
+			<form id="bar" action="" method="post" class="d-lg-block"
+				style="<?php if(isset($_GET['mencari'])){echo"display:;";}else{echo"display:none;";}?>">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
-					name="keyword" autocomplete="off" id="keyword">
+					name="keyword" autocomplete="off" id="keyword" autofocus>
 
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse show" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
@@ -1042,20 +1043,27 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	var bar = document.getElementById("bar");
 	var exit = document.getElementById("exit");
 
+	// nav
+	const btnBars = document.querySelector(".fa-bars");
+	const btnMinus = document.querySelector(".fa-minus");
+	const show = document.querySelector(".navbar-collapse");
+
+
 	search.addEventListener("click", function() {
 		var bar = document.getElementById("bar");
 		bar.setAttribute("style", "display:;");
+		btnBars.classList.remove("d-none");
+		btnMinus.classList.add("d-none");
+		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
 	});
 
 	exit.addEventListener("click", function() {
 		var bar = document.getElementById("bar");
 		bar.setAttribute("style", "display:none;");
+
 	});
 
-	// nav
-	const btnBars = document.querySelector(".fa-bars");
-	const btnMinus = document.querySelector(".fa-minus");
-	const show = document.querySelector(".navbar-collapse");
+
 
 	btnBars.addEventListener("click", function() {
 		btnBars.classList.toggle("d-none");

@@ -583,7 +583,7 @@ $ukuranProduk= query($query);
 
 			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="dashboard.php" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="dashboard.php?mencari" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search" style="color:white;"></i></a>
 
 
@@ -594,7 +594,7 @@ $ukuranProduk= query($query);
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse show" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="dashboard.php"><i

@@ -540,7 +540,7 @@ if(isset($_POST['submit'])){
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse show" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#"><i

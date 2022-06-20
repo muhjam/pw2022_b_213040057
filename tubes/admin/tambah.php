@@ -213,7 +213,8 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 	}
 
 	@media (max-width: 990px) {
-/* navbar */
+
+		/* navbar */
 		#navbarScroll {
 			overflow: hidden;
 			height: 0px;
@@ -239,6 +240,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 				height: 220px;
 			}
 		}
+
 		.navbar-nav {
 			text-align: center;
 		}
@@ -520,8 +522,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 	}
 
 	/* akhir body tambah ubah */
-	
-</style>
+	</style>
 
 
 	<!-- link my css -->
@@ -539,13 +540,13 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
 				style="color:white;font-size:20px;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
 				style="color:white;font-size:20px;">
 			</span>
 
@@ -553,7 +554,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="dashboard.php" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="dashboard.php?mencari" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search" style="color:white;"></i></a>
 
 
@@ -564,7 +565,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse show" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="dashboard.php"><i
@@ -866,7 +867,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 		};
 	}
 
-		// nav
+	// nav
 	const btnBars = document.querySelector(".fa-bars");
 	const btnMinus = document.querySelector(".fa-minus");
 	const show = document.querySelector(".navbar-collapse");
@@ -883,7 +884,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 		btnMinus.classList.toggle("d-none");
 		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
 	});
-</script>
+	</script>
 
 
 	<!-- Optional JavaScript; choose one of the two! -->

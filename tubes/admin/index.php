@@ -531,14 +531,15 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 					class="fas fa-search" style="color:white;"></i></a>
 
 
-			<form id="bar" action="" method="post" class="d-lg-block" style="display:none;">
+			<form id="bar" action="" method="post" class="d-lg-block"
+				style="<?php if(isset($_GET['mencari'])){echo"display:;";}else{echo"display:none;";}?>">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
 					name="keyword" autofocus autocomplete="off" id="keyword">
 
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
 
-			<div class="collapse navbar-collapse show" id="navbarScroll">
+			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
 				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
