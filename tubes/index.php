@@ -662,21 +662,20 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" data-bs-target="#navbarScroll" aria-controls="navbarScroll"
+				aria-expanded="false" aria-label="Toggle navigation" style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" data-bs-target="#navbarScroll"
 				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+				style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
 
 
 			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="index.php#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="index.php?mencari#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search" style="color:white;"></i></a>
 
 
@@ -691,8 +690,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
-							class="fas fa-search"></i></a> </label>
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a
+						href="index.php?mencari#container"><i class="fas fa-search"></i></a> </label>
 
 
 
@@ -703,7 +702,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
+						<a href="index.php?mencari#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -724,7 +723,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
+							<li><a class="dropdown-item" href="index.php?mencari#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -742,7 +741,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 						<?php endforeach; ?>
 						<li class="nav-item">
-							<a name="cari" href="index.php#container" class="nav-link" id="jenis">All Items</a>
+							<a name="cari" href="index.php?mencari#container" class="nav-link" id="jenis">All Items</a>
 						</li>
 
 					</div>
@@ -760,8 +759,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 				</ul>
 
 				<div class="login-register text-center">
-					<a type="button" class="btn btn-secondary ms-lg-5 me-lg-1" style="font-size:10px;" href="login.php">Login</a>
-					<a type="button" class="btn btn-danger" style="font-size:10px;" href="signup.php">Regrister</a>
+					<a class="btn btn-secondary ms-lg-5 me-lg-1" style="font-size:10px;" href="login.php">Login</a>
+					<a class="btn btn-danger" style="font-size:10px;" href="signup.php">Regrister</a>
 				</div>
 
 				<ul class="navbar-nav">
@@ -797,13 +796,13 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 		</div>
 		<div class="carousel-control-prev" style="pointer-events:none;">
 			<span class="fas fa-angle-left bg-dark" aria-hidden="true" data-bs-target="#carouselExampleFade"
-				data-bs-slide="prev" type="button"
+				data-bs-slide="prev"
 				style="border-radius:100%;width:50px;height:50px;line-height:50px;font-size:25px;pointer-events:auto;cursor:pointer;"></span>
 			<span class="visually-hidden">Previous</span>
 		</div>
 		<div class="carousel-control-next" style="pointer-events:none;">
 			<span class="fas fa-angle-right bg-dark" aria-hidden="true" data-bs-target="#carouselExampleFade"
-				data-bs-slide="next" type="button"
+				data-bs-slide="next"
 				style="border-radius:100%;width:50px;height:50px;line-height:50px;font-size:25px;pointer-events:auto;cursor:pointer;"></span>
 			<span class="visually-hidden">Next</span>
 		</div>

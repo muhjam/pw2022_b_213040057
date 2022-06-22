@@ -6,7 +6,7 @@ $id=$_GET['id'];
 // produk
 $produk=query("SELECT * FROM produk WHERE id='$id'")['0'];
 if(empty($produk)){
-	header("location:index.php#container");
+	header("location:index.php?mencari#container");
 }
 
 
@@ -571,14 +571,14 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" data-bs-target="#navbarScroll"
 				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+				style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" data-bs-target="#navbarScroll"
 				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+				style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
 
@@ -589,7 +589,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 					class="fas fa-search" style="color:white;"></i></a>
 
 
-			<form id="bar" action="index.php#container" method="post" class="d-lg-block" style="display:none;">
+			<form id="bar" action="index.php?mencari#container" method="post" class="d-lg-block" style="display:none;">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
 					name="keyword" autocomplete="off" id="keyword">
 
@@ -599,7 +599,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php?mencari#container"><i
 							class="fas fa-search"></i></a> </label>
 
 
@@ -611,7 +611,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
+						<a href="index.php?mencari#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -632,7 +632,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
+							<li><a class="dropdown-item" href="index.php?mencari#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -650,7 +650,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 						<?php endforeach; ?>
 						<li class="nav-item">
-							<a name="cari" href="index.php#container" class="nav-link" id="jenis">All Items</a>
+							<a name="cari" href="index.php?mencari#container" class="nav-link" id="jenis">All Items</a>
 						</li>
 
 					</div>
@@ -668,8 +668,8 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 				</ul>
 
 				<div class="login-register text-center">
-					<a type="button" class="btn btn-secondary ms-lg-5 me-lg-1" style="font-size:10px;" href="login.php">Login</a>
-					<a type="button" class="btn btn-danger" style="font-size:10px;" href="signup.php">Regrister</a>
+					<a class="btn btn-secondary ms-lg-5 me-lg-1" style="font-size:10px;" href="login.php">Login</a>
+					<a class="btn btn-danger" style="font-size:10px;" href="signup.php">Regrister</a>
 				</div>
 
 				<ul class="navbar-nav">
@@ -697,7 +697,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 			<h3 id="judul">Product</h3>
 		</div>
 		<div class="col">
-			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="#" class="fw-bold"
+			<a href="index.php">home</a> / <a href="index.php?mencari#container">shop</a> / <a href="#" class="fw-bold"
 				id="point"><?= $produk['jenis_produk']; ?></a>
 		</div>
 	</div>
@@ -729,7 +729,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 						<h6 class="card-text mt-2 mb-3"><?= $produk["keterangan"]; ?></h6>
 
-						<a href="login.php" type="button" class="btn btn-danger my-2">Login First</a>
+						<a href="login.php" class="btn btn-danger my-2">Login First</a>
 					</div>
 				</div>
 			</div>

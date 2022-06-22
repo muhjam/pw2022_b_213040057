@@ -247,7 +247,8 @@ if(isset($_POST['submit'])){
 	}
 
 	@media (max-width: 990px) {
-/* navbar */
+
+		/* navbar */
 		#navbarScroll {
 			overflow: hidden;
 			height: 0px;
@@ -273,6 +274,7 @@ if(isset($_POST['submit'])){
 				height: 220px;
 			}
 		}
+
 		.navbar-nav {
 			text-align: center;
 		}
@@ -502,8 +504,7 @@ if(isset($_POST['submit'])){
 		display: block;
 		margin-top: 0; // remove the gap so it doesn't close
 	}
-	
-</style>
+	</style>
 
 
 	<!-- link my css -->
@@ -521,14 +522,14 @@ if(isset($_POST['submit'])){
 
 		<div class="container">
 
-	<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
 
@@ -543,6 +544,14 @@ if(isset($_POST['submit'])){
 				style="<?php if(isset($_GET['mencari'])){echo"display:;";}else{echo"display:none;";}?>">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
 					name="keyword" autofocus autocomplete="off" id="keyword">
+
+				<input class="form-control formm me-lg-2" type="hidden" hidden aria-label="Search" value="<?
+				if(!isset($_GET['page'])){
+					echo'1';
+				}else{
+					echo $page;
+				}
+				?>" name="halaman" autofocus autocomplete="off" id="halaman">
 
 				<a id="exit" class="btn btn-dark ms-auto d-lg-none"><i class="far fa-window-close"></i></a>
 			</form>
@@ -561,13 +570,12 @@ if(isset($_POST['submit'])){
 
 					<!-- profile mobile -->
 					<a class="mt-1 d-lg-none" href="profile.php"><img id="profile" src="../profile/<?=$profile['foto'];?>"
-							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;"
-							title="<?=$profile['username']?>
+							style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;" title="<?=$profile['username']?>
 "></a>
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
+						<a href="index.php?mencari#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -588,7 +596,7 @@ if(isset($_POST['submit'])){
 
 
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
+							<li><a class="dropdown-item" href="index.php?mencari#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -606,7 +614,7 @@ if(isset($_POST['submit'])){
 
 						<?php endforeach; ?>
 						<li class="nav-item">
-							<a name="cari" href="index.php#container" class="nav-link" id="jenis">All Items</a>
+							<a name="cari" href="index.php?mencari#container" class="nav-link" id="jenis">All Items</a>
 						</li>
 
 					</div>
@@ -627,7 +635,8 @@ if(isset($_POST['submit'])){
 					<li class=" nav-item dropdown ms-5">
 						<a class="nav-link dropdown-toggle  d-none d-lg-block" href="#" id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
-							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>" title="<?=$profile['username']?>"
+							<img id="profile" src="../profile/<?=$profile['foto'];?>" alt="<?=$profile['username']?>"
+								title="<?=$profile['username']?>"
 								style="width:35px; height:35px; object-fit:cover;border-radius:50%;border:2px solid #d6d6d6;">
 						</a>
 						<ul class="dropdown-menu" style="margin-left:-45px;" aria-labelledby="navbarDropdownMenuLink">
@@ -676,7 +685,7 @@ if(isset($_POST['submit'])){
 			<h3 id="judul">Dashboard</h3>
 		</div>
 		<div class="col mb-3">
-			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="dashboard.php">Dashboard</a> /
+			<a href="index.php">home</a> / <a href="index.php?mencari#container">shop</a> / <a href="dashboard.php">Dashboard</a> /
 			<a href="#" class="fw-bold" id="point">Users</a>
 		</div>
 		<!-- akhir judul -->
@@ -732,8 +741,7 @@ if(isset($_POST['submit'])){
 							<td><?= $i; ?></td>
 
 							<td><img src=" ../profile/<?= $user["foto"] ?>" style="width:100px; height:100px; object-fit:cover"
-									alt="<?=$profile['username']?>"
- title="<?=$profile['username']?>
+									alt="<?=$profile['username']?>" title="<?=$profile['username']?>
 ">
 							</td>
 							<td style="text-transform:capitalize;"><?= $user["username"]; ?></td>
@@ -836,14 +844,13 @@ if(isset($_POST['submit'])){
 	var keyword = document.getElementById("keyword");
 	var container = document.getElementById("container");
 	var page = document.getElementById("page");
+	var halaman = document.getElementById("halaman");
 
-	// tambahkan event ketika keyboard ditulis
-	keyword.addEventListener("keyup", function() {
-		var page = document.getElementById("page");
-		page.setAttribute("style", "display:none;");
-
+	// function ajax dengan baik
+	function doStuff() {
 		// buat object ajax
 		var xhr = new XMLHttpRequest();
+		page.classList.remove("d-none");
 
 		// cek kesiapan ajax
 		xhr.onreadystatechange = function() {
@@ -853,12 +860,29 @@ if(isset($_POST['submit'])){
 		};
 
 		// eksekusi ajax
-		xhr.open("GET", "ajax/users.php?keyword=" + keyword.value, true);
+		xhr.open("GET", "ajax/usersNormal.php?page=" + halaman.value, true);
 		xhr.send();
+	}
 
+	// tambahkan event ketika keyboard ditulis
+	keyword.addEventListener("keyup", function() {
+		// buat object ajax
+		var xhr = new XMLHttpRequest();
+		page.classList.add("d-none");
+
+		// cek kesiapan ajax
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				container.innerHTML = xhr.responseText;
+			}
+		};
 		// memunculkan page atau refresh halaman
 		if (keyword.value === "") {
-			location.reload();
+			doStuff();
+		} else {
+			// eksekusi ajax
+			xhr.open("GET", "ajax/users.php?keyword=" + keyword.value, true);
+			xhr.send();
 		}
 	});
 
@@ -867,14 +891,34 @@ if(isset($_POST['submit'])){
 	var bar = document.getElementById("bar");
 	var exit = document.getElementById("exit");
 
+	// nav
+	const btnBars = document.querySelector(".fa-bars");
+	const btnMinus = document.querySelector(".fa-minus");
+	const show = document.querySelector(".navbar-collapse");
+
 	search.addEventListener("click", function() {
 		var bar = document.getElementById("bar");
 		bar.setAttribute("style", "display:;");
+		btnBars.classList.remove("d-none");
+		btnMinus.classList.add("d-none");
+		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
 	});
 
 	exit.addEventListener("click", function() {
 		var bar = document.getElementById("bar");
 		bar.setAttribute("style", "display:none;");
+	});
+
+	btnBars.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slidedown 0.5s ease forwards;");
+	});
+
+	btnMinus.addEventListener("click", function() {
+		btnBars.classList.toggle("d-none");
+		btnMinus.classList.toggle("d-none");
+		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
 	});
 	</script>
 

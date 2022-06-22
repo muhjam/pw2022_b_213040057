@@ -1,21 +1,16 @@
 <?php 
 require '../functions.php';
 
-$keyword=$_GET["keyword"];
+// pagination
+// konfigurasi
+$jumlahDataPerHalaman=5;
+$jumlahData= count(query("SELECT * FROM users"));
+$jumlahHalaman= ceil($jumlahData / $jumlahDataPerHalaman);
+$halamanAktif=(isset($_GET["page"])) ? $_GET["page"] : 1;
+$awalData=($jumlahDataPerHalaman * $halamanAktif)-$jumlahDataPerHalaman;
 
-$query="SELECT * FROM users
-             WHERE
-            username LIKE '%$keyword%' OR
-            level LIKE '%$keyword%' OR
-						email LIKE '%$keyword%' OR
-						alamat LIKE '%$keyword%' OR
-						gender LIKE '%$keyword%' OR
-						no_telp LIKE '%$keyword%' AND
-            status = 'on' OR
-						status = 'ban'
-					";
+$users = query("SELECT * FROM users WHERE status='on' OR status='ban' LIMIT $awalData,$jumlahDataPerHalaman");
 
-$users= query($query);
 
 
 // mengaharhkan ke normal page

@@ -31,7 +31,7 @@ $id=$_GET['id'];
 $produk=query("SELECT * FROM produk WHERE id='$id'")['0'];
 
 if(empty($produk)){
-	header("location:index.php#container");
+	header("location:index.php?mencari#container");
 }
 
 
@@ -596,14 +596,13 @@ $profile=query("SELECT * FROM users WHERE email='$email'")[0];
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" data-bs-target="#navbarScroll" aria-controls="navbarScroll"
+				aria-expanded="false" aria-label="Toggle navigation" style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" data-bs-target="#navbarScroll"
 				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+				style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
 
@@ -614,7 +613,7 @@ $profile=query("SELECT * FROM users WHERE email='$email'")[0];
 					class="fas fa-search" style="color:white;"></i></a>
 
 
-			<form id="bar" action="index.php#container" method="post" class="d-lg-block" style="display:none;">
+			<form id="bar" action="index.php?mencari#container" method="post" class="d-lg-block" style="display:none;">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
 					name="keyword" autocomplete="off" id="keyword">
 
@@ -624,8 +623,8 @@ $profile=query("SELECT * FROM users WHERE email='$email'")[0];
 			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
-							class="fas fa-search"></i></a> </label>
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a
+						href="index.php?mencari#container"><i class="fas fa-search"></i></a> </label>
 
 
 
@@ -641,7 +640,7 @@ $profile=query("SELECT * FROM users WHERE email='$email'")[0];
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
+						<a href="index.php?mencari#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -662,7 +661,7 @@ $profile=query("SELECT * FROM users WHERE email='$email'")[0];
 
 
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
+							<li><a class="dropdown-item" href="index.php?mencari#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -680,7 +679,7 @@ $profile=query("SELECT * FROM users WHERE email='$email'")[0];
 
 						<?php endforeach; ?>
 						<li class="nav-item">
-							<a name="cari" href="index.php#container" class="nav-link" id="jenis">All Items</a>
+							<a name="cari" href="index.php?mencari#container" class="nav-link" id="jenis">All Items</a>
 						</li>
 
 					</div>
@@ -750,7 +749,7 @@ $profile=query("SELECT * FROM users WHERE email='$email'")[0];
 			<h3 id="judul">Product</h3>
 		</div>
 		<div class="col">
-			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="#" class="fw-bold"
+			<a href="index.php">home</a> / <a href="index.php?mencari#container">shop</a> / <a href="#" class="fw-bold"
 				id="point"><?= $produk['jenis_produk']; ?></a>
 		</div>
 	</div>
@@ -783,7 +782,7 @@ $profile=query("SELECT * FROM users WHERE email='$email'")[0];
 						<h6 class="card-text mt-2 mb-3"><?= $produk["keterangan"]; ?></h6>
 
 						<a href="https://api.whatsapp.com/send?phone=6283124356686&text=Hallo%20saya%20<?= $profile['username'];?>.%20Saya%20mau%20memesan%20<?= $produk['jenis_produk']?>%20<?= $produk['nama_produk']?>%20ukuran%20<?= $produk['ukuran']?>,%20dengan%20kode%20barang:%20<?= $produk['kode_produk']?>."
-							type="button" class="btn btn-success my-2" target="_blank"><i class="fab fa-whatsapp"></i> Lets Buy</a>
+							class="btn btn-success my-2" target="_blank"><i class="fab fa-whatsapp"></i> Lets Buy</a>
 
 
 					</div>

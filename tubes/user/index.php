@@ -521,21 +521,20 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" data-bs-target="#navbarScroll" aria-controls="navbarScroll"
+				aria-expanded="false" aria-label="Toggle navigation" style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" data-bs-target="#navbarScroll"
 				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+				style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
 
 
 			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
+			<a href="?mencari#container" id="cariin" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
 					class="fas fa-search" style="color:white;"></i></a>
 
 
@@ -550,7 +549,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="#container"><i
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="?mencari#container"><i
 							class="fas fa-search"></i></a> </label>
 
 
@@ -567,7 +566,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
+						<a href="index.php?mencari#container" class="nav-link  d-lg-none fs-4 active" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -586,7 +585,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 							<li><a name="cari" class="dropdown-item"
 									href="?cari=<?= $jenis['jenis_produk']; ?>#container"><?= $jenis['jenis_produk']; ?></a></li>
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
+							<li><a class="dropdown-item" href="index.php?mencari#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -602,7 +601,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 						<?php endforeach; ?>
 						<li class="nav-item">
-							<a name="cari" href="index.php#container" class="nav-link" id="jenis">All Items</a>
+							<a name="cari" href="index.php?mencari#container" class="nav-link" id="jenis">All Items</a>
 						</li>
 
 					</div>
@@ -671,13 +670,13 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 		</div>
 		<div class="carousel-control-prev" style="pointer-events:none;">
 			<span class="fas fa-angle-left bg-dark" aria-hidden="true" data-bs-target="#carouselExampleFade"
-				data-bs-slide="prev" type="button"
+				data-bs-slide="prev"
 				style="border-radius:100%;width:50px;height:50px;line-height:50px;font-size:25px;pointer-events:auto;cursor:pointer;"></span>
 			<span class="visually-hidden">Previous</span>
 		</div>
 		<div class="carousel-control-next" style="pointer-events:none;">
 			<span class="fas fa-angle-right bg-dark" aria-hidden="true" data-bs-target="#carouselExampleFade"
-				data-bs-slide="next" type="button"
+				data-bs-slide="next"
 				style="border-radius:100%;width:50px;height:50px;line-height:50px;font-size:25px;pointer-events:auto;cursor:pointer;"></span>
 			<span class="visually-hidden">Next</span>
 		</div>

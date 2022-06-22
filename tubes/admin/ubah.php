@@ -239,7 +239,8 @@ $ukuranProduk= query($query);
 	}
 
 	@media (max-width: 990px) {
-/* navbar */
+
+		/* navbar */
 		#navbarScroll {
 			overflow: hidden;
 			height: 0px;
@@ -265,6 +266,7 @@ $ukuranProduk= query($query);
 				height: 220px;
 			}
 		}
+
 		.navbar-nav {
 			text-align: center;
 		}
@@ -550,8 +552,7 @@ $ukuranProduk= query($query);
 		display: block;
 		margin-top: 0; // remove the gap so it doesn't close
 	}
-	
-</style>
+	</style>
 
 
 	<!-- link my css -->
@@ -569,22 +570,22 @@ $ukuranProduk= query($query);
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" 
-				data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" data-bs-target="#navbarScroll"
+				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
+				style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
 
 
 			<a class="navbar-brand ms-4 ms-lg-0" id="logo" href="index.php">GoturthinQs<span>.</span></a>
 
-			<a href="dashboard.php?mencari" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i
-					class="fas fa-search" style="color:white;"></i></a>
+			<a href="dashboard.php" class="btn btn-dark d-lg-none ms-auto" style="display:block;"><i class="fas fa-search"
+					style="color:white;"></i></a>
 
 
 			<form id="bar" action="dashboard.php" method="post" class="d-lg-block" style="display:none;">
@@ -613,7 +614,7 @@ $ukuranProduk= query($query);
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
+						<a href="index.php?mencari#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -634,7 +635,7 @@ $ukuranProduk= query($query);
 
 
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
+							<li><a class="dropdown-item" href="index.php?mencari#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -652,7 +653,7 @@ $ukuranProduk= query($query);
 
 						<?php endforeach; ?>
 						<li class="nav-item">
-							<a name="cari" href="index.php#container" class="nav-link" id="jenis">All Items</a>
+							<a name="cari" href="index.php?mencari#container" class="nav-link" id="jenis">All Items</a>
 						</li>
 
 					</div>
@@ -722,7 +723,7 @@ $ukuranProduk= query($query);
 			<h3 id="judul">Dashboard</h3>
 		</div>
 		<div class="col mb-3">
-			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="dashboard.php">Dashboard</a> / <a
+			<a href="index.php">home</a> / <a href="index.php?mencari#container">shop</a> / <a href="dashboard.php">Dashboard</a> / <a
 				href="#" class="fw-bold" id="point">Change</a>
 		</div>
 	</div>
@@ -915,7 +916,7 @@ $ukuranProduk= query($query);
 		};
 	}
 
-		// nav
+	// nav
 	const btnBars = document.querySelector(".fa-bars");
 	const btnMinus = document.querySelector(".fa-minus");
 	const show = document.querySelector(".navbar-collapse");
@@ -932,7 +933,7 @@ $ukuranProduk= query($query);
 		btnMinus.classList.toggle("d-none");
 		show.setAttribute("style", "animation:slideup 0.5s ease forwards;");
 	});
-</script>
+	</script>
 
 
 </body>

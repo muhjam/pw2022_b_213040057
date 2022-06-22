@@ -654,14 +654,13 @@ if(isset($_POST["berhasil"])){
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" type="button" data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" data-bs-target="#navbarScroll" aria-controls="navbarScroll"
+				aria-expanded="false" aria-label="Toggle navigation" style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
-			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" type="button" data-bs-target="#navbarScroll"
+			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" data-bs-target="#navbarScroll"
 				aria-controls="navbarScroll" aria-expanded="true" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;">
+				style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
 
@@ -672,7 +671,7 @@ if(isset($_POST["berhasil"])){
 					class="fas fa-search" style="color:white;"></i></a>
 
 
-			<form id="bar" action="index.php#container" method="post" class="d-lg-block" style="display:none;">
+			<form id="bar" action="index.php?mencari#container" method="post" class="d-lg-block" style="display:none;">
 				<input class="form-control formm me-lg-2" type="text" placeholder="Cari Produk Goturthings" aria-label="Search"
 					name="keyword" autocomplete="off" id="keyword">
 
@@ -682,8 +681,8 @@ if(isset($_POST["berhasil"])){
 			<div class="collapse navbar-collapse show" id="navbarScroll" style="animation:slideup ease forwards;">
 
 
-				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a href="index.php#container"><i
-							class="fas fa-search"></i></a> </label>
+				<label for="keyword" class="btn btn-dark d-none d-lg-block" id="search"> <a
+						href="index.php?mencari#container"><i class="fas fa-search"></i></a> </label>
 
 
 
@@ -698,7 +697,7 @@ if(isset($_POST["berhasil"])){
 
 
 					<li class="nav-item">
-						<a href="index.php#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
+						<a href="index.php?mencari#container" class="nav-link  d-lg-none fs-4" style="cursor:pointer;"
 							aria-expanded="false">
 							Shop
 						</a>
@@ -719,7 +718,7 @@ if(isset($_POST["berhasil"])){
 
 
 							<?php endforeach; ?>
-							<li><a class="dropdown-item" href="index.php#container">All Items</a></li>
+							<li><a class="dropdown-item" href="index.php?mencari#container">All Items</a></li>
 						</ul>
 					</li>
 
@@ -737,7 +736,7 @@ if(isset($_POST["berhasil"])){
 
 						<?php endforeach; ?>
 						<li class="nav-item">
-							<a name="cari" href="index.php#container" class="nav-link" id="jenis">All Items</a>
+							<a name="cari" href="index.php?mencari#container" class="nav-link" id="jenis">All Items</a>
 						</li>
 					</div>
 
@@ -808,7 +807,7 @@ if(isset($_POST["berhasil"])){
 			<h3 id="judul">Profile</h3>
 		</div>
 		<div class="col mb-3">
-			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="profile.php"><?= $level; ?></a> /
+			<a href="index.php">home</a> / <a href="index.php?mencari#container">shop</a> / <a href="profile.php"><?= $level; ?></a> /
 			<a href="#" id="point">Edit</a>
 		</div>
 		<!-- akhir judul -->
