@@ -749,7 +749,7 @@ $profile=query("SELECT * FROM users WHERE email='$email'")[0];
 			<h3 id="judul">Product</h3>
 		</div>
 		<div class="col">
-			<a href="index.php">home</a> / <a href="index.php?mencari#container">shop</a> / <a href="#" class="fw-bold"
+			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="#" class="fw-bold"
 				id="point"><?= $produk['jenis_produk']; ?></a>
 		</div>
 	</div>

@@ -749,7 +749,7 @@ $profile=query("SELECT foto FROM users WHERE email='$email'")[0];
 			<h3 id="judul">Dashboard</h3>
 		</div>
 		<div class="col">
-			<a href="index.php">home</a> / <a href="index.php?mencari#container">shop</a> / <a href="dashboard.php">Dashboard</a> / <a
+			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="dashboard.php">Dashboard</a> / <a
 				href="#" class="fw-bold" id="point">Detail</a>
 		</div>
 	</div>

@@ -97,11 +97,13 @@ if(isset($_POST['submit'])){
 
 <head>
 	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Tempat trifthingnya Bandung" />
 	<meta name="keywords"
-		content="trifthing, bandung, baju bekas, online shope, fashion, baju keren, baju bekas keren, barang bekas, barang keren, goturthinqs, goturthings, tempat trifthing" />
-	<meta name="author" content="Jam-Jam" />
+		content="GoturthinQs, toko online, trifthing, jual barang bekas fashion, toko online bandung, toko online di bandung, goturthings, got your things, GBI, trifthing bandung" />
+	<meta name="author" content="Muhamad Jamaludin" />
 
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -685,7 +687,7 @@ if(isset($_POST['submit'])){
 			<h3 id="judul">Dashboard</h3>
 		</div>
 		<div class="col mb-3">
-			<a href="index.php">home</a> / <a href="index.php?mencari#container">shop</a> / <a href="dashboard.php">Dashboard</a> /
+			<a href="index.php">home</a> / <a href="index.php#container">shop</a> / <a href="dashboard.php">Dashboard</a> /
 			<a href="#" class="fw-bold" id="point">Users</a>
 		</div>
 		<!-- akhir judul -->
