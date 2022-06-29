@@ -17,7 +17,7 @@ btnMinus.addEventListener("click", function() {
 // selesai nav
 
 const scriptURL =
-    "https://script.google.com/macros/s/AKfycbzSt1bcuGMf1X3xK2yY7ocsKTA1ngPMFtHdfllE7bUNdJajko6meJ4FXX3PeJGFj0QUXQ/exec";
+    "https://script.google.com/macros/s/AKfycbyc9wkhvm2M99jpizayl2WeDHbrQm5jYTP5Ht4-dveg8cSqIbTWMp---ElxVTaZdGw/exec";
 const form = document.forms["goturthinqs-contact-from"];
 
 const btnKirim = document.querySelector(".btn-kirim");

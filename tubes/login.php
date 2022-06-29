@@ -335,8 +335,7 @@ $error=true;
 			font-size: 15px;
 		}
 	}
-	
-</style>
+	</style>
 
 
 	<!-- link my css -->
