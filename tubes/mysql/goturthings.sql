@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 29, 2022 at 04:30 PM
+-- Generation Time: Jun 30, 2022 at 11:18 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.29
 
@@ -270,7 +270,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `foto`, `no_telp`, `alamat`, `level`, `gender`, `lahir`, `status`, `kode_aktifasi`) VALUES
 (1, 'Admin', 'admin@gmail.com', '$2y$10$F/yIrOMw8aQ4Uh0ksOqtU.HyuPey291bchPDwN4ZI5gQIQ4Xd7KN6', 'default.png', '', '', 'admin', '-', '2022-06-29', 'on', ''),
-(63, 'Admin GoturthinQs', 'GoturthinQs@gmail.com', '$2y$10$19QiA9B0A8hX/pBkKuDsIe6bmmZYc22dQcnngWOihMrQ9tEPshuaK', '62aade75835bcicon.png', '', '', 'admin', '-', '2022-06-16', 'on', '78080d'),
+(63, 'Admin GoturthinQs', 'GoturthinQs@gmail.com', '$2y$10$/4LiECELsT2IMa8kAmyiZuM/p4a4nALqFRNlnv2EHRTU2f7NNFSnW', '62aade75835bcicon.png', '', '', 'admin', '-', '2022-06-16', 'on', '2c833b'),
 (66, 'Muhamad Jamaludin Padmawinata', 'muhhjam@gmail.com', '$2y$10$19QiA9B0A8hX/pBkKuDsIe6bmmZYc22dQcnngWOihMrQ9tEPshuaK', 'default.png', '', '', 'user', '-', '2022-06-16', 'on', 'a93354');
 
 --
