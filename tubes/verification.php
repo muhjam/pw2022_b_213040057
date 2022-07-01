@@ -123,7 +123,7 @@ session_destroy();
 
 					<input type="text" name="kode_aktifasi" class="form-control" placeholder="Masukan Kode Aktifasi Disini!"
 						style="text-align: center" required maxlength="6" autocomplete="off">
-					<button type="submit" class="btn btn-dark" name="aktifasi">Actifation</button>
+					<button type="submit" class="btn btn-dark" name="aktifasi">Activation</button>
 				</form>
 			</div>
 		</div>

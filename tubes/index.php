@@ -1021,9 +1021,14 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	var keyword = document.getElementById("keyword");
 	var container = document.getElementById("container");
 	var loadMore = document.getElementById("loadMore");
+	var slide = document.getElementById("carouselExampleFade");
+
 
 	// tambahkan event ketika keyboard ditulis
 	keyword.addEventListener("keyup", function() {
+
+		slide.setAttribute("style", "display:none;");
+		container.setAttribute("style", "margin-top:25px;");
 		// buat object ajax
 		var xhr = new XMLHttpRequest();
 
@@ -1037,6 +1042,11 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 		// eksekusi ajax
 		xhr.open("GET", "ajax/mainProduk.php?keyword=" + keyword.value, true);
 		xhr.send();
+
+		if (keyword.value == '') {
+			slide.setAttribute("style", "display:;");
+			container.setAttribute("style", "margin-top:0;");
+		}
 	});
 
 	// button search
@@ -1095,3 +1105,5 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 </body>
 
 </html>
+
+<!-- selesai -->
