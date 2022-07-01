@@ -1022,6 +1022,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 	var container = document.getElementById("container");
 	var loadMore = document.getElementById("loadMore");
 	var slide = document.getElementById("carouselExampleFade");
+	var map = document.getElementById("map");
 
 
 	// tambahkan event ketika keyboard ditulis
@@ -1029,6 +1030,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 
 		slide.setAttribute("style", "display:none;");
 		container.setAttribute("style", "margin-top:25px;");
+		map.setAttribute("style", "display:none;");
 		// buat object ajax
 		var xhr = new XMLHttpRequest();
 
@@ -1046,6 +1048,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 		if (keyword.value == '') {
 			slide.setAttribute("style", "display:;");
 			container.setAttribute("style", "margin-top:0;");
+			map.setAttribute("style", "display:none;");
 		}
 	});
 

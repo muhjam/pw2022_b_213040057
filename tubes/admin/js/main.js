@@ -3,11 +3,13 @@ var keyword = document.getElementById("keyword");
 var container = document.getElementById("container");
 var loadMore = document.getElementById("loadMore");
 var slide = document.getElementById("carouselExampleFade");
+var map = document.getElementById("map");
 
 // tambahkan event ketika keyboard ditulis
 keyword.addEventListener("keyup", function() {
     slide.setAttribute("style", "display:none;");
     container.setAttribute("style", "margin-top:25px;");
+    map.setAttribute("style", "display:none;");
     // buat object ajax
     var xhr = new XMLHttpRequest();
 
@@ -25,6 +27,7 @@ keyword.addEventListener("keyup", function() {
     if (keyword.value == "") {
         slide.setAttribute("style", "display:;");
         container.setAttribute("style", "margin-top:0;");
+        map.setAttribute("style", "display:none;");
     }
 });
 
