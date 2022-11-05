@@ -27,7 +27,7 @@ keyword.addEventListener("keyup", function() {
     if (keyword.value == "") {
         slide.setAttribute("style", "display:;");
         container.setAttribute("style", "margin-top:0;");
-        map.setAttribute("style", "display:none;");
+        map.setAttribute("style", "display:;");
     }
 });
 

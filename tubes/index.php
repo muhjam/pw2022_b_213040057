@@ -1,7 +1,7 @@
 <?php
 // cek udah login apa belum
 session_start();
-require 'functions.php';
+	require 'functions.php';
 
 
 if(isset($_SESSION['akunbaru'])){
@@ -1048,7 +1048,7 @@ $jenisProduk=query("SELECT * FROM jenis_produk");
 		if (keyword.value == '') {
 			slide.setAttribute("style", "display:;");
 			container.setAttribute("style", "margin-top:0;");
-			map.setAttribute("style", "display:none;");
+			map.setAttribute("style", "display:;");
 		}
 	});
 

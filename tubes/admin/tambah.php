@@ -542,9 +542,8 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 
 		<div class="container">
 
-			<span class="fas fa-bars me-auto ms-3 d-lg-none" data-bs-target="#navbarScroll"
-				aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"
-				style="color:white;font-size:20px;cursor:pointer;">
+			<span class="fas fa-bars me-auto ms-3 d-lg-none" data-bs-target="#navbarScroll" aria-controls="navbarScroll"
+				aria-expanded="false" aria-label="Toggle navigation" style="color:white;font-size:20px;cursor:pointer;">
 			</span>
 
 			<span class="fas fa-minus me-auto ms-3 d-none d-lg-none" data-bs-target="#navbarScroll"
@@ -764,6 +763,7 @@ $profile=query("SELECT * FROM users WHERE id='$id'")['0'];
 					<div class="col-sm-9 ms-auto">
 						<input type="text" class="form-control" id="keterangan" placeholder="Ketik Keterangan" name="keterangan"
 							maxlength="200" required>
+
 					</div>
 				</div>
 

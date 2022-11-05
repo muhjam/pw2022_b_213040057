@@ -35,7 +35,7 @@ class SMTP
      *
      * @var string
      */
-    const VERSION = '6.6.2';
+    const VERSION = '6.6.5';
 
     /**
      * SMTP line break constant.
@@ -480,7 +480,7 @@ class SMTP
      *
      * @see    hello()
      *
-     * @param string $username The Full Name
+     * @param string $username The user name
      * @param string $password The password
      * @param string $authtype The auth type (CRAM-MD5, PLAIN, LOGIN, XOAUTH2)
      * @param OAuthTokenProvider $OAuth An optional OAuthTokenProvider instance for XOAUTH2 authentication
@@ -682,7 +682,6 @@ class SMTP
      */
     public function close()
     {
-        $this->setError('');
         $this->server_caps = null;
         $this->helo_rply = null;
         if (is_resource($this->smtp_conn)) {
